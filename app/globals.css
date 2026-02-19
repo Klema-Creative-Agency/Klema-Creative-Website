@@ -441,13 +441,28 @@ body {
   );
 }
 
-/* === GROWTH ACCELERATOR PACKAGE BG === */
-.growth-package-bg {
+/* === GROWTH ACCELERATOR CARD HIGHLIGHT === */
+.growth-card-highlight {
+  position: relative;
   background: linear-gradient(
     180deg,
-    rgba(74, 222, 128, 0.02) 0%,
-    transparent 100%
+    rgba(74, 222, 128, 0.04) 0%,
+    rgba(13, 13, 13, 1) 100%
   );
+  border: 1px solid rgba(74, 222, 128, 0.12);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(74, 222, 128, 0.03);
+}
+
+.growth-card-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ade80, transparent);
+  border-radius: 2px;
+  opacity: 0.7;
 }
 
 /* === COMPARISON TABLE === */

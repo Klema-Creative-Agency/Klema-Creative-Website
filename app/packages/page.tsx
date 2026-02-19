@@ -33,7 +33,7 @@ export default function PackagesPage() {
       </section>
 
       {/* Package 1: Digital Foundation */}
-      <section className="pt-10 pb-20 border-t border-border">
+      <section className="pt-10 pb-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
             <RevealOnScroll>
@@ -50,7 +50,7 @@ export default function PackagesPage() {
               </p>
               <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
               <p className="text-[15px] text-text-dim leading-[1.7]">
-                Local businesses with $300K–$1M in annual revenue that need a solid online presence and a steady flow of inbound leads.
+                Local businesses ready to build a professional online presence and start generating consistent inbound leads.
               </p>
             </RevealOnScroll>
             <RevealOnScroll>
@@ -77,8 +77,9 @@ export default function PackagesPage() {
       </section>
 
       {/* Package 2: Growth Accelerator */}
-      <section className="growth-package-bg py-20 border-t border-border">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
+          <div className="growth-card-highlight rounded-[24px] p-10 max-md:p-6">
           <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
             <RevealOnScroll>
               <div className="flex items-center gap-3 mb-4">
@@ -97,7 +98,7 @@ export default function PackagesPage() {
               </p>
               <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
               <p className="text-[15px] text-text-dim leading-[1.7]">
-                Businesses with $1M–$3M in annual revenue that are ready to scale aggressively and dominate their local market.
+                Growing businesses ready to scale aggressively and become the go-to choice in their local market.
               </p>
             </RevealOnScroll>
             <RevealOnScroll>
@@ -123,11 +124,12 @@ export default function PackagesPage() {
               </div>
             </RevealOnScroll>
           </div>
+          </div>
         </div>
       </section>
 
       {/* Package 3: Market Dominator */}
-      <section className="py-20 border-t border-border">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
             <RevealOnScroll>
@@ -144,7 +146,7 @@ export default function PackagesPage() {
               </p>
               <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
               <p className="text-[15px] text-text-dim leading-[1.7]">
-                Market leaders with $3M–$5M+ in annual revenue who want a full outsourced marketing department without the overhead.
+                Established businesses that want a full outsourced marketing department without the overhead of building one in-house.
               </p>
             </RevealOnScroll>
             <RevealOnScroll>
