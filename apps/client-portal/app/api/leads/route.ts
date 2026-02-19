@@ -1,0 +1,33 @@
+import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/auth";
+import { queryAll } from "@klema/db";
+
+export async function GET(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const clientId = req.nextUrl.searchParams.get("clientId") ?? session.user.clientId;
+  if (!clientId) {
+    return NextResponse.json({ error: "Client ID required" }, { status: 400 });
+  }
+
+  if (session.user.role === "client" && session.user.clientId !== clientId) {
+    return NextResponse.json({ error: "Access denied" }, { status: 403 });
+  }
+
+  const status = req.nextUrl.searchParams.get("status");
+  let sql = "SELECT * FROM leads WHERE client_id = $1";
+  const params: unknown[] = [clientId];
+
+  if (status) {
+    params.push(status);
+    sql += ` AND status = $${params.length}::lead_status`;
+  }
+
+  sql += " ORDER BY created_at DESC";
+
+  const leads = await queryAll(sql, params);
+  return NextResponse.json(leads);
+}

@@ -1,0 +1,170 @@
+/* ============================================================
+   Wes Bos Bubble Nav — full CSS (no external resets needed)
+   Source: codepen.io/wesbos/pen/OPXpJvK
+   ============================================================ */
+
+/* ── Outer pill container ── */
+.bubble-nav-wrap {
+  border: 1px solid var(--color-border-hover);
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 500px;
+  position: relative;
+  background: linear-gradient(0deg, #141414, #242424);
+  box-shadow:
+    inset 10px 0 10px rgba(0, 0, 0, 0.6),
+    inset -10px 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Gradient border ring (sits behind the pill via z-index: -1) */
+.bubble-nav-wrap::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: -5px;
+  background: linear-gradient(180deg, var(--color-border-hover), #212121);
+  border-radius: 500px;
+  z-index: -1;
+}
+
+/* ── Shared bubble base ──
+   Both bubbles are absolutely positioned pills that slide around
+   behind the links.  CSS custom properties --left and --width are
+   set by JS whenever a link is hovered or becomes active. */
+.bubble {
+  position: absolute;
+  height: calc(100% - 12px);
+  top: 6px;
+  left: var(--left, 6px);
+  width: var(--width, 0px);
+  border-radius: 500px;
+  pointer-events: none;            /* clicks pass through to the links */
+  transition:
+    left   0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    width  0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+}
+
+/* Active bubble — the solid pill behind the current-page link */
+.bubble.active {
+  background: linear-gradient(180deg, #333333, #222222);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  z-index: 1;
+}
+
+/* Hover bubble — the subtle highlight that follows the cursor */
+.bubble.hover {
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 0;
+  opacity: 0;
+}
+
+/* Hover bubble fades in only while the mouse is inside .nav-wrap */
+.bubble-nav-wrap:hover .bubble.hover {
+  opacity: 1;
+}
+
+/* ── The <nav> holding the links ── */
+.bubble-nav {
+  display: flex;
+  position: relative;
+  z-index: 2;                     /* links sit above both bubbles */
+  padding: 6px;
+}
+
+/* ── Individual link pills ── */
+.bubble-nav a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  transition:
+    color 0.3s ease,
+    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.bubble-nav a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bubble-nav a.active {
+  color: #ffffff;
+}
+
+/* ── Inner logo (appears when nav collapses) ── */
+.bubble-nav .bubble-nav-inner-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 0;
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #f0eeeb;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  transition:
+    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bubble-nav .bubble-nav-inner-logo:hover {
+  color: #f0eeeb;
+}
+
+/* ── Collapsed state ── */
+.bubble-nav-wrap.collapsed .bubble-nav .bubble-nav-inner-logo {
+  max-width: 200px;
+  opacity: 1;
+  padding: 10px 22px;
+}
+
+.bubble-nav-wrap.collapsed .bubble-nav a:not(.bubble-nav-inner-logo) {
+  max-width: 0;
+  opacity: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bubble-nav-wrap.collapsed .bubble {
+  opacity: 0 !important;
+}
+
+/* ── Prominent "online" pulse for logo dot when collapsed ── */
+@keyframes logoPulseOnline {
+  0%, 100% {
+    opacity: 1;
+    box-shadow:
+      0 0 18px var(--color-accent),
+      0 0 50px rgba(74, 222, 128, 0.35),
+      0 0 80px rgba(74, 222, 128, 0.12);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow:
+      0 0 6px var(--color-accent),
+      0 0 18px rgba(74, 222, 128, 0.12);
+    transform: scale(0.8);
+  }
+}
+
+.bubble-nav-wrap.collapsed .logo-dot {
+  width: 9px;
+  height: 9px;
+  animation: logoPulseOnline 2s ease-in-out infinite;
+}
