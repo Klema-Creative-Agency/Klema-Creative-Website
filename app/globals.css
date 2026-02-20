@@ -431,6 +431,19 @@ body {
   );
 }
 
+/* === FAQ ACCORDION === */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
+
 /* === FEATURED PRICE CARD === */
 .price-card-featured {
   border-color: rgba(74, 222, 128, 0.2);

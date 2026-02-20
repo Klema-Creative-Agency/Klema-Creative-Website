@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RevealOnScroll from "../components/RevealOnScroll";
+import FAQ from "../components/FAQ";
 
 function ArrowIcon() {
   return (
@@ -9,9 +10,61 @@ function ArrowIcon() {
   );
 }
 
+const faqData = [
+  {
+    question: "What types of businesses do you work with?",
+    answer: "We specialize in local service businesses \u2014 HVAC, plumbing, roofing, dental, legal, landscaping, and similar industries. If you serve customers in a specific geographic area and want more leads, we\u2019re built for you.",
+  },
+  {
+    question: "How is Klema different from other marketing agencies?",
+    answer: "Most agencies sell you individual services. We build complete marketing systems \u2014 website, SEO, content, lead nurturing, and reputation management \u2014 all working together as one engine. Everything is tracked, transparent, and tied to revenue.",
+  },
+  {
+    question: "Do I need to sign a long-term contract?",
+    answer: "No. All our packages are month-to-month. We earn your business every single month with measurable results, not lock-in contracts.",
+  },
+  {
+    question: "How quickly will I see results?",
+    answer: "Most clients see early wins within 30\u201360 days (website live, leads coming in). SEO compounds over 3\u20136 months. By month 6, you\u2019ll have a full growth engine running.",
+  },
+  {
+    question: "What is AEO and why does it matter?",
+    answer: "AEO stands for Answer Engine Optimization. It\u2019s how we optimize your content to appear in AI-powered search results \u2014 ChatGPT, Google AI Overviews, Perplexity, and others. Traditional SEO alone isn\u2019t enough anymore.",
+  },
+  {
+    question: "Do you build websites on WordPress or something else?",
+    answer: "Both. Tier 1 includes a professional WordPress site. Tiers 2 and 3 include a high-performance Next.js website \u2014 faster, more customizable, and built for scale.",
+  },
+  {
+    question: "What does lead nurturing actually include?",
+    answer: "Our team contacts every lead via phone, email, and text on a proven follow-up cadence. In Tier 3, we contact leads within 5 minutes and can live-transfer qualified prospects directly to your sales team.",
+  },
+  {
+    question: "Can I switch tiers later?",
+    answer: "Absolutely. You can upgrade or adjust your package at any time. Most clients start with Digital Foundation and move up as they grow.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* SERVICES GRID */}
       <section className="border-t border-border pt-[140px] pb-30 max-md:pb-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
@@ -269,6 +322,23 @@ export default function ServicesPage() {
                   Book a Call
                 </Link>
               </div>
+            </RevealOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-t border-border py-30 max-md:py-20">
+        <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
+          <RevealOnScroll>
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">Frequently asked</p>
+            <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
+              Common questions,<br />straight answers.
+            </h2>
+          </RevealOnScroll>
+          <div className="max-w-[720px] mx-auto mt-16">
+            <RevealOnScroll>
+              <FAQ items={faqData} />
             </RevealOnScroll>
           </div>
         </div>
