@@ -32,31 +32,25 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Package 1: Digital Foundation */}
+      {/* PRICING CARDS */}
       <section className="pt-10 pb-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
-          <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
+          <div className="grid grid-cols-3 gap-5 items-start max-lg:grid-cols-1 max-lg:max-w-[440px] max-lg:mx-auto">
+            {/* Tier 1: Digital Foundation */}
             <RevealOnScroll>
-              <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 1</p>
-              <h2 className="text-4xl font-extrabold tracking-[-1px] mb-2">Digital Foundation</h2>
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-5xl font-black tracking-[-2px]">
-                  <span className="text-xl font-semibold align-super">$</span>3,500
-                </span>
-              </div>
-              <p className="text-sm text-text-dim mb-8">per month &middot; no long-term contract</p>
-              <p className="text-base text-text-mid leading-[1.8] mb-8">
-                The essential digital infrastructure every growing local business needs. We build your online presence from the ground up — a professional website, SEO foundation, content engine, and the analytics to track it all. Perfect for businesses just getting serious about digital marketing.
-              </p>
-              <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
-              <p className="text-[15px] text-text-dim leading-[1.7]">
-                Local businesses ready to build a professional online presence and start generating consistent inbound leads.
-              </p>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-9">
-                <p className="text-[13px] font-bold text-text-mid uppercase tracking-[0.1em] mb-5">What&apos;s included</p>
-                <ul className="price-features list-none mb-7 flex flex-col gap-3">
+              <div className="bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover">
+                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 1</p>
+                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Digital Foundation</h3>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">Build your online presence from the ground up — the essential infrastructure every growing business needs.</p>
+                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
+                  <span className="text-xl font-semibold align-super mr-0.5">$</span>3,500
+                </div>
+                <p className="text-[13px] text-text-dim mb-7">per month</p>
+                <div className="h-px bg-border mb-6" />
+                <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-6">Local businesses ready to build a professional online presence and start generating consistent inbound leads.</p>
+                <div className="h-px bg-border mb-6" />
+                <ul className="price-features list-none mb-8 flex flex-col gap-3">
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Professional website optimized for conversions (WordPress)</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Advanced SEO &amp; AEO (AI search optimization)</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">2 SEO-optimized blog articles per month</li>
@@ -66,45 +60,30 @@ export default function PackagesPage() {
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Monthly performance report</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Monthly strategy call with your account lead</li>
                 </ul>
-                <Link href="/contact" className="btn-primary-hover flex items-center justify-center gap-2.5 w-full bg-accent text-black py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]">
+                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text tracking-[0.01em] hover:bg-white-10 hover:-translate-y-px">
                   Get Started
-                  <ArrowIcon />
                 </Link>
               </div>
             </RevealOnScroll>
-          </div>
-        </div>
-      </section>
 
-      {/* Package 2: Growth Accelerator */}
-      <section className="py-20">
-        <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
-          <div className="growth-card-highlight rounded-[24px] p-10 max-md:p-6">
-          <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
+            {/* Tier 2: Growth Accelerator — Featured */}
             <RevealOnScroll>
-              <div className="flex items-center gap-3 mb-4">
-                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent">Tier 2</p>
-                <span className="bg-accent text-black px-3.5 py-1 rounded-full text-[10px] font-extrabold tracking-[0.06em] uppercase">Most Popular</span>
-              </div>
-              <h2 className="text-4xl font-extrabold tracking-[-1px] mb-2">Growth Accelerator</h2>
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-5xl font-black tracking-[-2px]">
-                  <span className="text-xl font-semibold align-super">$</span>8,000
-                </span>
-              </div>
-              <p className="text-sm text-text-dim mb-8">per month &middot; no long-term contract</p>
-              <p className="text-base text-text-mid leading-[1.8] mb-8">
-                A complete growth engine. Everything in Digital Foundation plus a high-performance Next.js website, dedicated lead nurturing team, reputation management, and advanced SEO with competitor analysis. This is where the compounding starts.
-              </p>
-              <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
-              <p className="text-[15px] text-text-dim leading-[1.7]">
-                Growing businesses ready to scale aggressively and become the go-to choice in their local market.
-              </p>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <div className="bg-surface border border-accent-border-light rounded-[20px] p-9">
-                <p className="text-[13px] font-bold text-text-mid uppercase tracking-[0.1em] mb-5">What&apos;s included</p>
-                <ul className="price-features list-none mb-7 flex flex-col gap-3">
+              <div className="price-card-featured bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover relative">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-black px-[18px] py-[5px] rounded-full text-[11px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
+                  Most Popular
+                </div>
+                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 2</p>
+                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Growth Accelerator</h3>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">Everything in Foundation plus lead nurturing, reputation management, and advanced SEO.</p>
+                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
+                  <span className="text-xl font-semibold align-super mr-0.5">$</span>8,000
+                </div>
+                <p className="text-[13px] text-text-dim mb-7">per month</p>
+                <div className="h-px bg-border mb-6" />
+                <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-6">Growing businesses ready to scale aggressively and become the go-to choice in their local market.</p>
+                <div className="h-px bg-border mb-6" />
+                <ul className="price-features list-none mb-8 flex flex-col gap-3">
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Everything in Digital Foundation, plus:</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">High-performance Next.js website</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">4 SEO-optimized blog articles per month</li>
@@ -117,42 +96,27 @@ export default function PackagesPage() {
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Advanced reporting dashboard</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Bi-weekly strategy calls</li>
                 </ul>
-                <Link href="/contact" className="btn-primary-hover flex items-center justify-center gap-2.5 w-full bg-accent text-black py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]">
+                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-accent text-black tracking-[0.01em] hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px">
                   Get Started
-                  <ArrowIcon />
                 </Link>
               </div>
             </RevealOnScroll>
-          </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Package 3: Market Dominator */}
-      <section className="py-20">
-        <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
-          <div className="grid grid-cols-2 gap-18 items-start max-lg:grid-cols-1 max-lg:gap-10">
+            {/* Tier 3: Market Dominator */}
             <RevealOnScroll>
-              <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 3</p>
-              <h2 className="text-4xl font-extrabold tracking-[-1px] mb-2">Market Dominator</h2>
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-5xl font-black tracking-[-2px]">
-                  <span className="text-xl font-semibold align-super">$</span>10,000
-                </span>
-              </div>
-              <p className="text-sm text-text-dim mb-8">per month &middot; no long-term contract</p>
-              <p className="text-base text-text-mid leading-[1.8] mb-8">
-                White-glove, full-team engagement for businesses ready to become the undisputed leader in their market. You get a fully custom website, a full lead management team contacting leads within 5 minutes, live hot transfers to your sales team, and a dedicated account manager who treats your business like their own.
-              </p>
-              <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
-              <p className="text-[15px] text-text-dim leading-[1.7]">
-                Established businesses that want a full outsourced marketing department without the overhead of building one in-house.
-              </p>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-9">
-                <p className="text-[13px] font-bold text-text-mid uppercase tracking-[0.1em] mb-5">What&apos;s included</p>
-                <ul className="price-features list-none mb-7 flex flex-col gap-3">
+              <div className="bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover">
+                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 3</p>
+                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Market Dominator</h3>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">White-glove, full-team engagement for businesses ready to own their market.</p>
+                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
+                  <span className="text-xl font-semibold align-super mr-0.5">$</span>10,000
+                </div>
+                <p className="text-[13px] text-text-dim mb-7">per month</p>
+                <div className="h-px bg-border mb-6" />
+                <p className="text-[13px] font-bold text-accent uppercase tracking-[0.1em] mb-3">Best for</p>
+                <p className="text-[13px] text-text-dim leading-[1.6] mb-6">Established businesses that want a full outsourced marketing department without the overhead of building one in-house.</p>
+                <div className="h-px bg-border mb-6" />
+                <ul className="price-features list-none mb-8 flex flex-col gap-3">
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Everything in Growth Accelerator, plus:</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Fully custom Next.js website</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">6–8 SEO-optimized blog articles per month</li>
@@ -165,9 +129,8 @@ export default function PackagesPage() {
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Daily updates &amp; weekly strategy calls</li>
                   <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Quarterly business reviews</li>
                 </ul>
-                <Link href="/contact" className="btn-primary-hover flex items-center justify-center gap-2.5 w-full bg-accent text-black py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]">
+                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text tracking-[0.01em] hover:bg-white-10 hover:-translate-y-px">
                   Book a Call
-                  <ArrowIcon />
                 </Link>
               </div>
             </RevealOnScroll>
