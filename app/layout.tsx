@@ -29,12 +29,21 @@ export const metadata: Metadata = {
       "We build complete marketing systems that generate and convert leads for local service businesses.",
     siteName: "Klema Creative",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Klema Creative — Marketing Engines for Local Businesses",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Klema Creative | Marketing Engines for San Antonio Businesses",
     description:
       "We build complete marketing systems that generate and convert leads for local service businesses.",
+    images: ["/og-image.png"],
   },
 };
 
