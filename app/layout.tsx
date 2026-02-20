@@ -19,9 +19,23 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://klemacreative.com"),
   title: "Klema Creative | Marketing Engines for San Antonio Businesses",
   description:
     "We build complete marketing systems that generate and convert leads for local service businesses. Stop wasting money on marketing that doesn't work.",
+  openGraph: {
+    title: "Klema Creative | Marketing Engines for San Antonio Businesses",
+    description:
+      "We build complete marketing systems that generate and convert leads for local service businesses.",
+    siteName: "Klema Creative",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Klema Creative | Marketing Engines for San Antonio Businesses",
+    description:
+      "We build complete marketing systems that generate and convert leads for local service businesses.",
+  },
 };
 
 export default function RootLayout({
