@@ -9,7 +9,12 @@ export const metadata: Metadata = {
     "Check if your business is visible to ChatGPT, Gemini, Claude, Perplexity, Llama, and Mistral. Free AI visibility scan — see your score in 60 seconds.",
 };
 
-export default function AiVisibilityPage() {
+export default async function AiVisibilityPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ url?: string }>;
+}) {
+  const { url: initialUrl } = await searchParams;
   return (
     <>
       {/* Hero + Scanner */}
@@ -37,7 +42,7 @@ export default function AiVisibilityPage() {
               60 seconds.
             </p>
           </RevealOnScroll>
-          <AiVisibilityScanner />
+          <AiVisibilityScanner initialUrl={initialUrl} />
         </div>
       </section>
 

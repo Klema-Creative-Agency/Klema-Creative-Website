@@ -87,10 +87,10 @@ export default function Navbar() {
             }}
           >
             <Link
-              href="/contact"
-              className="bg-text text-bg px-6 py-2.5 rounded-full font-semibold text-[13px] tracking-[0.02em] transition-all duration-300 hover:bg-accent hover:text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:-translate-y-px no-underline"
+              href="/tools/ai-visibility"
+              className="bg-accent text-black px-6 py-2.5 rounded-full font-semibold text-[13px] tracking-[0.02em] transition-all duration-300 hover:bg-text hover:text-bg hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:-translate-y-px no-underline"
             >
-              Book a Call
+              Free AI Scan
             </Link>
           </div>
 
@@ -141,8 +141,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="mt-4">
-              <Link href="/contact" onClick={closeMenu} className="bg-text text-bg px-8 py-3 rounded-full font-semibold text-base tracking-[0.02em] transition-all duration-300 hover:bg-accent hover:text-black no-underline">
-                Book a Call
+              <Link href="/tools/ai-visibility" onClick={closeMenu} className="bg-accent text-black px-8 py-3 rounded-full font-semibold text-base tracking-[0.02em] transition-all duration-300 hover:bg-text hover:text-bg no-underline">
+                Free AI Scan
               </Link>
             </li>
           </ul>

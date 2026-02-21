@@ -50,9 +50,9 @@ interface PlatformState {
   error?: string;
 }
 
-export default function AiVisibilityScanner() {
+export default function AiVisibilityScanner({ initialUrl }: { initialUrl?: string }) {
   const [phase, setPhase] = useState<Phase>("idle");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(initialUrl || "");
   const [error, setError] = useState("");
   const [platformStates, setPlatformStates] = useState<
     Record<string, PlatformState>
@@ -183,6 +183,16 @@ export default function AiVisibilityScanner() {
       }
     }
   }, [url]);
+
+  // Auto-start scan when arriving with a pre-filled URL from homepage
+  const autoStarted = useRef(false);
+  useEffect(() => {
+    if (initialUrl && !autoStarted.current) {
+      autoStarted.current = true;
+      const t = setTimeout(() => startScan(), 400);
+      return () => clearTimeout(t);
+    }
+  }, [initialUrl, startScan]);
 
   const handleUnlock = useCallback(() => {
     setPhase("results-unlocked");

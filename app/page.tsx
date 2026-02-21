@@ -4,6 +4,7 @@ import RevealOnScroll from "./components/RevealOnScroll";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import SplitHeading from "./components/SplitHeading";
+import ScannerPopup from "./components/ScannerPopup";
 
 function ArrowIcon() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
 
       {/* PROBLEM */}
       <ProblemSection />
+      <ScannerPopup />
 
       {/* SOLUTION / PILLARS */}
       <section className="py-30 max-md:py-20">

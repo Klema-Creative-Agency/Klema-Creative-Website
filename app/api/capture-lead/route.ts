@@ -1,5 +1,7 @@
 export async function POST(request: Request) {
   let body: {
+    name?: string;
+    phone?: string;
     email?: string;
     websiteUrl?: string;
     scanResults?: unknown;
@@ -11,7 +13,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { email, websiteUrl, scanResults, score } = body;
+  const { name, phone, email, websiteUrl, scanResults, score } = body;
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json(
@@ -24,7 +26,7 @@ export async function POST(request: Request) {
   if (!webhookUrl || webhookUrl.includes("REPLACE")) {
     console.log(
       "[capture-lead] GHL webhook not configured. Lead data:",
-      JSON.stringify({ email, websiteUrl, score })
+      JSON.stringify({ name, phone, email, websiteUrl, score })
     );
     return Response.json({ success: true });
   }
@@ -34,6 +36,8 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        name: name || "",
+        phone: phone || "",
         email,
         website: websiteUrl,
         score: `${score}/6`,

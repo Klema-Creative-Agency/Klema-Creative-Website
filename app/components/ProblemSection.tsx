@@ -4,6 +4,12 @@ import { useEffect, useRef, useState } from "react";
 
 const problems = [
   {
+    value: 0,
+    suffix: "%",
+    title: "Invisible to AI",
+    text: "40% of consumers now ask AI for business recommendations instead of Google. If you\u2019re not in the answers, your AI visibility is zero \u2014 and every lead goes to a competitor.",
+  },
+  {
     value: 78,
     suffix: "%",
     title: "Not enough leads",
@@ -80,7 +86,7 @@ const LINE_2 = [
 const EMPHASIS_DELAY = 1300;
 
 // Stagger delays for each card (ms)
-const CARD_DELAYS = [0, 600, 1200];
+const CARD_DELAYS = [0, 600, 1200, 1800];
 
 export default function ProblemSection() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -146,7 +152,7 @@ export default function ProblemSection() {
   }
 
   return (
-    <section className="pt-52 pb-30 max-md:pt-36 max-md:pb-20">
+    <section id="problem-section" className="pt-52 pb-30 max-md:pt-36 max-md:pb-20">
       <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
         <div ref={headerRef} className="text-center mb-16">
           <p
@@ -171,16 +177,16 @@ export default function ProblemSection() {
               transition: "all 0.8s ease-out 1100ms",
             }}
           >
-            Most businesses fail at marketing for one of two reasons: they
-            don&apos;t get enough leads, or they don&apos;t have a system to
-            follow up with the leads they get. We solve both.
+            Most businesses are invisible where it matters &mdash; to AI, to
+            Google, and to the leads slipping through the cracks. We solve all
+            three.
           </p>
         </div>
 
         {/* Accordion grid — cards fold out left to right */}
         <div
           ref={gridRef}
-          className="grid grid-cols-3 gap-3 max-md:grid-cols-1"
+          className="grid grid-cols-2 gap-3 max-md:grid-cols-1"
         >
           {problems.map((problem, i) => (
             <div
