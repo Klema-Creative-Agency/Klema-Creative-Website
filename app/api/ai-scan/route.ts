@@ -2,10 +2,14 @@ import { NextRequest } from "next/server";
 
 const PLATFORMS = [
   { id: "chatgpt", name: "ChatGPT", model: "openai/gpt-4o" },
-  { id: "gemini", name: "Gemini", model: "google/gemini-2.0-flash-001" },
-  { id: "claude", name: "Claude", model: "anthropic/claude-3.5-sonnet" },
+  { id: "gemini", name: "Gemini", model: "google/gemini-2.5-flash" },
+  { id: "claude", name: "Claude", model: "anthropic/claude-haiku-4.5" },
   { id: "perplexity", name: "Perplexity", model: "perplexity/sonar" },
-  { id: "llama", name: "Llama (Meta AI)", model: "meta-llama/llama-3.1-70b-instruct" },
+  {
+    id: "llama",
+    name: "Llama (Meta AI)",
+    model: "meta-llama/llama-3.3-70b-instruct",
+  },
 ];
 
 // In-memory rate limiting: 3 scans per IP per hour
@@ -40,6 +44,7 @@ interface BusinessInfo {
   name: string;
   type: string;
   location: string;
+  description: string;
 }
 
 interface ScanResult {
@@ -70,7 +75,7 @@ async function callOpenRouter(
       body: JSON.stringify({
         model,
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 800,
+        max_tokens: 1000,
         temperature: 0.1,
       }),
       signal: controller.signal,
@@ -101,169 +106,296 @@ async function discoverBusiness(
   domain: string,
   apiKey: string
 ): Promise<BusinessInfo> {
-  const prompt = `Look at this domain name: "${domain}"
+  const prompt = `Given the domain "${domain}", determine what business this is.
 
-Based on the domain name and any knowledge you have about this business, determine:
-1. The business name (best guess from the domain)
-2. What type of business it is (e.g., "law firm", "plumber", "restaurant", "marketing agency")
-3. Where it is located (city and state, if you can determine it — otherwise say "unknown")
+Respond ONLY with JSON in this exact format (no markdown, no code fences):
+{"name": "Business Name", "type": "business type", "location": "City, State", "description": "one sentence about what they do"}
 
-Respond ONLY with this JSON, no other text:
-{
-  "name": "Business Name",
-  "type": "business type",
-  "location": "City, State"
-}
-
-If you cannot determine the business type, use "business".
-If you cannot determine the location, use "unknown".`;
+Rules:
+- "name": The business name (infer from domain if unknown). Example: "acmeplumbing.com" → "Acme Plumbing"
+- "type": Category like "restaurant", "law firm", "marketing agency", "plumber". Use "business" if unsure.
+- "location": City and state if known, otherwise "unknown"
+- "description": Brief description of their services. Use "General business services" if unsure.`;
 
   const result = await callOpenRouter("openai/gpt-4o", prompt, apiKey, 15000);
 
   if (!result.success) {
-    // Fallback: just use the domain name
-    const nameParts = domain.split(".")[0].replace(/-/g, " ");
-    return { name: nameParts, type: "business", location: "unknown" };
+    return fallbackBusinessInfo(domain);
   }
 
   try {
-    const jsonMatch = result.content.match(/\{[\s\S]*\}/);
+    // Strip markdown code fences if present
+    const cleaned = result.content.replace(/```(?:json)?\s*/g, "").replace(/```/g, "").trim();
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       const parsed = JSON.parse(jsonMatch[0]);
       return {
-        name: parsed.name || domain.split(".")[0],
+        name: parsed.name || fallbackName(domain),
         type: parsed.type || "business",
         location: parsed.location || "unknown",
+        description: parsed.description || "General business services",
       };
     }
   } catch {
     // parse failed
   }
 
-  const nameParts = domain.split(".")[0].replace(/-/g, " ");
-  return { name: nameParts, type: "business", location: "unknown" };
+  return fallbackBusinessInfo(domain);
 }
 
-// Phase 2: Ask each platform to recommend businesses and check if the target appears
-function buildRecommendationPrompt(
-  business: BusinessInfo,
-  domain: string
-): string {
+function fallbackName(domain: string): string {
+  return domain
+    .split(".")[0]
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function fallbackBusinessInfo(domain: string): BusinessInfo {
+  return {
+    name: fallbackName(domain),
+    type: "business",
+    location: "unknown",
+    description: "General business services",
+  };
+}
+
+// Phase 2: Build prompts for each platform
+function buildStandardPrompt(business: BusinessInfo, domain: string): string {
   const locationClause =
-    business.location !== "unknown"
-      ? ` in ${business.location}`
-      : "";
+    business.location !== "unknown" ? ` in ${business.location}` : "";
 
-  return `I'm looking for the best ${business.type}${locationClause}. What do you recommend? Please list your top recommendations with brief reasons for each.
+  return `Tell me what you know about the business "${business.name}" (${domain}). They are a ${business.type}${locationClause}. ${business.description}
 
-After listing your recommendations, answer these questions:
-1. Did you include or mention "${business.name}" or "${domain}" in your recommendations above? (yes/no)
-2. If yes, how prominently? (top pick / one of several / brief mention)
-3. If no, why not? (never heard of it / heard of it but not enough info to recommend / know it but others are better)
+Please respond with these three sections using exactly these bold headers:
 
-Respond with your recommendations first, then answer the questions in this JSON format at the end:
-{
-  "mentioned": true/false,
-  "prominence": "not_mentioned" | "brief_mention" | "one_of_several" | "top_pick",
-  "reason": "brief explanation",
-  "competitors_listed": ["name1", "name2", "name3"]
-}`;
+**Visibility:** Describe what you know about ${business.name}. Include any facts about their services, reputation, history, or online presence. If you have no specific knowledge of this business, say the exact phrase "I have no specific knowledge of this business."
+
+**Competitors:** List up to 5 competing businesses in the same industry${locationClause}. Use a simple list with dashes.
+
+**Action Plan:** Give 2-3 specific, actionable recommendations for how ${business.name} could improve their visibility in AI search results and recommendations.`;
 }
 
-function parseRecommendationResponse(
+function buildPerplexityPrompt(business: BusinessInfo, domain: string): string {
+  const locationClause =
+    business.location !== "unknown" ? ` in ${business.location}` : "";
+
+  return `Search for information about "${business.name}" (${domain}). They are a ${business.type}${locationClause}. ${business.description}
+
+Please respond with these three sections using exactly these bold headers:
+
+**Visibility:** Describe what you can find about ${business.name} online. Include information about their website, reviews, social media presence, or any other online footprint. If you cannot find any information, say the exact phrase "I have no specific knowledge of this business."
+
+**Competitors:** List up to 5 competing businesses in the same industry${locationClause} that appear in search results. Use a simple list with dashes.
+
+**Action Plan:** Give 2-3 specific, actionable recommendations for how ${business.name} could improve their online presence and visibility in AI-powered search.`;
+}
+
+// Deterministic server-side scoring
+const NO_KNOWLEDGE_PHRASES = [
+  "i have no specific knowledge",
+  "i don't have specific information",
+  "i don't have any specific",
+  "i'm not familiar with",
+  "i am not familiar with",
+  "i couldn't find any",
+  "i could not find any",
+  "no specific information",
+  "no information available",
+  "i don't have details",
+  "unable to find information",
+  "i cannot find any",
+  "i have no information",
+];
+
+function scoreVisibility(
+  visibilityText: string,
+  fullResponse: string,
+  businessName: string,
+  domain: string
+): { score: number; found: boolean } {
+  const lower = visibilityText.toLowerCase();
+
+  // Check for "no knowledge" indicators
+  if (NO_KNOWLEDGE_PHRASES.some((phrase) => lower.includes(phrase))) {
+    return { score: 0, found: false };
+  }
+
+  let score = 0;
+  const fullLower = fullResponse.toLowerCase();
+  const nameLower = businessName.toLowerCase();
+  const domainLower = domain.toLowerCase();
+
+  // Multiple mentions of business name (+15)
+  const nameMatches = fullLower.split(nameLower).length - 1;
+  if (nameMatches >= 3) score += 15;
+  else if (nameMatches >= 1) score += 8;
+
+  // Domain mentioned (+10)
+  if (fullLower.includes(domainLower)) score += 10;
+
+  // Factual claims — each +10, max 40
+  const factualPatterns = [
+    /(?:offers?|provides?|specializ\w+|known for)\s+\w/i,
+    /(?:founded|established|started|since)\s+\w/i,
+    /(?:located|based|headquartered|serves?)\s+(?:in|at)\s+\w/i,
+    /(?:team|staff|employees?|crew|professionals?)\s/i,
+    /(?:reputation|rated|reviews?|award|recognized)\s*\w/i,
+  ];
+  let factualCount = 0;
+  for (const pattern of factualPatterns) {
+    if (pattern.test(visibilityText) && factualCount < 4) {
+      score += 10;
+      factualCount++;
+    }
+  }
+
+  // Specific details — numbers, platforms, city names (+8 each, max 24)
+  const detailPatterns = [
+    /\b\d{4}\b/, // years
+    /\b\d+\+?\s*(?:years?|employees?|locations?|clients?|projects?)\b/i,
+    /(?:google|yelp|facebook|instagram|linkedin|twitter|tiktok|bbb)\b/i,
+    /(?:san antonio|austin|houston|dallas|new york|chicago|los angeles|phoenix|seattle)\b/i,
+  ];
+  let detailCount = 0;
+  for (const pattern of detailPatterns) {
+    if (pattern.test(visibilityText) && detailCount < 3) {
+      score += 8;
+      detailCount++;
+    }
+  }
+
+  // Response length/detail bonus
+  const wordCount = visibilityText.split(/\s+/).length;
+  if (wordCount > 150) score += 10;
+  else if (wordCount > 80) score += 7;
+  else if (wordCount > 30) score += 3;
+
+  // Cap at 99
+  score = Math.min(score, 99);
+
+  return { score, found: score >= 20 };
+}
+
+// Markdown parsing utilities
+function extractSection(text: string, sectionName: string): string {
+  // Try **Bold:** format
+  const boldPattern = new RegExp(
+    `\\*\\*${sectionName}:?\\*\\*[:\\s]*([\\s\\S]*?)(?=\\*\\*(?:Visibility|Competitors|Action Plan):?\\*\\*|$)`,
+    "i"
+  );
+  let match = text.match(boldPattern);
+  if (match) return match[1].trim();
+
+  // Try ## Header format
+  const headerPattern = new RegExp(
+    `##\\s*${sectionName}[:\\s]*([\\s\\S]*?)(?=##\\s*(?:Visibility|Competitors|Action Plan)|$)`,
+    "i"
+  );
+  match = text.match(headerPattern);
+  if (match) return match[1].trim();
+
+  // Try plain "Section:" format
+  const plainPattern = new RegExp(
+    `${sectionName}:\\s*([\\s\\S]*?)(?=(?:Visibility|Competitors|Action Plan):|$)`,
+    "i"
+  );
+  match = text.match(plainPattern);
+  if (match) return match[1].trim();
+
+  return "";
+}
+
+function buildExcerpt(visibilityText: string, maxLen = 300): string {
+  if (!visibilityText) return "";
+
+  let cleaned = visibilityText
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // [text](url) → text
+    .replace(/\[\d+\]/g, "") // [1] citations
+    .replace(/\*\*/g, "") // bold markers
+    .replace(/\*/g, "") // italic markers
+    .replace(/#+\s*/g, "") // headers
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (cleaned.length <= maxLen) return cleaned;
+
+  // Truncate at word boundary
+  const truncated = cleaned.slice(0, maxLen);
+  const lastSpace = truncated.lastIndexOf(" ");
+  return (lastSpace > maxLen * 0.5 ? truncated.slice(0, lastSpace) : truncated) + "...";
+}
+
+function parseCompetitorsList(
+  competitorsText: string,
+  businessName: string,
+  domain: string
+): string[] {
+  if (!competitorsText) return [];
+
+  const lines = competitorsText.split("\n");
+  const competitors: string[] = [];
+  const seen = new Set<string>();
+  const nameLower = businessName.toLowerCase();
+  const domainLower = domain.toLowerCase();
+
+  for (const line of lines) {
+    // Match - item, * item, 1. item formats
+    const match = line.match(/^(?:\s*[-*]\s*|\s*\d+\.\s*)(.+)/);
+    if (!match) continue;
+
+    let name = match[1]
+      .replace(/\*\*/g, "")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/\s*[-–—:].+$/, "") // Remove descriptions after dash/colon
+      .trim();
+
+    if (!name || name.length < 2) continue;
+
+    const lower = name.toLowerCase();
+    // Filter out the target business
+    if (lower.includes(nameLower) || lower.includes(domainLower)) continue;
+    if (nameLower.includes(lower)) continue;
+
+    // Deduplicate
+    if (seen.has(lower)) continue;
+    seen.add(lower);
+
+    competitors.push(name);
+    if (competitors.length >= 5) break;
+  }
+
+  return competitors;
+}
+
+function parseMarkdownResponse(
   text: string,
   businessName: string,
   domain: string
 ): ScanResult {
-  // Try to parse the JSON block
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  let mentioned = false;
-  let prominence = "not_mentioned";
-  let reason = "";
-  let competitors: string[] = [];
+  const visibilityText = extractSection(text, "Visibility");
+  const competitorsText = extractSection(text, "Competitors");
 
-  if (jsonMatch) {
-    try {
-      const parsed = JSON.parse(jsonMatch[0]);
-      mentioned = parsed.mentioned === true;
-      prominence = parsed.prominence || "not_mentioned";
-      reason = parsed.reason || "";
-      competitors = Array.isArray(parsed.competitors_listed)
-        ? parsed.competitors_listed
-            .filter((c: unknown) => typeof c === "string" && c.length > 1)
-            .slice(0, 5)
-        : [];
-    } catch {
-      // JSON parse failed, do text-based detection
-    }
-  }
+  // If no sections found, treat the entire response as visibility text
+  const effectiveVisibility = visibilityText || text;
 
-  // Also do a direct text scan as backup — check if the business name or domain
-  // actually appears in the recommendation text (before the JSON)
-  const textBeforeJson = jsonMatch ? text.slice(0, text.indexOf(jsonMatch[0])) : text;
-  const lowerText = textBeforeJson.toLowerCase();
-  const nameInText =
-    lowerText.includes(businessName.toLowerCase()) ||
-    lowerText.includes(domain.toLowerCase());
-
-  // If the AI said not mentioned but the name IS in the text, trust the text
-  if (!mentioned && nameInText) {
-    mentioned = true;
-    prominence = "brief_mention";
-  }
-  // If the AI said mentioned but the name is NOT in the text, be skeptical
-  if (mentioned && !nameInText && prominence !== "top_pick") {
-    // Could be a hallucination — downgrade confidence
-    prominence = "brief_mention";
-  }
-
-  // Calculate visibility score based on prominence
-  let visibility = 0;
-  if (mentioned) {
-    switch (prominence) {
-      case "top_pick":
-        visibility = 85 + Math.floor(Math.random() * 10); // 85-94
-        break;
-      case "one_of_several":
-        visibility = 55 + Math.floor(Math.random() * 15); // 55-69
-        break;
-      case "brief_mention":
-        visibility = 25 + Math.floor(Math.random() * 15); // 25-39
-        break;
-      default:
-        visibility = 20;
-    }
-  } else {
-    visibility = Math.floor(Math.random() * 8); // 0-7
-  }
-
-  // Build excerpt — use the reason or pull from the recommendation text
-  let excerpt = reason;
-  if (!excerpt && mentioned) {
-    excerpt = `Your business was ${
-      prominence === "top_pick"
-        ? "a top recommendation"
-        : prominence === "one_of_several"
-        ? "listed among several options"
-        : "briefly mentioned"
-    } when this AI was asked for ${businessName}-type recommendations.`;
-  } else if (!excerpt) {
-    excerpt =
-      "Your business was not mentioned when this AI was asked for recommendations in your category.";
-  }
-
-  // Filter out the target business from the competitors list
-  const filteredCompetitors = competitors.filter(
-    (c) =>
-      !c.toLowerCase().includes(businessName.toLowerCase()) &&
-      !c.toLowerCase().includes(domain.toLowerCase())
+  const { score, found } = scoreVisibility(
+    effectiveVisibility,
+    text,
+    businessName,
+    domain
   );
 
+  const excerpt = found
+    ? buildExcerpt(effectiveVisibility)
+    : "Your business was not found in this AI's knowledge base. It had no specific information to share when asked about your company.";
+
+  const competitors = parseCompetitorsList(competitorsText, businessName, domain);
+
   return {
-    found: mentioned,
-    visibility,
-    excerpt: excerpt.slice(0, 300),
-    competitors: filteredCompetitors,
+    found,
+    visibility: score,
+    excerpt,
+    competitors,
   };
 }
 
@@ -319,8 +451,9 @@ export async function POST(request: NextRequest) {
 
       const business = await discoverBusiness(domain, apiKey);
 
-      // Phase 2: Query each platform with a realistic recommendation prompt
-      const prompt = buildRecommendationPrompt(business, domain);
+      // Phase 2: Query each platform with structured markdown prompt
+      const standardPrompt = buildStandardPrompt(business, domain);
+      const perplexityPrompt = buildPerplexityPrompt(business, domain);
       const results: Record<string, unknown>[] = [];
       let score = 0;
 
@@ -330,10 +463,12 @@ export async function POST(request: NextRequest) {
           platformName: platform.name,
         });
 
+        const prompt =
+          platform.id === "perplexity" ? perplexityPrompt : standardPrompt;
         const response = await callOpenRouter(platform.model, prompt, apiKey);
 
         if (response.success) {
-          const parsed = parseRecommendationResponse(
+          const parsed = parseMarkdownResponse(
             response.content,
             business.name,
             domain
