@@ -494,3 +494,9 @@ body {
     z-index: 999;
   }
 }
+
+/* === SCANNER ANIMATIONS === */
+@keyframes scanPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.25; }
+}

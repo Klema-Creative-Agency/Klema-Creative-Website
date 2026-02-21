@@ -67,6 +67,21 @@ export default function Footer() {
           </div>
           <div>
             <h5 className="text-xs font-bold tracking-[0.1em] uppercase text-text-mid mb-4">
+              Free Tools
+            </h5>
+            <ul className="list-none">
+              <li className="mb-2.5">
+                <Link
+                  href="/tools/ai-visibility"
+                  className="text-[13px] text-text-dim no-underline transition-colors duration-300 hover:text-text"
+                >
+                  AI Visibility Scanner
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="text-xs font-bold tracking-[0.1em] uppercase text-text-mid mb-4">
               Company
             </h5>
             <ul className="list-none">
