@@ -268,54 +268,46 @@ function PricingCardInner({ tier }: { tier: TierData }) {
         </div>
       )}
 
-      {/* ── Top section — fixed height so CTA buttons align across all cards ── */}
-      <div className="min-h-[290px] flex flex-col">
-        {/* Tier label */}
-        <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
-          Tier {tier.tier}
-        </p>
+      {/* Tier label */}
+      <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
+        Tier {tier.tier}
+      </p>
 
-        {/* Name */}
-        <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
-          {tier.name}
-        </h3>
+      {/* Name */}
+      <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
+        {tier.name}
+      </h3>
 
-        {/* Price */}
-        <div className="flex items-baseline gap-1.5 mb-5">
-          <div className="text-5xl font-black tracking-[-1.5px] leading-none">
-            <span className="text-xl font-semibold align-super mr-0.5">$</span>
-            {tier.price}
-          </div>
-          <span className="text-sm text-text-dim">/mo</span>
+      {/* Price */}
+      <div className="flex items-baseline gap-1.5 mb-5">
+        <div className="text-5xl font-black tracking-[-1.5px] leading-none">
+          <span className="text-xl font-semibold align-super mr-0.5">$</span>
+          {tier.price}
         </div>
-        <div className="group/setup relative inline-flex items-center gap-1 mb-4">
-          <p className="text-[13px] text-text-dim">{tier.setup}</p>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" strokeWidth="2"
-               className="text-text-dim/50 cursor-help">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4M12 8h.01" />
-          </svg>
-          <div className="absolute bottom-full left-0 mb-2 w-56 bg-[#1a1a1a] border border-border rounded-xl p-3 text-[11px] text-text-mid leading-[1.5] opacity-0 pointer-events-none group-hover/setup:opacity-100 group-hover/setup:pointer-events-auto transition-opacity duration-200 z-10 shadow-xl">
-            {tier.setupTooltip}
-          </div>
-        </div>
-
-        {/* Tagline */}
-        <p className="text-[15px] text-text-dim leading-[1.5] mb-2">
-          {tier.tagline}
-        </p>
-
-        {/* Best for */}
-        <p className="text-[13px] text-text-mid/60 leading-[1.5] italic mt-auto">
-          Best for: {tier.bestFor}
-        </p>
+        <span className="text-sm text-text-dim">/mo</span>
       </div>
+      <div className="group/setup relative inline-flex items-center gap-1 mb-4">
+        <p className="text-[13px] text-text-dim">{tier.setup}</p>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" strokeWidth="2"
+             className="text-text-dim/50 cursor-help">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4M12 8h.01" />
+        </svg>
+        <div className="absolute bottom-full left-0 mb-2 w-56 bg-[#1a1a1a] border border-border rounded-xl p-3 text-[11px] text-text-mid leading-[1.5] opacity-0 pointer-events-none group-hover/setup:opacity-100 group-hover/setup:pointer-events-auto transition-opacity duration-200 z-10 shadow-xl">
+          {tier.setupTooltip}
+        </div>
+      </div>
+
+      {/* Description */}
+      <p className="text-[15px] text-text-dim leading-[1.5] mb-5">
+        {tier.tagline}
+      </p>
 
       {/* CTA */}
       <Link
         href={`/services/${tier.slug}`}
-        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mt-5 mb-5 ${
+        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mb-5 ${
           tier.ctaStyle === "primary"
             ? "bg-accent text-black hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px"
             : "bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px"
