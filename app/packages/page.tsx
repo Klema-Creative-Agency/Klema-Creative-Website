@@ -386,15 +386,20 @@ export default function PackagesPage() {
     scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
   };
 
-  // Center on Foundation (index 1) so Ignition is visible on the left
-  // and Accelerator (featured) is prominent on the right
+  // Desktop: center on Foundation (index 1) so Ignition visible left, Accelerator prominent right
+  // Mobile: start at Ignition (index 0)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const centerIndex = 1; // Foundation
-    const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
-    const scrollTarget = cardCenter - el.clientWidth / 2;
-    el.scrollTo({ left: Math.max(0, scrollTarget), behavior: "instant" });
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      el.scrollTo({ left: 0, behavior: "instant" });
+    } else {
+      const centerIndex = 1; // Foundation
+      const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
+      const scrollTarget = cardCenter - el.clientWidth / 2;
+      el.scrollTo({ left: Math.max(0, scrollTarget), behavior: "instant" });
+    }
     requestAnimationFrame(updateScrollState);
   }, [updateScrollState]);
 
@@ -434,7 +439,7 @@ export default function PackagesPage() {
       </section>
 
       {/* PRICING CARDS — Horizontal Scroll Gallery */}
-      <section className="pt-10 pb-20">
+      <section className="pt-10 max-md:pt-4 pb-20 max-md:pb-12">
         <RevealOnScroll>
           {/* Full-width relative wrapper for arrows */}
           <div className="relative max-w-[1500px] mx-auto">
@@ -448,13 +453,13 @@ export default function PackagesPage() {
             <div
               ref={scrollRef}
               onScroll={updateScrollState}
-              className="flex gap-7 max-md:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
+              className="flex gap-7 max-md:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 max-md:pt-4 pb-6 pricing-scroll-mask"
               style={{ paddingLeft: "24px", paddingRight: "24px" }}
             >
               {TIERS.map((tier) => (
                 <div
                   key={tier.tier}
-                  className={`snap-center shrink-0 w-[320px] max-md:w-[280px] transition-transform duration-300 ${
+                  className={`snap-center shrink-0 w-[320px] max-md:w-[calc(100vw-48px)] transition-transform duration-300 ${
                     tier.featured ? "scale-[1.03] z-10" : ""
                   }`}
                 >
