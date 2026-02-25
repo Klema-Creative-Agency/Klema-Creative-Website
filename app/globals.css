@@ -495,6 +495,62 @@ body {
   }
 }
 
+/* === VSL PAGE — hide global nav/footer === */
+body.vsl-page > nav,
+body.vsl-page > footer {
+  display: none !important;
+}
+
+/* === PHONE NOTIFICATION SLIDE-IN === */
+@keyframes slideNotification {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.phone-notification-slide {
+  animation: slideNotification 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* === PHONE VIBRATION === */
+@keyframes phoneVibrate {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-2px); }
+  20% { transform: translateX(2px); }
+  30% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  50% { transform: translateX(-1px); }
+  60% { transform: translateX(1px); }
+  70%, 100% { transform: translateX(0); }
+}
+
+.phone-vibrate {
+  animation: phoneVibrate 0.5s ease-in-out;
+}
+
+/* === PHONE RING ICON WOBBLE === */
+@keyframes phoneRing {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(8deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(6deg); }
+  40% { transform: rotate(-6deg); }
+  50% { transform: rotate(4deg); }
+  60% { transform: rotate(-4deg); }
+  70% { transform: rotate(2deg); }
+  80% { transform: rotate(-2deg); }
+  90%, 100% { transform: rotate(0deg); }
+}
+
+.phone-ring-icon {
+  animation: phoneRing 0.8s ease-in-out infinite;
+}
+
+/* === DASHBOARD ROW SLIDE === */
+@keyframes dashRowSlide {
+  0% { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
 /* === SCANNER ANIMATIONS === */
 @keyframes scanPulse {
   0%, 100% { opacity: 0.4; }
