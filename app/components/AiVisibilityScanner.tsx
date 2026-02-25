@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect, KeyboardEvent } from "react";
+import Link from "next/link";
 import VisibilityScoreRing from "./VisibilityScoreRing";
 import ScanProgressRow from "./ScanProgressRow";
 import EmailGateForm from "./EmailGateForm";

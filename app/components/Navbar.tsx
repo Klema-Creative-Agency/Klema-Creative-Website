@@ -4,19 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import BubbleNav from "./BubbleNav";
 
-const LEAD_ENGINE_NICHES = [
-  { slug: "roofing", label: "Roofing" },
-  { slug: "tree-removal", label: "Tree Removal" },
-  { slug: "hvac", label: "HVAC" },
-  { slug: "plumbing", label: "Plumbing" },
-  { slug: "dental", label: "Dental" },
-];
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [leadEngineOpen, setLeadEngineOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -149,53 +140,15 @@ export default function Navbar() {
                 Packages
               </Link>
             </li>
-            {/* AI Lead Engine — expandable accordion */}
-            <li className="flex flex-col items-center">
-              <button
-                onClick={() => setLeadEngineOpen(!leadEngineOpen)}
-                className="bg-transparent border-none cursor-pointer text-text text-2xl font-medium transition-colors duration-300 hover:text-accent flex items-center gap-2"
-              >
-                <span className="text-accent text-sm font-bold">NEW</span>
-                AI Lead Engine
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  className="transition-transform duration-300"
-                  style={{ transform: leadEngineOpen ? "rotate(180deg)" : "rotate(0)" }}
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <div
-                className="faq-answer mt-2"
-                style={{ gridTemplateRows: leadEngineOpen ? "1fr" : "0fr" }}
-              >
-                <div className="overflow-hidden">
-                  <div className="flex flex-col items-center gap-3 pt-2 pb-1">
-                    <Link
-                      href="/services/ai-lead-engine"
-                      onClick={closeMenu}
-                      className="text-text-mid text-base no-underline transition-colors duration-300 hover:text-accent"
-                    >
-                      All Industries
-                    </Link>
-                    {LEAD_ENGINE_NICHES.map((n) => (
-                      <Link
-                        key={n.slug}
-                        href={`/services/ai-lead-engine/${n.slug}`}
-                        onClick={closeMenu}
-                        className="text-text-dim text-base no-underline transition-colors duration-300 hover:text-accent"
-                      >
-                        {n.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <li>
+              <Link href="/about" onClick={closeMenu} className="text-text text-2xl font-medium no-underline transition-colors duration-300 hover:text-accent">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" onClick={closeMenu} className="text-text text-2xl font-medium no-underline transition-colors duration-300 hover:text-accent">
+                Contact
+              </Link>
             </li>
             <li className="mt-4">
               <Link href="/tools/ai-visibility" onClick={closeMenu} className="bg-accent text-black px-8 py-3 rounded-full font-semibold text-base tracking-[0.02em] transition-all duration-300 hover:bg-text hover:text-bg no-underline">

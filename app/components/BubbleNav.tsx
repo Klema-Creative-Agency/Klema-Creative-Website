@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback, useState } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import "./BubbleNav.css";
@@ -8,19 +8,9 @@ import "./BubbleNav.css";
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/services/ai-lead-engine", label: "Lead Engine", badge: true },
   { href: "/packages", label: "Packages" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-];
-
-const LEAD_ENGINE_NICHES = [
-  { href: "/services/ai-lead-engine", label: "All Industries" },
-  { href: "/services/ai-lead-engine/roofing", label: "Roofing" },
-  { href: "/services/ai-lead-engine/tree-removal", label: "Tree Removal" },
-  { href: "/services/ai-lead-engine/hvac", label: "HVAC" },
-  { href: "/services/ai-lead-engine/plumbing", label: "Plumbing" },
-  { href: "/services/ai-lead-engine/dental", label: "Dental" },
 ];
 
 export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }) {
@@ -28,8 +18,6 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
   const navRef = useRef<HTMLElement>(null);
   const activeBubbleRef = useRef<HTMLDivElement>(null);
   const hoverBubbleRef = useRef<HTMLDivElement>(null);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // ── Move a bubble to match a link's position ──
   const moveBubble = useCallback(
@@ -75,13 +63,6 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
     return () => observer.disconnect();
   }, [moveBubble]);
 
-  // ── Cleanup dropdown timeout on unmount ──
-  useEffect(() => {
-    return () => {
-      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    };
-  }, []);
-
   // ── Hover handlers ──
   const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const bubble = hoverBubbleRef.current;
@@ -91,16 +72,6 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
   const handleMouseLeave = () => {
     // The CSS rule `.nav-wrap:hover .bubble.hover { opacity: 1 }` handles
     // fade-in / fade-out automatically — nothing extra needed here.
-  };
-
-  // ── Dropdown hover handlers (with delay to prevent flicker) ──
-  const openDropdown = () => {
-    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setDropdownOpen(true);
-  };
-
-  const closeDropdown = () => {
-    dropdownTimeoutRef.current = setTimeout(() => setDropdownOpen(false), 200);
   };
 
   return (
@@ -117,44 +88,13 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
           klema creative
         </Link>
 
-        {NAV_ITEMS.map(({ href, label, badge }) => {
+        {NAV_ITEMS.map(({ href, label }) => {
           const isActive =
             href === "/"
               ? pathname === "/"
               : href === "/services"
                 ? pathname === "/services"
                 : pathname.startsWith(href);
-
-          if (badge) {
-            return (
-              <div
-                key={href}
-                className="lead-engine-dropdown-wrap"
-                onMouseEnter={openDropdown}
-                onMouseLeave={closeDropdown}
-              >
-                <Link
-                  href={href}
-                  className={`${isActive ? "active" : ""} lead-engine-link`}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {label}
-                </Link>
-                <div className={`lead-engine-dropdown ${dropdownOpen ? "open" : ""}`}>
-                  {LEAD_ENGINE_NICHES.map((niche) => (
-                    <Link
-                      key={niche.href}
-                      href={niche.href}
-                      className={`lead-engine-dropdown-item ${pathname === niche.href ? "active" : ""}`}
-                    >
-                      {niche.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            );
-          }
 
           return (
             <Link

@@ -133,8 +133,7 @@
   padding: 10px 22px;
 }
 
-.bubble-nav-wrap.collapsed .bubble-nav a:not(.bubble-nav-inner-logo),
-.bubble-nav-wrap.collapsed .lead-engine-dropdown-wrap {
+.bubble-nav-wrap.collapsed .bubble-nav a:not(.bubble-nav-inner-logo) {
   max-width: 0;
   opacity: 0;
   padding-left: 0;
@@ -169,95 +168,4 @@
   width: 9px;
   height: 9px;
   animation: logoPulseOnline 2s ease-in-out infinite;
-}
-
-/* ── Lead Engine link — accent color treatment ── */
-.bubble-nav a.lead-engine-link {
-  color: var(--color-accent);
-  opacity: 0.7;
-}
-
-.bubble-nav a.lead-engine-link:hover {
-  color: var(--color-accent);
-  opacity: 1;
-}
-
-.bubble-nav a.lead-engine-link.active {
-  color: var(--color-accent);
-  opacity: 1;
-}
-
-/* ── Lead Engine dropdown wrapper ── */
-.lead-engine-dropdown-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* ── Lead Engine dropdown menu ── */
-.lead-engine-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-4px);
-  min-width: 200px;
-  background: linear-gradient(180deg, #1e1e1e, #161616);
-  border: 1px solid var(--color-border-hover);
-  border-radius: 14px;
-  padding: 8px;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  z-index: 100;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Bridge element so the mouse can travel from the link to the dropdown */
-.lead-engine-dropdown::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: 0;
-  right: 0;
-  height: 6px;
-}
-
-.lead-engine-dropdown.open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ── Dropdown items — reset inherited .bubble-nav a styles ── */
-.lead-engine-dropdown-item.lead-engine-dropdown-item {
-  display: block;
-  padding: 10px 16px;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 8px;
-  max-width: none;
-  overflow: visible;
-  letter-spacing: normal;
-  -webkit-user-select: auto;
-  user-select: auto;
-  transition:
-    color 0.15s ease,
-    background 0.15s ease;
-  white-space: nowrap;
-}
-
-.lead-engine-dropdown-item.lead-engine-dropdown-item:hover {
-  color: var(--color-accent);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.lead-engine-dropdown-item.lead-engine-dropdown-item.active {
-  color: var(--color-accent);
-  background: rgba(74, 222, 128, 0.08);
 }
