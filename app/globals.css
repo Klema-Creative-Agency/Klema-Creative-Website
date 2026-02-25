@@ -445,11 +445,24 @@ body {
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* === PRICING SCROLL SOFT EDGES === */
-@media (min-width: 768px) {
-  .pricing-scroll-mask {
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  }
+.pricing-scroll-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* === COMPARISON SCROLL SOFT EDGES (mobile) === */
+.comparison-scroll-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+/* === RUBBERBAND HINT ANIMATION === */
+@keyframes rubberBandHint {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-50px); }
+  50% { transform: translateX(12px); }
+  70% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
 }
 
 /* === PRICING GLOW BACKGROUND === */

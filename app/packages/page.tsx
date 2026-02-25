@@ -387,13 +387,22 @@ export default function PackagesPage() {
   };
 
   // Desktop: center on Foundation (index 1) so Ignition visible left, Accelerator prominent right
-  // Mobile: start at Ignition (index 0)
+  // Mobile: start at Ignition (index 0) with rubberband hint
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
       el.scrollTo({ left: 0, behavior: "instant" });
+      // Rubberband hint — peek right then snap back
+      const timer = setTimeout(() => {
+        el.scrollTo({ left: 60, behavior: "smooth" });
+        setTimeout(() => {
+          el.scrollTo({ left: 0, behavior: "smooth" });
+        }, 350);
+      }, 600);
+      requestAnimationFrame(updateScrollState);
+      return () => clearTimeout(timer);
     } else {
       const centerIndex = 1; // Foundation
       const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
