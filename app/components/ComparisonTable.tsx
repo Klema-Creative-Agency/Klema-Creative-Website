@@ -156,8 +156,8 @@ export default function ComparisonTable() {
         className="hidden lg:block sticky top-0 z-30"
         style={{ background: "#050505" }}
       >
-        {/* Opaque spacer — fills the 80px behind the navbar so nothing peeks through */}
-        <div style={{ height: 80 }} />
+        {/* Opaque spacer — fills the space behind the navbar so nothing peeks through */}
+        <div style={{ height: 110 }} />
         {/* Actual header content */}
         <div
           className="grid grid-cols-[220px_repeat(5,1fr)] border-b border-border"
@@ -204,7 +204,7 @@ export default function ComparisonTable() {
               <button
                 onClick={() => toggleCategory(catIdx)}
                 className="w-full flex items-center gap-3 px-6 py-4 border-l-4 border-l-accent border-b border-border transition-colors hover:bg-white-6 sticky z-20"
-                style={{ background: "#0d0d0d", top: 176 }}
+                style={{ background: "#0d0d0d", top: 206 }}
               >
                 <span className="text-[15px] font-bold text-text">{category.name}</span>
                 <span className="text-[12px] text-text-dim">
