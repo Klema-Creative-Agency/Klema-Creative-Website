@@ -388,17 +388,6 @@ body {
   opacity: 1;
 }
 
-/* === PRICE FEATURE LIST DOT === */
-.price-features li::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
 /* === REVEAL ANIMATION === */
 .reveal {
   opacity: 0;
@@ -446,12 +435,36 @@ body {
 
 /* === FEATURED PRICE CARD === */
 .price-card-featured {
-  border-color: rgba(74, 222, 128, 0.2);
-  background: linear-gradient(
-    180deg,
-    rgba(74, 222, 128, 0.03) 0%,
-    var(--color-surface) 100%
-  );
+  border-color: rgba(74, 222, 128, 0.3);
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.06) 0%, var(--color-surface) 100%);
+  box-shadow: 0 0 40px rgba(74, 222, 128, 0.12), 0 0 80px rgba(74, 222, 128, 0.04);
+}
+
+/* === SCROLLBAR HIDING === */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* === PRICING GLOW BACKGROUND === */
+.pricing-glow-bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px; height: 600px;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74,222,128,0.06) 0%, rgba(74,222,128,0.03) 40%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* === CATEGORY ACCORDION === */
+.category-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.category-answer.open {
+  grid-template-rows: 1fr;
+}
+.category-answer > div {
+  overflow: hidden;
 }
 
 

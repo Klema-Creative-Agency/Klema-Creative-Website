@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../components/RevealOnScroll";
 import ComparisonTable from "../components/ComparisonTable";
@@ -30,18 +30,72 @@ function ChevronDown({ open }: { open: boolean }) {
   );
 }
 
+/* ───── Scroll Arrow Button ───── */
+
+function ScrollArrow({
+  direction,
+  onClick,
+  visible,
+}: {
+  direction: "left" | "right";
+  onClick: () => void;
+  visible: boolean;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute top-0 bottom-0 z-20 w-[72px] hidden md:flex items-center transition-all duration-300 ${
+        direction === "left" ? "left-0 justify-start pl-3" : "right-0 justify-end pr-3"
+      } ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      aria-label={`Scroll ${direction}`}
+    >
+      <div className="w-11 h-11 rounded-full bg-surface/90 backdrop-blur-sm border border-border flex items-center justify-center transition-all duration-300 hover:border-accent-border hover:text-accent hover:bg-surface hover:scale-110 shadow-lg shadow-black/30">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          {direction === "left" ? (
+            <polyline points="15 18 9 12 15 6" />
+          ) : (
+            <polyline points="9 6 15 12 9 18" />
+          )}
+        </svg>
+      </div>
+    </button>
+  );
+}
+
+/* ───── Dot indicators ───── */
+
+function ScrollDots({ total, activeIndex }: { total: number; activeIndex: number }) {
+  return (
+    <div className="flex items-center justify-center gap-2 mt-6">
+      {Array.from({ length: total }).map((_, i) => (
+        <div
+          key={i}
+          className={`rounded-full transition-all duration-300 ${
+            i === activeIndex
+              ? "w-6 h-2 bg-accent"
+              : "w-2 h-2 bg-white-15"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ───── Tier Data ───── */
 
 interface TierData {
   tier: number;
   name: string;
+  slug: string;
   price: string;
   setup: string;
+  setupTooltip: string;
   tagline: string;
   bestFor: string;
   featured: boolean;
   cta: string;
   ctaStyle: "primary" | "secondary";
+  includesPrevious?: string;
   keyFeatures: string[];
   allFeatures: string[];
 }
@@ -50,12 +104,14 @@ const TIERS: TierData[] = [
   {
     tier: 1,
     name: "Ignition",
+    slug: "ai-lead-engine",
     price: "997",
     setup: "$2,500 setup",
+    setupTooltip: "Covers your custom funnel build, CRM configuration, SMS & email sequence setup, and call trigger activation.",
     tagline: "Stop losing the leads you already get.",
     bestFor: "Businesses getting leads but losing them to slow follow-up or no system at all.",
     featured: false,
-    cta: "Get Started",
+    cta: "See How It Works",
     ctaStyle: "secondary",
     keyFeatures: [
       "Custom lead conversion funnel",
@@ -78,24 +134,27 @@ const TIERS: TierData[] = [
   {
     tier: 2,
     name: "Foundation",
+    slug: "foundation",
     price: "1,997",
     setup: "$2,500 setup",
+    setupTooltip: "Covers everything in Ignition setup, plus a full SEO audit, Google Business Profile optimization, reputation engine activation, and schema markup.",
     tagline: "Convert more leads and get found by new ones.",
     bestFor: "Businesses ready to grow lead volume organically and build a 5-star reputation.",
     featured: false,
-    cta: "Get Started",
+    cta: "See What's Included",
     ctaStyle: "secondary",
+    includesPrevious: "Everything in Ignition",
     keyFeatures: [
-      "Everything in Ignition",
       "Search engine optimization (SEO)",
       "Google Business Profile management",
       "Reputation engine — automated reviews",
+      "AI visibility — schema markup & structured data",
     ],
     allFeatures: [
-      "Everything in Ignition, plus:",
       "Search engine optimization (SEO)",
       "Google Business Profile management",
       "Reputation engine — automated review requests",
+      "AI visibility — schema markup & structured data",
       "Local visibility tracking & reporting",
       "Monthly SEO + conversion report",
     ],
@@ -103,21 +162,23 @@ const TIERS: TierData[] = [
   {
     tier: 3,
     name: "Accelerator",
+    slug: "accelerator",
     price: "3,997",
-    setup: "$5,000–$7,500 setup",
+    setup: "$5,000 setup",
+    setupTooltip: "Covers a custom website design and build, ad account setup, branded dashboard, plus the full Foundation setup underneath.",
     tagline: "Look like the biggest company in your market.",
     bestFor: "Growing businesses ready for a professional website, paid ads, and full online presence.",
     featured: true,
-    cta: "Get Started",
+    cta: "See What's Included",
     ctaStyle: "primary",
+    includesPrevious: "Everything in Foundation",
     keyFeatures: [
-      "Everything in Foundation",
       "Custom high-performance website",
       "Paid ad management (Google & Meta)",
       "Branded reporting dashboard",
+      "Content planning & strategy",
     ],
     allFeatures: [
-      "Everything in Foundation, plus:",
       "Custom-designed, high-performance website",
       "Paid ad management (Google & Meta)",
       "Branded reporting dashboard",
@@ -129,24 +190,27 @@ const TIERS: TierData[] = [
   {
     tier: 4,
     name: "Authority",
+    slug: "authority",
     price: "7,500",
     setup: "$7,500 setup",
+    setupTooltip: "Covers everything in Accelerator setup, plus content strategy and calendar, social media setup, email marketing configuration, and competitor analysis.",
     tagline: "We run your marketing. You run your business.",
     bestFor: "Established businesses that want a full marketing department without the overhead.",
     featured: false,
-    cta: "Book a Call",
+    cta: "See What's Included",
     ctaStyle: "secondary",
+    includesPrevious: "Everything in Accelerator",
     keyFeatures: [
-      "Everything in Accelerator",
       "Content & social media (2 platforms)",
       "Email marketing campaigns",
       "Full marketing management",
+      "Bi-weekly strategy calls",
     ],
     allFeatures: [
-      "Everything in Accelerator, plus:",
       "4–6 SEO-optimized blog articles per month",
       "Social media management (2 platforms, 16–20 posts/mo)",
       "Email marketing campaigns",
+      "Full AI visibility — content optimized for AI citations",
       "Ad strategy & budget scaling",
       "Competitor monitoring",
       "Conversion optimization & A/B testing",
@@ -157,21 +221,23 @@ const TIERS: TierData[] = [
   {
     tier: 5,
     name: "Dominator",
+    slug: "dominator",
     price: "12,000",
     setup: "$10,000 setup",
+    setupTooltip: "Covers recruitment, training, and equipping your dedicated lead team — headsets, voice tools, call scripts, qualification frameworks, and full CRM integration.",
     tagline: "Your phone only rings when someone is ready to book.",
     bestFor: "Businesses that want to own their market. You close — we do everything else.",
     featured: false,
-    cta: "Book a Call",
+    cta: "See What's Included",
     ctaStyle: "secondary",
+    includesPrevious: "Everything in Authority",
     keyFeatures: [
-      "Everything in Authority",
       "Dedicated lead team (60-sec response)",
       "Live hot transfers to your team",
       "Appointment setting & outbound follow-up",
+      "Daily lead reports",
     ],
     allFeatures: [
-      "Everything in Authority, plus:",
       "Dedicated lead team — every lead called in 60 seconds",
       "Lead qualification (budget, timeline, scope)",
       "Live hot transfers to your sales team",
@@ -192,45 +258,56 @@ function PricingCardInner({ tier }: { tier: TierData }) {
 
   return (
     <div
-      className={`bg-surface border rounded-[20px] p-7 px-6 transition-all duration-400 hover:border-border-hover flex flex-col h-full relative ${
+      className={`bg-surface border rounded-[24px] p-9 px-8 transition-all duration-400 hover:border-border-hover flex flex-col min-h-[620px] relative ${
         tier.featured ? "border-accent-border price-card-featured" : "border-border"
       }`}
     >
       {tier.featured && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black px-3 py-1 rounded-full text-[11px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
           Most Popular
         </div>
       )}
 
       {/* Tier label */}
-      <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
+      <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
         Tier {tier.tier}
       </p>
 
       {/* Name */}
-      <h3 className="text-lg font-extrabold tracking-[-0.5px] mb-2">
+      <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
         {tier.name}
       </h3>
 
       {/* Price */}
       <div className="flex items-baseline gap-1.5 mb-0.5">
-        <div className="text-3xl font-black tracking-[-1.5px] leading-none">
-          <span className="text-base font-semibold align-super mr-0.5">$</span>
+        <div className="text-5xl font-black tracking-[-1.5px] leading-none">
+          <span className="text-xl font-semibold align-super mr-0.5">$</span>
           {tier.price}
         </div>
-        <span className="text-[12px] text-text-dim">/mo</span>
+        <span className="text-sm text-text-dim">/mo</span>
       </div>
-      <p className="text-[11px] text-text-dim mb-4">{tier.setup}</p>
+      <div className="group/setup relative inline-flex items-center gap-1 mb-4">
+        <p className="text-[13px] text-text-dim">{tier.setup}</p>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" strokeWidth="2"
+             className="text-text-dim/50 cursor-help">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4M12 8h.01" />
+        </svg>
+        <div className="absolute bottom-full left-0 mb-2 w-56 bg-[#1a1a1a] border border-border rounded-xl p-3 text-[11px] text-text-mid leading-[1.5] opacity-0 pointer-events-none group-hover/setup:opacity-100 group-hover/setup:pointer-events-auto transition-opacity duration-200 z-10 shadow-xl">
+          {tier.setupTooltip}
+        </div>
+      </div>
 
       {/* Description */}
-      <p className="text-[12.5px] text-text-dim leading-[1.5] mb-5">
+      <p className="text-[15px] text-text-dim leading-[1.5] mb-5">
         {tier.tagline}
       </p>
 
       {/* CTA */}
       <Link
-        href="/contact"
-        className={`block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 mb-5 ${
+        href={`/services/${tier.slug}`}
+        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mb-5 ${
           tier.ctaStyle === "primary"
             ? "bg-accent text-black hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px"
             : "bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px"
@@ -239,17 +316,27 @@ function PricingCardInner({ tier }: { tier: TierData }) {
         {tier.cta}
       </Link>
 
+      {/* Includes previous tier */}
+      {tier.includesPrevious && (
+        <p className="text-[14px] font-bold text-text flex items-center gap-1.5 mb-3">
+          <span className="text-accent text-sm">+</span>
+          {tier.includesPrevious}
+        </p>
+      )}
+
       {/* Divider */}
       <div className="h-px bg-border mb-4" />
 
       {/* Features */}
-      <ul className="price-features list-none flex flex-col gap-2 mb-4 flex-1">
+      <ul className="price-features list-none flex flex-col gap-3 mb-4 flex-1">
         {features.map((f, i) => (
           <li
             key={i}
-            className="text-[12px] text-text-mid flex items-start gap-2 leading-[1.4]"
+            className="text-[14px] text-text-mid flex items-start gap-2.5 leading-[1.4]"
           >
-            <span className="text-accent mt-0.5 shrink-0">&#10003;</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-accent shrink-0 mt-[1px]">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
             {f}
           </li>
         ))}
@@ -258,7 +345,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
       {/* Toggle */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center justify-center gap-1.5 text-[12px] font-semibold text-accent hover:text-text transition-colors w-full pt-2 border-t border-border"
+        className="flex items-center justify-center gap-1.5 text-[13px] font-semibold text-accent hover:text-text transition-colors w-full pt-2 border-t border-border"
       >
         {expanded ? "Show less" : "Show all features"}
         <ChevronDown open={expanded} />
@@ -271,6 +358,44 @@ function PricingCardInner({ tier }: { tier: TierData }) {
 
 export default function PackagesPage() {
   const [quizOpen, setQuizOpen] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(2); // Accelerator default
+
+  const CARD_WIDTH = 380;
+  const GAP = 28; // gap-7
+  const SCROLL_AMOUNT = CARD_WIDTH + GAP;
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+    // Figure out which card is centered
+    const center = el.scrollLeft + el.clientWidth / 2;
+    const idx = Math.round((center - CARD_WIDTH / 2) / SCROLL_AMOUNT);
+    setActiveIndex(Math.max(0, Math.min(4, idx)));
+  }, []);
+
+  const scrollToLeft = () => {
+    scrollRef.current?.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" });
+  };
+
+  const scrollToRight = () => {
+    scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
+  };
+
+  // Center the Accelerator card (index 2) on mount
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const acceleratorIndex = 2;
+    const cardCenter = acceleratorIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
+    const scrollTarget = cardCenter - el.clientWidth / 2;
+    el.scrollTo({ left: scrollTarget, behavior: "instant" });
+    requestAnimationFrame(updateScrollState);
+  }, [updateScrollState]);
 
   return (
     <>
@@ -307,24 +432,54 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* PRICING CARDS */}
+      {/* PRICING CARDS — Horizontal Scroll Gallery */}
       <section className="pt-10 pb-20">
-        <div className="max-w-[1400px] mx-auto px-6 max-md:px-5">
-          <div className="grid grid-cols-5 gap-4 items-start max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:max-w-[440px] max-md:mx-auto">
-            {TIERS.map((tier) => (
-              <RevealOnScroll key={tier.tier}>
-                <PricingCardInner tier={tier} />
-              </RevealOnScroll>
-            ))}
+        <RevealOnScroll>
+          {/* Constrained viewport — fits ~3 cards */}
+          <div className="max-w-[1260px] mx-auto relative">
+            {/* Green ambient glow behind cards */}
+            <div className="pricing-glow-bg" />
+
+            {/* Left fade mask */}
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[72px] z-10 pointer-events-none bg-gradient-to-r from-bg to-transparent" />
+            {/* Right fade mask */}
+            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[72px] z-10 pointer-events-none bg-gradient-to-l from-bg to-transparent" />
+
+            {/* Left arrow */}
+            <ScrollArrow direction="left" onClick={scrollToLeft} visible={canScrollLeft} />
+
+            {/* Scroll container */}
+            <div
+              ref={scrollRef}
+              onScroll={updateScrollState}
+              className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-4 px-[calc((100%-380px)/2)] md:px-[calc((100%-3*380px-2*28px)/2)]"
+            >
+              {TIERS.map((tier) => (
+                <div
+                  key={tier.tier}
+                  className={`snap-center shrink-0 w-[380px] max-md:w-[320px] transition-transform duration-300 ${
+                    tier.featured ? "scale-[1.03] z-10" : ""
+                  }`}
+                >
+                  <PricingCardInner tier={tier} />
+                </div>
+              ))}
+            </div>
+
+            {/* Right arrow */}
+            <ScrollArrow direction="right" onClick={scrollToRight} visible={canScrollRight} />
           </div>
 
-          {/* No contracts note */}
-          <RevealOnScroll>
-            <p className="text-center text-[13px] text-text-dim mt-8">
-              All packages are month-to-month. No long-term contracts. Cancel anytime.
-            </p>
-          </RevealOnScroll>
-        </div>
+          {/* Dot indicators */}
+          <ScrollDots total={TIERS.length} activeIndex={activeIndex} />
+        </RevealOnScroll>
+
+        {/* No contracts note */}
+        <RevealOnScroll>
+          <p className="text-center text-[13px] text-text-dim mt-4">
+            All packages are month-to-month. No long-term contracts. Cancel anytime.
+          </p>
+        </RevealOnScroll>
       </section>
 
       {/* COMPARISON TABLE */}
