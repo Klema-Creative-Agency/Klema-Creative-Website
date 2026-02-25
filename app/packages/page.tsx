@@ -258,7 +258,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
 
   return (
     <div
-      className={`bg-surface border rounded-[24px] p-7 px-6 transition-all duration-400 hover:border-border-hover flex flex-col min-h-[620px] relative ${
+      className={`bg-surface border rounded-[24px] p-7 px-6 max-md:p-5 max-md:px-5 transition-all duration-400 hover:border-border-hover flex flex-col min-h-[620px] max-md:min-h-[520px] relative ${
         tier.featured ? "border-accent-border price-card-featured" : "border-border"
       }`}
     >
@@ -274,14 +274,14 @@ function PricingCardInner({ tier }: { tier: TierData }) {
       </p>
 
       {/* Name */}
-      <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
+      <h3 className="text-2xl max-md:text-xl font-extrabold tracking-[-0.5px] mb-2">
         {tier.name}
       </h3>
 
       {/* Price */}
       <div className="flex items-baseline gap-1.5 mb-5">
-        <div className="text-5xl font-black tracking-[-1.5px] leading-none">
-          <span className="text-xl font-semibold align-super mr-0.5">$</span>
+        <div className="text-5xl max-md:text-4xl font-black tracking-[-1.5px] leading-none">
+          <span className="text-xl max-md:text-lg font-semibold align-super mr-0.5">$</span>
           {tier.price}
         </div>
         <span className="text-sm text-text-dim">/mo</span>
@@ -300,14 +300,14 @@ function PricingCardInner({ tier }: { tier: TierData }) {
       </div>
 
       {/* Description */}
-      <p className="text-[15px] text-text-dim leading-[1.5] mb-5">
+      <p className="text-[15px] max-md:text-[13px] text-text-dim leading-[1.5] mb-5 max-md:mb-4">
         {tier.tagline}
       </p>
 
       {/* CTA */}
       <Link
         href={`/services/${tier.slug}`}
-        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mb-5 ${
+        className={`block w-full py-3.5 max-md:py-3 rounded-full text-[15px] max-md:text-[14px] font-bold text-center no-underline transition-all duration-300 mb-5 max-md:mb-4 ${
           tier.ctaStyle === "primary"
             ? "bg-accent text-black hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px"
             : "bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px"
@@ -318,7 +318,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
 
       {/* Includes previous tier */}
       {tier.includesPrevious && (
-        <p className="text-[14px] font-bold text-text flex items-center gap-1.5 mb-3">
+        <p className="text-[14px] max-md:text-[12px] font-bold text-text flex items-center gap-1.5 mb-3">
           <span className="text-accent text-sm">+</span>
           {tier.includesPrevious}
         </p>
@@ -328,11 +328,11 @@ function PricingCardInner({ tier }: { tier: TierData }) {
       <div className="h-px bg-border mb-4" />
 
       {/* Features */}
-      <ul className="price-features list-none flex flex-col gap-3 mb-4 flex-1">
+      <ul className="price-features list-none flex flex-col gap-3 max-md:gap-2.5 mb-4 flex-1">
         {features.map((f, i) => (
           <li
             key={i}
-            className="text-[14px] text-text-mid flex items-start gap-2.5 leading-[1.4]"
+            className="text-[14px] max-md:text-[12px] text-text-mid flex items-start gap-2.5 leading-[1.4]"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-accent shrink-0 mt-[1px]">
               <polyline points="20 6 9 17 4 12" />
@@ -401,7 +401,7 @@ export default function PackagesPage() {
   return (
     <>
       {/* HERO */}
-      <section className="packages-hero-bg pt-[140px] pb-20 text-center relative overflow-hidden">
+      <section className="packages-hero-bg pt-[140px] max-md:pt-[100px] pb-20 max-md:pb-12 text-center relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">Packages</p>
@@ -448,13 +448,13 @@ export default function PackagesPage() {
             <div
               ref={scrollRef}
               onScroll={updateScrollState}
-              className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
+              className="flex gap-7 max-md:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
               style={{ paddingLeft: "24px", paddingRight: "24px" }}
             >
               {TIERS.map((tier) => (
                 <div
                   key={tier.tier}
-                  className={`snap-center shrink-0 w-[320px] transition-transform duration-300 ${
+                  className={`snap-center shrink-0 w-[320px] max-md:w-[280px] transition-transform duration-300 ${
                     tier.featured ? "scale-[1.03] z-10" : ""
                   }`}
                 >
@@ -480,8 +480,8 @@ export default function PackagesPage() {
       </section>
 
       {/* COMPARISON TABLE */}
-      <section className="py-20 border-t border-border">
-        <div className="max-w-[1400px] mx-auto px-6 max-md:px-5">
+      <section className="py-20 max-md:py-12 border-t border-border">
+        <div className="max-w-[1400px] mx-auto px-6 max-md:px-4">
           <RevealOnScroll>
             <div className="text-center">
               <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">Compare tiers</p>
@@ -497,7 +497,7 @@ export default function PackagesPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-40 text-center relative overflow-hidden border-t border-border">
+      <section className="py-40 max-md:py-20 text-center relative overflow-hidden border-t border-border">
         <div className="cta-glow" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>

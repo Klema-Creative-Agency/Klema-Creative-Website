@@ -112,10 +112,10 @@ function MobileFeatureCard({ feature }: { feature: Feature }) {
   return (
     <div className="bg-white-6 rounded-xl p-4">
       <p className="text-[13px] font-semibold text-text mb-3">{feature.name}</p>
-      <div className="grid grid-cols-5 gap-2">
+      <div className="flex flex-col gap-1.5">
         {TIERS.map((tier, i) => (
-          <div key={i} className="text-center">
-            <p className="text-[9px] text-text-dim mb-1 truncate">{tier.name}</p>
+          <div key={i} className="flex items-center justify-between">
+            <span className="text-[11px] text-text-dim">{tier.name}</span>
             <div className="text-[13px]">{renderValue(feature.values[i])}</div>
           </div>
         ))}
@@ -203,10 +203,10 @@ export default function ComparisonTable() {
               {/* Category header — sticky within its parent div, releases when section ends */}
               <button
                 onClick={() => toggleCategory(catIdx)}
-                className="w-full flex items-center gap-3 px-6 py-4 border-l-4 border-l-accent border-b border-border transition-colors hover:bg-white-6 sticky z-20"
+                className="w-full flex items-center gap-3 px-6 max-md:px-4 py-4 max-md:py-3 border-l-4 border-l-accent border-b border-border transition-colors hover:bg-white-6 lg:sticky z-20"
                 style={{ background: "#0d0d0d", top: 206 }}
               >
-                <span className="text-[15px] font-bold text-text">{category.name}</span>
+                <span className="text-[15px] max-md:text-[14px] font-bold text-text">{category.name}</span>
                 <span className="text-[12px] text-text-dim">
                   {category.features.length} feature{category.features.length !== 1 ? "s" : ""}
                 </span>
