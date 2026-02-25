@@ -13,35 +13,35 @@ function ArrowIcon() {
 const faqData = [
   {
     question: "What types of businesses do you work with?",
-    answer: "We specialize in local service businesses \u2014 HVAC, plumbing, roofing, dental, legal, landscaping, and similar industries. If you serve customers in a specific geographic area and want more leads, we\u2019re built for you.",
+    answer: "We specialize in local service businesses \u2014 HVAC, plumbing, roofing, dental, tree removal, and similar industries. If you serve customers in a specific geographic area and want more booked jobs, we\u2019re built for you.",
   },
   {
     question: "How is Klema different from other marketing agencies?",
-    answer: "Most agencies sell you individual services. We build complete marketing systems \u2014 website, SEO, content, lead nurturing, and reputation management \u2014 all working together as one engine. Everything is tracked, transparent, and tied to revenue.",
+    answer: "Most agencies sell you individual services. We build a complete system \u2014 lead funnel, automated follow-up, CRM, SEO, reputation, and more \u2014 all working together. Everything is tracked, transparent, and tied to revenue.",
   },
   {
     question: "Do I need to sign a long-term contract?",
-    answer: "No. All our packages are month-to-month. We earn your business every single month with measurable results, not lock-in contracts.",
+    answer: "No. All packages are month-to-month. We earn your business every month with measurable results, not lock-in contracts.",
   },
   {
     question: "How quickly will I see results?",
-    answer: "Most clients see early wins within 30\u201360 days (website live, leads coming in). SEO compounds over 3\u20136 months. By month 6, you\u2019ll have a full growth engine running.",
+    answer: "Ignition clients see results in 10 days \u2014 your funnel goes live and your phone starts ringing. SEO and reputation results compound over 3\u20136 months. By month 6, you\u2019ll have a full growth engine running.",
   },
   {
-    question: "What is AEO and why does it matter?",
-    answer: "AEO stands for Answer Engine Optimization. It\u2019s how we optimize your content to appear in AI-powered search results \u2014 ChatGPT, Google AI Overviews, Perplexity, and others. Traditional SEO alone isn\u2019t enough anymore.",
+    question: "What is the Lead Engine?",
+    answer: "It\u2019s our core product \u2014 a done-for-you lead conversion funnel and automation system. When someone inquires about your services, the system triggers a call in 60 seconds, then follows up with SMS and email automatically. It\u2019s included in every tier.",
   },
   {
-    question: "Do you build websites on WordPress or something else?",
-    answer: "Both. Tier 1 includes a professional WordPress site. Tiers 2 and 3 include a high-performance Next.js website \u2014 faster, more customizable, and built for scale.",
+    question: "Do you run ads for me?",
+    answer: "Starting at the Accelerator tier ($3,997/mo), yes. We build, manage, and optimize your Google and Meta ad campaigns. Your ad spend is billed directly to you \u2014 our fee covers the strategy and management.",
   },
   {
-    question: "What does lead nurturing actually include?",
-    answer: "Our team contacts every lead via phone, email, and text on a proven follow-up cadence. In Tier 3, we contact leads within 5 minutes and can live-transfer qualified prospects directly to your sales team.",
+    question: "What does the Dominator tier include that others don\u2019t?",
+    answer: "A dedicated lead team that calls every lead within 60 seconds, qualifies them, and either transfers them live to your team or books an appointment. Your phone only rings when someone is ready to buy.",
   },
   {
     question: "Can I switch tiers later?",
-    answer: "Absolutely. You can upgrade or adjust your package at any time. Most clients start with Digital Foundation and move up as they grow.",
+    answer: "Absolutely. You can upgrade at any time. Most clients start with Ignition and move up as the results justify it \u2014 that\u2019s exactly how the system is designed.",
   },
 ];
 
@@ -71,77 +71,77 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">What we build</p>
             <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-              Everything your brand<br />needs to grow.
+              Everything your business<br />needs to grow.
             </h2>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px]">
-              Strategy, design, development, and lead management — under one roof, working as one engine.
+              Lead conversion, SEO, reputation, content, ads, and dedicated follow-up — under one roof, working as one system.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
             <div className="grid grid-cols-3 gap-px bg-border border border-border rounded-[20px] overflow-hidden mt-16 max-lg:grid-cols-2 max-md:grid-cols-1">
-              {/* Website Design & Dev */}
+              {/* Lead Conversion Funnel */}
               <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12" y2="18.01" /></svg>
                 </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Website Design &amp; Dev</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Conversion-optimized sites built for speed, mobile performance, and turning visitors into paying customers.</p>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Lead Conversion Funnel</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">Custom quiz-style funnel built to convert mobile visitors into leads. Loads instantly, works on any device.</p>
               </div>
-              {/* SEO & AI Optimization */}
+              {/* Automated Follow-Up */}
+              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
+                <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5 text-xl">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.88.36 1.74.7 2.55"/></svg>
+                </div>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Automated Follow-Up</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">60-second call trigger, SMS sequences, and email drips that work leads for days — without you touching a thing.</p>
+              </div>
+              {/* SEO & Local Visibility */}
               <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5 text-xl">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">SEO &amp; AI Optimization</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Data-driven SEO plus AEO optimization so you get found by Google and AI assistants alike.</p>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">SEO &amp; Local Visibility</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">Rank higher in your city for the services you offer. Google Business Profile, local SEO, and visibility tracking.</p>
               </div>
-              {/* Content Marketing */}
+              {/* Reputation Engine */}
               <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
                 <div className="w-10 h-10 rounded-[10px] bg-blue-dim text-blue flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Content Marketing</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">SEO-optimized articles and topic clusters that rank on Google and build authority in your market.</p>
-              </div>
-              {/* Social Media */}
-              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
-                <div className="w-10 h-10 rounded-[10px] bg-blue-dim text-blue flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Social Media</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Professional content, branded graphics, and consistent posting that builds loyal local audiences.</p>
-              </div>
-              {/* Lead Nurturing */}
-              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
-                <div className="w-10 h-10 rounded-[10px] bg-purple-dim text-purple flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.88.36 1.74.7 2.55"/></svg>
-                </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Lead Nurturing</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Every lead called, emailed, and followed up on a proven cadence — no opportunity falls through the cracks.</p>
-              </div>
-              {/* Reputation Mgmt */}
-              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
-                <div className="w-10 h-10 rounded-[10px] bg-purple-dim text-purple flex items-center justify-center mb-5 text-xl">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Reputation Mgmt</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Automated review generation, 24-hour responses, and sentiment tracking for a 5-star reputation.</p>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Reputation Engine</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">Automated review requests after every job, monitoring, and alerts. Build a 5-star reputation on autopilot.</p>
+              </div>
+              {/* Website Design & Dev */}
+              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
+                <div className="w-10 h-10 rounded-[10px] bg-blue-dim text-blue flex items-center justify-center mb-5 text-xl">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Website Design &amp; Dev</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">High-performance, custom-designed websites built to convert visitors into leads and look like a million bucks.</p>
+              </div>
+              {/* Paid Advertising */}
+              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
+                <div className="w-10 h-10 rounded-[10px] bg-blue-dim text-blue flex items-center justify-center mb-5 text-xl">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                </div>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Paid Advertising</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">Google and Meta ad campaigns — built, managed, and optimized by our team. Your ad spend drives leads into your funnel.</p>
+              </div>
+              {/* Content & Social */}
+              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
+                <div className="w-10 h-10 rounded-[10px] bg-purple-dim text-purple flex items-center justify-center mb-5 text-xl">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Content &amp; Social</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">SEO-optimized blog articles, social media management, and email campaigns that keep your pipeline full.</p>
               </div>
               {/* CRM & Automation */}
               <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
-                <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">CRM &amp; Automation</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Smart lead capture, contact management, and automated workflows that never let a lead slip through.</p>
-              </div>
-              {/* Analytics & Reporting */}
-              <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
-                <div className="w-10 h-10 rounded-[10px] bg-blue-dim text-blue flex items-center justify-center mb-5 text-xl">
+                <div className="w-10 h-10 rounded-[10px] bg-purple-dim text-purple flex items-center justify-center mb-5 text-xl">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                 </div>
-                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Analytics &amp; Reporting</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Full tracking setup with transparent monthly reports that show exactly what&apos;s working and why.</p>
+                <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">CRM &amp; Automation</h3>
+                <p className="text-sm text-text-dim leading-[1.7]">Your own Klema CRM — fully configured. Every lead tracked, every follow-up automated, full visibility from day one.</p>
               </div>
               {/* Live Hot Transfers */}
               <div className="accent-top-hover bg-surface p-10 px-8 transition-[background] duration-400 hover:bg-[#121212]">
@@ -149,7 +149,7 @@ export default function ServicesPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
                 <h3 className="text-[17px] font-bold mb-2.5 tracking-[-0.2px]">Live Hot Transfers</h3>
-                <p className="text-sm text-text-dim leading-[1.7]">Qualified leads connected directly to your team in real-time — inquiry to appointment in minutes.</p>
+                <p className="text-sm text-text-dim leading-[1.7]">Our team calls, qualifies, and transfers ready-to-book leads directly to you in real-time. You just close.</p>
               </div>
             </div>
           </RevealOnScroll>
@@ -174,7 +174,7 @@ export default function ServicesPage() {
             <RevealOnScroll>
               <div className="value-num text-[64px] font-black leading-none mb-4 tracking-[-3px]">02</div>
               <h3 className="text-xl font-bold mb-2.5 tracking-[-0.3px]">Revenue-first thinking</h3>
-              <p className="text-[14.5px] text-text-dim leading-[1.7]">Every decision — from pixel to campaign — is engineered to grow your bottom line.</p>
+              <p className="text-[14.5px] text-text-dim leading-[1.7]">Every decision — from funnel to campaign — is engineered to grow your bottom line.</p>
             </RevealOnScroll>
             <RevealOnScroll>
               <div className="value-num text-[64px] font-black leading-none mb-4 tracking-[-3px]">03</div>
@@ -192,7 +192,7 @@ export default function ServicesPage() {
             <div className="text-center">
               <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">How it works</p>
               <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-                From vision to velocity<br />in 4 steps.
+                From discovery call to<br />results in 10 days.
               </h2>
             </div>
           </RevealOnScroll>
@@ -216,14 +216,14 @@ export default function ServicesPage() {
                 3
               </div>
               <h3 className="text-base font-bold mb-2 tracking-[-0.2px]">Build &amp; Launch</h3>
-              <p className="text-[13px] text-text-dim leading-[1.7]">Our team executes with precision — design, development, content, and campaigns go live.</p>
+              <p className="text-[13px] text-text-dim leading-[1.7]">Your system goes live — funnel, automations, CRM, and everything in your tier, built and tested.</p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface p-10 px-7 text-center transition-[background] duration-400 hover:bg-[#121212] group">
               <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center text-[22px] font-black text-accent mx-auto mb-5 transition-all duration-300 group-hover:border-accent-border-dim group-hover:bg-accent-dim group-hover:shadow-[0_0_24px_rgba(74,222,128,0.1)]">
                 4
               </div>
               <h3 className="text-base font-bold mb-2 tracking-[-0.2px]">Optimize &amp; Scale</h3>
-              <p className="text-[13px] text-text-dim leading-[1.7]">Continuous data analysis, A/B testing, and refinement to compound results month over month.</p>
+              <p className="text-[13px] text-text-dim leading-[1.7]">We monitor, optimize, and report every month. Results compound — and when you&apos;re ready, you level up.</p>
             </RevealOnScroll>
           </div>
         </div>
@@ -235,90 +235,117 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">Pricing</p>
             <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-              Pick your path<br />to growth.
+              Pick your tier.<br />Climb when you&apos;re ready.
             </h2>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px]">
-              Three tiers designed to meet you where you are — and take you where you want to go. No hidden fees, no long-term contracts.
+              Five tiers designed as a ladder. Start where you are — each level&apos;s results make the next one a no-brainer. No contracts, no hidden fees.
             </p>
           </RevealOnScroll>
-          <div className="grid grid-cols-3 gap-5 mt-16 items-start max-lg:grid-cols-1 max-lg:max-w-[440px] max-lg:mx-auto">
-            {/* Tier 1 */}
+          <div className="grid grid-cols-5 gap-4 mt-16 items-start max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:max-w-[440px] max-md:mx-auto">
+            {/* Ignition */}
             <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover relative">
-                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 1</p>
-                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Digital Foundation</h3>
-                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">Build your online presence from the ground up — the essential infrastructure every growing business needs.</p>
-                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
-                  <span className="text-xl font-semibold align-super mr-0.5">$</span>3,500
+              <div className="bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
+                <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">Tier 1</p>
+                <h3 className="text-lg font-extrabold mb-1 tracking-[-0.5px]">Ignition</h3>
+                <div className="text-3xl font-black tracking-[-1.5px] mb-0.5 leading-none">
+                  <span className="text-base font-semibold align-super mr-0.5">$</span>997
                 </div>
-                <p className="text-[13px] text-text-dim mb-7">per month</p>
-                <div className="h-px bg-border mb-6" />
-                <ul className="price-features list-none mb-8 flex flex-col gap-3">
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Professional website built for conversions</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">SEO foundation &amp; keyword targeting</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">2 blog articles per month</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Social media management (1 platform)</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">CRM setup with lead capture forms</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">AI search optimization (AEO)</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Google Analytics &amp; Search Console</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Monthly report &amp; strategy call</li>
+                <p className="text-[12px] text-text-dim mb-5">/mo + $2,500 setup</p>
+                <div className="h-px bg-border mb-4" />
+                <ul className="price-features list-none mb-6 flex flex-col gap-2">
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Lead conversion funnel</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">60-second call trigger</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">SMS &amp; email automation</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">CRM &amp; pipeline</li>
                 </ul>
-                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text tracking-[0.01em] hover:bg-white-10 hover:-translate-y-px">
+                <Link href="/contact" className="block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px">
                   Get Started
                 </Link>
               </div>
             </RevealOnScroll>
-            {/* Tier 2 - Featured */}
+            {/* Foundation */}
             <RevealOnScroll>
-              <div className="price-card-featured bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover relative">
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-black px-[18px] py-[5px] rounded-full text-[11px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
+              <div className="bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
+                <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">Tier 2</p>
+                <h3 className="text-lg font-extrabold mb-1 tracking-[-0.5px]">Foundation</h3>
+                <div className="text-3xl font-black tracking-[-1.5px] mb-0.5 leading-none">
+                  <span className="text-base font-semibold align-super mr-0.5">$</span>1,997
+                </div>
+                <p className="text-[12px] text-text-dim mb-5">/mo + $2,500 setup</p>
+                <div className="h-px bg-border mb-4" />
+                <ul className="price-features list-none mb-6 flex flex-col gap-2">
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Everything in Ignition</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">SEO &amp; local rankings</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Google Business Profile</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Reputation engine</li>
+                </ul>
+                <Link href="/contact" className="block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px">
+                  Get Started
+                </Link>
+              </div>
+            </RevealOnScroll>
+            {/* Accelerator — Featured */}
+            <RevealOnScroll>
+              <div className="price-card-featured bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
                   Most Popular
                 </div>
-                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 2</p>
-                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Growth Accelerator</h3>
-                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">Everything in Foundation plus lead nurturing, reputation management, and advanced SEO.</p>
-                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
-                  <span className="text-xl font-semibold align-super mr-0.5">$</span>8,000
+                <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">Tier 3</p>
+                <h3 className="text-lg font-extrabold mb-1 tracking-[-0.5px]">Accelerator</h3>
+                <div className="text-3xl font-black tracking-[-1.5px] mb-0.5 leading-none">
+                  <span className="text-base font-semibold align-super mr-0.5">$</span>3,997
                 </div>
-                <p className="text-[13px] text-text-dim mb-7">per month</p>
-                <div className="h-px bg-border mb-6" />
-                <ul className="price-features list-none mb-8 flex flex-col gap-3">
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Everything in Digital Foundation</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">High-Performance Next.js Website</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">4 blog articles per month</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">20 hours/month lead nurturing</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Reputation management &amp; review generation</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Automated email nurture sequences</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Advanced reporting &amp; strategy calls</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Bi-weekly strategy calls</li>
+                <p className="text-[12px] text-text-dim mb-5">/mo + $5K–$7.5K setup</p>
+                <div className="h-px bg-border mb-4" />
+                <ul className="price-features list-none mb-6 flex flex-col gap-2">
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Everything in Foundation</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Custom website</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Paid ad management</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Branded dashboard</li>
                 </ul>
-                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-accent text-black tracking-[0.01em] hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px">
+                <Link href="/contact" className="block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 bg-accent text-black hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px">
                   Get Started
                 </Link>
               </div>
             </RevealOnScroll>
-            {/* Tier 3 */}
+            {/* Authority */}
             <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-10 px-8 transition-all duration-400 hover:border-border-hover relative">
-                <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-2">Tier 3</p>
-                <h3 className="text-2xl font-extrabold mb-1.5 tracking-[-0.5px]">Market Dominator</h3>
-                <p className="text-[13px] text-text-dim leading-[1.6] mb-7">White-glove, full-team engagement for businesses ready to own their market.</p>
-                <div className="text-5xl font-black tracking-[-2px] mb-1 leading-none">
-                  <span className="text-xl font-semibold align-super mr-0.5">$</span>10,000
+              <div className="bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
+                <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">Tier 4</p>
+                <h3 className="text-lg font-extrabold mb-1 tracking-[-0.5px]">Authority</h3>
+                <div className="text-3xl font-black tracking-[-1.5px] mb-0.5 leading-none">
+                  <span className="text-base font-semibold align-super mr-0.5">$</span>7,500
                 </div>
-                <p className="text-[13px] text-text-dim mb-7">per month</p>
-                <div className="h-px bg-border mb-6" />
-                <ul className="price-features list-none mb-8 flex flex-col gap-3">
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Everything in Growth Accelerator</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Fully custom Next.js website</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">6–8 blog articles per month</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">80+ hours/month full lead management</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Live hot transfers to your sales team</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">White-glove account management</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Daily updates &amp; weekly strategy calls</li>
-                  <li className="text-[13.5px] text-text-mid flex items-center gap-2.5 leading-[1.4]">Quarterly business reviews</li>
+                <p className="text-[12px] text-text-dim mb-5">/mo + $7,500 setup</p>
+                <div className="h-px bg-border mb-4" />
+                <ul className="price-features list-none mb-6 flex flex-col gap-2">
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Everything in Accelerator</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Content &amp; social media</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Email marketing</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Full marketing mgmt</li>
                 </ul>
-                <Link href="/contact" className="block w-full py-3.5 rounded-full text-sm font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text tracking-[0.01em] hover:bg-white-10 hover:-translate-y-px">
+                <Link href="/contact" className="block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px">
+                  Book a Call
+                </Link>
+              </div>
+            </RevealOnScroll>
+            {/* Dominator */}
+            <RevealOnScroll>
+              <div className="bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
+                <p className="text-[10px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">Tier 5</p>
+                <h3 className="text-lg font-extrabold mb-1 tracking-[-0.5px]">Dominator</h3>
+                <div className="text-3xl font-black tracking-[-1.5px] mb-0.5 leading-none">
+                  <span className="text-base font-semibold align-super mr-0.5">$</span>12,000
+                </div>
+                <p className="text-[12px] text-text-dim mb-5">/mo + $10,000 setup</p>
+                <div className="h-px bg-border mb-4" />
+                <ul className="price-features list-none mb-6 flex flex-col gap-2">
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Everything in Authority</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Dedicated lead team</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">Live hot transfers</li>
+                  <li className="text-[12.5px] text-text-mid leading-[1.4]">You just close</li>
+                </ul>
+                <Link href="/contact" className="block w-full py-3 rounded-full text-[13px] font-bold text-center no-underline transition-all duration-300 bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px">
                   Book a Call
                 </Link>
               </div>
@@ -353,7 +380,7 @@ export default function ServicesPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-              Not sure which plan<br />is <span className="text-accent">right?</span>
+              Not sure which tier<br />is <span className="text-accent">right?</span>
             </h2>
           </RevealOnScroll>
           <RevealOnScroll>

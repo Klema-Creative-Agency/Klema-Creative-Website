@@ -30,7 +30,7 @@ export default function ApplicationForm({
       city: data.get("city") as string,
       phone: data.get("phone") as string,
       email: data.get("email") as string,
-      marketingSpend: data.get("marketingSpend") as string,
+      leadSource: data.get("leadSource") as string,
       frustration: data.get("frustration") as string,
       niche,
       source,
@@ -84,7 +84,7 @@ export default function ApplicationForm({
           Apply now
         </p>
         <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-          Ready to stop overpaying<br />for leads?
+          Ready to convert more of<br />the leads you already get?
         </h2>
         <p className="text-[15px] text-text-dim leading-[1.7] mb-10">
           Fill out this short application. Two minutes. We review every one and respond within 1 business day.
@@ -134,24 +134,25 @@ export default function ApplicationForm({
             />
           </div>
           <select
-            name="marketingSpend"
+            name="leadSource"
             required
             defaultValue=""
             className="bg-surface border border-border rounded-xl px-4 py-3.5 text-sm text-text-dim outline-none transition-colors duration-200 focus:border-accent-border appearance-none"
           >
             <option value="" disabled>
-              Current monthly marketing spend *
+              Where do most of your leads come from? *
             </option>
-            <option value="$0 – $1,000">$0 – $1,000</option>
-            <option value="$1,000 – $3,000">$1,000 – $3,000</option>
-            <option value="$3,000 – $5,000">$3,000 – $5,000</option>
-            <option value="$5,000 – $10,000">$5,000 – $10,000</option>
-            <option value="$10,000+">$10,000+</option>
+            <option value="Google / Search">Google / Search</option>
+            <option value="Referrals / Word of Mouth">Referrals / Word of Mouth</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Home service platforms (Angi, Thumbtack)">Home service platforms (Angi, Thumbtack)</option>
+            <option value="Mix of sources">Mix of sources</option>
+            <option value="Not sure">Not sure</option>
           </select>
           <textarea
             name="frustration"
             rows={3}
-            placeholder="What's your biggest frustration with getting leads right now? (optional)"
+            placeholder="What's your biggest frustration with turning leads into booked jobs? (optional)"
             className="bg-surface border border-border rounded-xl px-4 py-3.5 text-sm text-text placeholder:text-text-dim outline-none transition-colors duration-200 focus:border-accent-border resize-none"
           />
 

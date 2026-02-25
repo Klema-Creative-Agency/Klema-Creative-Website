@@ -5,9 +5,9 @@ import RevealOnScroll from "@/app/components/RevealOnScroll";
 import QuizFunnelDemo from "@/app/components/lead-engine/QuizFunnelDemo";
 
 export const metadata: Metadata = {
-  title: "AI Lead Engine | Done-For-You Lead Systems | Klema Creative",
+  title: "Lead Funnel System | Done-For-You Lead Conversion | Klema Creative",
   description:
-    "Niche-specific AI lead generation systems for home service businesses. Mobile funnel, instant call trigger, automated follow-up. $2,500 setup + $997/mo.",
+    "Done-for-you lead conversion funnels and GoHighLevel automation for home service businesses. Convert more of the leads you already get. $2,500 setup + $997/mo.",
 };
 
 function ArrowIcon() {
@@ -28,15 +28,15 @@ const NICHE_ICONS: Record<string, string> = {
 
 const NICHE_DESCRIPTIONS: Record<string, string> = {
   roofing:
-    "Done-for-you lead system for roofing contractors. Stop paying $350/lead on Google. Own your lead pipeline.",
+    "Lead conversion funnel + GoHighLevel automation for roofing contractors. Convert more of the leads you already get.",
   "tree-removal":
-    "Capture storm season demand automatically. Emergency and scheduled tree removal leads delivered to your phone.",
+    "Lead funnel and automated follow-up for tree removal companies. Turn inquiries into booked jobs — even during storm season surges.",
   hvac:
-    "Peak season ready. Mobile funnel, instant call trigger, and automated follow-up for HVAC contractors.",
+    "Lead conversion funnel + instant follow-up automation for HVAC contractors. Stop losing installs to whoever calls back first.",
   plumbing:
-    "24/7 lead capture for plumbing emergencies. Burst pipe at 9pm? Your phone still rings first.",
+    "24/7 lead conversion funnel for plumbing companies. Automated follow-up on every call, form fill, and message — even after hours.",
   dental:
-    "New patient acquisition system for dental practices. Reduce no-shows, fill your schedule, reactivate lapsed patients.",
+    "Patient conversion funnel + GoHighLevel automation for dental practices. Reduce no-shows, convert more inquiries, reactivate lapsed patients.",
 };
 
 export default function AILeadEngineHub() {
@@ -48,18 +48,18 @@ export default function AILeadEngineHub() {
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
-              AI Lead Engine
+              Lead Funnel System
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
             <h1 className="text-[clamp(36px,5.5vw,64px)] font-extrabold leading-[1.05] tracking-[-2px] mb-6 max-w-[800px]">
-              Done-for-you lead systems<br />
-              that make your phone <span className="text-accent">ring.</span>
+              Done-for-you funnels that turn<br />
+              your leads into <span className="text-accent">booked jobs.</span>
             </h1>
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[600px]">
-              Mobile-first quiz funnel, 60-second call trigger, automated SMS and email follow-up.
+              Custom lead funnel + GoHighLevel automation account. 60-second call trigger, automated SMS and email follow-up.
               Pick your industry below and see exactly how it works.
             </p>
           </RevealOnScroll>
@@ -173,7 +173,7 @@ export default function AILeadEngineHub() {
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-12">
-              Book a free strategy call. We&apos;ll tell you exactly how the AI Lead Engine would work for your specific industry and market.
+              Book a free strategy call. We&apos;ll tell you exactly how the Lead Funnel System would work for your specific industry and market.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>

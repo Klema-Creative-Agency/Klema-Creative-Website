@@ -9,76 +9,69 @@ interface CompetitorCell {
 
 interface ComparisonRow {
   category: string;
-  aiLeadEngine: CompetitorCell;
-  diySaas: CompetitorCell;
-  googleAds: CompetitorCell;
-  homeAdvisor: CompetitorCell;
+  leadFunnel: CompetitorCell;
+  diyGhl: CompetitorCell;
+  agency: CompetitorCell;
+  doNothing: CompetitorCell;
 }
 
 const rows: ComparisonRow[] = [
   {
-    category: "Lead exclusivity",
-    aiLeadEngine: { icon: "check", text: "100% exclusive" },
-    diySaas: { icon: "check", text: "Depends on you" },
-    googleAds: { icon: "check", text: "Exclusive" },
-    homeAdvisor: { icon: "x", text: "Shared 3-5x" },
+    category: "Setup effort",
+    leadFunnel: { icon: "check", text: "Done for you in 10 days" },
+    diyGhl: { icon: "x", text: "Weeks of learning" },
+    agency: { icon: "dash", text: "Weeks + discovery" },
+    doNothing: { icon: "x", text: "N/A" },
   },
   {
-    category: "Setup time",
-    aiLeadEngine: { icon: "check", text: "10 days, we do all" },
-    diySaas: { icon: "x", text: "Weeks of DIY" },
-    googleAds: { icon: "x", text: "Weeks of campaigns" },
-    homeAdvisor: { icon: "check", text: "Instant but no system" },
+    category: "Follow-up speed",
+    leadFunnel: { icon: "check", text: "60-second auto call" },
+    diyGhl: { icon: "x", text: "Manual" },
+    agency: { icon: "dash", text: "Depends" },
+    doNothing: { icon: "x", text: "Whenever you remember" },
+  },
+  {
+    category: "SMS / Email automation",
+    leadFunnel: { icon: "check", text: "Pre-built sequences" },
+    diyGhl: { icon: "dash", text: "You build it" },
+    agency: { icon: "dash", text: "Extra cost" },
+    doNothing: { icon: "x", text: "None" },
   },
   {
     category: "Monthly cost",
-    aiLeadEngine: { icon: "dash", text: "$997/mo all-in" },
-    diySaas: { icon: "check", text: "$63-$401 + your time" },
-    googleAds: { icon: "x", text: "$2K-$10K+ ad spend" },
-    homeAdvisor: { icon: "dash", text: "$50-$200/lead" },
+    leadFunnel: { icon: "dash", text: "$997/mo all-in" },
+    diyGhl: { icon: "check", text: "$97–$497 + your time" },
+    agency: { icon: "x", text: "$2K–$5K/mo retainer" },
+    doNothing: { icon: "check", text: "$0 (but lost revenue)" },
   },
   {
-    category: "Call trigger speed",
-    aiLeadEngine: { icon: "check", text: "60 seconds" },
-    diySaas: { icon: "x", text: "Not included" },
-    googleAds: { icon: "x", text: "Not included" },
-    homeAdvisor: { icon: "x", text: "Not included" },
-  },
-  {
-    category: "Follow-up automation",
-    aiLeadEngine: { icon: "check", text: "SMS + email auto" },
-    diySaas: { icon: "dash", text: "Basic, you build it" },
-    googleAds: { icon: "x", text: "None" },
-    homeAdvisor: { icon: "x", text: "None" },
-  },
-  {
-    category: "Mobile optimization",
-    aiLeadEngine: { icon: "check", text: "Built mobile-first" },
-    diySaas: { icon: "check", text: "Templates available" },
-    googleAds: { icon: "dash", text: "Depends on LP" },
-    homeAdvisor: { icon: "dash", text: "Their app" },
-  },
-  {
-    category: "Ongoing optimization",
-    aiLeadEngine: { icon: "check", text: "Monthly by our team" },
-    diySaas: { icon: "x", text: "You do it" },
-    googleAds: { icon: "x", text: "You manage" },
-    homeAdvisor: { icon: "x", text: "No optimization" },
+    category: "Funnel included",
+    leadFunnel: { icon: "check", text: "Custom quiz funnel" },
+    diyGhl: { icon: "dash", text: "Templates" },
+    agency: { icon: "dash", text: "Usually extra" },
+    doNothing: { icon: "x", text: "No" },
   },
   {
     category: "System ownership",
-    aiLeadEngine: { icon: "check", text: "You keep everything" },
-    diySaas: { icon: "x", text: "Locked to platform" },
-    googleAds: { icon: "x", text: "Nothing to keep" },
-    homeAdvisor: { icon: "x", text: "No system" },
+    leadFunnel: { icon: "check", text: "You keep everything" },
+    diyGhl: { icon: "x", text: "Locked to platform" },
+    agency: { icon: "x", text: "They own it" },
+    doNothing: { icon: "x", text: "N/A" },
+  },
+  {
+    category: "Ongoing optimization",
+    leadFunnel: { icon: "check", text: "Monthly by our team" },
+    diyGhl: { icon: "x", text: "You do it" },
+    agency: { icon: "check", text: "Included (usually)" },
+    doNothing: { icon: "x", text: "None" },
   },
 ];
 
 const columnHeaders = [
-  { label: "AI Lead Engine", highlight: true },
-  { label: "Perspective / ClickFunnels", highlight: false },
-  { label: "Google Ads Alone", highlight: false },
-  { label: "HomeAdvisor / Angi", highlight: false },
+  { label: "Lead Funnel System", highlight: true },
+  { label: "DIY GoHighLevel", highlight: false },
+  { label: "Hire a Marketing Agency", highlight: false },
+  { label: "Do Nothing", highlight: false },
 ];
 
 function CellIcon({ icon }: { icon: "check" | "x" | "dash" }) {
@@ -105,10 +98,10 @@ export default function LeadEngineComparison() {
             How we compare
           </p>
           <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-            Not all lead gen is created equal.
+            Not all lead systems are created equal.
           </h2>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mb-16">
-            See how the AI Lead Engine stacks up against the alternatives you&apos;re probably already paying for.
+            See how a done-for-you lead funnel stacks up against the alternatives.
           </p>
         </RevealOnScroll>
 
@@ -148,16 +141,16 @@ export default function LeadEngineComparison() {
                       className="px-5 py-3.5 text-center"
                       style={{ background: "rgba(74,222,128,0.06)" }}
                     >
-                      <CellValue cell={row.aiLeadEngine} />
+                      <CellValue cell={row.leadFunnel} />
                     </td>
                     <td className="px-5 py-3.5 text-center">
-                      <CellValue cell={row.diySaas} />
+                      <CellValue cell={row.diyGhl} />
                     </td>
                     <td className="px-5 py-3.5 text-center">
-                      <CellValue cell={row.googleAds} />
+                      <CellValue cell={row.agency} />
                     </td>
                     <td className="px-5 py-3.5 text-center">
-                      <CellValue cell={row.homeAdvisor} />
+                      <CellValue cell={row.doNothing} />
                     </td>
                   </tr>
                 ))}
@@ -176,10 +169,10 @@ export default function LeadEngineComparison() {
                 </h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: "AI Lead Engine", cell: row.aiLeadEngine, highlight: true },
-                    { label: "DIY SaaS", cell: row.diySaas, highlight: false },
-                    { label: "Google Ads", cell: row.googleAds, highlight: false },
-                    { label: "HomeAdvisor", cell: row.homeAdvisor, highlight: false },
+                    { label: "Lead Funnel System", cell: row.leadFunnel, highlight: true },
+                    { label: "DIY GoHighLevel", cell: row.diyGhl, highlight: false },
+                    { label: "Marketing Agency", cell: row.agency, highlight: false },
+                    { label: "Do Nothing", cell: row.doNothing, highlight: false },
                   ].map((item, j) => (
                     <div
                       key={j}

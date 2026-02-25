@@ -2,26 +2,30 @@
 
 import RevealOnScroll from "@/app/components/RevealOnScroll";
 
-/** Dynamic ROI math section — populated from niche data */
+/** Dynamic ROI math section — shows conversion improvement, not CPL comparison */
 export default function ROISection({
   serviceName,
   avgJobValue,
   setupFee,
   monthlyFee,
   breakEvenJobs,
-  cplGoogle,
-  cplOurs,
+  conversionBefore,
+  conversionAfter,
+  leadsMissed,
 }: {
   serviceName: string;
   avgJobValue: number;
   setupFee: number;
   monthlyFee: number;
   breakEvenJobs: number;
-  cplGoogle: string;
-  cplOurs: string;
+  conversionBefore: string;
+  conversionAfter: string;
+  leadsMissed: number;
 }) {
   const yearOneCost = setupFee + monthlyFee * 12;
   const jobsToPayOff = Math.ceil(yearOneCost / avgJobValue);
+  const extraRevenuePerMonth = leadsMissed * avgJobValue;
+  const niche = serviceName.toLowerCase().replace(" lead engine", "").replace(" patient engine", "");
 
   return (
     <section className="py-30 max-md:py-20 relative overflow-hidden">
@@ -36,8 +40,8 @@ export default function ROISection({
             in <span className="text-accent">{breakEvenJobs} jobs.</span>
           </h2>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px]">
-            Run the numbers yourself. The average {serviceName.toLowerCase().replace(" lead engine", "").replace(" patient engine", "")} job
-            is worth ${avgJobValue.toLocaleString()}. Here&apos;s how fast this system pays off.
+            You&apos;re already getting leads. The problem is conversion. Here&apos;s what happens when
+            you stop losing them.
           </p>
         </RevealOnScroll>
 
@@ -45,13 +49,13 @@ export default function ROISection({
           <RevealOnScroll>
             <div className="bg-surface border border-border rounded-[20px] p-8">
               <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-text-dim mb-5">
-                Your current cost
+                Without a system
               </p>
               <div className="text-3xl font-black tracking-[-1px] text-red mb-2">
-                {cplGoogle}
+                {conversionBefore} close rate
               </div>
               <p className="text-sm text-text-dim leading-[1.6]">
-                Per lead on Google Ads. Stop paying and the leads stop.
+                Slow follow-up, missed calls, no automation. ~{leadsMissed} leads/month lost to competitors who respond faster.
               </p>
             </div>
           </RevealOnScroll>
@@ -59,16 +63,16 @@ export default function ROISection({
           <RevealOnScroll>
             <div className="bg-surface border border-accent-border rounded-[20px] p-8 relative">
               <div className="absolute -top-3 left-6 bg-accent text-black px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.06em] uppercase">
-                Our System
+                With Our System
               </div>
               <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-text-dim mb-5">
-                Your cost with us
+                With funnel + automation
               </p>
               <div className="text-3xl font-black tracking-[-1px] text-accent mb-2">
-                {cplOurs}
+                {conversionAfter} close rate
               </div>
               <p className="text-sm text-text-dim leading-[1.6]">
-                Per exclusive lead. You own the system. Leads compound over time.
+                60-second response, automated follow-up, lead nurture sequences. More of your existing leads become booked jobs.
               </p>
             </div>
           </RevealOnScroll>
@@ -76,15 +80,14 @@ export default function ROISection({
           <RevealOnScroll>
             <div className="bg-surface border border-border rounded-[20px] p-8">
               <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-text-dim mb-5">
-                Year one investment
+                Extra revenue potential
               </p>
               <div className="text-3xl font-black tracking-[-1px] mb-2">
-                ${yearOneCost.toLocaleString()}
+                ${extraRevenuePerMonth.toLocaleString()}/mo
               </div>
               <p className="text-sm text-text-dim leading-[1.6]">
-                ${setupFee.toLocaleString()} setup + ${monthlyFee}/mo. Only{" "}
-                <span className="text-accent font-semibold">{jobsToPayOff} jobs</span>{" "}
-                to pay off the entire year.
+                {leadsMissed} recovered leads &times; ${avgJobValue.toLocaleString()} avg {niche} job.
+                Year one investment: ${yearOneCost.toLocaleString()} ({jobsToPayOff} jobs to pay it off).
               </p>
             </div>
           </RevealOnScroll>

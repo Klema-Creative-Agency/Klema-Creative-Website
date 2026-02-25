@@ -1,62 +1,93 @@
 "use client";
 
-const features = [
-  ["Website", "WordPress", "Next.js", "Fully Custom Next.js"],
-  ["Blog Articles / Month", "2", "4", "6\u20138"],
-  ["SEO & AEO", "\u2713", "Advanced + Competitor Analysis", "Advanced + Backlink Building"],
-  ["Social Media", "1 Platform", "1 Platform", "Multi-Platform"],
-  ["CRM & Lead Capture", "\u2713", "\u2713", "\u2713"],
-  ["Lead Nurturing", "\u2014", "20 hrs/month", "80+ hrs/month"],
-  ["Lead Response Time", "\u2014", "Within 24 hours", "Within 5 minutes"],
-  ["Live Hot Transfers", "\u2014", "\u2014", "\u2713"],
-  ["Reputation Management", "\u2014", "\u2713", "\u2713"],
-  ["Email Nurture Sequences", "\u2014", "\u2713", "\u2713"],
-  ["Strategy Calls", "Monthly", "Bi-weekly", "Weekly"],
-  ["Dedicated Account Manager", "\u2014", "\u2014", "\u2713"],
-  ["Quarterly Business Reviews", "\u2014", "\u2014", "\u2713"],
+const features: [string, ...string[]][] = [
+  ["Lead Conversion Funnel", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["60-Second Call Trigger", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["Automated SMS & Email", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["CRM & Lead Pipeline", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["Monthly Funnel Optimization", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["SEO & Local Rankings", "\u2014", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["Google Business Profile", "\u2014", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["Reputation Engine", "\u2014", "\u2713", "\u2713", "\u2713", "\u2713"],
+  ["Custom Website", "\u2014", "\u2014", "\u2713", "\u2713", "\u2713"],
+  ["Paid Ad Management", "\u2014", "\u2014", "\u2713", "\u2713", "\u2713"],
+  ["Branded Dashboard", "\u2014", "\u2014", "\u2713", "\u2713", "\u2713"],
+  ["Blog Articles / Month", "\u2014", "\u2014", "\u2014", "4\u20136", "6\u20138"],
+  ["Social Media", "\u2014", "\u2014", "\u2014", "2 Platforms", "3 Platforms"],
+  ["Email Campaigns", "\u2014", "\u2014", "\u2014", "\u2713", "\u2713"],
+  ["Competitor Monitoring", "\u2014", "\u2014", "\u2014", "\u2713", "\u2713"],
+  ["A/B Testing", "\u2014", "\u2014", "\u2014", "\u2713", "\u2713"],
+  ["Dedicated Lead Team", "\u2014", "\u2014", "\u2014", "\u2014", "\u2713"],
+  ["Lead Qualification Calls", "\u2014", "\u2014", "\u2014", "\u2014", "\u2713"],
+  ["Live Hot Transfers", "\u2014", "\u2014", "\u2014", "\u2014", "\u2713"],
+  ["Appointment Setting", "\u2014", "\u2014", "\u2014", "\u2014", "\u2713"],
+  ["Strategy Calls", "Monthly", "Monthly", "Monthly", "Bi-weekly", "Weekly"],
+  ["Business Reviews", "\u2014", "\u2014", "\u2014", "Quarterly", "Quarterly"],
 ];
+
+const HEADERS = [
+  { name: "Ignition", price: "$997" },
+  { name: "Foundation", price: "$1,997" },
+  { name: "Accelerator", price: "$3,997" },
+  { name: "Authority", price: "$7,500" },
+  { name: "Dominator", price: "$12,000" },
+];
+
+const HIGHLIGHT_COL = 2; // Accelerator (0-indexed)
 
 function renderValue(val: string) {
   if (val === "\u2713")
-    return <span className="text-accent">{val}</span>;
+    return <span className="text-accent font-bold">{val}</span>;
   if (val === "\u2014")
     return <span className="text-white-15">{val}</span>;
-  return <span className="text-text-mid">{val}</span>;
+  return <span className="text-text-mid text-[12px]">{val}</span>;
 }
 
 export default function ComparisonTable() {
   return (
     <div className="mt-12 overflow-x-auto">
-      <table className="comparison-table w-full border-collapse text-sm min-w-[600px]">
+      <table className="comparison-table w-full border-collapse text-sm min-w-[800px]">
         <thead>
           <tr className="border-b border-border">
-            <th className="text-left px-5 py-4 text-text-dim font-semibold text-[13px]">
+            <th className="text-left px-4 py-4 text-text-dim font-semibold text-[13px] w-[200px]">
               Feature
             </th>
-            <th className="text-center px-5 py-4 font-bold text-[13px]">
-              Foundation
-              <br />
-              <span className="text-text-dim font-medium">$3,500/mo</span>
-            </th>
-            <th className="text-center px-5 py-4 font-bold text-[13px] text-accent">
-              Accelerator
-              <br />
-              <span className="text-text-dim font-medium">$8,000/mo</span>
-            </th>
-            <th className="text-center px-5 py-4 font-bold text-[13px]">
-              Dominator
-              <br />
-              <span className="text-text-dim font-medium">$10,000/mo</span>
-            </th>
+            {HEADERS.map((h, i) => (
+              <th
+                key={i}
+                className={`text-center px-3 py-4 font-bold text-[12px] ${
+                  i === HIGHLIGHT_COL ? "text-accent" : "text-text"
+                }`}
+                style={
+                  i === HIGHLIGHT_COL
+                    ? { background: "rgba(74,222,128,0.05)" }
+                    : undefined
+                }
+              >
+                {h.name}
+                <br />
+                <span className="text-text-dim font-medium text-[11px]">{h.price}/mo</span>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {features.map((row, i) => (
             <tr key={i} className="border-b border-border">
-              <td className="px-5 py-3.5 text-text-mid">{row[0]}</td>
-              <td className="px-5 py-3.5 text-center">{renderValue(row[1])}</td>
-              <td className="px-5 py-3.5 text-center">{renderValue(row[2])}</td>
-              <td className="px-5 py-3.5 text-center">{renderValue(row[3])}</td>
+              <td className="px-4 py-3 text-text-mid text-[13px]">{row[0]}</td>
+              {[1, 2, 3, 4, 5].map((colIdx) => (
+                <td
+                  key={colIdx}
+                  className="px-3 py-3 text-center text-[13px]"
+                  style={
+                    colIdx - 1 === HIGHLIGHT_COL
+                      ? { background: "rgba(74,222,128,0.05)" }
+                      : undefined
+                  }
+                >
+                  {renderValue(row[colIdx])}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

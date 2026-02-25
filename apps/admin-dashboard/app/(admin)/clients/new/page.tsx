@@ -8,9 +8,11 @@ import { Select } from "@/components/ui/Select";
 import { Card } from "@/components/ui/Card";
 
 const tierOptions = [
-  { value: "1", label: "Tier 1 — Digital Foundation ($4,000/mo)" },
-  { value: "2", label: "Tier 2 — Growth Accelerator ($8,500/mo)" },
-  { value: "3", label: "Tier 3 — Market Dominator ($12,000/mo)" },
+  { value: "1", label: "Tier 1 — Ignition ($997/mo)" },
+  { value: "2", label: "Tier 2 — Foundation ($1,997/mo)" },
+  { value: "3", label: "Tier 3 — Accelerator ($3,997/mo)" },
+  { value: "4", label: "Tier 4 — Authority ($7,500/mo)" },
+  { value: "5", label: "Tier 5 — Dominator ($12,000/mo)" },
 ];
 
 export default function NewClientPage() {

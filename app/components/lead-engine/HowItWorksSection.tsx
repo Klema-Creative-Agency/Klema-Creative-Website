@@ -14,12 +14,12 @@ const STEPS = [
   {
     num: 3,
     title: "We Build It",
-    body: "Funnel, automations, call trigger, follow-up sequences — all built and tested within 10 business days.",
+    body: "We build your GoHighLevel account with all automations pre-configured — funnel, call trigger, SMS/email sequences, and CRM pipeline. Ready in 10 business days.",
   },
   {
     num: 4,
     title: "Your Phone Rings",
-    body: "System goes live. Leads flow in, your phone rings, jobs get booked. We optimize every month.",
+    body: "System goes live on your existing traffic sources. Leads from Google, referrals, ads, and anywhere else hit your funnel — and get followed up instantly. We optimize every month.",
   },
 ];
 

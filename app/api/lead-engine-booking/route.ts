@@ -9,7 +9,7 @@ interface LeadPayload {
   email: string;
   niche: string;
   leadVolume?: string;
-  marketingSpend: string;
+  leadSource: string;
   frustration?: string;
   source: string;
 }
@@ -21,7 +21,7 @@ const REQUIRED_FIELDS: (keyof LeadPayload)[] = [
   "city",
   "phone",
   "email",
-  "marketingSpend",
+  "leadSource",
 ];
 
 export async function POST(request: NextRequest) {
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       email,
       niche,
       leadVolume,
-      marketingSpend,
+      leadSource,
       frustration,
       source,
     } = body;
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
           tags: ["AI-Lead-Engine", `niche-${niche}`, `source-${source}`],
           customField: {
             business_name: businessName,
-            marketing_spend: marketingSpend,
+            lead_source: leadSource,
             lead_volume: leadVolume || "",
             frustration: frustration || "",
             niche,

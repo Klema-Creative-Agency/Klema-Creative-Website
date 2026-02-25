@@ -47,8 +47,8 @@ const DELIVERABLES = [
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
-    title: "Lead Dashboard & CRM",
-    body: "Every lead tracked in one place. Source, status, value — full visibility, zero guesswork.",
+    title: "Done-for-You GoHighLevel Account",
+    body: "Your own GoHighLevel CRM — fully configured. Every lead tracked, every follow-up automated, full visibility from day one.",
   },
   {
     icon: (
@@ -59,7 +59,7 @@ const DELIVERABLES = [
       </svg>
     ),
     title: "Monthly Optimization",
-    body: "We monitor, test, and report every month. You close jobs — we make the system better.",
+    body: "We monitor automation performance, review funnel metrics, and optimize your sequences every month. You close jobs — we tune the system.",
   },
 ];
 

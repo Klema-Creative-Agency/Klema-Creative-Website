@@ -497,6 +497,9 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
               <div className="shrink-0">{phone}</div>
               <div className="hidden md:block flex-1 max-w-[520px]">{desktop}</div>
             </div>
+            <p className="text-center text-[12px] text-text-dim mt-6 italic">
+              This is a generic demo. Your funnel will be custom-built and tailored to your brand, market, and services.
+            </p>
           </RevealOnScroll>
           <RevealOnScroll>
             <div className="text-center mt-10">
@@ -543,6 +546,9 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
             <div className="shrink-0">{phone}</div>
             <div className="hidden md:block flex-1 max-w-[520px]">{desktop}</div>
           </div>
+          <p className="text-center text-[13px] text-text-dim mt-8 italic max-w-[540px] mx-auto">
+            This is a generic demo. Your funnel will be fully custom — designed around your brand, your services, and your market. No templates.
+          </p>
         </RevealOnScroll>
       </div>
     </section>

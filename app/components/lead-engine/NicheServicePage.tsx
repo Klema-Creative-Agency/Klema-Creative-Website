@@ -119,8 +119,9 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
         setupFee={niche.setup_fee}
         monthlyFee={niche.monthly_fee}
         breakEvenJobs={niche.break_even_jobs}
-        cplGoogle={niche.cpl_google}
-        cplOurs={niche.cpl_our_system}
+        conversionBefore={niche.conversion_rate_before}
+        conversionAfter={niche.conversion_rate_after}
+        leadsMissed={niche.avg_monthly_leads_missed}
       />
 
       {/* PRICING */}
