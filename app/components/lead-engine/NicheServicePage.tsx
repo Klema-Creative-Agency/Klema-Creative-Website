@@ -27,7 +27,7 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
   return (
     <>
       {/* HERO */}
-      <section className="border-t border-border pt-[140px] pb-20 max-md:pb-14 relative overflow-hidden">
+      <section className="pt-[140px] pb-20 max-md:pb-14 relative overflow-hidden">
         <div className="hero-glow hero-glow-breathe" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
@@ -66,10 +66,11 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
             </div>
           </RevealOnScroll>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-bg pointer-events-none z-[1]" />
       </section>
 
       {/* STATS BAR */}
-      <section className="border-t border-border py-16 max-md:py-10">
+      <section className="py-16 max-md:py-10">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <StatsBar
             stats={[niche.pain_stat_1, niche.pain_stat_2, niche.pain_stat_3]}
@@ -78,7 +79,7 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
       </section>
 
       {/* PROBLEMS */}
-      <section className="border-t border-border py-30 max-md:py-20">
+      <section className="py-30 max-md:py-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
@@ -133,7 +134,7 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
       />
 
       {/* FINAL CTA */}
-      <section className="py-40 text-center relative overflow-hidden border-t border-border">
+      <section className="py-40 text-center relative overflow-hidden">
         <div className="cta-glow" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>

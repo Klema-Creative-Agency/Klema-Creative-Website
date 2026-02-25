@@ -43,7 +43,7 @@ export default function AILeadEngineHub() {
   return (
     <>
       {/* HERO */}
-      <section className="border-t border-border pt-[140px] pb-20 max-md:pb-14 relative overflow-hidden">
+      <section className="pt-[140px] pb-20 max-md:pb-14 relative overflow-hidden">
         <div className="hero-glow hero-glow-breathe" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
@@ -64,10 +64,11 @@ export default function AILeadEngineHub() {
             </p>
           </RevealOnScroll>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-bg pointer-events-none z-[1]" />
       </section>
 
       {/* NICHE GRID */}
-      <section className="border-t border-border py-30 max-md:py-20">
+      <section className="py-30 max-md:py-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
@@ -138,8 +139,9 @@ export default function AILeadEngineHub() {
       <QuizFunnelDemo niche={getNicheBySlug("roofing")!} compact />
 
       {/* SHARED PRICING OVERVIEW */}
-      <section className="border-t border-border py-30 max-md:py-20">
-        <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 text-center">
+      <section className="py-30 max-md:py-20 relative overflow-hidden">
+        <div className="cta-glow" />
+        <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 text-center relative z-2">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
               Same price. Every niche.
@@ -156,7 +158,7 @@ export default function AILeadEngineHub() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-40 text-center relative overflow-hidden border-t border-border">
+      <section className="py-40 text-center relative overflow-hidden">
         <div className="cta-glow" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>

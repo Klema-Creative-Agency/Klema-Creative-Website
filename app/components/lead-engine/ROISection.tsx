@@ -24,8 +24,9 @@ export default function ROISection({
   const jobsToPayOff = Math.ceil(yearOneCost / avgJobValue);
 
   return (
-    <section className="border-t border-border py-30 max-md:py-20">
-      <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
+    <section className="py-30 max-md:py-20 relative overflow-hidden">
+      <div className="cta-glow" />
+      <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
         <RevealOnScroll>
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
             The math

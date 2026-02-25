@@ -98,7 +98,7 @@ function CellValue({ cell }: { cell: CompetitorCell }) {
 
 export default function LeadEngineComparison() {
   return (
-    <section className="border-t border-border py-30 max-md:py-20">
+    <section className="py-30 max-md:py-20">
       <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
         <RevealOnScroll>
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
@@ -117,7 +117,7 @@ export default function LeadEngineComparison() {
           <div className="hidden md:block overflow-x-auto">
             <table className="comparison-table w-full border-collapse text-sm min-w-[700px]">
               <thead>
-                <tr className="border-b border-border">
+                <tr className="border-b border-white-6">
                   <th className="text-left px-5 py-4 text-text-dim font-semibold text-[13px]">
                     Category
                   </th>
