@@ -437,7 +437,7 @@ export default function PackagesPage() {
       <section className="pt-10 pb-20">
         <RevealOnScroll>
           {/* Full-width relative wrapper for arrows */}
-          <div className="relative max-w-[1400px] mx-auto">
+          <div className="relative max-w-[1500px] mx-auto">
             {/* Green ambient glow behind cards */}
             <div className="pricing-glow-bg" />
 
@@ -449,7 +449,7 @@ export default function PackagesPage() {
               ref={scrollRef}
               onScroll={updateScrollState}
               className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
-              style={{ paddingLeft: "calc((100% - 3 * 320px - 2 * 28px) / 2 - 60px)", paddingRight: "calc((100% - 3 * 320px - 2 * 28px) / 2 + 60px)" }}
+              style={{ paddingLeft: "24px", paddingRight: "24px" }}
             >
               {TIERS.map((tier) => (
                 <div
