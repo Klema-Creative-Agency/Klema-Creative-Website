@@ -279,7 +279,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
       </h3>
 
       {/* Price */}
-      <div className="flex items-baseline gap-1.5 mb-0.5">
+      <div className="flex items-baseline gap-1.5 mb-2.5">
         <div className="text-5xl font-black tracking-[-1.5px] leading-none">
           <span className="text-xl font-semibold align-super mr-0.5">$</span>
           {tier.price}
