@@ -258,7 +258,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
 
   return (
     <div
-      className={`bg-surface border rounded-[24px] p-9 px-8 transition-all duration-400 hover:border-border-hover flex flex-col min-h-[620px] relative ${
+      className={`bg-surface border rounded-[24px] p-7 px-6 transition-all duration-400 hover:border-border-hover flex flex-col min-h-[620px] relative ${
         tier.featured ? "border-accent-border price-card-featured" : "border-border"
       }`}
     >
@@ -268,46 +268,54 @@ function PricingCardInner({ tier }: { tier: TierData }) {
         </div>
       )}
 
-      {/* Tier label */}
-      <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
-        Tier {tier.tier}
-      </p>
+      {/* ── Top section — fixed height so CTA buttons align across all cards ── */}
+      <div className="min-h-[290px] flex flex-col">
+        {/* Tier label */}
+        <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-accent mb-1.5">
+          Tier {tier.tier}
+        </p>
 
-      {/* Name */}
-      <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
-        {tier.name}
-      </h3>
+        {/* Name */}
+        <h3 className="text-2xl font-extrabold tracking-[-0.5px] mb-2">
+          {tier.name}
+        </h3>
 
-      {/* Price */}
-      <div className="flex items-baseline gap-1.5 mb-5">
-        <div className="text-5xl font-black tracking-[-1.5px] leading-none">
-          <span className="text-xl font-semibold align-super mr-0.5">$</span>
-          {tier.price}
+        {/* Price */}
+        <div className="flex items-baseline gap-1.5 mb-5">
+          <div className="text-5xl font-black tracking-[-1.5px] leading-none">
+            <span className="text-xl font-semibold align-super mr-0.5">$</span>
+            {tier.price}
+          </div>
+          <span className="text-sm text-text-dim">/mo</span>
         </div>
-        <span className="text-sm text-text-dim">/mo</span>
-      </div>
-      <div className="group/setup relative inline-flex items-center gap-1 mb-4">
-        <p className="text-[13px] text-text-dim">{tier.setup}</p>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" strokeWidth="2"
-             className="text-text-dim/50 cursor-help">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4M12 8h.01" />
-        </svg>
-        <div className="absolute bottom-full left-0 mb-2 w-56 bg-[#1a1a1a] border border-border rounded-xl p-3 text-[11px] text-text-mid leading-[1.5] opacity-0 pointer-events-none group-hover/setup:opacity-100 group-hover/setup:pointer-events-auto transition-opacity duration-200 z-10 shadow-xl">
-          {tier.setupTooltip}
+        <div className="group/setup relative inline-flex items-center gap-1 mb-4">
+          <p className="text-[13px] text-text-dim">{tier.setup}</p>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" strokeWidth="2"
+               className="text-text-dim/50 cursor-help">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4M12 8h.01" />
+          </svg>
+          <div className="absolute bottom-full left-0 mb-2 w-56 bg-[#1a1a1a] border border-border rounded-xl p-3 text-[11px] text-text-mid leading-[1.5] opacity-0 pointer-events-none group-hover/setup:opacity-100 group-hover/setup:pointer-events-auto transition-opacity duration-200 z-10 shadow-xl">
+            {tier.setupTooltip}
+          </div>
         </div>
-      </div>
 
-      {/* Description */}
-      <p className="text-[15px] text-text-dim leading-[1.5] mb-5">
-        {tier.tagline}
-      </p>
+        {/* Tagline */}
+        <p className="text-[15px] text-text-dim leading-[1.5] mb-2">
+          {tier.tagline}
+        </p>
+
+        {/* Best for */}
+        <p className="text-[13px] text-text-mid/60 leading-[1.5] italic mt-auto">
+          Best for: {tier.bestFor}
+        </p>
+      </div>
 
       {/* CTA */}
       <Link
         href={`/services/${tier.slug}`}
-        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mb-5 ${
+        className={`block w-full py-3.5 rounded-full text-[15px] font-bold text-center no-underline transition-all duration-300 mt-5 mb-5 ${
           tier.ctaStyle === "primary"
             ? "bg-accent text-black hover:shadow-[0_0_32px_rgba(74,222,128,0.3)] hover:-translate-y-px"
             : "bg-white-6 text-text hover:bg-white-10 hover:-translate-y-px"
@@ -363,7 +371,7 @@ export default function PackagesPage() {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeIndex, setActiveIndex] = useState(2); // Accelerator default
 
-  const CARD_WIDTH = 380;
+  const CARD_WIDTH = 320;
   const GAP = 28; // gap-7
   const SCROLL_AMOUNT = CARD_WIDTH + GAP;
 
@@ -449,12 +457,12 @@ export default function PackagesPage() {
               ref={scrollRef}
               onScroll={updateScrollState}
               className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
-              style={{ paddingLeft: "calc((100% - 3 * 380px - 2 * 28px) / 2)", paddingRight: "calc((100% - 3 * 380px - 2 * 28px) / 2)" }}
+              style={{ paddingLeft: "calc((100% - 3 * 320px - 2 * 28px) / 2)", paddingRight: "calc((100% - 3 * 320px - 2 * 28px) / 2)" }}
             >
               {TIERS.map((tier) => (
                 <div
                   key={tier.tier}
-                  className={`snap-center shrink-0 w-[380px] max-md:w-[320px] transition-transform duration-300 ${
+                  className={`snap-center shrink-0 w-[320px] transition-transform duration-300 ${
                     tier.featured ? "scale-[1.03] z-10" : ""
                   }`}
                 >
