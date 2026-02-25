@@ -444,6 +444,14 @@ body {
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* === PRICING SCROLL SOFT EDGES === */
+@media (min-width: 768px) {
+  .pricing-scroll-mask {
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+}
+
 /* === PRICING GLOW BACKGROUND === */
 .pricing-glow-bg {
   position: absolute;

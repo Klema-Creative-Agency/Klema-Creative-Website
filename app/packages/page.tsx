@@ -386,14 +386,15 @@ export default function PackagesPage() {
     scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
   };
 
-  // Center the Accelerator card (index 2) on mount
+  // Center on Foundation (index 1) so Ignition is visible on the left
+  // and Accelerator (featured) is prominent on the right
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const acceleratorIndex = 2;
-    const cardCenter = acceleratorIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
+    const centerIndex = 1; // Foundation
+    const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
     const scrollTarget = cardCenter - el.clientWidth / 2;
-    el.scrollTo({ left: scrollTarget, behavior: "instant" });
+    el.scrollTo({ left: Math.max(0, scrollTarget), behavior: "instant" });
     requestAnimationFrame(updateScrollState);
   }, [updateScrollState]);
 
@@ -435,24 +436,20 @@ export default function PackagesPage() {
       {/* PRICING CARDS — Horizontal Scroll Gallery */}
       <section className="pt-10 pb-20">
         <RevealOnScroll>
-          {/* Constrained viewport — fits ~3 cards */}
-          <div className="max-w-[1260px] mx-auto relative">
+          {/* Full-width relative wrapper for arrows */}
+          <div className="relative max-w-[1400px] mx-auto">
             {/* Green ambient glow behind cards */}
             <div className="pricing-glow-bg" />
-
-            {/* Left fade mask */}
-            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[72px] z-10 pointer-events-none bg-gradient-to-r from-bg to-transparent" />
-            {/* Right fade mask */}
-            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[72px] z-10 pointer-events-none bg-gradient-to-l from-bg to-transparent" />
 
             {/* Left arrow */}
             <ScrollArrow direction="left" onClick={scrollToLeft} visible={canScrollLeft} />
 
-            {/* Scroll container */}
+            {/* Scroll container — edge fade via CSS mask */}
             <div
               ref={scrollRef}
               onScroll={updateScrollState}
-              className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-4 px-[calc((100%-380px)/2)] md:px-[calc((100%-3*380px-2*28px)/2)]"
+              className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
+              style={{ paddingLeft: "calc((100% - 3 * 380px - 2 * 28px) / 2)", paddingRight: "calc((100% - 3 * 380px - 2 * 28px) / 2)" }}
             >
               {TIERS.map((tier) => (
                 <div
