@@ -449,7 +449,7 @@ export default function PackagesPage() {
               ref={scrollRef}
               onScroll={updateScrollState}
               className="flex gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-8 pb-6 pricing-scroll-mask"
-              style={{ paddingLeft: "calc((100% - 3 * 320px - 2 * 28px) / 2)", paddingRight: "calc((100% - 3 * 320px - 2 * 28px) / 2)" }}
+              style={{ paddingLeft: "calc((100% - 3 * 320px - 2 * 28px) / 2 - 60px)", paddingRight: "calc((100% - 3 * 320px - 2 * 28px) / 2 + 60px)" }}
             >
               {TIERS.map((tier) => (
                 <div
