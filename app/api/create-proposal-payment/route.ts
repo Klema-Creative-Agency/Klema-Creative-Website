@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[create-proposal-payment] Stripe error:", message);
     return Response.json(
-      { error: "Could not create payment. Please try again.", detail: message },
+      { error: "Could not create payment. Please try again." },
       { status: 500 }
     );
   }
