@@ -39,9 +39,7 @@ export default function ProposalPageClient({
             <span className="logo-dot" />
             klema creative
           </Link>
-          <span className="text-sm text-text-dim">
-            Prepared for {proposal.clientBusinessName}
-          </span>
+{/* Clean nav — no extra text */}
         </div>
       </nav>
 
