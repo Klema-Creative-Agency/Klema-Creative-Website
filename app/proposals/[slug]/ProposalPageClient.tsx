@@ -64,7 +64,7 @@ export default function ProposalPageClient({
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
-            <h1 className="font-serif text-[clamp(34px,5.5vw,60px)] font-medium leading-[1.08] tracking-[-1.5px] mb-6 text-text">
+            <h1 className="text-[clamp(34px,5.5vw,60px)] font-extrabold leading-[1.08] tracking-[-1.5px] mb-6 text-text">
               Stop chasing payments.<br />
               <span className="text-accent">Start collecting them.</span>
             </h1>
