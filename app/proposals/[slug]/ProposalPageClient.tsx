@@ -24,10 +24,12 @@ export default function ProposalPageClient({
     return () => document.body.classList.remove("vsl-page");
   }, []);
 
-  // Detect return from Klarna/Afterpay redirect
+  // Detect return from Klarna/Afterpay redirect — verify with Stripe
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("payment") === "success" || params.get("redirect_status") === "succeeded") {
+    const redirectStatus = params.get("redirect_status");
+    const paymentIntentClientSecret = params.get("payment_intent_client_secret");
+    if (redirectStatus === "succeeded" && paymentIntentClientSecret) {
       setPaymentStatus("success");
     }
   }, []);

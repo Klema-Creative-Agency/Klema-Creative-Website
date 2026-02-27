@@ -113,9 +113,9 @@ function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
     setSubmitting(true);
     setError(null);
 
-    const returnUrl = `${window.location.origin}${window.location.pathname}?payment=success`;
+    const returnUrl = `${window.location.origin}${window.location.pathname}?redirect_status=succeeded`;
 
-    const { error: confirmError } = await stripe.confirmPayment({
+    const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: returnUrl,
@@ -123,11 +123,15 @@ function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
       redirect: "if_required",
     });
 
-    if (confirmError) {
-      setError(confirmError.message || "Payment failed. Please try again.");
+    if (result.error) {
+      setError(result.error.message || "Payment failed. Please try again.");
       setSubmitting(false);
-    } else {
+    } else if (result.paymentIntent?.status === "succeeded") {
       onSuccess();
+    } else {
+      // Payment not yet confirmed (requires_action, processing, etc.)
+      setError("Payment was not completed. Please try again.");
+      setSubmitting(false);
     }
   }
 
