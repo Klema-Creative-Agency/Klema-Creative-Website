@@ -33,6 +33,7 @@ export async function POST(request: Request) {
       amount: proposal.stripeConfig.priceAmountCents,
       currency: proposal.stripeConfig.currency,
       description: proposal.stripeConfig.description,
+      automatic_payment_methods: { enabled: true },
       metadata: {
         proposal_slug: proposal.slug,
         client_name: proposal.clientName,
