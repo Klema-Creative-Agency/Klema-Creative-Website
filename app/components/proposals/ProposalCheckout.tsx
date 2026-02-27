@@ -55,7 +55,7 @@ export default function ProposalCheckout({
       <div className="bg-surface border border-border rounded-[20px] p-8 flex items-center justify-center min-h-[200px]">
         <div className="flex flex-col items-center gap-3">
           <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-text-dim">Preparing checkout...</p>
+          <p className="text-sm text-text-dim">Preparing secure checkout...</p>
         </div>
       </div>
     );
@@ -144,10 +144,23 @@ function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
         {submitting ? "Processing..." : "Pay & Get Started \u2192"}
       </button>
 
-      <p className="text-[11px] text-text-dim text-center mt-3">
-        Secure payment powered by Stripe. Your card info never touches our
-        servers.
-      </p>
+      {/* Trust signals */}
+      <div className="flex flex-col items-center gap-2 mt-4">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span className="text-[11px] text-text-dim">256-bit encryption</span>
+          </div>
+          <div className="w-px h-3 bg-border" />
+          <div className="flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span className="text-[11px] text-text-dim">Powered by Stripe</span>
+          </div>
+        </div>
+        <p className="text-[11px] text-text-dim text-center">
+          Your card info never touches our servers. Payments processed securely by Stripe.
+        </p>
+      </div>
     </form>
   );
 }
