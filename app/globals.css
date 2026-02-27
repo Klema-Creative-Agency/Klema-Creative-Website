@@ -585,6 +585,26 @@ body.vsl-page > footer {
   100% { transform: translateX(0); opacity: 1; }
 }
 
+/* === CHECKMARK DRAW (payment confirmation) === */
+@keyframes checkDraw {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+.checkout-check-draw {
+  stroke-dasharray: 24;
+  animation: checkDraw 0.6s ease-out forwards;
+}
+
+/* === REVENUE COUNTER GLOW PULSE === */
+@keyframes revenuePulse {
+  0% { text-shadow: 0 0 0 rgba(74, 222, 128, 0); }
+  50% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
+  100% { text-shadow: 0 0 0 rgba(74, 222, 128, 0); }
+}
+.revenue-pulse {
+  animation: revenuePulse 1s ease-out;
+}
+
 /* === SCANNER ANIMATIONS === */
 @keyframes scanPulse {
   0%, 100% { opacity: 0.4; }
