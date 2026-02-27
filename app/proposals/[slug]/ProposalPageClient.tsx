@@ -24,6 +24,14 @@ export default function ProposalPageClient({
     return () => document.body.classList.remove("vsl-page");
   }, []);
 
+  // Detect return from Klarna/Afterpay redirect
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success" || params.get("redirect_status") === "succeeded") {
+      setPaymentStatus("success");
+    }
+  }, []);
+
   const todayTotal =
     proposal.pilotTerms.setupFee + proposal.pilotTerms.monthlyRate;
 

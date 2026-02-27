@@ -113,8 +113,13 @@ function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
     setSubmitting(true);
     setError(null);
 
+    const returnUrl = `${window.location.origin}${window.location.pathname}?payment=success`;
+
     const { error: confirmError } = await stripe.confirmPayment({
       elements,
+      confirmParams: {
+        return_url: returnUrl,
+      },
       redirect: "if_required",
     });
 
