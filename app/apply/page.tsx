@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 
 // ============================================================
 // TYPES
@@ -757,11 +757,70 @@ function calculateResults(answers: Record<string, number>) {
   // Social desirability flag
   const sdFlagged = sdCount >= 2 && sdHighCount >= 2;
 
+  // ── ALTERNATIVE PATH (Option B) ──
+  const altCompany = sortedCompanies[1];
+  let altCompanyWhy = "";
+  if (altCompany.name === "Klema Creative") {
+    altCompanyWhy = "Could also thrive in a client-facing, results-driven environment where speed and accountability matter.";
+  } else if (altCompany.name === "Klema Labs") {
+    altCompanyWhy = "Has the analytical mindset that could translate well into building products and systems at scale.";
+  } else {
+    altCompanyWhy = "Their interpersonal skills could shine in a hands-on, relationship-heavy environment like InlineGraphics.";
+  }
+
+  let altRoleWhy = "";
+  if (secondaryRole === "Customer Success") altRoleWhy = "Shows enough empathy and follow-through to handle client relationships if needed.";
+  else if (secondaryRole === "Sales & Sales Support") altRoleWhy = "Has the persuasive instincts that could be channeled into pipeline and outreach work.";
+  else if (secondaryRole === "Design") altRoleWhy = "Visual awareness and attention to detail suggest design could be a growth path.";
+  else if (secondaryRole === "Development / Vibe Coding") altRoleWhy = "Problem-solving orientation could translate into building tools and automations.";
+  else if (secondaryRole === "Marketing") altRoleWhy = "Understands audience and messaging — could run campaigns with the right training.";
+
+  // ── FIT VERDICT (Weed-Out Logic) ──
+  const traitAvg = (traits.ss + traits.ps + traits.sm + traits.lead + traits.del) / 5;
+  let redFlags: string[] = [];
+
+  if (traits.sm < 25) redFlags.push("Very low self-motivation — may require constant external pressure to produce work.");
+  if (traits.ss < 25 && traits.ps < 30) redFlags.push("Low self-sufficiency and problem solving — will need heavy hand-holding.");
+  if (traits.sm < 30 && traits.ss < 30) redFlags.push("Low motivation combined with low independence — high risk of underperformance.");
+  if (sdFlagged) redFlags.push("Social desirability flagged — answers may not reflect real behavior. Needs validation interview.");
+  if (traitAvg < 30) redFlags.push("Below-average scores across all core traits — poor overall fit.");
+  if (traits.lead < 20 && traits.del < 20 && traits.sm < 35) redFlags.push("Low leadership, low delegation, low drive — unlikely to grow into larger responsibilities.");
+
+  type FitVerdict = "strong" | "potential" | "conditional" | "not-recommended";
+  let verdict: FitVerdict;
+  let verdictLabel: string;
+  let verdictText: string;
+  let verdictAdminNote: string;
+
+  if (redFlags.length >= 2 || traitAvg < 28) {
+    verdict = "not-recommended";
+    verdictLabel = "Not Recommended";
+    verdictText = "Based on your responses, we don\u2019t have a strong match right now. That doesn\u2019t mean you can\u2019t grow into a fit — but our current roles demand a high baseline of self-direction and drive.";
+    verdictAdminNote = "Multiple red flags detected. Do not proceed without a thorough screening interview. Consider passing.";
+  } else if (redFlags.length === 1 || traitAvg < 40) {
+    verdict = "conditional";
+    verdictLabel = "Conditional Fit";
+    verdictText = "You show promise in certain areas, but there are a few traits that need development before we\u2019d feel confident in a placement. A follow-up conversation would help us understand the full picture.";
+    verdictAdminNote = "Some concerns flagged. Schedule a screening call to validate before placing.";
+  } else if (traitAvg < 55) {
+    verdict = "potential";
+    verdictLabel = "Potential Fit";
+    verdictText = "You have a solid foundation with room to grow. With the right mentorship and environment, you could develop into a strong contributor.";
+    verdictAdminNote = "Decent candidate. May need onboarding support and mentorship. Worth an interview.";
+  } else {
+    verdict = "strong";
+    verdictLabel = "Strong Fit";
+    verdictText = "Your profile aligns well with our culture and expectations. You bring the self-direction, problem-solving, and drive we look for across the Klema ecosystem.";
+    verdictAdminNote = "Strong candidate. Scores align with high-performer profile. Prioritize for interview.";
+  }
+
   return {
     traits, sortedCompanies, primaryCompany, companyTotal, companyWhy,
     sortedRoles, primaryRole, secondaryRole, roleWhy, roleTotal,
     mgmtScore, mgmtLevel, mgmtVariant, mgmtText,
     flags, sdFlagged,
+    altCompany: altCompany.name, altCompanyWhy, altRoleWhy,
+    verdict, verdictLabel, verdictText, verdictAdminNote, redFlags, traitAvg,
   };
 }
 
@@ -842,10 +901,14 @@ function ResultCard({ title, children }: { title: string; children: React.ReactN
 export default function ApplyPage() {
   const [phase, setPhase] = useState<"intro" | "quiz" | "results">("intro");
   const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
   const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [results, setResults] = useState<ReturnType<typeof calculateResults> | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   // Stable shuffle seed per session
   const shuffleSeed = useRef(Math.floor(Math.random() * 1000000));
@@ -874,12 +937,16 @@ export default function ApplyPage() {
   }).length;
 
   const startAssessment = useCallback(() => {
-    if (!userName.trim()) { setNameError(true); return; }
+    let hasError = false;
+    if (!userName.trim()) { setNameError(true); hasError = true; }
+    if (!userEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) { setEmailError(true); hasError = true; }
+    if (hasError) return;
     setNameError(false);
+    setEmailError(false);
     setPhase("quiz");
     setCurrentSection(0);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [userName]);
+  }, [userName, userEmail]);
 
   const selectAnswer = useCallback((qKey: string, value: number) => {
     setAnswers(prev => ({ ...prev, [qKey]: value }));
@@ -890,12 +957,39 @@ export default function ApplyPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  const submitToApi = useCallback(async (res: ReturnType<typeof calculateResults>) => {
+    setSubmitStatus("sending");
+    try {
+      const { sortedCompanies, companyTotal, sortedRoles, roleTotal, ...rest } = res;
+      const response = await fetch("/api/assessment-results", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: userName,
+          email: userEmail,
+          phone: userPhone || undefined,
+          ...rest,
+          companyScores: sortedCompanies.map(c => ({ name: c.name, pct: Math.round((c.score / companyTotal) * 100) })),
+          roleScores: sortedRoles.map(r => ({ name: r.name, pct: Math.round((r.score / roleTotal) * 100) })),
+        }),
+      });
+      if (response.ok) {
+        setSubmitStatus("sent");
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      setSubmitStatus("error");
+    }
+  }, [userName, userEmail, userPhone]);
+
   const submitAssessment = useCallback(() => {
     const res = calculateResults(answers);
     setResults(res);
     setPhase("results");
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [answers]);
+    submitToApi(res);
+  }, [answers, submitToApi]);
 
   const retake = useCallback(() => {
     setPhase("intro");
@@ -925,16 +1019,37 @@ export default function ApplyPage() {
           <p className="text-sm text-text-dim mb-8 max-w-md mx-auto">
             Answer based on how you actually operate &mdash; not how you think you should.
           </p>
-          <div className="max-w-sm mx-auto mb-8 text-left">
-            <label className="block text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Your Name</label>
-            <input
-              type="text" value={userName}
-              onChange={e => { setUserName(e.target.value); setNameError(false); }}
-              onKeyDown={e => e.key === "Enter" && startAssessment()}
-              placeholder="Enter your full name"
-              className={`w-full px-4 py-3 bg-surface border rounded-xl text-text placeholder:text-text-dim/50 outline-none transition-colors ${nameError ? "border-red" : "border-border focus:border-accent-border"}`}
-            />
-            {nameError && <p className="text-red text-xs mt-2">Please enter your name to continue.</p>}
+          <div className="max-w-sm mx-auto mb-8 text-left space-y-4">
+            <div>
+              <label className="block text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Your Name</label>
+              <input
+                type="text" value={userName}
+                onChange={e => { setUserName(e.target.value); setNameError(false); }}
+                placeholder="Enter your full name"
+                className={`w-full px-4 py-3 bg-surface border rounded-xl text-text placeholder:text-text-dim/50 outline-none transition-colors ${nameError ? "border-red" : "border-border focus:border-accent-border"}`}
+              />
+              {nameError && <p className="text-red text-xs mt-2">Please enter your name to continue.</p>}
+            </div>
+            <div>
+              <label className="block text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Email Address</label>
+              <input
+                type="email" value={userEmail}
+                onChange={e => { setUserEmail(e.target.value); setEmailError(false); }}
+                placeholder="your@email.com"
+                className={`w-full px-4 py-3 bg-surface border rounded-xl text-text placeholder:text-text-dim/50 outline-none transition-colors ${emailError ? "border-red" : "border-border focus:border-accent-border"}`}
+              />
+              {emailError && <p className="text-red text-xs mt-2">Please enter a valid email address.</p>}
+            </div>
+            <div>
+              <label className="block text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Phone <span className="text-text-dim/50 normal-case tracking-normal">(optional)</span></label>
+              <input
+                type="tel" value={userPhone}
+                onChange={e => setUserPhone(e.target.value)}
+                onKeyDown={e => e.key === "Enter" && startAssessment()}
+                placeholder="(555) 123-4567"
+                className="w-full px-4 py-3 bg-surface border border-border rounded-xl text-text placeholder:text-text-dim/50 outline-none transition-colors focus:border-accent-border"
+              />
+            </div>
           </div>
           <button onClick={startAssessment} className="px-8 py-3.5 bg-accent text-bg font-semibold rounded-xl transition-all duration-200 btn-primary-hover cursor-pointer">
             Begin Assessment
@@ -950,6 +1065,8 @@ export default function ApplyPage() {
       traits, sortedCompanies, primaryCompany, companyTotal, companyWhy,
       sortedRoles, primaryRole, secondaryRole, roleWhy, roleTotal,
       mgmtScore, mgmtLevel, mgmtVariant, mgmtText, flags, sdFlagged,
+      altCompany, altCompanyWhy, altRoleWhy,
+      verdict, verdictLabel, verdictText,
     } = results;
 
     const companyColors: Record<string, string> = { "Klema Creative": "#4ade80", "Klema Labs": "#a78bfa", InlineGraphics: "#60a5fa" };
@@ -972,6 +1089,32 @@ export default function ApplyPage() {
             <span className="inline-block text-[0.7rem] font-semibold uppercase tracking-[3px] text-accent mb-4">Assessment Complete</span>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Results for {userName}</h1>
             <p className="text-text-dim">Here&apos;s the full profile breakdown.</p>
+          </div>
+
+          {/* FIT VERDICT */}
+          <div className={`rounded-2xl p-7 mb-4 border ${
+            verdict === "strong" ? "bg-accent-dim border-accent-border" :
+            verdict === "potential" ? "bg-blue-dim border-blue/30" :
+            verdict === "conditional" ? "bg-amber-dim border-amber/30" :
+            "bg-red-dim border-red/30"
+          }`}>
+            <div className="flex items-center gap-3 mb-3">
+              <span className={`text-xl ${
+                verdict === "strong" ? "text-accent" :
+                verdict === "potential" ? "text-blue" :
+                verdict === "conditional" ? "text-amber" :
+                "text-red"
+              }`}>
+                {verdict === "strong" ? "\u2713" : verdict === "potential" ? "\u2139" : verdict === "conditional" ? "\u26A0" : "\u2717"}
+              </span>
+              <h3 className={`text-lg font-bold ${
+                verdict === "strong" ? "text-accent" :
+                verdict === "potential" ? "text-blue" :
+                verdict === "conditional" ? "text-amber" :
+                "text-red"
+              }`}>{verdictLabel}</h3>
+            </div>
+            <p className="text-text-mid leading-relaxed text-sm">{verdictText}</p>
           </div>
 
           {/* SD WARNING */}
@@ -1037,6 +1180,22 @@ export default function ApplyPage() {
             })}
           </ResultCard>
 
+          {/* ALTERNATIVE PATH */}
+          <ResultCard title="Alternative Path">
+            <p className="text-text-mid leading-relaxed mb-4 text-sm">
+              If your primary placement isn&apos;t available or you want to explore a different direction, here&apos;s your backup fit:
+            </p>
+            <div className="bg-bg rounded-xl p-5 mb-3">
+              <div className="flex flex-wrap gap-2 mb-2">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white-6 border border-border text-text-dim">{altCompany}</span>
+                <span className="px-3 py-1 rounded-full text-xs bg-white-6 border border-border text-text-dim">{secondaryRole}</span>
+              </div>
+              <p className="text-text-mid text-sm leading-relaxed mb-2">{altCompanyWhy}</p>
+              <p className="text-text-mid text-sm leading-relaxed">{altRoleWhy}</p>
+            </div>
+            <p className="text-text-dim text-xs">This secondary path can also serve as a growth trajectory — start in your primary role and expand into this area over time.</p>
+          </ResultCard>
+
           {/* CORE TRAITS */}
           <ResultCard title="Core Trait Scores">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
@@ -1062,13 +1221,26 @@ export default function ApplyPage() {
 
           {/* SUMMARY */}
           <ResultCard title="Summary">
-            <p className="text-text-mid leading-relaxed">
+            <p className="text-text-mid leading-relaxed mb-4">
               <strong className="text-text">{userName}</strong> is best placed at{" "}
               <strong className="text-accent">{primaryCompany}</strong> in a{" "}
               <strong className="text-text">{primaryRole}</strong> capacity
               {mgmtScore >= 70 ? ", with strong potential for a management track" : mgmtScore >= 45 ? ", with developing leadership potential" : ""}.
-              Their secondary strength is <strong className="text-text">{secondaryRole}</strong>, which could serve as a cross-functional asset or growth path.
             </p>
+            <div className="bg-bg rounded-xl p-5 mb-4">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Why This Placement</p>
+              <p className="text-text-mid text-sm leading-relaxed mb-2">{companyWhy}</p>
+              <p className="text-text-mid text-sm leading-relaxed">{roleWhy}</p>
+            </div>
+            <div className="bg-bg rounded-xl p-5">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Growth Direction</p>
+              <p className="text-text-mid text-sm leading-relaxed">
+                Secondary strength in <strong className="text-text">{secondaryRole}</strong> could serve as a cross-functional asset.
+                {mgmtScore >= 70 && " Leadership readiness is high — consider a team lead path within 6-12 months."}
+                {mgmtScore >= 45 && mgmtScore < 70 && " With mentorship, could develop into a leadership role over time."}
+                {mgmtScore < 45 && " Strongest as a hands-on contributor — let them own their craft and deliver results."}
+              </p>
+            </div>
           </ResultCard>
 
           {/* ACTIONS */}
