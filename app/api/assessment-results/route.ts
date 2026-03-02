@@ -32,165 +32,160 @@ interface AssessmentPayload {
 const ADMIN_EMAIL = "tamaya@klemacreative.com";
 
 function buildAdminEmailHtml(data: AssessmentPayload): string {
-  const verdictColors: Record<string, string> = {
-    strong: "#4ade80",
-    potential: "#60a5fa",
-    conditional: "#fbbf24",
-    "not-recommended": "#ef4444",
+  const verdictStyles: Record<string, { bg: string; border: string; text: string; label: string }> = {
+    strong: { bg: "#ecfdf5", border: "#10b981", text: "#065f46", label: "STRONG FIT" },
+    potential: { bg: "#eff6ff", border: "#3b82f6", text: "#1e40af", label: "POTENTIAL FIT" },
+    conditional: { bg: "#fffbeb", border: "#f59e0b", text: "#92400e", label: "CONDITIONAL" },
+    "not-recommended": { bg: "#fef2f2", border: "#ef4444", text: "#991b1b", label: "NOT RECOMMENDED" },
   };
-  const verdictColor = verdictColors[data.verdict] || "#888";
+  const v = verdictStyles[data.verdict] || verdictStyles.potential;
 
   const traitLabels: Record<string, string> = {
     ss: "Self-Sufficiency", ps: "Problem Solving", sm: "Self-Motivation",
     lead: "Leadership", del: "Delegation",
   };
+  const traitColors: Record<string, string> = {
+    ss: "#3b82f6", ps: "#8b5cf6", sm: "#10b981", lead: "#f59e0b", del: "#06b6d4",
+  };
 
-  const traitBars = Object.entries(traitLabels)
-    .map(([key, label]) => {
-      const val = data.traits[key] || 0;
-      return `
-        <tr>
-          <td style="padding:6px 12px;color:#ccc;font-size:13px;width:140px;">${label}</td>
-          <td style="padding:6px 12px;width:60px;text-align:right;font-family:monospace;color:#fff;font-size:13px;">${val}%</td>
-          <td style="padding:6px 12px;">
-            <div style="background:#1a1a2e;border-radius:4px;overflow:hidden;height:10px;">
-              <div style="height:100%;width:${val}%;background:${verdictColor};border-radius:4px;"></div>
-            </div>
-          </td>
-        </tr>`;
-    })
-    .join("");
+  const companyColors: Record<string, string> = {
+    "Klema Creative": "#10b981",
+    "Klema Labs": "#8b5cf6",
+    "InlineGraphics": "#3b82f6",
+  };
+
+  function bar(label: string, val: number, color: string) {
+    return `<tr>
+      <td style="padding:8px 0;color:#374151;font-size:13px;width:150px;">${label}</td>
+      <td style="padding:8px 0;width:50px;text-align:right;font-family:monospace;color:#111;font-size:13px;font-weight:600;">${val}%</td>
+      <td style="padding:8px 0 8px 12px;">
+        <div style="background:#e5e7eb;border-radius:6px;overflow:hidden;height:12px;">
+          <div style="height:100%;width:${val}%;background:${color};border-radius:6px;"></div>
+        </div>
+      </td>
+    </tr>`;
+  }
+
+  const traitBars = Object.entries(traitLabels).map(([key, label]) => bar(label, data.traits[key] || 0, traitColors[key] || "#6b7280")).join("");
+  const companyBars = data.companyScores.map(c => bar(c.name, c.pct, companyColors[c.name] || "#6b7280")).join("");
+  const roleBars = data.roleScores.map(r => bar(r.name, r.pct, "#6366f1")).join("");
 
   const flagsHtml = data.flags.length > 0
     ? data.flags.map(f => {
-        const fColor = f.variant === "warning" ? "#fbbf24" : f.variant === "positive" ? "#4ade80" : "#60a5fa";
-        const icon = f.variant === "warning" ? "\u26A0" : f.variant === "positive" ? "\u2713" : "\u2139";
-        return `<div style="padding:10px 14px;margin-bottom:6px;border-radius:8px;background:#1a1a2e;border-left:3px solid ${fColor};">
-          <span style="color:${fColor};font-weight:600;font-size:13px;">${icon} ${f.label}</span>
-          <p style="color:#999;font-size:12px;margin:4px 0 0;">${f.description}</p>
+        const isWarn = f.variant === "warning";
+        const isPos = f.variant === "positive";
+        const bg = isWarn ? "#fffbeb" : isPos ? "#ecfdf5" : "#eff6ff";
+        const border = isWarn ? "#f59e0b" : isPos ? "#10b981" : "#3b82f6";
+        const text = isWarn ? "#92400e" : isPos ? "#065f46" : "#1e40af";
+        const icon = isWarn ? "\u26A0" : isPos ? "\u2713" : "\u2139";
+        return `<div style="padding:12px 16px;margin-bottom:8px;border-radius:8px;background:${bg};border-left:4px solid ${border};">
+          <span style="color:${text};font-weight:700;font-size:13px;">${icon} ${f.label}</span>
+          <p style="color:#4b5563;font-size:12px;margin:4px 0 0;line-height:1.4;">${f.description}</p>
         </div>`;
       }).join("")
-    : '<p style="color:#666;font-size:13px;">No behavioral flags detected.</p>';
+    : '<p style="color:#9ca3af;font-size:13px;">No behavioral flags detected.</p>';
 
   const redFlagsHtml = data.redFlags.length > 0
     ? data.redFlags.map(rf =>
-        `<div style="padding:8px 12px;margin-bottom:4px;border-radius:6px;background:#2a1010;border-left:3px solid #ef4444;">
-          <p style="color:#fca5a5;font-size:12px;margin:0;">${rf}</p>
+        `<div style="padding:10px 14px;margin-bottom:6px;border-radius:8px;background:#fef2f2;border-left:4px solid #ef4444;">
+          <p style="color:#991b1b;font-size:12px;margin:0;line-height:1.4;">${rf}</p>
         </div>`
       ).join("")
     : "";
 
-  const companyBars = data.companyScores
-    .map(c => `
-      <tr>
-        <td style="padding:4px 12px;color:#ccc;font-size:13px;width:140px;">${c.name}</td>
-        <td style="padding:4px 12px;width:50px;text-align:right;font-family:monospace;color:#fff;font-size:13px;">${c.pct}%</td>
-        <td style="padding:4px 12px;">
-          <div style="background:#1a1a2e;border-radius:4px;overflow:hidden;height:8px;">
-            <div style="height:100%;width:${c.pct}%;background:${verdictColor};border-radius:4px;"></div>
-          </div>
-        </td>
-      </tr>`)
-    .join("");
-
-  const roleBars = data.roleScores
-    .map(r => `
-      <tr>
-        <td style="padding:4px 12px;color:#ccc;font-size:13px;width:140px;">${r.name}</td>
-        <td style="padding:4px 12px;width:50px;text-align:right;font-family:monospace;color:#fff;font-size:13px;">${r.pct}%</td>
-        <td style="padding:4px 12px;">
-          <div style="background:#1a1a2e;border-radius:4px;overflow:hidden;height:8px;">
-            <div style="height:100%;width:${r.pct}%;background:#4ade80;border-radius:4px;"></div>
-          </div>
-        </td>
-      </tr>`)
-    .join("");
+  const mgmtColor = data.mgmtLevel === "Strong" ? "#10b981" : data.mgmtLevel === "Developing" ? "#f59e0b" : "#6b7280";
 
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"></head>
-<body style="margin:0;padding:0;background:#0a0a14;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-  <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
+<head><meta charset="utf-8"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"></head>
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
+  <div style="max-width:640px;margin:0 auto;padding:24px 16px;">
 
     <!-- HEADER -->
-    <div style="text-align:center;padding-bottom:24px;border-bottom:1px solid #1a1a2e;">
-      <h1 style="color:#fff;font-size:22px;margin:0 0 4px;">Assessment Report</h1>
-      <p style="color:#4ade80;font-size:14px;margin:0;letter-spacing:2px;text-transform:uppercase;">Klema Talent Assessment</p>
+    <div style="background:#111827;border-radius:16px 16px 0 0;padding:28px 24px;text-align:center;">
+      <h1 style="color:#fff;font-size:20px;margin:0 0 4px;font-weight:700;">Assessment Report</h1>
+      <p style="color:#10b981;font-size:11px;margin:0;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Klema Talent Assessment</p>
     </div>
 
-    <!-- APPLICANT INFO -->
-    <div style="padding:20px 0;border-bottom:1px solid #1a1a2e;">
-      <table style="width:100%;">
-        <tr><td style="color:#888;font-size:12px;padding:3px 0;">Name</td><td style="color:#fff;font-size:14px;text-align:right;">${data.name}</td></tr>
-        <tr><td style="color:#888;font-size:12px;padding:3px 0;">Email</td><td style="color:#fff;font-size:14px;text-align:right;">${data.email}</td></tr>
-        ${data.phone ? `<tr><td style="color:#888;font-size:12px;padding:3px 0;">Phone</td><td style="color:#fff;font-size:14px;text-align:right;">${data.phone}</td></tr>` : ""}
-        <tr><td style="color:#888;font-size:12px;padding:3px 0;">Trait Average</td><td style="color:#fff;font-size:14px;text-align:right;">${Math.round(data.traitAvg)}%</td></tr>
-      </table>
-    </div>
+    <!-- MAIN CARD -->
+    <div style="background:#ffffff;border-radius:0 0 16px 16px;padding:0;border:1px solid #e5e7eb;border-top:none;">
 
-    <!-- VERDICT -->
-    <div style="margin:24px 0;padding:20px;border-radius:12px;background:#111122;border:1px solid ${verdictColor}40;">
-      <h2 style="color:${verdictColor};font-size:18px;margin:0 0 8px;">${data.verdictLabel}</h2>
-      <p style="color:#ccc;font-size:13px;margin:0 0 12px;line-height:1.5;">${data.verdictAdminNote}</p>
-      ${redFlagsHtml}
-    </div>
-
-    <!-- PRIMARY PLACEMENT -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Primary Placement</h3>
-      <div style="margin-bottom:12px;">
-        <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:#4ade8020;color:#4ade80;font-size:12px;font-weight:600;border:1px solid #4ade8040;">${data.primaryCompany}</span>
-        <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:#4ade8020;color:#4ade80;font-size:12px;margin-left:6px;border:1px solid #4ade8040;">${data.primaryRole}</span>
+      <!-- APPLICANT INFO -->
+      <div style="padding:24px;border-bottom:1px solid #f3f4f6;">
+        <table style="width:100%;">
+          <tr><td style="color:#6b7280;font-size:12px;padding:4px 0;text-transform:uppercase;letter-spacing:1px;">Name</td><td style="color:#111827;font-size:14px;text-align:right;font-weight:600;">${data.name}</td></tr>
+          <tr><td style="color:#6b7280;font-size:12px;padding:4px 0;text-transform:uppercase;letter-spacing:1px;">Email</td><td style="color:#111827;font-size:14px;text-align:right;">${data.email}</td></tr>
+          ${data.phone ? `<tr><td style="color:#6b7280;font-size:12px;padding:4px 0;text-transform:uppercase;letter-spacing:1px;">Phone</td><td style="color:#111827;font-size:14px;text-align:right;">${data.phone}</td></tr>` : ""}
+          <tr><td style="color:#6b7280;font-size:12px;padding:4px 0;text-transform:uppercase;letter-spacing:1px;">Trait Avg</td><td style="color:#111827;font-size:14px;text-align:right;font-weight:600;">${Math.round(data.traitAvg)}%</td></tr>
+        </table>
       </div>
-      <p style="color:#999;font-size:13px;line-height:1.5;margin:0 0 6px;">${data.companyWhy}</p>
-      <p style="color:#999;font-size:13px;line-height:1.5;margin:0;">${data.roleWhy}</p>
-    </div>
 
-    <!-- ALTERNATIVE PATH -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Alternative Path (Option B)</h3>
-      <div style="margin-bottom:12px;">
-        <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:#ffffff10;color:#999;font-size:12px;border:1px solid #ffffff15;">${data.altCompany}</span>
-        <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:#ffffff10;color:#999;font-size:12px;margin-left:6px;border:1px solid #ffffff15;">${data.secondaryRole}</span>
+      <!-- VERDICT -->
+      <div style="margin:20px;padding:20px;border-radius:12px;background:${v.bg};border:2px solid ${v.border};">
+        <h2 style="color:${v.text};font-size:18px;margin:0 0 6px;font-weight:800;">${v.label}</h2>
+        <p style="color:#374151;font-size:13px;margin:0 0 12px;line-height:1.5;">${data.verdictAdminNote}</p>
+        ${redFlagsHtml}
       </div>
-      <p style="color:#888;font-size:13px;line-height:1.5;margin:0 0 6px;">${data.altCompanyWhy}</p>
-      <p style="color:#888;font-size:13px;line-height:1.5;margin:0;">${data.altRoleWhy}</p>
-    </div>
 
-    <!-- COMPANY SCORES -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Company Alignment</h3>
-      <table style="width:100%;">${companyBars}</table>
-    </div>
+      <!-- PRIMARY PLACEMENT -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Primary Placement</h3>
+        <div style="margin-bottom:12px;">
+          <span style="display:inline-block;padding:6px 14px;border-radius:20px;background:#ecfdf5;color:#065f46;font-size:13px;font-weight:700;">${data.primaryCompany}</span>
+          <span style="display:inline-block;padding:6px 14px;border-radius:20px;background:#eff6ff;color:#1e40af;font-size:13px;font-weight:600;margin-left:6px;">${data.primaryRole}</span>
+        </div>
+        <p style="color:#374151;font-size:13px;line-height:1.6;margin:0 0 4px;">${data.companyWhy}</p>
+        <p style="color:#6b7280;font-size:13px;line-height:1.6;margin:0;">${data.roleWhy}</p>
+      </div>
 
-    <!-- ROLE SCORES -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Role Fit</h3>
-      <table style="width:100%;">${roleBars}</table>
-    </div>
+      <!-- ALTERNATIVE PATH -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Alternative Path</h3>
+        <div style="margin-bottom:12px;">
+          <span style="display:inline-block;padding:6px 14px;border-radius:20px;background:#f3f4f6;color:#374151;font-size:13px;font-weight:600;">${data.altCompany}</span>
+          <span style="display:inline-block;padding:6px 14px;border-radius:20px;background:#f3f4f6;color:#374151;font-size:13px;margin-left:6px;">${data.secondaryRole}</span>
+        </div>
+        <p style="color:#6b7280;font-size:13px;line-height:1.6;margin:0 0 4px;">${data.altCompanyWhy}</p>
+        <p style="color:#6b7280;font-size:13px;line-height:1.6;margin:0;">${data.altRoleWhy}</p>
+      </div>
 
-    <!-- TRAIT SCORES -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Core Traits</h3>
-      <table style="width:100%;">${traitBars}</table>
-    </div>
+      <!-- COMPANY ALIGNMENT -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Company Alignment</h3>
+        <table style="width:100%;">${companyBars}</table>
+      </div>
 
-    <!-- MANAGEMENT READINESS -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 8px;">Management Readiness: ${data.mgmtLevel}</h3>
-      <p style="color:#999;font-size:13px;margin:0;line-height:1.5;">${data.mgmtText}</p>
-    </div>
+      <!-- ROLE FIT -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Role Fit</h3>
+        <table style="width:100%;">${roleBars}</table>
+      </div>
 
-    <!-- BEHAVIORAL FLAGS -->
-    <div style="margin:20px 0;padding:20px;border-radius:12px;background:#111122;">
-      <h3 style="color:#fff;font-size:15px;margin:0 0 12px;">Behavioral Flags</h3>
-      ${flagsHtml}
-      ${data.sdFlagged ? '<div style="padding:10px 14px;margin-top:8px;border-radius:8px;background:#2a2010;border-left:3px solid #fbbf24;"><span style="color:#fbbf24;font-weight:600;font-size:13px;">\u26A0 Social Desirability Flagged</span><p style="color:#999;font-size:12px;margin:4px 0 0;">Responses suggest an overly positive self-assessment pattern. Validate with interview.</p></div>' : ""}
-    </div>
+      <!-- CORE TRAITS -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Core Traits</h3>
+        <table style="width:100%;">${traitBars}</table>
+      </div>
+
+      <!-- MANAGEMENT READINESS -->
+      <div style="padding:20px 24px;border-bottom:1px solid #f3f4f6;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Management Readiness</h3>
+        <span style="display:inline-block;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;color:${mgmtColor};background:${mgmtColor}15;border:1px solid ${mgmtColor}40;">${data.mgmtLevel}</span>
+        <p style="color:#6b7280;font-size:13px;margin:10px 0 0;line-height:1.5;">${data.mgmtText}</p>
+      </div>
+
+      <!-- BEHAVIORAL FLAGS -->
+      <div style="padding:20px 24px;">
+        <h3 style="color:#111827;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Behavioral Flags</h3>
+        ${flagsHtml}
+        ${data.sdFlagged ? '<div style="padding:12px 16px;margin-top:8px;border-radius:8px;background:#fffbeb;border-left:4px solid #f59e0b;"><span style="color:#92400e;font-weight:700;font-size:13px;">\u26A0 Social Desirability Flagged</span><p style="color:#4b5563;font-size:12px;margin:4px 0 0;">Responses suggest an overly positive self-assessment pattern. Validate with interview.</p></div>' : ""}
+      </div>
+
+    </div><!-- end main card -->
 
     <!-- FOOTER -->
-    <div style="text-align:center;padding-top:24px;border-top:1px solid #1a1a2e;">
-      <p style="color:#555;font-size:11px;margin:0;">Klema Talent Assessment &mdash; ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
+    <div style="text-align:center;padding:20px 0 8px;">
+      <p style="color:#9ca3af;font-size:11px;margin:0;">Klema Talent Assessment &mdash; ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
     </div>
   </div>
 </body>
