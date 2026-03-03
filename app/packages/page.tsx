@@ -372,9 +372,16 @@ export default function PackagesPage() {
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 10);
     setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-    // Figure out which card is centered
+
+    // Measure actual card width + gap from DOM for accurate mobile index
+    const firstCard = el.children[0] as HTMLElement | undefined;
+    const actualCardWidth = firstCard ? firstCard.offsetWidth : CARD_WIDTH;
+    const computedStyle = window.getComputedStyle(el);
+    const actualGap = parseFloat(computedStyle.columnGap) || GAP;
+    const scrollUnit = actualCardWidth + actualGap;
+
     const center = el.scrollLeft + el.clientWidth / 2;
-    const idx = Math.round((center - CARD_WIDTH / 2) / SCROLL_AMOUNT);
+    const idx = Math.round((center - actualCardWidth / 2) / scrollUnit);
     setActiveIndex(Math.max(0, Math.min(4, idx)));
   }, []);
 
@@ -487,7 +494,7 @@ export default function PackagesPage() {
 
         {/* No contracts note */}
         <RevealOnScroll>
-          <p className="text-center text-[13px] text-text-dim mt-4">
+          <p className="text-center text-[13px] text-text-dim mt-4 px-6">
             All packages are month-to-month. No long-term contracts. Cancel anytime.
           </p>
         </RevealOnScroll>

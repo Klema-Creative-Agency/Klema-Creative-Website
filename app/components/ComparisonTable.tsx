@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 /* ───── Chevron Icon ───── */
@@ -106,6 +106,16 @@ function renderValue(val: string) {
   return <span className="text-text-mid text-[12px] max-lg:text-[10px]">{val}</span>;
 }
 
+/* ───── Mobile Value Renderer (larger sizes) ───── */
+
+function renderMobileValue(val: string) {
+  if (val === "\u2713")
+    return <span className="text-accent font-bold text-[14px]">{val}</span>;
+  if (val === "\u2014")
+    return <span className="text-white-15 text-[14px]">{val}</span>;
+  return <span className="text-text-mid text-[13px]">{val}</span>;
+}
+
 /* ───── Component ───── */
 
 export default function ComparisonTable() {
@@ -114,6 +124,37 @@ export default function ComparisonTable() {
     new Set(CATEGORIES.map((_, i) => i))
   );
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Mobile swipeable cards state
+  const cardScrollRef = useRef<HTMLDivElement>(null);
+  const pillRowRef = useRef<HTMLDivElement>(null);
+  const [activeTier, setActiveTier] = useState(HIGHLIGHT_COL);
+
+  const scrollPillIntoView = useCallback((index: number) => {
+    const row = pillRowRef.current;
+    if (!row) return;
+    const pill = row.children[index] as HTMLElement | undefined;
+    if (!pill) return;
+    const pillCenter = pill.offsetLeft + pill.offsetWidth / 2;
+    const rowCenter = row.clientWidth / 2;
+    row.scrollTo({ left: pillCenter - rowCenter, behavior: "smooth" });
+  }, []);
+
+  const updateActiveTier = useCallback(() => {
+    const el = cardScrollRef.current;
+    if (!el) return;
+    const cardWidth = el.clientWidth;
+    const idx = Math.round(el.scrollLeft / cardWidth);
+    const clamped = Math.max(0, Math.min(TIERS.length - 1, idx));
+    setActiveTier(clamped);
+    scrollPillIntoView(clamped);
+  }, [scrollPillIntoView]);
+
+  const scrollToTier = (index: number) => {
+    const el = cardScrollRef.current;
+    if (!el) return;
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+  };
 
   function toggleCategory(index: number) {
     setOpenCategories((prev) => {
@@ -127,129 +168,252 @@ export default function ComparisonTable() {
     });
   }
 
-  // Rubberband hint on mobile for horizontal scroll
+  // Scroll to Accelerator on mobile mount
   useEffect(() => {
-    const el = scrollRef.current;
+    const el = cardScrollRef.current;
     if (!el || window.innerWidth >= 1024) return;
-    const timer = setTimeout(() => {
-      el.scrollTo({ left: 60, behavior: "smooth" });
-      setTimeout(() => {
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      }, 350);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
+    requestAnimationFrame(() => {
+      el.scrollTo({ left: HIGHLIGHT_COL * el.clientWidth, behavior: "instant" });
+      scrollPillIntoView(HIGHLIGHT_COL);
+    });
+  }, [scrollPillIntoView]);
 
-  /* Grid classes: desktop uses fr units, mobile uses fixed widths for horizontal scroll */
-  const gridCols = "grid-cols-[220px_repeat(5,1fr)] max-lg:grid-cols-[140px_repeat(5,90px)]";
-  const minWidth = "max-lg:min-w-[590px]"; // 140 + 5*90 = 590
+  /* Grid classes: desktop uses fr units */
+  const gridCols = "grid-cols-[220px_repeat(5,1fr)]";
 
   return (
     <div className="mt-12">
-      {/* Horizontal scroll wrapper — scrolls on mobile, no-op on desktop */}
-      <div
-        ref={scrollRef}
-        className="max-lg:overflow-x-auto max-lg:scrollbar-hide comparison-scroll-mask max-lg:-mx-4 max-lg:px-4"
-      >
-        <div className={minWidth}>
-          {/*
-            Sticky Tier Header (desktop only — can't sticky inside overflow container)
-            On mobile: scrolls normally with the horizontal container
-          */}
-          <div
-            className="lg:sticky top-0 z-30"
-            style={{ background: "#050505" }}
-          >
-            {/* Opaque spacer — fills the space behind the navbar (desktop only) */}
-            <div className="hidden lg:block" style={{ height: 110 }} />
-            {/* Actual header content */}
+      {/* ══════ DESKTOP TABLE (hidden on mobile) ══════ */}
+      <div className="hidden lg:block">
+        <div
+          ref={scrollRef}
+          className="comparison-scroll-mask"
+        >
+          <div>
+            {/* Sticky Tier Header */}
             <div
-              className={`grid ${gridCols} border-b border-border`}
+              className="sticky top-0 z-30"
               style={{ background: "#050505" }}
             >
-              <div className="px-4 max-lg:px-3 py-4 max-lg:py-3 text-text-dim font-semibold text-[13px] max-lg:text-[11px]">Feature</div>
-              {TIERS.map((tier, i) => (
-                <div
-                  key={i}
-                  className="text-center px-3 max-lg:px-1.5 py-4 max-lg:py-3"
-                  style={
-                    i === HIGHLIGHT_COL
-                      ? { background: "#08170d" }
-                      : undefined
-                  }
-                >
-                  <p className={`font-bold text-[13px] max-lg:text-[11px] ${i === HIGHLIGHT_COL ? "text-accent" : "text-text"}`}>
-                    {tier.name}
-                  </p>
-                  <p className="text-text-dim font-medium text-[11px] max-lg:text-[9px]">{tier.price}/mo</p>
+              {/* Opaque spacer — fills the space behind the navbar */}
+              <div style={{ height: 110 }} />
+              {/* Actual header content */}
+              <div
+                className={`grid ${gridCols} border-b border-border`}
+                style={{ background: "#050505" }}
+              >
+                <div className="px-4 py-4 text-text-dim font-semibold text-[13px]">Feature</div>
+                {TIERS.map((tier, i) => (
+                  <div
+                    key={i}
+                    className="text-center px-3 py-4"
+                    style={
+                      i === HIGHLIGHT_COL
+                        ? { background: "#08170d" }
+                        : undefined
+                    }
+                  >
+                    <p className={`font-bold text-[13px] ${i === HIGHLIGHT_COL ? "text-accent" : "text-text"}`}>
+                      {tier.name}
+                    </p>
+                    <p className="text-text-dim font-medium text-[11px]">{tier.price}/mo</p>
+                    <Link
+                      href={`/services/${tier.slug}`}
+                      className={`inline-block mt-2 px-4 py-1.5 rounded-full text-[11px] font-bold no-underline transition-all duration-300 ${
+                        i === HIGHLIGHT_COL
+                          ? "bg-accent text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
+                          : "bg-white-6 text-text hover:bg-white-10"
+                      }`}
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Category Sections ── */}
+            <div className="flex flex-col">
+              {CATEGORIES.map((category, catIdx) => {
+                const isOpen = openCategories.has(catIdx);
+
+                return (
+                  <div key={catIdx} className="mt-3">
+                    {/* Category header */}
+                    <button
+                      onClick={() => toggleCategory(catIdx)}
+                      className="w-full flex items-center gap-3 px-6 py-4 border-l-4 border-l-accent border-b border-border transition-colors hover:bg-white-6 sticky z-20"
+                      style={{ background: "#0d0d0d", top: 206 }}
+                    >
+                      <span className="text-[15px] font-bold text-text whitespace-nowrap">{category.name}</span>
+                      <span className="text-[12px] text-text-dim whitespace-nowrap">
+                        {category.features.length} feature{category.features.length !== 1 ? "s" : ""}
+                      </span>
+                      <span className="ml-auto text-text-dim">
+                        <ChevronDown open={isOpen} />
+                      </span>
+                    </button>
+
+                    {/* Category body — collapsible accordion */}
+                    <div className={`category-answer ${isOpen ? "open" : ""}`}>
+                      <div>
+                        {category.features.map((feature, fIdx) => (
+                          <div
+                            key={fIdx}
+                            className={`grid ${gridCols} border-b border-border`}
+                            style={{ background: fIdx % 2 === 0 ? "#0d0d0d" : "#050505" }}
+                          >
+                            <div className="px-6 py-3 text-[13px] text-text-mid">{feature.name}</div>
+                            {feature.values.map((val, vIdx) => (
+                              <div
+                                key={vIdx}
+                                className="px-3 py-3 text-center text-[13px]"
+                                style={
+                                  vIdx === HIGHLIGHT_COL
+                                    ? { background: fIdx % 2 === 0 ? "#101d14" : "#08170d" }
+                                    : undefined
+                                }
+                              >
+                                {renderValue(val)}
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════ MOBILE SWIPEABLE CARDS (hidden on desktop) ══════ */}
+      <div className="lg:hidden">
+        {/* Tier selector pills */}
+        <div ref={pillRowRef} className="flex gap-2 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4">
+          {TIERS.map((tier, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToTier(i)}
+              className={`shrink-0 px-4 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300 ${
+                i === activeTier
+                  ? i === HIGHLIGHT_COL
+                    ? "bg-accent text-black"
+                    : "bg-white-10 text-text"
+                  : "bg-white-6 text-text-dim"
+              }`}
+            >
+              {tier.name}
+              <span className="ml-1.5 text-[11px] opacity-70">{tier.price}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Swipeable card container */}
+        <div
+          ref={cardScrollRef}
+          onScroll={updateActiveTier}
+          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4"
+        >
+          {TIERS.map((tier, tierIdx) => (
+            <div
+              key={tierIdx}
+              className="w-full shrink-0 snap-center px-4"
+            >
+              {/* Card */}
+              <div
+                className={`rounded-2xl border p-5 ${
+                  tierIdx === HIGHLIGHT_COL
+                    ? "border-accent-border bg-[linear-gradient(180deg,rgba(74,222,128,0.06)_0%,#0d0d0d_100%)]"
+                    : "border-border bg-surface"
+                }`}
+              >
+                {/* Card header */}
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className={`text-[18px] font-bold ${tierIdx === HIGHLIGHT_COL ? "text-accent" : "text-text"}`}>
+                      {tier.name}
+                    </h3>
+                    <p className="text-[14px] text-text-dim font-medium">{tier.price}/mo</p>
+                  </div>
                   <Link
                     href={`/services/${tier.slug}`}
-                    className={`inline-block mt-2 max-lg:mt-1.5 px-4 max-lg:px-2.5 py-1.5 max-lg:py-1 rounded-full text-[11px] max-lg:text-[9px] font-bold no-underline transition-all duration-300 ${
-                      i === HIGHLIGHT_COL
+                    className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[13px] font-bold no-underline transition-all duration-300 ${
+                      tierIdx === HIGHLIGHT_COL
                         ? "bg-accent text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
                         : "bg-white-6 text-text hover:bg-white-10"
                     }`}
                   >
                     Get Started
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* ── Category Sections ── */}
-          <div className="flex flex-col">
-            {CATEGORIES.map((category, catIdx) => {
-              const isOpen = openCategories.has(catIdx);
+                {/* Divider */}
+                <div className="h-px bg-border mb-3" />
 
-              return (
-                <div key={catIdx} className="mt-3 max-lg:mt-2">
-                  {/* Category header */}
-                  <button
-                    onClick={() => toggleCategory(catIdx)}
-                    className="w-full flex items-center gap-3 max-lg:gap-2 px-6 max-lg:px-3 py-4 max-lg:py-3 border-l-4 border-l-accent border-b border-border transition-colors hover:bg-white-6 lg:sticky z-20"
-                    style={{ background: "#0d0d0d", top: 206 }}
-                  >
-                    <span className="text-[15px] max-lg:text-[13px] font-bold text-text whitespace-nowrap">{category.name}</span>
-                    <span className="text-[12px] max-lg:text-[10px] text-text-dim whitespace-nowrap">
-                      {category.features.length} feature{category.features.length !== 1 ? "s" : ""}
-                    </span>
-                    <span className="ml-auto text-text-dim">
-                      <ChevronDown open={isOpen} />
-                    </span>
-                  </button>
+                {/* Category accordions */}
+                {CATEGORIES.map((category, catIdx) => {
+                  const isOpen = openCategories.has(catIdx);
 
-                  {/* Category body — collapsible accordion */}
-                  <div className={`category-answer ${isOpen ? "open" : ""}`}>
-                    <div>
-                      {category.features.map((feature, fIdx) => (
-                        <div
-                          key={fIdx}
-                          className={`grid ${gridCols} border-b border-border`}
-                          style={{ background: fIdx % 2 === 0 ? "#0d0d0d" : "#050505" }}
-                        >
-                          <div className="px-6 max-lg:px-3 py-3 max-lg:py-2 text-[13px] max-lg:text-[11px] text-text-mid">{feature.name}</div>
-                          {feature.values.map((val, vIdx) => (
+                  return (
+                    <div key={catIdx} className="mb-1">
+                      {/* Category header */}
+                      <button
+                        onClick={() => toggleCategory(catIdx)}
+                        className="w-full flex items-center gap-2 py-3 border-l-3 border-l-accent pl-3 transition-colors"
+                      >
+                        <span className="text-[14px] font-bold text-text">{category.name}</span>
+                        <span className="text-[11px] text-text-dim">
+                          ({category.features.length})
+                        </span>
+                        <span className="ml-auto text-text-dim">
+                          <ChevronDown open={isOpen} />
+                        </span>
+                      </button>
+
+                      {/* Features list */}
+                      <div className={`category-answer ${isOpen ? "open" : ""}`}>
+                        <div className="pb-2">
+                          {category.features.map((feature, fIdx) => (
                             <div
-                              key={vIdx}
-                              className="px-3 max-lg:px-1.5 py-3 max-lg:py-2 text-center text-[13px] max-lg:text-[11px]"
-                              style={
-                                vIdx === HIGHLIGHT_COL
-                                  ? { background: fIdx % 2 === 0 ? "#101d14" : "#08170d" }
-                                  : undefined
-                              }
+                              key={fIdx}
+                              className="flex items-center justify-between py-2 pl-4 pr-1"
+                              style={{ background: fIdx % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent" }}
                             >
-                              {renderValue(val)}
+                              <span className="text-[13px] text-text-mid">{feature.name}</span>
+                              <span className="shrink-0 ml-3">
+                                {renderMobileValue(feature.values[tierIdx])}
+                              </span>
                             </div>
                           ))}
                         </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex items-center justify-center gap-2 mt-5">
+          {TIERS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToTier(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === activeTier
+                  ? "w-6 h-2 bg-accent"
+                  : "w-2 h-2 bg-white-15"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>
