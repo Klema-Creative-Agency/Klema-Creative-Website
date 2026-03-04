@@ -3,6 +3,25 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 
+/* ───── Exported Types ───── */
+
+export interface ComparisonTier {
+  name: string;
+  price: string;
+  href: string;
+}
+
+export interface ComparisonCategory {
+  name: string;
+  features: { name: string; values: string[] }[];
+}
+
+export interface ComparisonTableProps {
+  tiers: ComparisonTier[];
+  categories: ComparisonCategory[];
+  highlightCol?: number;
+}
+
 /* ───── Chevron Icon ───── */
 
 function ChevronDown({ open }: { open: boolean }) {
@@ -20,81 +39,6 @@ function ChevronDown({ open }: { open: boolean }) {
     </svg>
   );
 }
-
-/* ───── Tier Headers ───── */
-
-const TIERS = [
-  { name: "Ignition", price: "$997", slug: "ai-lead-engine" },
-  { name: "Foundation", price: "$1,997", slug: "foundation" },
-  { name: "Accelerator", price: "$3,997", slug: "accelerator" },
-  { name: "Authority", price: "$7,500", slug: "authority" },
-  { name: "Dominator", price: "$12,000", slug: "dominator" },
-];
-
-const HIGHLIGHT_COL = 2; // Accelerator
-
-/* ───── Category Data ───── */
-
-interface Feature {
-  name: string;
-  values: string[]; // 5 values, one per tier
-}
-
-interface Category {
-  name: string;
-  features: Feature[];
-}
-
-const CATEGORIES: Category[] = [
-  {
-    name: "Lead Engine",
-    features: [
-      { name: "Lead Conversion Funnel", values: ["\u2713", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "60-Second Call Trigger", values: ["\u2713", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "Automated SMS & Email", values: ["\u2713", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "CRM & Lead Pipeline", values: ["\u2713", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "Monthly Funnel Optimization", values: ["\u2713", "\u2713", "\u2713", "\u2713", "\u2713"] },
-    ],
-  },
-  {
-    name: "SEO & Visibility",
-    features: [
-      { name: "SEO & Local Rankings", values: ["\u2014", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "Google Business Profile", values: ["\u2014", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "Reputation Engine", values: ["\u2014", "\u2713", "\u2713", "\u2713", "\u2713"] },
-      { name: "AI Visibility (AEO)", values: ["\u2014", "Basic", "Basic", "Full", "Full"] },
-    ],
-  },
-  {
-    name: "Website & Ads",
-    features: [
-      { name: "Custom Website", values: ["\u2014", "\u2014", "\u2713", "\u2713", "\u2713"] },
-      { name: "Paid Ad Management", values: ["\u2014", "\u2014", "\u2713", "\u2713", "\u2713"] },
-      { name: "Branded Dashboard", values: ["\u2014", "\u2014", "\u2713", "\u2713", "\u2713"] },
-    ],
-  },
-  {
-    name: "Marketing",
-    features: [
-      { name: "Blog Articles/Month", values: ["\u2014", "\u2014", "\u2014", "4\u20136", "6\u20138"] },
-      { name: "Social Media", values: ["\u2014", "\u2014", "\u2014", "2 Platforms", "3 Platforms"] },
-      { name: "Email Campaigns", values: ["\u2014", "\u2014", "\u2014", "\u2713", "\u2713"] },
-      { name: "Competitor Monitoring", values: ["\u2014", "\u2014", "\u2014", "\u2713", "\u2713"] },
-      { name: "A/B Testing", values: ["\u2014", "\u2014", "\u2014", "\u2713", "\u2713"] },
-    ],
-  },
-  {
-    name: "Lead Team & Support",
-    features: [
-      { name: "Dedicated Lead Team", values: ["\u2014", "\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Lead Qualification Calls", values: ["\u2014", "\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Live Hot Transfers", values: ["\u2014", "\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Appointment Setting", values: ["\u2014", "\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Strategy Calls", values: ["Monthly", "Monthly", "Monthly", "Bi-weekly", "Weekly"] },
-      { name: "Business Reviews", values: ["\u2014", "\u2014", "\u2014", "Quarterly", "Quarterly"] },
-    ],
-  },
-];
 
 /* ───── Value Renderer ───── */
 
@@ -116,19 +60,50 @@ function renderMobileValue(val: string) {
   return <span className="text-text-mid text-[13px]">{val}</span>;
 }
 
+/* ───── CTA Link (Link for internal, <a> for hash) ───── */
+
+function CtaLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+}) {
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
+}
+
 /* ───── Component ───── */
 
-export default function ComparisonTable() {
+export default function ComparisonTable({
+  tiers,
+  categories,
+  highlightCol = 1,
+}: ComparisonTableProps) {
+  const highlight = highlightCol;
+
   // All categories open by default
   const [openCategories, setOpenCategories] = useState<Set<number>>(
-    new Set(CATEGORIES.map((_, i) => i))
+    new Set(categories.map((_, i) => i))
   );
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Mobile swipeable cards state
   const cardScrollRef = useRef<HTMLDivElement>(null);
   const pillRowRef = useRef<HTMLDivElement>(null);
-  const [activeTier, setActiveTier] = useState(HIGHLIGHT_COL);
+  const [activeTier, setActiveTier] = useState(highlight);
 
   const scrollPillIntoView = useCallback((index: number) => {
     const row = pillRowRef.current;
@@ -140,15 +115,17 @@ export default function ComparisonTable() {
     row.scrollTo({ left: pillCenter - rowCenter, behavior: "smooth" });
   }, []);
 
+  const tierCount = tiers.length;
+
   const updateActiveTier = useCallback(() => {
     const el = cardScrollRef.current;
     if (!el) return;
     const cardWidth = el.clientWidth;
     const idx = Math.round(el.scrollLeft / cardWidth);
-    const clamped = Math.max(0, Math.min(TIERS.length - 1, idx));
+    const clamped = Math.max(0, Math.min(tierCount - 1, idx));
     setActiveTier(clamped);
     scrollPillIntoView(clamped);
-  }, [scrollPillIntoView]);
+  }, [scrollPillIntoView, tierCount]);
 
   const scrollToTier = (index: number) => {
     const el = cardScrollRef.current;
@@ -168,18 +145,18 @@ export default function ComparisonTable() {
     });
   }
 
-  // Scroll to Accelerator on mobile mount
+  // Scroll to highlighted tier on mobile mount
   useEffect(() => {
     const el = cardScrollRef.current;
     if (!el || window.innerWidth >= 1024) return;
     requestAnimationFrame(() => {
-      el.scrollTo({ left: HIGHLIGHT_COL * el.clientWidth, behavior: "instant" });
-      scrollPillIntoView(HIGHLIGHT_COL);
+      el.scrollTo({ left: highlight * el.clientWidth, behavior: "instant" });
+      scrollPillIntoView(highlight);
     });
-  }, [scrollPillIntoView]);
+  }, [scrollPillIntoView, highlight]);
 
-  /* Grid classes: desktop uses fr units */
-  const gridCols = "grid-cols-[220px_repeat(5,1fr)]";
+  /* Dynamic grid: 220px label column + N equal tier columns */
+  const gridStyle = { gridTemplateColumns: `220px repeat(${tierCount}, 1fr)` };
 
   return (
     <div className="mt-12">
@@ -199,34 +176,34 @@ export default function ComparisonTable() {
               <div style={{ height: 110 }} />
               {/* Actual header content */}
               <div
-                className={`grid ${gridCols} border-b border-border`}
-                style={{ background: "#050505" }}
+                className="grid border-b border-border"
+                style={{ ...gridStyle, background: "#050505" }}
               >
                 <div className="px-4 py-4 text-text-dim font-semibold text-[13px]">Feature</div>
-                {TIERS.map((tier, i) => (
+                {tiers.map((tier, i) => (
                   <div
                     key={i}
                     className="text-center px-3 py-4"
                     style={
-                      i === HIGHLIGHT_COL
+                      i === highlight
                         ? { background: "#08170d" }
                         : undefined
                     }
                   >
-                    <p className={`font-bold text-[13px] ${i === HIGHLIGHT_COL ? "text-accent" : "text-text"}`}>
+                    <p className={`font-bold text-[13px] ${i === highlight ? "text-accent" : "text-text"}`}>
                       {tier.name}
                     </p>
                     <p className="text-text-dim font-medium text-[11px]">{tier.price}/mo</p>
-                    <Link
-                      href={`/services/${tier.slug}`}
+                    <CtaLink
+                      href={tier.href}
                       className={`inline-block mt-2 px-4 py-1.5 rounded-full text-[11px] font-bold no-underline transition-all duration-300 ${
-                        i === HIGHLIGHT_COL
+                        i === highlight
                           ? "bg-accent text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
                           : "bg-white-6 text-text hover:bg-white-10"
                       }`}
                     >
                       Get Started
-                    </Link>
+                    </CtaLink>
                   </div>
                 ))}
               </div>
@@ -234,7 +211,7 @@ export default function ComparisonTable() {
 
             {/* ── Category Sections ── */}
             <div className="flex flex-col">
-              {CATEGORIES.map((category, catIdx) => {
+              {categories.map((category, catIdx) => {
                 const isOpen = openCategories.has(catIdx);
 
                 return (
@@ -260,8 +237,8 @@ export default function ComparisonTable() {
                         {category.features.map((feature, fIdx) => (
                           <div
                             key={fIdx}
-                            className={`grid ${gridCols} border-b border-border`}
-                            style={{ background: fIdx % 2 === 0 ? "#0d0d0d" : "#050505" }}
+                            className="grid border-b border-border"
+                            style={{ ...gridStyle, background: fIdx % 2 === 0 ? "#0d0d0d" : "#050505" }}
                           >
                             <div className="px-6 py-3 text-[13px] text-text-mid">{feature.name}</div>
                             {feature.values.map((val, vIdx) => (
@@ -269,7 +246,7 @@ export default function ComparisonTable() {
                                 key={vIdx}
                                 className="px-3 py-3 text-center text-[13px]"
                                 style={
-                                  vIdx === HIGHLIGHT_COL
+                                  vIdx === highlight
                                     ? { background: fIdx % 2 === 0 ? "#101d14" : "#08170d" }
                                     : undefined
                                 }
@@ -293,13 +270,13 @@ export default function ComparisonTable() {
       <div className="lg:hidden">
         {/* Tier selector pills */}
         <div ref={pillRowRef} className="flex gap-2 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4">
-          {TIERS.map((tier, i) => (
+          {tiers.map((tier, i) => (
             <button
               key={i}
               onClick={() => scrollToTier(i)}
               className={`shrink-0 px-4 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300 ${
                 i === activeTier
-                  ? i === HIGHLIGHT_COL
+                  ? i === highlight
                     ? "bg-accent text-black"
                     : "bg-white-10 text-text"
                   : "bg-white-6 text-text-dim"
@@ -317,7 +294,7 @@ export default function ComparisonTable() {
           onScroll={updateActiveTier}
           className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4"
         >
-          {TIERS.map((tier, tierIdx) => (
+          {tiers.map((tier, tierIdx) => (
             <div
               key={tierIdx}
               className="w-full shrink-0 snap-center px-4"
@@ -325,7 +302,7 @@ export default function ComparisonTable() {
               {/* Card */}
               <div
                 className={`rounded-2xl border p-5 ${
-                  tierIdx === HIGHLIGHT_COL
+                  tierIdx === highlight
                     ? "border-accent-border bg-[linear-gradient(180deg,rgba(74,222,128,0.06)_0%,#0d0d0d_100%)]"
                     : "border-border bg-surface"
                 }`}
@@ -333,15 +310,15 @@ export default function ComparisonTable() {
                 {/* Card header */}
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className={`text-[18px] font-bold ${tierIdx === HIGHLIGHT_COL ? "text-accent" : "text-text"}`}>
+                    <h3 className={`text-[18px] font-bold ${tierIdx === highlight ? "text-accent" : "text-text"}`}>
                       {tier.name}
                     </h3>
                     <p className="text-[14px] text-text-dim font-medium">{tier.price}/mo</p>
                   </div>
-                  <Link
-                    href={`/services/${tier.slug}`}
+                  <CtaLink
+                    href={tier.href}
                     className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[13px] font-bold no-underline transition-all duration-300 ${
-                      tierIdx === HIGHLIGHT_COL
+                      tierIdx === highlight
                         ? "bg-accent text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
                         : "bg-white-6 text-text hover:bg-white-10"
                     }`}
@@ -350,14 +327,14 @@ export default function ComparisonTable() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                  </Link>
+                  </CtaLink>
                 </div>
 
                 {/* Divider */}
                 <div className="h-px bg-border mb-3" />
 
                 {/* Category accordions */}
-                {CATEGORIES.map((category, catIdx) => {
+                {categories.map((category, catIdx) => {
                   const isOpen = openCategories.has(catIdx);
 
                   return (
@@ -403,7 +380,7 @@ export default function ComparisonTable() {
 
         {/* Dot indicators */}
         <div className="flex items-center justify-center gap-2 mt-5">
-          {TIERS.map((_, i) => (
+          {tiers.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToTier(i)}

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../components/RevealOnScroll";
 import ComparisonTable from "../components/ComparisonTable";
+import { packagesTiers, packagesCategories } from "../data/packages-comparison";
 import TierQuiz from "../components/TierQuiz";
 
 function ArrowIcon() {
@@ -103,54 +104,26 @@ interface TierData {
 const TIERS: TierData[] = [
   {
     tier: 1,
-    name: "Ignition",
-    slug: "ai-lead-engine",
-    price: "997",
-    setup: "$2,500 setup",
-    setupTooltip: "Covers your custom funnel build, CRM configuration, SMS & email sequence setup, and call trigger activation.",
-    tagline: "Stop losing the leads you already get.",
-    bestFor: "Businesses getting leads but losing them to slow follow-up or no system at all.",
-    featured: false,
-    cta: "See How It Works",
-    ctaStyle: "secondary",
-    keyFeatures: [
-      "Custom lead conversion funnel",
-      "60-second automated call trigger",
-      "SMS & email follow-up sequences",
-      "Klema CRM — fully configured",
-    ],
-    allFeatures: [
-      "Custom lead conversion funnel",
-      "60-second automated call trigger",
-      "SMS & email follow-up sequences",
-      "Lead nurture pipeline",
-      "Calendar booking integration",
-      "Klema CRM — fully configured",
-      "Monthly funnel optimization",
-      "Dedicated account manager",
-      "You keep everything if you cancel",
-    ],
-  },
-  {
-    tier: 2,
     name: "Foundation",
     slug: "foundation",
     price: "1,997",
     setup: "$2,500 setup",
-    setupTooltip: "Covers everything in Ignition setup, plus a full SEO audit, Google Business Profile optimization, reputation engine activation, and schema markup.",
+    setupTooltip: "Covers Lead Engine setup (funnel, CRM, SMS & email sequences, call trigger), plus a full SEO audit, Google Business Profile optimization, reputation engine activation, and schema markup.",
     tagline: "Convert more leads and get found by new ones.",
     bestFor: "Businesses ready to grow lead volume organically and build a 5-star reputation.",
     featured: false,
     cta: "See What's Included",
     ctaStyle: "secondary",
-    includesPrevious: "Everything in Ignition",
+    includesPrevious: "Lead Engine included",
     keyFeatures: [
+      "Lead conversion funnel & automation",
       "Search engine optimization (SEO)",
       "Google Business Profile management",
       "Reputation engine — automated reviews",
-      "AI visibility — schema markup & structured data",
     ],
     allFeatures: [
+      "Lead conversion funnel & 60-sec call trigger",
+      "SMS & email follow-up sequences",
       "Search engine optimization (SEO)",
       "Google Business Profile management",
       "Reputation engine — automated review requests",
@@ -160,7 +133,7 @@ const TIERS: TierData[] = [
     ],
   },
   {
-    tier: 3,
+    tier: 2,
     name: "Accelerator",
     slug: "accelerator",
     price: "3,997",
@@ -188,7 +161,7 @@ const TIERS: TierData[] = [
     ],
   },
   {
-    tier: 4,
+    tier: 3,
     name: "Authority",
     slug: "authority",
     price: "7,500",
@@ -219,7 +192,7 @@ const TIERS: TierData[] = [
     ],
   },
   {
-    tier: 5,
+    tier: 4,
     name: "Dominator",
     slug: "dominator",
     price: "12,000",
@@ -361,7 +334,7 @@ export default function PackagesPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(2); // Accelerator default
+  const [activeIndex, setActiveIndex] = useState(1); // Accelerator default
 
   const CARD_WIDTH = 320;
   const GAP = 28; // gap-7
@@ -382,7 +355,7 @@ export default function PackagesPage() {
 
     const center = el.scrollLeft + el.clientWidth / 2;
     const idx = Math.round((center - actualCardWidth / 2) / scrollUnit);
-    setActiveIndex(Math.max(0, Math.min(4, idx)));
+    setActiveIndex(Math.max(0, Math.min(3, idx)));
   }, []);
 
   const scrollToLeft = () => {
@@ -393,8 +366,8 @@ export default function PackagesPage() {
     scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
   };
 
-  // Desktop: center on Foundation (index 1) so Ignition visible left, Accelerator prominent right
-  // Mobile: start at Ignition (index 0) with rubberband hint
+  // Desktop: center on Foundation (index 0)
+  // Mobile: start at Foundation (index 0) with rubberband hint
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -411,7 +384,7 @@ export default function PackagesPage() {
       requestAnimationFrame(updateScrollState);
       return () => clearTimeout(timer);
     } else {
-      const centerIndex = 1; // Foundation
+      const centerIndex = 0; // Foundation
       const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
       const scrollTarget = cardCenter - el.clientWidth / 2;
       el.scrollTo({ left: Math.max(0, scrollTarget), behavior: "instant" });
@@ -429,7 +402,7 @@ export default function PackagesPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-              One system. Five levels.<br />
+              One system. Four levels.<br />
               Start where you are. <span className="text-accent">Scale when ready.</span>
             </h2>
           </RevealOnScroll>
@@ -512,7 +485,11 @@ export default function PackagesPage() {
             </div>
           </RevealOnScroll>
           <RevealOnScroll>
-            <ComparisonTable />
+            <ComparisonTable
+              tiers={packagesTiers}
+              categories={packagesCategories}
+              highlightCol={1}
+            />
           </RevealOnScroll>
         </div>
       </section>
