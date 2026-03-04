@@ -357,6 +357,32 @@ export default function WebEngineeringPage() {
         </div>
       </section>
 
+      {/* ══════ UPGRADE NUDGE ══════ */}
+      <section className="py-20 max-md:py-14">
+        <div className="max-w-[640px] mx-auto px-8 max-md:px-5">
+          <RevealOnScroll>
+            <div className="bg-surface border border-border rounded-[24px] p-10 max-md:p-7 text-center transition-all duration-400 hover:border-border-hover">
+              <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-accent bg-accent-dim px-3 py-1 rounded-full mb-5">
+                Need more than a website?
+              </span>
+              <h3 className="text-[clamp(22px,3vw,28px)] font-extrabold leading-[1.15] tracking-[-0.8px] mb-4">
+                Ready for the full<br />marketing engine?
+              </h3>
+              <p className="text-[15px] text-text-dim leading-[1.7] mb-7 max-w-[480px] mx-auto">
+                Our packages combine your website with SEO, paid ads, reputation management, content, and a dedicated lead team — everything you need to dominate your market.
+              </p>
+              <Link
+                href="/packages"
+                className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-8 py-3.5 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
+              >
+                See Packages
+                <ArrowIcon />
+              </Link>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
       {/* ══════ HOW IT WORKS ══════ */}
       <section className="py-30 max-md:py-20 border-t border-border">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
