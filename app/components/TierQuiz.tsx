@@ -11,54 +11,53 @@ const QUESTIONS: QuizQuestion[] = [
   {
     question: "What's your biggest challenge right now?",
     options: [
-      { label: "I get leads but don't follow up fast enough", scores: [3, 1, 0, 0, 0] },
-      { label: "I need to show up higher on Google", scores: [1, 3, 1, 0, 0] },
-      { label: "My website doesn't reflect the quality of my work", scores: [0, 1, 3, 1, 0] },
-      { label: "I don't have time for marketing at all", scores: [0, 0, 1, 3, 1] },
-      { label: "I want someone handling everything — leads to close", scores: [0, 0, 0, 1, 3] },
+      { label: "I get leads but don't follow up fast enough", scores: [3, 1, 0, 0] },
+      { label: "I need to show up higher on Google", scores: [3, 1, 0, 0] },
+      { label: "My website doesn't reflect the quality of my work", scores: [1, 3, 1, 0] },
+      { label: "I don't have time for marketing at all", scores: [0, 1, 3, 1] },
+      { label: "I want someone handling everything — leads to close", scores: [0, 0, 1, 3] },
     ],
   },
   {
     question: "How many leads do you get per month right now?",
     options: [
-      { label: "Less than 20", scores: [3, 2, 0, 0, 0] },
-      { label: "20–50", scores: [2, 3, 2, 0, 0] },
-      { label: "50–100", scores: [0, 1, 3, 2, 1] },
-      { label: "100+", scores: [0, 0, 1, 2, 3] },
+      { label: "Less than 20", scores: [3, 1, 0, 0] },
+      { label: "20–50", scores: [3, 2, 0, 0] },
+      { label: "50–100", scores: [1, 3, 2, 1] },
+      { label: "100+", scores: [0, 1, 2, 3] },
     ],
   },
   {
     question: "Do you have a website you're happy with?",
     options: [
-      { label: "No website at all", scores: [0, 0, 3, 2, 1] },
-      { label: "I have one but it needs work", scores: [1, 1, 3, 1, 0] },
-      { label: "It's decent, not a priority right now", scores: [2, 3, 0, 0, 0] },
-      { label: "Yes, my website is solid", scores: [3, 2, 0, 1, 0] },
+      { label: "No website at all", scores: [0, 3, 2, 1] },
+      { label: "I have one but it needs work", scores: [1, 3, 1, 0] },
+      { label: "It's decent, not a priority right now", scores: [3, 0, 0, 0] },
+      { label: "Yes, my website is solid", scores: [2, 0, 1, 0] },
     ],
   },
   {
     question: "How much time do you spend on marketing each week?",
     options: [
-      { label: "Zero — I don't have time", scores: [0, 0, 1, 3, 3] },
-      { label: "A few hours here and there", scores: [1, 2, 2, 1, 0] },
-      { label: "I actively manage it but want help", scores: [2, 3, 1, 0, 0] },
-      { label: "I have someone on my team doing it", scores: [3, 1, 1, 0, 0] },
+      { label: "Zero — I don't have time", scores: [0, 1, 3, 3] },
+      { label: "A few hours here and there", scores: [2, 2, 1, 0] },
+      { label: "I actively manage it but want help", scores: [3, 1, 0, 0] },
+      { label: "I have someone on my team doing it", scores: [1, 1, 0, 0] },
     ],
   },
   {
     question: "What's your annual revenue?",
     options: [
-      { label: "Under $300K", scores: [3, 2, 0, 0, 0] },
-      { label: "$300K – $1M", scores: [1, 3, 3, 1, 0] },
-      { label: "$1M – $3M", scores: [0, 1, 2, 3, 2] },
-      { label: "$3M+", scores: [0, 0, 1, 2, 3] },
+      { label: "Under $300K", scores: [3, 1, 0, 0] },
+      { label: "$300K – $1M", scores: [3, 3, 1, 0] },
+      { label: "$1M – $3M", scores: [1, 2, 3, 2] },
+      { label: "$3M+", scores: [0, 1, 2, 3] },
     ],
   },
 ];
 
 const TIERS = [
-  { name: "Ignition", price: "$997/mo", description: "Lead conversion funnel and automation — stop losing the leads you already get." },
-  { name: "Foundation", price: "$1,997/mo", description: "Everything in Ignition plus SEO, reputation management, and local visibility." },
+  { name: "Foundation", price: "$1,997/mo", description: "SEO, reputation management, lead conversion funnel, and local visibility — the full foundation for growth." },
   { name: "Accelerator", price: "$3,997/mo", description: "Custom website, paid ads, and a branded reporting dashboard — the full online presence." },
   { name: "Authority", price: "$7,500/mo", description: "Full marketing management — content, social, email, ads, and strategy. We run it all." },
   { name: "Dominator", price: "$12,000/mo", description: "Dedicated lead team, live hot transfers, appointment setting. Your phone only rings when someone is ready to book." },
@@ -66,7 +65,7 @@ const TIERS = [
 
 export default function TierQuiz({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState(0);
-  const [scores, setScores] = useState([0, 0, 0, 0, 0]);
+  const [scores, setScores] = useState([0, 0, 0, 0]);
   const [result, setResult] = useState<number | null>(null);
 
   function handleAnswer(optionScores: number[]) {
@@ -168,7 +167,7 @@ export default function TierQuiz({ onClose }: { onClose: () => void }) {
                   <button
                     onClick={() => {
                       setStep(0);
-                      setScores([0, 0, 0, 0, 0]);
+                      setScores([0, 0, 0, 0]);
                       setResult(null);
                     }}
                     className="text-[13px] text-text-dim font-medium hover:text-text transition-colors"

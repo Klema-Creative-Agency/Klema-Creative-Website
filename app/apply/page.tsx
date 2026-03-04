@@ -464,7 +464,7 @@ const SECTIONS: Section[] = [
     questions: [
       {
         type: "choice",
-        text: "A local HVAC company signs up for our basic Ignition package. After 2 weeks, they say \u2018We\u2019re not getting enough calls.\u2019 You check the data and see 14 leads came in but only 2 were called back. What do you tell them?",
+        text: "A local HVAC company signs up for our Foundation package. After 2 weeks, they say \u2018We\u2019re not getting enough calls.\u2019 You check the data and see 14 leads came in but only 2 were called back. What do you tell them?",
         options: [
           { text: "Walk them through the data compassionately \u2014 show the missed leads, explain the speed-to-lead gap, and help them set up a process so they answer faster", scores: { cs: 5, creative: 4, sales: 2, lead: 2 } },
           { text: "Point out the numbers directly \u2014 14 leads, 2 callbacks. The system works. Offer to set up better notification triggers", scores: { ps: 4, ss: 3, creative: 3, labs: 2 } },

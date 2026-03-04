@@ -22,7 +22,7 @@ export default function BusinessesWeWorkWith() {
             Built for any local service business.
           </h2>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[600px] mb-16">
-            The Ignition system works for any local service business. Here are a few industries where we&apos;ve built proven funnels.
+            The Lead Engine system works for any local service business. Here are a few industries where we&apos;ve built proven funnels.
           </p>
         </RevealOnScroll>
 
