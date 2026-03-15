@@ -771,20 +771,39 @@ export default function CustomerJourney() {
               />
             </svg>
 
-            {/* Mobile: GSAP scroll-driven chevron that travels down the border */}
+            {/* Mobile: GSAP scroll-driven mini rocket that travels down the border */}
             <div
               data-mobile-chevron
               className="absolute left-0 z-20 md:hidden pointer-events-none"
-              style={{ marginLeft: "-15px", top: 0 }}
+              style={{ marginLeft: "-16px", top: 0 }}
             >
-              <svg width="30" height="76" viewBox="0 0 30 76" fill="none">
-                {/* Trailing lines above chevron */}
-                <line x1="11" y1="0" x2="11" y2="30" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" opacity="0.3" />
-                <line x1="19" y1="4" x2="19" y2="26" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" opacity="0.2" />
-                {/* Chevron circle */}
-                <circle cx="15" cy="48" r="12" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.3)" strokeWidth="1.5" />
-                {/* Down arrow */}
-                <path d="M10 45 L15 52 L20 45" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg width="32" height="70" viewBox="0 0 32 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Flame trail above rocket */}
+                <ellipse cx="16" cy="10" rx="4" ry="10" fill="url(#mobileFlameGrad)" opacity="0.7" />
+                {/* Rocket body - pointing down */}
+                <g transform="translate(16, 45) rotate(90)">
+                  <defs>
+                    <linearGradient id="mobileRocketGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+                      <stop offset="0%" stopColor="#c4b5fd" />
+                      <stop offset="100%" stopColor="#a78bfa" />
+                    </linearGradient>
+                    <linearGradient id="mobileFlameGrad" x1="0.5" y1="1" x2="0.5" y2="0">
+                      <stop offset="0%" stopColor="#4ade80" />
+                      <stop offset="60%" stopColor="#a78bfa" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  {/* Body */}
+                  <path d="M-10 -5 C-10 -5 -6 -9 2 -9 C10 -9 14 -5 16 -3 L16 3 C14 5 10 9 2 9 C-6 9 -10 5 -10 5 Z" fill="url(#mobileRocketGrad)" />
+                  {/* Nose cone */}
+                  <path d="M16 -3 C16 -3 18 -1.5 18 0 C18 1.5 16 3 16 3 Z" fill="#7c3aed" />
+                  {/* Window */}
+                  <circle cx="6" cy="0" r="3" fill="#0d0d0d" stroke="#a78bfa" strokeWidth="0.8" />
+                  <circle cx="6" cy="0" r="1.5" fill="#a78bfa" opacity="0.35" />
+                  {/* Fins */}
+                  <path d="M-7 -5 L-10 -9 L-10 -5 Z" fill="#a78bfa" />
+                  <path d="M-7 5 L-10 9 L-10 5 Z" fill="#a78bfa" />
+                </g>
               </svg>
             </div>
 
