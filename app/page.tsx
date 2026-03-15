@@ -5,6 +5,8 @@ import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import SplitHeading from "./components/SplitHeading";
 import ScannerPopup from "./components/ScannerPopup";
+import TestimonialsSection from "./components/TestimonialsSection";
+import CustomerJourney from "./components/CustomerJourney";
 
 function ArrowIcon() {
   return (
@@ -65,7 +67,7 @@ export default function Home() {
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
                 We make you the #1 choice in your market on Google and social
-                media. SEO, AEO, content, and reputation — all handled.
+                media. SEO, AEO, content, and reputation, all handled.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface border border-border rounded-2xl p-10 px-8 max-md:p-7 transition-[background] duration-400 hover:bg-[#121212] group">
@@ -100,8 +102,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CUSTOMER JOURNEY */}
+      <CustomerJourney />
+
       {/* HOW IT WORKS */}
-      <section className="border-t border-border py-30 max-md:py-20">
+      <section id="how-it-works" className="py-30 max-md:py-20">
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5">
           <div className="text-center mb-16">
             <RevealOnScroll>
@@ -127,7 +132,7 @@ export default function Home() {
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 A 30-minute call where we find out exactly where leads are
-                dying and what&apos;s leaving money on the table. Free, no
+                falling through the cracks and what&apos;s leaving money on the table. Free, no
                 strings attached.
               </p>
             </RevealOnScroll>
@@ -140,8 +145,8 @@ export default function Home() {
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 We don&apos;t hand you a template. Our team custom-builds your
-                entire marketing operation — from website to ad campaigns to
-                lead follow-up — around how your business actually works.
+                entire marketing operation, from website to ad campaigns to
+                lead follow-up, around how your business actually works.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface p-10 px-7 text-center transition-[background] duration-400 hover:bg-[#121212] group">
@@ -154,7 +159,7 @@ export default function Home() {
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 Our team watches the data, cuts what doesn&apos;t work, and
                 doubles down on what does. Your marketing gets sharper every
-                month — and so do your results.
+                month, and so do your results.
               </p>
             </RevealOnScroll>
           </div>
@@ -172,8 +177,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <TestimonialsSection />
+
       {/* FINAL CTA */}
-      <section className="py-40 text-center relative overflow-hidden border-t border-border">
+      <section className="py-40 text-center relative overflow-hidden">
         <div className="cta-glow" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>

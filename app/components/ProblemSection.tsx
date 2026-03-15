@@ -8,24 +8,44 @@ const problems = [
     suffix: "%",
     title: "Invisible to AI",
     text: "40% of consumers now ask AI for business recommendations instead of Google. If you\u2019re not in the answers, your AI visibility is zero \u2014 and every lead goes to a competitor.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
+        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    ),
   },
   {
     value: 78,
     suffix: "%",
     title: "Not enough leads",
     text: "78% of leads go to the first business that responds. If your website doesn\u2019t rank and your ads underperform, your competitors are eating your market share.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      </svg>
+    ),
   },
   {
     value: 5,
     suffix: "min",
     title: "No follow-up system",
     text: "After 5 minutes, your odds of contacting a lead drop by 80%. Leads come in but nobody responds fast enough \u2014 by the time you do, they\u2019ve hired someone else.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
+        <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
   },
   {
     value: 5,
     suffix: "+",
     title: "Fragmented tools",
     text: "You\u2019re paying for 5+ marketing tools that don\u2019t talk to each other. No unified view, no real strategy \u2014 just wasted budget and missed opportunities.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      </svg>
+    ),
   },
 ];
 
@@ -70,7 +90,7 @@ function TickerNumber({
   );
 }
 
-// Heading words with timing — "money" is flagged for emphasis
+// Heading words with timing - "money" is flagged for emphasis
 const LINE_1 = [
   { word: "Are", delay: 200 },
   { word: "you", delay: 300 },
@@ -95,7 +115,7 @@ export default function ProblemSection() {
   const [gridInView, setGridInView] = useState(false);
   const [emphasize, setEmphasize] = useState(false);
 
-  // Header observer — toggles in AND out on scroll
+  // Header observer - toggles in AND out on scroll
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
@@ -117,7 +137,7 @@ export default function ProblemSection() {
     return () => clearTimeout(t);
   }, [headerInView]);
 
-  // Grid observer — one-shot
+  // Grid observer - one-shot
   useEffect(() => {
     const el = gridRef.current;
     if (!el) return;
@@ -177,29 +197,34 @@ export default function ProblemSection() {
               transition: "all 0.8s ease-out 1100ms",
             }}
           >
-            Most businesses are invisible where it matters &mdash; to AI, to
+            Most businesses are invisible where it matters. To AI, to
             Google, and to the leads slipping through the cracks. We solve all
             three.
           </p>
         </div>
 
-        {/* Accordion grid — cards fold out left to right */}
+        {/* Accordion grid - cards fold out left to right */}
         <div
           ref={gridRef}
-          className="grid grid-cols-2 gap-3 max-md:grid-cols-1"
+          className="grid grid-cols-2 gap-4 max-md:grid-cols-1"
         >
           {problems.map((problem, i) => (
             <div
               key={i}
-              className="accent-top-hover bg-surface border border-border rounded-2xl p-10 px-8 max-md:p-7 transition-[background] duration-400 hover:bg-[#121212]"
+              className="group relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-10 px-8 max-md:p-7 transition-all duration-400 hover:border-accent/30 hover:shadow-[0_0_24px_rgba(74,222,128,0.06)] overflow-hidden"
               style={{
                 opacity: gridInView ? 1 : 0,
                 transform: gridInView ? "scaleX(1)" : "scaleX(0)",
                 transformOrigin: "left center",
-                transition: `opacity 0.8s ease ${CARD_DELAYS[i]}ms, transform 1s cubic-bezier(0.22, 1, 0.36, 1) ${CARD_DELAYS[i]}ms`,
+                transition: `opacity 0.8s ease ${CARD_DELAYS[i]}ms, transform 1s cubic-bezier(0.22, 1, 0.36, 1) ${CARD_DELAYS[i]}ms, border-color 0.4s ease, box-shadow 0.4s ease`,
               }}
             >
+              {/* Green left accent bar */}
+              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent/20 group-hover:bg-accent/60 transition-colors duration-400" />
+              {/* Radial gradient overlay on hover */}
+              <div className="absolute top-0 right-0 w-1/2 h-1/2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at top right, rgba(74,222,128,0.06), transparent 70%)" }} />
               <div
+                className="relative"
                 style={{
                   opacity: gridInView ? 1 : 0,
                   transform: gridInView ? "translateX(0)" : "translateX(-24px)",
@@ -221,7 +246,8 @@ export default function ProblemSection() {
                     start={gridInView}
                   />
                 </div>
-                <h3 className="text-base font-bold mb-2 tracking-[-0.2px]">
+                <h3 className="text-base font-bold mb-2 tracking-[-0.2px] flex items-center gap-2">
+                  <span className="flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity duration-300">{problem.icon}</span>
                   {problem.title}
                 </h3>
                 <p className="text-[14px] text-text-dim leading-[1.7]">

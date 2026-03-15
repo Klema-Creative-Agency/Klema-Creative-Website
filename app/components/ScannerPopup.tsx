@@ -61,15 +61,32 @@ export default function ScannerPopup() {
   const abortRef = useRef<AbortController | null>(null);
 
   const hasTriggered = useRef(false);
+  const pageLoadTime = useRef(Date.now());
 
-  // Trigger: fires when #problem-section scrolls out of viewport going down
+  // Trigger: fires when #how-it-works scrolls out of viewport going down + 45s on page
   useEffect(() => {
     if (typeof window === "undefined") return;
     // TODO: Re-enable for production
     // if (sessionStorage.getItem(SESSION_KEY)) return;
 
-    const target = document.getElementById("problem-section");
+    const target = document.getElementById("how-it-works");
     if (!target) return;
+
+    const tryOpen = () => {
+      if (hasTriggered.current) return;
+      const elapsed = Date.now() - pageLoadTime.current;
+      if (elapsed < 45000) {
+        // Not enough time on page yet — wait and check again
+        setTimeout(tryOpen, 45000 - elapsed);
+        return;
+      }
+      hasTriggered.current = true;
+      setOpen(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setVisible(true));
+      });
+      obs.disconnect();
+    };
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -78,12 +95,7 @@ export default function ScannerPopup() {
           entry.boundingClientRect.top < 0 &&
           !hasTriggered.current
         ) {
-          hasTriggered.current = true;
-          setOpen(true);
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => setVisible(true));
-          });
-          obs.disconnect();
+          tryOpen();
         }
       },
       { threshold: 0 }
@@ -237,7 +249,7 @@ export default function ScannerPopup() {
     } catch (err) {
       if (err instanceof Error && err.name !== "AbortError") {
         setScanError(
-          "Scan failed — please check your connection and try again."
+          "Scan failed. Please check your connection and try again."
         );
       }
     }
@@ -285,7 +297,7 @@ export default function ScannerPopup() {
       setLeadLoading(false);
       setStep("unlocked");
     } catch {
-      setLeadError("Network error — please try again");
+      setLeadError("Network error. Please try again");
       setLeadLoading(false);
     }
   };
@@ -365,7 +377,7 @@ export default function ScannerPopup() {
               </h3>
               <p className="text-[14px] text-text-dim leading-[1.7] mb-6">
                 ChatGPT, Gemini, and Perplexity are replacing Google for
-                millions of users. See if AI recommends you — or only your
+                millions of users. See if AI recommends you, or only your
                 competitors. Takes 60 seconds.
               </p>
               <div className="flex flex-col gap-2.5">
@@ -384,7 +396,7 @@ export default function ScannerPopup() {
                   onClick={handleUrlSubmit}
                   className="w-full px-6 py-3.5 rounded-xl border-none bg-accent text-black text-[14px] font-bold font-sans tracking-[-0.01em] cursor-pointer transition-all duration-300 btn-primary-hover"
                 >
-                  Scan Now — It&apos;s Free
+                  Scan Now. It&apos;s Free
                 </button>
               </div>
               {urlError && (
@@ -440,7 +452,7 @@ export default function ScannerPopup() {
           </div>
         )}
 
-        {/* ====== STEP 3: Gated — score + lead form + collapsed/blurred cards ====== */}
+        {/* ====== STEP 3: Gated - score + lead form + collapsed/blurred cards ====== */}
         {step === "gated" && (
           <div className="px-8 py-10 max-md:px-5 max-md:py-8">
             <div className="flex justify-center mb-8">
@@ -537,7 +549,7 @@ export default function ScannerPopup() {
           </div>
         )}
 
-        {/* ====== STEP 4: Unlocked — full results ====== */}
+        {/* ====== STEP 4: Unlocked - full results ====== */}
         {step === "unlocked" && (
           <div className="px-8 py-10 max-md:px-5 max-md:py-8">
             <div className="flex justify-center mb-8">
