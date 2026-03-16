@@ -80,8 +80,8 @@ export default function AboutPage() {
               <RevealOnScroll>
                 <p className="text-[15px] text-text-dim leading-[1.8] mb-5">
                   I&apos;m Tomas Amaya, and here&apos;s the truth: I&apos;ve seen too many
-                  local business owners&mdash;plumbers, roofers, HVAC techs,
-                  dentists&mdash;hand over $3,000 a month to marketing agencies and get
+                  local business owners (plumbers, roofers, HVAC techs,
+                  dentists) hand over $3,000 a month to marketing agencies and get
                   nothing but a PDF full of &ldquo;impressions&rdquo; and &ldquo;clicks&rdquo;
                   that don&apos;t mean a damn thing.
                 </p>
@@ -104,7 +104,7 @@ export default function AboutPage() {
               </RevealOnScroll>
               <RevealOnScroll>
                 <p className="text-[15px] text-text leading-[1.8] font-medium mb-5">
-                  Klema Creative is a marketing engine&mdash;not an agency. Every system
+                  Klema Creative is a marketing engine, not an agency. Every system
                   I build is measured by one number: did your phone ring with a qualified
                   lead? Not clicks. Not impressions. Revenue.
                 </p>
@@ -112,10 +112,10 @@ export default function AboutPage() {
               <RevealOnScroll>
                 <p className="text-[15px] text-text-dim leading-[1.8] mb-5">
                   Here&apos;s how it works: I build your entire lead generation
-                  system&mdash;your website, your Google rankings, your follow-up
-                  automation&mdash;so that when someone searches for your service in San
+                  system (your website, your Google rankings, your follow-up
+                  automation) so that when someone searches for your service in San
                   Antonio, they find you first. And when they reach out, my system
-                  responds within 60 seconds. Calls, texts, emails&mdash;all automatic,
+                  responds within 60 seconds. Calls, texts, emails, all automatic,
                   even at 2am on a Saturday.
                 </p>
               </RevealOnScroll>
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   <p className="text-[15px] text-text-dim leading-[1.8] mb-5">
                     What I do have is a system I believe in enough to bet on. That&apos;s
                     why I&apos;m offering a small number of founding client
-                    partnerships&mdash;I build your entire marketing engine, you see real
+                    partnerships. I build your entire marketing engine, you see real
                     results, and we grow together.
                   </p>
                 </div>
@@ -151,10 +151,10 @@ export default function AboutPage() {
                     <ul className="flex flex-col gap-2.5">
                       {[
                         "Full system build at reduced rates (locked in for life)",
-                        "Direct access to me — no account managers, no runaround",
+                        "Direct access to me. No account managers, no runaround",
                         "Priority support and white-glove onboarding",
                         "A say in how the system evolves (your feedback shapes the product)",
-                        "Month-to-month, no contracts — I earn your business every single month",
+                        "Month-to-month, no contracts. I earn your business every single month",
                       ].map((item, i) => (
                         <li key={i} className="flex items-start gap-2 text-[13.5px] text-text-mid leading-[1.5]">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" className="shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12" /></svg>
@@ -194,7 +194,7 @@ export default function AboutPage() {
                   </h2>
                   <p className="text-[15px] text-text-dim leading-[1.8] mb-5">
                     Big agencies treat you like an account number. I&apos;ll treat your
-                    business like my own&mdash;because right now, your success IS my
+                    business like my own, because right now, your success IS my
                     success.
                   </p>
                   <p className="text-[15px] text-text leading-[1.8] font-medium">
@@ -227,8 +227,8 @@ export default function AboutPage() {
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-8">
               If you&apos;re a local service business in San Antonio and you want a
-              marketing system that&apos;s built around results&mdash;not
-              contracts&mdash;let&apos;s talk.
+              marketing system that&apos;s built around results, not
+              contracts, let&apos;s talk.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>

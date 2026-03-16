@@ -17,7 +17,7 @@ const stages = [
     title: "Leads actually get answered",
     cardTitle: "Every inquiry gets a response in under 60 seconds",
     cardDetail:
-      "Calls, texts, and emails fire automatically — nights, weekends, holidays. No more leads slipping through the cracks.",
+      "Calls, texts, and emails fire automatically. Nights, weekends, holidays. No more leads slipping through the cracks.",
     side: "left" as const,
     illustration: "phone",
   },
@@ -70,7 +70,7 @@ const stages = [
     metric: "0",
     metricLabel: "Missed Messages",
     title: "One inbox for everything",
-    cardTitle: "Calls, texts, emails, Facebook — all in one place",
+    cardTitle: "Calls, texts, emails, Facebook, all in one place",
     cardDetail:
       "Nothing gets missed. No more checking 5 apps. Every customer message lands in one unified inbox.",
     side: "right" as const,

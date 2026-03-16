@@ -64,7 +64,7 @@ export default function Home() {
                 Get Found First
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
-                I get your business to the top of Google&mdash;search results, map pack, and AI recommendations. SEO, Google Business Profile, reputation management, and AI visibility. When someone needs your service in San Antonio, they find you before anyone else.
+                I get your business to the top of Google: search results, map pack, and AI recommendations. SEO, Google Business Profile, reputation management, and AI visibility. When someone needs your service in San Antonio, they find you before anyone else.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface border border-border rounded-2xl p-10 px-8 max-md:p-7 transition-[background] duration-400 hover:bg-[#121212] group">
@@ -90,7 +90,7 @@ export default function Home() {
                 Close More Jobs
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
-                Automated appointment booking, proposal follow-ups, review requests, and referral campaigns. The system doesn&apos;t just get you leads&mdash;it helps you close them and turns happy customers into repeat business.
+                Automated appointment booking, proposal follow-ups, review requests, and referral campaigns. The system doesn&apos;t just get you leads. It helps you close them and turns happy customers into repeat business.
               </p>
             </RevealOnScroll>
           </div>
@@ -128,7 +128,7 @@ export default function Home() {
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 I personally analyze your Google rankings, your website, your
                 reviews, and your competitors. You&apos;ll see exactly where leads
-                are falling through the cracks&mdash;and what it would take to fix
+                are falling through the cracks, and what it would take to fix
                 them. Free, no strings attached.
               </p>
             </RevealOnScroll>
@@ -141,7 +141,7 @@ export default function Home() {
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 No templates. No cookie-cutter campaigns. I build your entire
-                marketing engine around how your business actually works&mdash;your
+                marketing engine around how your business actually works: your
                 services, your market, your goals. Website, SEO, lead follow-up,
                 CRM, all of it.
               </p>
@@ -156,7 +156,7 @@ export default function Home() {
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
                 I watch the data every week. What&apos;s working gets doubled down.
                 What&apos;s not gets cut. Your marketing gets sharper every
-                month&mdash;and so do your results.
+                month, and so do your results.
               </p>
             </RevealOnScroll>
           </div>
@@ -188,7 +188,7 @@ export default function Home() {
           <div className="text-center mb-10">
             <RevealOnScroll>
               <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
-                Founding client program &mdash; limited spots
+                Founding client program · limited spots
               </p>
             </RevealOnScroll>
             <RevealOnScroll>
@@ -199,7 +199,7 @@ export default function Home() {
             </RevealOnScroll>
             <RevealOnScroll>
               <p className="text-[17px] text-text-dim leading-[1.7] max-w-[620px] mx-auto">
-                I&apos;m looking for 5 local service businesses in San Antonio to partner with as founding clients. I build your complete marketing engine&mdash;website, Google rankings, lead follow-up, the full system&mdash;at a reduced rate, and you help me build my portfolio with a case study and testimonial.
+                I&apos;m looking for 5 local service businesses in San Antonio to partner with as founding clients. I build your complete marketing engine (website, Google rankings, lead follow-up, the full system) at a reduced rate, and you help me build my portfolio with a case study and testimonial.
               </p>
             </RevealOnScroll>
           </div>
@@ -210,10 +210,10 @@ export default function Home() {
                 <ul className="flex flex-col gap-2.5">
                   {[
                     "Full system build at a fraction of the normal investment",
-                    "Direct access to me — not an account manager, not a chatbot",
+                    "Direct access to me. Not an account manager, not a chatbot",
                     "Founding client pricing locked in for as long as you stay",
                     "Month-to-month. No contracts. I earn your business every month",
-                    "You keep everything if you ever leave — your website, your data, all of it",
+                    "You keep everything if you ever leave: your website, your data, all of it",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-[13.5px] text-text-mid leading-[1.5]">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" className="shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12" /></svg>
@@ -277,7 +277,7 @@ export default function Home() {
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-4">
               Book a free marketing audit. I&apos;ll show you exactly where leads are
-              falling through the cracks and what it would take to fix them&mdash;even
+              falling through the cracks and what it would take to fix them, even
               if you never hire me.
             </p>
           </RevealOnScroll>
