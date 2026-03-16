@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, Newsreader } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import "./globals.css";
 
@@ -133,6 +134,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${newsreader.variable} font-sans antialiased`}
       >
+        <ScrollToTop />
         <Navbar />
         {children}
         <Footer />

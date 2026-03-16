@@ -40,6 +40,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Metallic text gradient - must be in stylesheet to prevent SSR flash */
+.metallic-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);

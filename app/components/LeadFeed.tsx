@@ -178,16 +178,12 @@ export default function LeadFeed() {
             Your growth engine in action
           </p>
           <h2
-            className={`text-[clamp(28px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4 ${staggerClass(headerInView, 300).className}`}
+            className={`metallic-text text-[clamp(28px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4 ${staggerClass(headerInView, 300).className}`}
             style={{
               ...staggerClass(headerInView, 300).style,
               background: "linear-gradient(120deg, #aaa 0%, #c0c0c0 6%, #d6d6d6 12%, #ededed 18%, #ffffff 24%, #c8c8c8 30%, #aaa 38%, #c0c0c0 46%, #e0e0e0 52%, #f6f6f6 58%, #ffffff 63%, #d4d4d4 68%, #b2b2b2 76%, #c8c8c8 84%, #e4e4e4 90%, #b8b8b8 96%, #aaa 100%)",
               backgroundSize: "400% 100%",
               backgroundPosition: `${metalPos}% center`,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
               transitionProperty: "opacity, transform, filter",
             }}
           >
