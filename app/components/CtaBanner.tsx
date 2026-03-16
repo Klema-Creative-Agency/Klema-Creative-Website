@@ -52,7 +52,7 @@ export default function CtaBanner() {
               href="/contact"
               className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em] shadow-[0_0_20px_rgba(74,222,128,0.25),0_4px_16px_rgba(0,0,0,0.3)]"
             >
-              Book a Free Discovery Call
+              Get Your Free Marketing Audit
               <ArrowIcon />
             </Link>
             <Link

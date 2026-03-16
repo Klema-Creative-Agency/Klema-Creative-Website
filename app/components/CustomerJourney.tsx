@@ -12,56 +12,56 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 const stages = [
   {
     step: 1,
-    metric: "+200%",
-    metricLabel: "More Traffic",
-    title: "We put you in front of the right people",
-    cardTitle: "SEO, ads, and AI visibility, all handled",
-    cardDetail:
-      "We run your Google Ads, optimize your SEO, and get you listed everywhere that matters, including Google Business Profile, social media, and AI search results.",
-    side: "left" as const,
-    illustration: "traffic",
-  },
-  {
-    step: 2,
-    metric: "+21%",
-    metricLabel: "Conversion Rate",
-    title: "We build a website that actually converts",
-    cardTitle: "Not just pretty. Built to book jobs",
-    cardDetail:
-      "Clear messaging, strong CTAs, real testimonials, and built-in scheduling. Every page is designed to turn visitors into leads.",
-    side: "right" as const,
-    illustration: "website",
-  },
-  {
-    step: 3,
     metric: "< 60s",
     metricLabel: "Response Time",
-    title: "We contact your leads before they go cold",
-    cardTitle: "Our team responds in under 60 seconds",
+    title: "Leads actually get answered",
+    cardTitle: "Every inquiry gets a response in under 60 seconds",
     cardDetail:
-      "When a lead comes in, our team calls, texts, and emails them immediately so you never lose a job to a slow response.",
+      "Calls, texts, and emails fire automatically — nights, weekends, holidays. No more leads slipping through the cracks.",
     side: "left" as const,
     illustration: "phone",
   },
   {
-    step: 4,
+    step: 2,
+    metric: "Top 3",
+    metricLabel: "Google Ranking",
+    title: "You show up first on Google",
+    cardTitle: "Local SEO, Google Business Profile, and review generation",
+    cardDetail:
+      "I get you into the map pack where 46% of all clicks go. More visibility means more calls from people ready to buy.",
+    side: "right" as const,
+    illustration: "traffic",
+  },
+  {
+    step: 3,
     metric: "-40%",
     metricLabel: "No-Shows",
-    title: "We make sure they show up",
-    cardTitle: "Automated reminders that cut no-shows",
+    title: "No-shows drop dramatically",
+    cardTitle: "Automated reminders via call, text, and email",
     cardDetail:
-      "Once a lead books, we send reminder calls, texts, and emails so they actually show up. No more wasted time slots.",
-    side: "right" as const,
+      "Before every appointment, the system sends reminders so they actually show up. Industry data shows this cuts no-shows by up to 40%.",
+    side: "left" as const,
     illustration: "reminders",
   },
   {
-    step: 5,
-    metric: "+9%",
-    metricLabel: "Close Rate",
-    title: "We help you close faster",
-    cardTitle: "Proposals and follow-ups on autopilot",
+    step: 4,
+    metric: "+5x",
+    metricLabel: "More Reviews",
+    title: "Your reviews grow on autopilot",
+    cardTitle: "Automatic review requests after every job",
     cardDetail:
-      "We send proposals and invoices fast, then follow up automatically so the deal doesn't go cold while you're on a job site.",
+      "After every job, the system asks for a Google review. More reviews = higher rankings = more leads. It compounds.",
+    side: "right" as const,
+    illustration: "reviews",
+  },
+  {
+    step: 5,
+    metric: "100%",
+    metricLabel: "Tracked",
+    title: "You see exactly what's working",
+    cardTitle: "No vanity metrics. Real revenue tracking",
+    cardDetail:
+      "Your dashboard shows leads in, leads contacted, appointments booked, and revenue generated. Every dollar tracked.",
     side: "left" as const,
     illustration: "invoice",
   },
@@ -69,34 +69,12 @@ const stages = [
     step: 6,
     metric: "0",
     metricLabel: "Missed Messages",
-    title: "We keep every conversation in one place",
-    cardTitle: "One inbox for calls, texts, and emails",
+    title: "One inbox for everything",
+    cardTitle: "Calls, texts, emails, Facebook — all in one place",
     cardDetail:
-      "No more checking five apps. Every customer message lands in one unified inbox so nothing slips through the cracks.",
+      "Nothing gets missed. No more checking 5 apps. Every customer message lands in one unified inbox.",
     side: "right" as const,
     illustration: "inbox",
-  },
-  {
-    step: 7,
-    metric: "100%",
-    metricLabel: "Visibility",
-    title: "We keep your projects on track",
-    cardTitle: "Your clients see progress in real time",
-    cardDetail:
-      "A project dashboard and client portal so everyone stays aligned. No more \"just checking in\" calls from customers.",
-    side: "left" as const,
-    illustration: "project",
-  },
-  {
-    step: 8,
-    metric: "+5x",
-    metricLabel: "More Reviews",
-    title: "We turn happy clients into repeat business",
-    cardTitle: "Reviews and referrals on autopilot",
-    cardDetail:
-      "After every job, we automatically request reviews, launch referral campaigns, and re-engage past clients to keep your pipeline full.",
-    side: "right" as const,
-    illustration: "reviews",
   },
 ];
 
@@ -335,7 +313,7 @@ function useIsMobile() {
 function buildPathFromHeadings(
   container: HTMLDivElement,
   headings: (HTMLHeadingElement | null)[]
-): { mainD: string; phantomD: string } {
+): { mainD: string; phantomD: string; rocketD: string } {
   const rect = container.getBoundingClientRect();
 
   const points: { x: number; y: number }[] = [];
@@ -348,7 +326,7 @@ function buildPathFromHeadings(
     });
   });
 
-  if (points.length < 2) return { mainD: "", phantomD: "" };
+  if (points.length < 2) return { mainD: "", phantomD: "", rocketD: "" };
 
   // Smooth S-curves: vertical at each heading, curves horizontally between them
   let d = `M ${points[0].x} ${points[0].y}`;
@@ -357,8 +335,6 @@ function buildPathFromHeadings(
     const curr = points[i];
     const next = points[i + 1];
     const midY = (curr.y + next.y) / 2;
-    // Control points stay at current/next x but at the vertical midpoint,
-    // creating smooth S-curves that leave each heading vertically
     d += ` C ${curr.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}`;
   }
 
@@ -366,7 +342,20 @@ function buildPathFromHeadings(
   const lastPt = points[points.length - 1];
   const phantomD = d + ` L ${lastPt.x} ${lastPt.y + 200}`;
 
-  return { mainD: d, phantomD };
+  // Rocket path: offset 60px to the right of the main path
+  const rocketOffset = 60;
+  const rocketPoints = points.map((p) => ({ x: p.x + rocketOffset, y: p.y }));
+  let rocketD = `M ${rocketPoints[0].x} ${rocketPoints[0].y}`;
+  for (let i = 0; i < rocketPoints.length - 1; i++) {
+    const curr = rocketPoints[i];
+    const next = rocketPoints[i + 1];
+    const midY = (curr.y + next.y) / 2;
+    rocketD += ` C ${curr.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}`;
+  }
+  const lastRocket = rocketPoints[rocketPoints.length - 1];
+  rocketD += ` L ${lastRocket.x} ${lastRocket.y + 200}`;
+
+  return { mainD: d, phantomD, rocketD };
 }
 
 /* ── useGSAPJourney hook ── */
@@ -377,6 +366,7 @@ function useGSAPJourney(
   headingRefs: React.MutableRefObject<(HTMLHeadingElement | null)[]>,
   pathRef: React.RefObject<SVGPathElement | null>,
   phantomRef: React.RefObject<SVGPathElement | null>,
+  rocketPathRef: React.RefObject<SVGPathElement | null>,
   trail1Ref: React.RefObject<SVGPathElement | null>,
   trail2Ref: React.RefObject<SVGPathElement | null>,
   rocketRef: React.RefObject<HTMLDivElement | null>
@@ -386,18 +376,20 @@ function useGSAPJourney(
     const stepsEl = stepsRef.current;
     const path = pathRef.current;
     const phantom = phantomRef.current;
+    const rocketPath = rocketPathRef.current;
     const trail1 = trail1Ref.current;
     const trail2 = trail2Ref.current;
     const rocket = rocketRef.current;
 
-    if (isMobile || !container || !stepsEl || !path || !phantom || !trail1 || !trail2 || !rocket) return null;
+    if (isMobile || !container || !stepsEl || !path || !phantom || !rocketPath || !trail1 || !trail2 || !rocket) return null;
 
-    const { mainD, phantomD } = buildPathFromHeadings(container, headingRefs.current);
+    const { mainD, phantomD, rocketD } = buildPathFromHeadings(container, headingRefs.current);
     if (!mainD) return null;
 
     // Set path d attributes
     path.setAttribute("d", mainD);
     phantom.setAttribute("d", phantomD);
+    rocketPath.setAttribute("d", rocketD);
     trail1.setAttribute("d", phantomD);
     trail2.setAttribute("d", phantomD);
 
@@ -426,12 +418,10 @@ function useGSAPJourney(
         const segEnd = (s + 1) / (stageCount - 1);
         tl.to(rocket, {
           motionPath: {
-            path: phantom,
-            align: phantom,
+            path: rocketPath,
+            align: rocketPath,
             alignOrigin: [0.5, 0.5],
             autoRotate: true,
-            offsetX: -50,
-            offsetY: -80,
             start: segStart,
             end: segEnd,
           },
@@ -442,12 +432,10 @@ function useGSAPJourney(
     } else {
       tl.to(rocket, {
         motionPath: {
-          path: phantom,
-          align: phantom,
+          path: rocketPath,
+          align: rocketPath,
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
-          offsetX: -50,
-          offsetY: -80,
         },
         ease: "none",
       }, 0);
@@ -487,7 +475,7 @@ function useGSAPJourney(
     });
 
     return { tl };
-  }, [isMobile, containerRef, stepsRef, headingRefs, pathRef, phantomRef, trail1Ref, trail2Ref, rocketRef]);
+  }, [isMobile, containerRef, stepsRef, headingRefs, pathRef, phantomRef, rocketPathRef, trail1Ref, trail2Ref, rocketRef]);
 
   useLayoutEffect(() => {
     if (isMobile) return;
@@ -623,6 +611,7 @@ export default function CustomerJourney() {
   const stepsRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const phantomRef = useRef<SVGPathElement>(null);
+  const rocketPathRef = useRef<SVGPathElement>(null);
   const trail1Ref = useRef<SVGPathElement>(null);
   const trail2Ref = useRef<SVGPathElement>(null);
   const rocketRef = useRef<HTMLDivElement>(null);
@@ -636,6 +625,7 @@ export default function CustomerJourney() {
     headingRefs,
     pathRef,
     phantomRef,
+    rocketPathRef,
     trail1Ref,
     trail2Ref,
     rocketRef
@@ -648,25 +638,19 @@ export default function CustomerJourney() {
         <div className="mb-16 max-md:mb-10 max-w-[500px]">
           <RevealOnScroll>
             <h2 className="text-[clamp(30px,4.5vw,48px)] font-extrabold leading-[1.15] tracking-[-1.5px] mb-4">
-              Here&apos;s what happens when{" "}
+              Here&apos;s what your business looks like with{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(86deg, #4ade80, #6ee7b7, #a78bfa)" }}
               >
-                Klema runs your marketing
+                Klema running your marketing
               </span>
             </h2>
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[15px] text-text-dim leading-[1.7]">
-              From the first click to the repeat customer, we build and manage every step
-              so you can focus on your craft.
-            </p>
-            <p className="text-[12px] text-text-dim/60 mt-3 italic">
-              This is the full Dominator experience, our most comprehensive tier.{" "}
-              <a href="/packages" className="text-accent/70 hover:text-accent transition-colors no-underline hover:underline">
-                See all packages →
-              </a>
+              From the first Google search to the repeat customer, every step is built and
+              managed so you can focus on your craft.
             </p>
           </RevealOnScroll>
         </div>
@@ -713,6 +697,11 @@ export default function CustomerJourney() {
             />
             <path
               ref={phantomRef}
+              stroke="transparent"
+              fill="none"
+            />
+            <path
+              ref={rocketPathRef}
               stroke="transparent"
               fill="none"
             />
@@ -841,6 +830,7 @@ export default function CustomerJourney() {
                             <path d="M18 15l-6-6-6 6" />
                           </svg>
                         </div>
+                        <p className="text-[10px] text-text-dim/50 mt-1.5 italic">system capability</p>
                       </div>
 
                       {/* Illustration column */}
@@ -903,7 +893,7 @@ export default function CustomerJourney() {
               href="/contact"
               className="btn-primary-hover inline-flex items-center gap-2 bg-accent text-black px-7 py-3.5 rounded-full text-[14px] font-bold no-underline transition-all duration-300 mt-6"
             >
-              Book Your Free Call
+              Get Your Free Marketing Audit
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>

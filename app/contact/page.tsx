@@ -1,4 +1,23 @@
+import type { Metadata } from "next";
 import RevealOnScroll from "../components/RevealOnScroll";
+
+export const metadata: Metadata = {
+  title: "Contact Klema Creative | Get Your Free Marketing Audit",
+  description:
+    "Get a free marketing audit from Klema Creative. We'll review your Google presence, website, and competitors and send you a personalized Loom video with findings. No pressure, no obligation.",
+  openGraph: {
+    title: "Contact Klema Creative | Get Your Free Marketing Audit",
+    description:
+      "Get a free marketing audit. We'll review your online presence and send you a personalized video with findings.",
+  },
+};
+
+// TODO: Replace with your real Calendly URL (e.g., "https://calendly.com/klema-creative/discovery")
+const CALENDLY_URL = "https://calendly.com/klema-creative/discovery";
+
+// TODO: Replace with your real phone number
+const PHONE_NUMBER = "(210) 555-1234";
+const PHONE_HREF = "tel:+12105551234";
 
 function ArrowIcon() {
   return (
@@ -18,36 +37,31 @@ export default function ContactPage() {
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">Contact</p>
           </RevealOnScroll>
           <RevealOnScroll>
-            <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4 text-center">
-              Let&apos;s talk about<br />your <span className="text-accent">growth.</span>
-            </h2>
+            <h1 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4 text-center">
+              Get your free<br /><span className="text-accent">marketing audit.</span>
+            </h1>
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto text-center">
-              The fastest way to see if we can help is to book a free 30-minute Discovery Call. There&apos;s no pressure and no obligation. We&apos;ll analyze your current marketing and give you a clear, honest assessment.
+              Book a quick call or just drop your info below. We&apos;ll personally review your Google presence, website, and competitors, then send you a Loom video with exactly what to fix. Free. No strings attached.
             </p>
           </RevealOnScroll>
         </div>
       </section>
 
-      {/* CONTACT CONTENT */}
+      {/* CALENDLY EMBED */}
       <section className="pt-0 pb-30 max-md:pb-20">
-        <div className="max-w-[560px] mx-auto px-8 max-md:px-5">
+        <div className="max-w-[700px] mx-auto px-8 max-md:px-5">
           <RevealOnScroll>
-            <div className="mt-12 p-12 rounded-[20px] border border-border bg-surface text-center min-h-[360px] flex flex-col items-center justify-center">
-              <div className="text-[2.5rem] mb-4">&#x1F4C5;</div>
-              <h3 className="text-xl font-bold mb-2.5 tracking-[-0.3px]">Schedule Your Discovery Call</h3>
-              <p className="text-sm text-text-dim mb-7">Choose a time that works for you. Your Calendly booking widget goes here.</p>
-              <a
-                className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
-                href="https://calendly.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open Scheduling Page
-                <ArrowIcon />
-              </a>
-              <p className="mt-5 text-xs text-text-dim">Replace this section with your Calendly embed code.</p>
+            <div className="mt-12 rounded-[20px] border border-border bg-surface overflow-hidden">
+              <iframe
+                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e0e0e0&primary_color=4ade80`}
+                width="100%"
+                height="660"
+                frameBorder="0"
+                title="Schedule your free marketing audit with Klema Creative"
+                className="w-full"
+              />
             </div>
           </RevealOnScroll>
 
@@ -61,8 +75,8 @@ export default function ContactPage() {
               </div>
               <div className="text-center">
                 <div className="text-[11px] uppercase tracking-[0.12em] text-text-dim mb-2 font-bold">Phone</div>
-                <a href="tel:+12105551234" className="text-text-mid no-underline text-sm font-medium transition-colors duration-200 hover:text-accent">
-                  (210) 555-1234
+                <a href={PHONE_HREF} className="text-text-mid no-underline text-sm font-medium transition-colors duration-200 hover:text-accent">
+                  {PHONE_NUMBER}
                 </a>
               </div>
               <div className="text-center">

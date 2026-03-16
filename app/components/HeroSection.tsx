@@ -53,9 +53,9 @@ export default function HeroSection() {
             transform: revealed ? "translateY(0)" : "translateY(16px)",
           }}
         >
-          We don&apos;t just run ads for San Antonio businesses — we build
-          complete marketing engines that attract, follow up, and convert
-          on autopilot.
+          78% of customers hire the first business that calls back. If you
+          don&apos;t have a system that responds in under 60 seconds, you&apos;re
+          handing jobs to the other guy.
         </p>
         <div
           className="transition-all duration-700 ease-out"
@@ -69,7 +69,7 @@ export default function HeroSection() {
             href="/contact"
             className="btn-primary-hover group inline-flex items-center gap-3 bg-accent text-black px-10 py-[18px] rounded-full text-[16px] font-bold no-underline transition-all duration-300 tracking-[-0.01em] shadow-[0_0_20px_rgba(74,222,128,0.25),0_4px_16px_rgba(0,0,0,0.3)]"
           >
-            Book a Free Discovery Call
+            Get Your Free Marketing Audit
             <svg
               width="17"
               height="17"
@@ -91,7 +91,23 @@ export default function HeroSection() {
             transitionDelay: revealed ? "400ms" : "0ms",
           }}
         >
-          Free 30-min strategy session <span className="text-accent/60">&bull;</span> limited spots this month
+          Free, no-obligation analysis of your Google rankings, website, and lead response vs. your top competitors.
+        </p>
+        <p
+          className="text-[13px] text-text-dim mt-3 transition-all duration-700 ease-out"
+          style={{
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? "translateY(0)" : "translateY(12px)",
+            transitionDelay: revealed ? "500ms" : "0ms",
+          }}
+        >
+          Not ready to talk?{" "}
+          <Link
+            href="/tools/ai-visibility"
+            className="text-accent no-underline hover:underline font-medium"
+          >
+            See how you show up in AI search &rarr;
+          </Link>
         </p>
       </div>
     </section>

@@ -5,7 +5,6 @@ import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import SplitHeading from "./components/SplitHeading";
 import ScannerPopup from "./components/ScannerPopup";
-import TestimonialsSection from "./components/TestimonialsSection";
 import CustomerJourney from "./components/CustomerJourney";
 
 function ArrowIcon() {
@@ -49,8 +48,7 @@ export default function Home() {
             <SplitHeading />
             <RevealOnScroll>
               <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto">
-                We combine cutting-edge technology with a dedicated team to
-                deliver a complete, done-for-you marketing solution.
+                Not an agency that sends you reports. A system that sends you customers.
               </p>
             </RevealOnScroll>
           </div>
@@ -63,11 +61,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2.5 tracking-[-0.3px]">
-                Presence
+                Get Found First
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
-                We make you the #1 choice in your market on Google and social
-                media. SEO, AEO, content, and reputation, all handled.
+                I get your business to the top of Google&mdash;search results, map pack, and AI recommendations. SEO, Google Business Profile, reputation management, and AI visibility. When someone needs your service in San Antonio, they find you before anyone else.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface border border-border rounded-2xl p-10 px-8 max-md:p-7 transition-[background] duration-400 hover:bg-[#121212] group">
@@ -77,11 +74,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2.5 tracking-[-0.3px]">
-                Performance
+                Respond Before Your Competition
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
-                We build high-performance websites that turn visitors into
-                leads. Blazing-fast, conversion-optimized, built on modern tech.
+                When a lead comes in, my system calls them within 60 seconds. Then follows up with texts and emails automatically. At 2am on a Saturday? Still covered. You never lose another job because you were too slow.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface border border-border rounded-2xl p-10 px-8 max-md:p-7 transition-[background] duration-400 hover:bg-[#121212] group">
@@ -91,11 +87,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2.5 tracking-[-0.3px]">
-                Persistence
+                Close More Jobs
               </h3>
               <p className="text-[14.5px] text-text-dim leading-[1.7]">
-                Our lead nurturing team contacts every lead so you never miss an
-                opportunity. Speed-to-lead is everything.
+                Automated appointment booking, proposal follow-ups, review requests, and referral campaigns. The system doesn&apos;t just get you leads&mdash;it helps you close them and turns happy customers into repeat business.
               </p>
             </RevealOnScroll>
           </div>
@@ -128,12 +123,13 @@ export default function Home() {
                 1
               </div>
               <h3 className="text-base font-bold mb-2 tracking-[-0.2px]">
-                Discovery Call
+                Free Marketing Audit
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
-                A 30-minute call where we find out exactly where leads are
-                falling through the cracks and what&apos;s leaving money on the table. Free, no
-                strings attached.
+                I personally analyze your Google rankings, your website, your
+                reviews, and your competitors. You&apos;ll see exactly where leads
+                are falling through the cracks&mdash;and what it would take to fix
+                them. Free, no strings attached.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface p-10 px-7 text-center transition-[background] duration-400 hover:bg-[#121212] group">
@@ -141,12 +137,13 @@ export default function Home() {
                 2
               </div>
               <h3 className="text-base font-bold mb-2 tracking-[-0.2px]">
-                Build Your Engine
+                I Build Your System
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
-                We don&apos;t hand you a template. Our team custom-builds your
-                entire marketing operation, from website to ad campaigns to
-                lead follow-up, around how your business actually works.
+                No templates. No cookie-cutter campaigns. I build your entire
+                marketing engine around how your business actually works&mdash;your
+                services, your market, your goals. Website, SEO, lead follow-up,
+                CRM, all of it.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="bg-surface p-10 px-7 text-center transition-[background] duration-400 hover:bg-[#121212] group">
@@ -157,9 +154,9 @@ export default function Home() {
                 Optimize &amp; Scale
               </h3>
               <p className="text-[13.5px] text-text-dim leading-[1.7]">
-                Our team watches the data, cuts what doesn&apos;t work, and
-                doubles down on what does. Your marketing gets sharper every
-                month, and so do your results.
+                I watch the data every week. What&apos;s working gets doubled down.
+                What&apos;s not gets cut. Your marketing gets sharper every
+                month&mdash;and so do your results.
               </p>
             </RevealOnScroll>
           </div>
@@ -177,8 +174,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <TestimonialsSection />
+      {/* FOUNDING CLIENT OFFER */}
+      <section className="relative overflow-hidden py-20 max-md:py-14">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(74,222,128,0.08) 0%, rgba(74,222,128,0.04) 50%, rgba(74,222,128,0.08) 100%)",
+          }}
+        />
+        <div className="absolute inset-0 border-t border-b border-accent/10" />
+        <div className="max-w-[800px] mx-auto px-8 max-md:px-5 relative z-2">
+          <div className="text-center mb-10">
+            <RevealOnScroll>
+              <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
+                Founding client program &mdash; limited spots
+              </p>
+            </RevealOnScroll>
+            <RevealOnScroll>
+              <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
+                Now Accepting{" "}
+                <span className="text-accent">Founding Clients</span>
+              </h2>
+            </RevealOnScroll>
+            <RevealOnScroll>
+              <p className="text-[17px] text-text-dim leading-[1.7] max-w-[620px] mx-auto">
+                I&apos;m looking for 5 local service businesses in San Antonio to partner with as founding clients. I build your complete marketing engine&mdash;website, Google rankings, lead follow-up, the full system&mdash;at a reduced rate, and you help me build my portfolio with a case study and testimonial.
+              </p>
+            </RevealOnScroll>
+          </div>
+          <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
+            <RevealOnScroll>
+              <div className="bg-surface/80 border border-border rounded-2xl p-7">
+                <h3 className="text-[15px] font-bold mb-4">What you get:</h3>
+                <ul className="flex flex-col gap-2.5">
+                  {[
+                    "Full system build at a fraction of the normal investment",
+                    "Direct access to me — not an account manager, not a chatbot",
+                    "Founding client pricing locked in for as long as you stay",
+                    "Month-to-month. No contracts. I earn your business every month",
+                    "You keep everything if you ever leave — your website, your data, all of it",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-[13.5px] text-text-mid leading-[1.5]">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" className="shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12" /></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll>
+              <div className="bg-surface/80 border border-border rounded-2xl p-7">
+                <h3 className="text-[15px] font-bold mb-4">What I ask:</h3>
+                <ul className="flex flex-col gap-2.5">
+                  {[
+                    "Be open to sharing your results as a case study (with your approval)",
+                    "Leave an honest testimonial if the system delivers",
+                    "Refer other business owners if you're happy",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-[13.5px] text-text-mid leading-[1.5]">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" className="shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12" /></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[13px] text-text-dim leading-[1.6] mt-5 pt-5 border-t border-border italic">
+                  Why am I doing this? Because I&apos;d rather prove my system works with real results than ask you to take my word for it. Your success is my proof of concept.
+                </p>
+              </div>
+            </RevealOnScroll>
+          </div>
+          <RevealOnScroll>
+            <div className="text-center mt-10">
+              <Link
+                href="/contact"
+                className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em] shadow-[0_0_20px_rgba(74,222,128,0.25),0_4px_16px_rgba(0,0,0,0.3)]"
+              >
+                Claim Your Founding Client Spot
+                <ArrowIcon />
+              </Link>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
 
       {/* FINAL CTA */}
       <section className="py-40 text-center relative overflow-hidden">
@@ -191,16 +269,16 @@ export default function Home() {
           </RevealOnScroll>
           <RevealOnScroll>
             <h2 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-4">
-              Ready to build your
+              Stop losing jobs to the business
               <br />
-              <span className="text-accent">growth engine?</span>
+              that just <span className="text-accent">called back faster.</span>
             </h2>
           </RevealOnScroll>
           <RevealOnScroll>
-            <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-12">
-              Stop guessing and start growing. Book a free, no-obligation
-              discovery call to see if we&apos;re the right fit for your
-              business.
+            <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-4">
+              Book a free marketing audit. I&apos;ll show you exactly where leads are
+              falling through the cracks and what it would take to fix them&mdash;even
+              if you never hire me.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -208,9 +286,12 @@ export default function Home() {
               href="/contact"
               className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
             >
-              Book Your Free Call
+              Get Your Free Audit
               <ArrowIcon />
             </Link>
+            <p className="text-[13px] text-text-dim mt-4">
+              Free. No obligation. 15 minutes. You&apos;ll walk away with a clear picture of where you stand.
+            </p>
           </RevealOnScroll>
         </div>
       </section>

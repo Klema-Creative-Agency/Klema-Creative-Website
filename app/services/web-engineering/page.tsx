@@ -164,7 +164,7 @@ function ApplicationForm() {
       <select name="tier" required className="w-full px-5 py-3.5 rounded-xl bg-white-6 border border-border text-[14px] text-text focus:outline-none focus:border-accent-border transition-colors appearance-none">
         <option value="">Which tier interests you?</option>
         {webTiers.map((t) => (
-          <option key={t.id} value={t.id}>{t.name} — {t.monthly}/mo</option>
+          <option key={t.id} value={t.id}>{t.name} - {t.monthly}/mo</option>
         ))}
         <option value="not-sure">Not sure yet</option>
       </select>
@@ -193,7 +193,7 @@ function ApplicationForm() {
 export default function WebEngineeringPage() {
   return (
     <>
-      {/* META via head — handled by metadata export below, but since this is "use client" we set title manually */}
+      {/* META via head - handled by metadata export below, but since this is "use client" we set title manually */}
       <title>{webMeta.title}</title>
       <meta name="description" content={webMeta.description} />
 
@@ -369,7 +369,7 @@ export default function WebEngineeringPage() {
                 Ready for the full<br />marketing engine?
               </h3>
               <p className="text-[15px] text-text-dim leading-[1.7] mb-7 max-w-[480px] mx-auto">
-                Our packages combine your website with SEO, paid ads, reputation management, content, and a dedicated lead team — everything you need to dominate your market.
+                Our packages combine your website with SEO, paid ads, reputation management, content, and a dedicated lead team, everything you need to dominate your market.
               </p>
               <Link
                 href="/packages"
@@ -397,7 +397,7 @@ export default function WebEngineeringPage() {
           <div className="grid grid-cols-4 gap-px bg-border border border-border rounded-[20px] overflow-hidden mt-16 max-lg:grid-cols-2 max-md:grid-cols-1">
             {[
               { num: 1, title: "Discovery Call", body: "We learn your business, your customers, and what your website needs to accomplish." },
-              { num: 2, title: "Design & Strategy", body: "We design your site layout, content structure, and conversion flow — then you approve before we build." },
+              { num: 2, title: "Design & Strategy", body: "We design your site layout, content structure, and conversion flow, then you approve before we build." },
               { num: 3, title: "Build & Test", body: "We build your site with clean code, fast load times, and mobile-first design. You review and we refine." },
               { num: 4, title: "Launch & Support", body: "Your site goes live. We handle hosting, updates, and maintenance every month." },
             ].map((step) => (
@@ -447,7 +447,7 @@ export default function WebEngineeringPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-8">
-              Book a free discovery call and we&apos;ll recommend the right tier based on your business, goals, and budget.
+              We&apos;ll review your current site and send you a personalized Loom video with recommendations. No strings attached.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -455,7 +455,7 @@ export default function WebEngineeringPage() {
               href="/contact"
               className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
             >
-              Book a Free Discovery Call
+              Get Your Free Marketing Audit
               <ArrowIcon />
             </Link>
           </RevealOnScroll>

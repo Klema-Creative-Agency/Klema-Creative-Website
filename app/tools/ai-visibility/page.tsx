@@ -6,7 +6,7 @@ import AiVisibilityScanner from "../../components/AiVisibilityScanner";
 export const metadata: Metadata = {
   title: "Free AI Visibility Scanner | Klema Creative",
   description:
-    "Check if your business is visible to ChatGPT, Gemini, Claude, Perplexity, Llama, and Mistral. Free AI visibility scan — see your score in 60 seconds.",
+    "Check if your business is visible to ChatGPT, Gemini, Claude, Perplexity, Llama, and Mistral. Free AI visibility scan. See your score in 60 seconds.",
 };
 
 export default async function AiVisibilityPage({
@@ -38,7 +38,7 @@ export default async function AiVisibilityPage({
             </h1>
             <p className="text-[clamp(16px,1.8vw,19px)] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-12">
               ChatGPT, Gemini, Claude, and Perplexity are replacing Google for
-              millions of users. Find out if they know your business exists — in
+              millions of users. Find out if they know your business exists, in
               60 seconds.
             </p>
           </RevealOnScroll>
@@ -128,13 +128,13 @@ export default async function AiVisibilityPage({
             </h2>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-12">
               Our AEO and content strategy gets your business cited by AI
-              platforms — so you show up when customers ask for recommendations.
+              platforms so you show up when customers ask for recommendations.
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em] btn-primary-hover"
             >
-              Book Your Free Discovery Call
+              Get Your Free Marketing Audit
             </Link>
           </RevealOnScroll>
         </div>

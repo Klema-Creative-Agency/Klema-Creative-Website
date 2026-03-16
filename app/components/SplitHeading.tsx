@@ -37,7 +37,7 @@ export default function SplitHeading() {
           transition: "opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), transform 1.6s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
-        The Klema Creative
+        I build marketing engines that
       </span>
       <br />
       <span
@@ -48,7 +48,7 @@ export default function SplitHeading() {
           transition: "opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s",
         }}
       >
-        growth engine.
+        make your phone ring.
       </span>
     </h2>
   );

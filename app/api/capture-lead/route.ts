@@ -37,7 +37,7 @@ function generateRecommendations(
 
   if (score === 0) {
     recs.push(
-      "Your business is completely invisible to AI. This is urgent — 40% of consumers now use AI instead of Google to find businesses like yours."
+      "Your business is completely invisible to AI. This is urgent. 40% of consumers now use AI instead of Google to find businesses like yours."
     );
     recs.push(
       "Create and optimize your Google Business Profile immediately. AI models pull heavily from Google's structured data."
@@ -82,17 +82,17 @@ function generateRecommendations(
       "Earn backlinks and mentions from local news outlets, industry publications, and partner businesses. Third-party mentions are one of the strongest signals for AI recommendations."
     );
     recs.push(
-      "Add structured data (Schema markup) to your website — LocalBusiness, Service, FAQ, and Review schemas help AI understand your business programmatically."
+      "Add structured data (Schema markup) to your website: LocalBusiness, Service, FAQ, and Review schemas help AI understand your business programmatically."
     );
   } else {
     recs.push(
-      "Great news — your business has strong AI visibility. Focus on maintaining and expanding your presence."
+      "Great news! Your business has strong AI visibility. Focus on maintaining and expanding your presence."
     );
     recs.push(
       "Keep publishing fresh content regularly. AI models update their knowledge, and recent content signals that your business is active and relevant."
     );
     recs.push(
-      "Monitor your AI visibility monthly. The landscape changes fast — a competitor investing in AEO could overtake you."
+      "Monitor your AI visibility monthly. The landscape changes fast. A competitor investing in AEO could overtake you."
     );
     recs.push(
       "Consider expanding your content to cover adjacent topics and services to capture even more AI recommendations in your market."
@@ -227,9 +227,9 @@ function buildReportHtml(
     <tr>
       <td style="padding:32px;text-align:center;">
         <p style="color:#f0eeeb;font-size:16px;font-weight:700;margin:0 0 8px;">Want us to fix this for you?</p>
-        <p style="color:#999;font-size:14px;margin:0 0 20px;line-height:1.6;">We build complete marketing engines that make your business visible everywhere — Google, AI, social, and beyond.</p>
-        <a href="https://klemacreative.com/contact" style="display:inline-block;background:#4ade80;color:#000;font-size:15px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;letter-spacing:-0.01em;">Book Your Free Discovery Call</a>
-        <p style="color:#666;font-size:12px;margin:16px 0 0;">Free 30-min strategy session &middot; No strings attached</p>
+        <p style="color:#999;font-size:14px;margin:0 0 20px;line-height:1.6;">We build complete marketing engines that make your business visible everywhere: Google, AI, social, and beyond.</p>
+        <a href="https://klemacreative.com/contact" style="display:inline-block;background:#4ade80;color:#000;font-size:15px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;letter-spacing:-0.01em;">Get Your Free Marketing Audit</a>
+        <p style="color:#666;font-size:12px;margin:16px 0 0;">Free personalized Loom video &middot; No strings attached</p>
       </td>
     </tr>
   </table>

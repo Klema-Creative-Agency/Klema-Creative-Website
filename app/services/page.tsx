@@ -13,11 +13,11 @@ function ArrowIcon() {
 const faqData = [
   {
     question: "What types of businesses do you work with?",
-    answer: "We specialize in local service businesses \u2014 HVAC, plumbing, roofing, dental, tree removal, and similar industries. If you serve customers in a specific geographic area and want more booked jobs, we\u2019re built for you.",
+    answer: "We specialize in local service businesses like HVAC, plumbing, roofing, dental, tree removal, and similar industries. If you serve customers in a specific geographic area and want more booked jobs, we\u2019re built for you.",
   },
   {
     question: "How is Klema different from other marketing agencies?",
-    answer: "Most agencies sell you individual services. We build a complete system \u2014 lead funnel, automated follow-up, CRM, SEO, reputation, and more \u2014 all working together. Everything is tracked, transparent, and tied to revenue.",
+    answer: "Most agencies sell you individual services. We build a complete system: lead funnel, automated follow-up, CRM, SEO, reputation, and more, all working together. Everything is tracked, transparent, and tied to revenue.",
   },
   {
     question: "Do I need to sign a long-term contract?",
@@ -25,15 +25,15 @@ const faqData = [
   },
   {
     question: "How quickly will I see results?",
-    answer: "Foundation clients see results in 10 days \u2014 your funnel goes live and your phone starts ringing. SEO and reputation results compound over 3\u20136 months. By month 6, you\u2019ll have a full growth engine running.",
+    answer: "Foundation clients see results in 10 days. Your funnel goes live and your phone starts ringing. SEO and reputation results compound over 3-6 months. By month 6, you\u2019ll have a full growth engine running.",
   },
   {
     question: "What is the Lead Engine?",
-    answer: "It\u2019s our core product \u2014 a done-for-you lead conversion funnel and automation system. When someone inquires about your services, the system triggers a call in 60 seconds, then follows up with SMS and email automatically. It\u2019s included in every tier.",
+    answer: "It\u2019s our core product, a done-for-you lead conversion funnel and automation system. When someone inquires about your services, the system triggers a call in 60 seconds, then follows up with SMS and email automatically. It\u2019s included in every tier.",
   },
   {
     question: "Do you run ads for me?",
-    answer: "Starting at the Accelerator tier ($3,997/mo), yes. We build, manage, and optimize your Google and Meta ad campaigns. Your ad spend is billed directly to you \u2014 our fee covers the strategy and management.",
+    answer: "Starting at the Accelerator tier ($3,997/mo), yes. We build, manage, and optimize your Google and Meta ad campaigns. Your ad spend is billed directly to you. Our fee covers the strategy and management.",
   },
   {
     question: "What does the Dominator tier include that others don\u2019t?",
@@ -41,7 +41,7 @@ const faqData = [
   },
   {
     question: "Can I switch tiers later?",
-    answer: "Absolutely. You can upgrade at any time. Most clients start with Foundation and move up as the results justify it \u2014 that\u2019s exactly how the system is designed.",
+    answer: "Absolutely. You can upgrade at any time. Most clients start with Foundation and move up as the results justify it, and that\u2019s exactly how the system is designed.",
   },
 ];
 
@@ -77,10 +77,10 @@ export default function ServicesPage() {
               Not ready for a full package? Start with an individual service. Each one is designed to deliver results on its own.
             </p>
           </RevealOnScroll>
-          <div className="grid grid-cols-3 gap-6 mt-16 max-lg:grid-cols-2 max-md:grid-cols-1">
-            {/* Web Engineering — Primary */}
+          <div className="max-w-[480px] mt-16">
+            {/* Web Engineering - Primary */}
             <RevealOnScroll>
-              <Link href="/services/web-engineering" className="group bg-surface border border-accent-border rounded-[20px] p-8 flex flex-col no-underline transition-all duration-400 hover:border-border-hover hover:bg-[#121212] relative overflow-hidden h-full">
+              <Link href="/services/web-engineering" className="group bg-surface border border-accent-border rounded-[20px] p-8 flex flex-col no-underline transition-all duration-400 hover:border-border-hover hover:bg-[#121212] relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent" />
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5 text-xl">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -95,28 +95,6 @@ export default function ServicesPage() {
                 </div>
               </Link>
             </RevealOnScroll>
-            {/* Funnels & Landing Pages — Coming Soon */}
-            <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-8 flex flex-col transition-all duration-400 relative overflow-hidden h-full opacity-60">
-                <div className="w-10 h-10 rounded-[10px] bg-white-6 text-text-dim flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12" y2="18.01" /></svg>
-                </div>
-                <h3 className="text-[20px] font-bold mb-2.5 tracking-[-0.3px] text-text">Funnels &amp; Landing Pages</h3>
-                <p className="text-sm text-text-dim leading-[1.7] mb-4 flex-1">Conversion-focused landing pages and quiz-style funnels designed to capture leads on any device.</p>
-                <span className="text-[12px] font-bold tracking-[0.1em] uppercase text-text-dim">Coming Soon</span>
-              </div>
-            </RevealOnScroll>
-            {/* CRM & Automation Setup — Coming Soon */}
-            <RevealOnScroll>
-              <div className="bg-surface border border-border rounded-[20px] p-8 flex flex-col transition-all duration-400 relative overflow-hidden h-full opacity-60">
-                <div className="w-10 h-10 rounded-[10px] bg-white-6 text-text-dim flex items-center justify-center mb-5 text-xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                </div>
-                <h3 className="text-[20px] font-bold mb-2.5 tracking-[-0.3px] text-text">CRM &amp; Automation Setup</h3>
-                <p className="text-sm text-text-dim leading-[1.7] mb-4 flex-1">Full CRM configuration, automated follow-up sequences, and pipeline management — done for you.</p>
-                <span className="text-[12px] font-bold tracking-[0.1em] uppercase text-text-dim">Coming Soon</span>
-              </div>
-            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -130,34 +108,34 @@ export default function ServicesPage() {
               You run the business.<br />We make the phone <span className="text-accent">ring.</span>
             </h2>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[580px]">
-              Most agencies sell you clicks and impressions. We build systems that put qualified leads on your phone — then follow up automatically when you&apos;re on the job.
+              Most agencies sell you clicks and impressions. We build systems that put qualified leads on your phone, then follow up automatically when you&apos;re on the job.
             </p>
           </RevealOnScroll>
 
           <div className="grid grid-cols-2 gap-6 mt-16 max-md:grid-cols-1">
-            {/* Card 1 — You keep everything */}
+            {/* Card 1 - You keep everything */}
             <RevealOnScroll>
               <div className="accent-top-hover bg-surface border border-border rounded-[20px] p-8 transition-all duration-400 hover:bg-[#121212] h-full">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <h3 className="text-[18px] font-bold mb-2.5 tracking-[-0.3px]">You own it — even if you leave</h3>
-                <p className="text-[14.5px] text-text-dim leading-[1.7]">Your website, your funnel, your CRM data — it&apos;s all yours. Cancel anytime, take everything with you. No hostage situations, no rebuilding from scratch.</p>
+                <h3 className="text-[18px] font-bold mb-2.5 tracking-[-0.3px]">You own it, even if you leave</h3>
+                <p className="text-[14.5px] text-text-dim leading-[1.7]">Your website, your funnel, your CRM data. It&apos;s all yours. Cancel anytime, take everything with you. No strings attached, no rebuilding from scratch.</p>
               </div>
             </RevealOnScroll>
 
-            {/* Card 2 — 60-second response */}
+            {/* Card 2 - 60-second response */}
             <RevealOnScroll>
               <div className="accent-top-hover bg-surface border border-border rounded-[20px] p-8 transition-all duration-400 hover:bg-[#121212] h-full">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <h3 className="text-[18px] font-bold mb-2.5 tracking-[-0.3px]">Every lead gets a response in 60 seconds</h3>
-                <p className="text-[14.5px] text-text-dim leading-[1.7]">78% of jobs go to whoever calls back first. Our system triggers an instant call, then follows up with SMS and email automatically — even at 2am on a Saturday.</p>
+                <p className="text-[14.5px] text-text-dim leading-[1.7]">78% of jobs go to whoever calls back first. Our system triggers an instant call, then follows up with SMS and email automatically, even at 2am on a Saturday.</p>
               </div>
             </RevealOnScroll>
 
-            {/* Card 3 — No vanity metrics */}
+            {/* Card 3 - No vanity metrics */}
             <RevealOnScroll>
               <div className="accent-top-hover bg-surface border border-border rounded-[20px] p-8 transition-all duration-400 hover:bg-[#121212] h-full">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5">
@@ -168,14 +146,14 @@ export default function ServicesPage() {
               </div>
             </RevealOnScroll>
 
-            {/* Card 4 — Built for service businesses */}
+            {/* Card 4 - Built for service businesses */}
             <RevealOnScroll>
               <div className="accent-top-hover bg-surface border border-border rounded-[20px] p-8 transition-all duration-400 hover:bg-[#121212] h-full">
                 <div className="w-10 h-10 rounded-[10px] bg-accent-dim text-accent flex items-center justify-center mb-5">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <h3 className="text-[18px] font-bold mb-2.5 tracking-[-0.3px]">Built specifically for local service businesses</h3>
-                <p className="text-[14.5px] text-text-dim leading-[1.7]">We don&apos;t work with e-commerce brands or tech startups. Every funnel, every automation, every playbook is designed for businesses that serve customers in a specific area — HVAC, roofing, plumbing, dental, and more.</p>
+                <p className="text-[14.5px] text-text-dim leading-[1.7]">We don&apos;t work with e-commerce brands or tech startups. Every funnel, every automation, every playbook is designed for businesses that serve customers in a specific area like HVAC, roofing, plumbing, dental, and more.</p>
               </div>
             </RevealOnScroll>
           </div>
@@ -184,7 +162,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mt-12 flex items-center gap-8 flex-wrap max-md:gap-4 max-md:justify-center">
               {[
-                "Month-to-month — no contracts",
+                "Month-to-month, no contracts",
                 "You keep everything if you cancel",
                 "Real reporting tied to revenue",
               ].map((item, i) => (
@@ -210,12 +188,12 @@ export default function ServicesPage() {
             </h2>
           </RevealOnScroll>
           <div className="grid grid-cols-4 gap-10 mt-16 max-lg:grid-cols-2 max-lg:gap-8 max-md:grid-cols-1 max-md:gap-10 relative">
-            {/* Connecting line — desktop only */}
+            {/* Connecting line - desktop only */}
             <div className="absolute top-7 left-[calc(12.5%+7px)] right-[calc(12.5%+7px)] h-px bg-border max-lg:hidden" />
             {[
-              { num: 1, title: "Discovery Call", body: "We learn your business, goals, and challenges inside and out — no cookie-cutter approaches." },
+              { num: 1, title: "Discovery Call", body: "We learn your business, goals, and challenges inside and out. No cookie-cutter approaches." },
               { num: 2, title: "Strategy Blueprint", body: "A custom roadmap tailored to your industry, audience, and growth targets with clear milestones." },
-              { num: 3, title: "Build & Launch", body: "Your system goes live — funnel, automations, CRM, and everything in your package, built and tested." },
+              { num: 3, title: "Build & Launch", body: "Your system goes live: funnel, automations, CRM, and everything in your package, built and tested." },
               { num: 4, title: "Optimize & Report", body: "We monitor, optimize, and report every month. Real data, clear results, continuous improvement." },
             ].map((step) => (
               <RevealOnScroll key={step.num}>
@@ -266,7 +244,7 @@ export default function ServicesPage() {
                 </Link>
               </div>
             </RevealOnScroll>
-            {/* Accelerator — Featured */}
+            {/* Accelerator - Featured */}
             <RevealOnScroll>
               <div className="price-card-featured bg-surface border border-border rounded-[20px] p-7 transition-all duration-400 hover:border-border-hover relative">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.06em] uppercase whitespace-nowrap">
@@ -367,12 +345,12 @@ export default function ServicesPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-12">
-              Book a free discovery call and we&apos;ll give you an honest recommendation — even if it&apos;s not us.
+              We&apos;ll review your Google presence, website, and competitors, then send you a personalized Loom video with exactly what to fix.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
             <Link href="/contact" className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]">
-              Book a Free Discovery Call
+              Get Your Free Marketing Audit
               <ArrowIcon />
             </Link>
           </RevealOnScroll>

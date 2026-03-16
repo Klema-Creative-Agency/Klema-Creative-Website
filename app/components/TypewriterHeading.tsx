@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 
-const FULL_TEXT = "Stop wasting money\non marketing that\n";
-const ACCENT_TEXT = "doesn\u2019t work.";
+const FULL_TEXT = "Your competitors are\nclosing the leads\nyou\u2019re losing.\n";
+const ACCENT_TEXT = "Let\u2019s fix that.";
 const TOTAL = FULL_TEXT.length + ACCENT_TEXT.length;
 const TICK = 55;
 const EMPHASIS_DURATION = 3000;

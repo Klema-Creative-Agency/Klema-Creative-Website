@@ -91,6 +91,7 @@ interface TierData {
   price: string;
   setup: string;
   setupTooltip: string;
+  setupExplain: string;
   tagline: string;
   bestFor: string;
   featured: boolean;
@@ -103,33 +104,66 @@ interface TierData {
 
 const TIERS: TierData[] = [
   {
-    tier: 1,
-    name: "Foundation",
-    slug: "foundation",
-    price: "1,997",
-    setup: "$2,500 setup",
-    setupTooltip: "Covers Lead Engine setup (funnel, CRM, SMS & email sequences, call trigger), plus a full SEO audit, Google Business Profile optimization, reputation engine activation, and schema markup.",
-    tagline: "Convert more leads and get found by new ones.",
-    bestFor: "Businesses ready to grow lead volume organically and build a 5-star reputation.",
+    tier: 4,
+    name: "Dominator",
+    slug: "dominator",
+    price: "12,000",
+    setup: "$10,000 setup",
+    setupTooltip: "Covers recruitment, training, and equipping your dedicated lead team, including headsets, voice tools, call scripts, qualification frameworks, and full CRM integration.",
+    setupExplain: "Covers: lead team recruitment, training, call scripts, CRM integration, plus Authority setup.",
+    tagline: "Your phone only rings when someone is ready to book.",
+    bestFor: "Businesses that want to own their market. You close, and we do everything else.",
     featured: false,
     cta: "See What's Included",
     ctaStyle: "secondary",
-    includesPrevious: "Lead Engine included",
+    includesPrevious: "Everything in Authority",
     keyFeatures: [
-      "Lead conversion funnel & automation",
-      "Search engine optimization (SEO)",
-      "Google Business Profile management",
-      "Reputation engine — automated reviews",
+      "Dedicated lead team (60-sec response)",
+      "Live hot transfers to your team",
+      "Appointment setting & outbound follow-up",
+      "Daily lead reports",
     ],
     allFeatures: [
-      "Lead conversion funnel & 60-sec call trigger",
-      "SMS & email follow-up sequences",
-      "Search engine optimization (SEO)",
-      "Google Business Profile management",
-      "Reputation engine — automated review requests",
-      "AI visibility — schema markup & structured data",
-      "Local visibility tracking & reporting",
-      "Monthly SEO + conversion report",
+      "Dedicated lead team, every lead called in 60 seconds",
+      "Lead qualification (budget, timeline, scope)",
+      "Live hot transfers to your sales team",
+      "Appointment setting with full notes",
+      "Outbound follow-up until they book or opt out",
+      "Daily lead reports",
+      "Weekly call performance reviews",
+      "White-glove account management",
+    ],
+  },
+  {
+    tier: 3,
+    name: "Authority",
+    slug: "authority",
+    price: "7,500",
+    setup: "$7,500 setup",
+    setupTooltip: "Covers everything in Accelerator setup, plus content strategy and calendar, social media setup, email marketing configuration, and competitor analysis.",
+    setupExplain: "Covers: content strategy, social setup, email config, competitor analysis, plus Accelerator setup.",
+    tagline: "We run your marketing. You run your business.",
+    bestFor: "Established businesses that want a full marketing department without the overhead.",
+    featured: false,
+    cta: "See What's Included",
+    ctaStyle: "secondary",
+    includesPrevious: "Everything in Accelerator",
+    keyFeatures: [
+      "Content & social media (2 platforms)",
+      "Email marketing campaigns",
+      "Full marketing management",
+      "Bi-weekly strategy calls",
+    ],
+    allFeatures: [
+      "4–6 SEO-optimized blog articles per month",
+      "Social media management (2 platforms, 16–20 posts/mo)",
+      "Email marketing campaigns",
+      "Full AI visibility, content optimized for AI citations",
+      "Ad strategy & budget scaling",
+      "Competitor monitoring",
+      "Conversion optimization & A/B testing",
+      "Bi-weekly strategy calls",
+      "Quarterly business review",
     ],
   },
   {
@@ -139,6 +173,7 @@ const TIERS: TierData[] = [
     price: "3,997",
     setup: "$5,000 setup",
     setupTooltip: "Covers a custom website design and build, ad account setup, branded dashboard, plus the full Foundation setup underneath.",
+    setupExplain: "Covers: custom website, ad account setup, dashboard build, plus full Foundation setup.",
     tagline: "Look like the biggest company in your market.",
     bestFor: "Growing businesses ready for a professional website, paid ads, and full online presence.",
     featured: true,
@@ -157,68 +192,38 @@ const TIERS: TierData[] = [
       "Branded reporting dashboard",
       "Content planning & strategy",
       "Monthly strategy call",
-      "Ad spend billed directly to you — we manage it",
+      "Ad spend billed directly to you. We manage it",
     ],
   },
   {
-    tier: 3,
-    name: "Authority",
-    slug: "authority",
-    price: "7,500",
-    setup: "$7,500 setup",
-    setupTooltip: "Covers everything in Accelerator setup, plus content strategy and calendar, social media setup, email marketing configuration, and competitor analysis.",
-    tagline: "We run your marketing. You run your business.",
-    bestFor: "Established businesses that want a full marketing department without the overhead.",
+    tier: 1,
+    name: "Foundation",
+    slug: "foundation",
+    price: "1,997",
+    setup: "$2,500 setup",
+    setupTooltip: "Covers Lead Engine setup (funnel, CRM, SMS & email sequences, call trigger), plus a full SEO audit, Google Business Profile optimization, reputation engine activation, and schema markup.",
+    setupExplain: "Covers: funnel build, CRM setup, SEO audit, and 2 weeks of onboarding.",
+    tagline: "Convert more leads and get found by new ones.",
+    bestFor: "Businesses ready to grow lead volume organically and build a 5-star reputation.",
     featured: false,
     cta: "See What's Included",
     ctaStyle: "secondary",
-    includesPrevious: "Everything in Accelerator",
+    includesPrevious: "Lead Engine included",
     keyFeatures: [
-      "Content & social media (2 platforms)",
-      "Email marketing campaigns",
-      "Full marketing management",
-      "Bi-weekly strategy calls",
+      "Lead conversion funnel & automation",
+      "Search engine optimization (SEO)",
+      "Google Business Profile management",
+      "Reputation engine, automated reviews",
     ],
     allFeatures: [
-      "4–6 SEO-optimized blog articles per month",
-      "Social media management (2 platforms, 16–20 posts/mo)",
-      "Email marketing campaigns",
-      "Full AI visibility — content optimized for AI citations",
-      "Ad strategy & budget scaling",
-      "Competitor monitoring",
-      "Conversion optimization & A/B testing",
-      "Bi-weekly strategy calls",
-      "Quarterly business review",
-    ],
-  },
-  {
-    tier: 4,
-    name: "Dominator",
-    slug: "dominator",
-    price: "12,000",
-    setup: "$10,000 setup",
-    setupTooltip: "Covers recruitment, training, and equipping your dedicated lead team — headsets, voice tools, call scripts, qualification frameworks, and full CRM integration.",
-    tagline: "Your phone only rings when someone is ready to book.",
-    bestFor: "Businesses that want to own their market. You close — we do everything else.",
-    featured: false,
-    cta: "See What's Included",
-    ctaStyle: "secondary",
-    includesPrevious: "Everything in Authority",
-    keyFeatures: [
-      "Dedicated lead team (60-sec response)",
-      "Live hot transfers to your team",
-      "Appointment setting & outbound follow-up",
-      "Daily lead reports",
-    ],
-    allFeatures: [
-      "Dedicated lead team — every lead called in 60 seconds",
-      "Lead qualification (budget, timeline, scope)",
-      "Live hot transfers to your sales team",
-      "Appointment setting with full notes",
-      "Outbound follow-up until they book or opt out",
-      "Daily lead reports",
-      "Weekly call performance reviews",
-      "White-glove account management",
+      "Lead conversion funnel & 60-sec call trigger",
+      "SMS & email follow-up sequences",
+      "Search engine optimization (SEO)",
+      "Google Business Profile management",
+      "Reputation engine, automated review requests",
+      "AI visibility: schema markup & structured data",
+      "Local visibility tracking & reporting",
+      "Monthly SEO + conversion report",
     ],
   },
 ];
@@ -271,6 +276,7 @@ function PricingCardInner({ tier }: { tier: TierData }) {
           {tier.setupTooltip}
         </div>
       </div>
+      <p className="text-[11px] text-text-dim leading-[1.4] -mt-2 mb-4">{tier.setupExplain}</p>
 
       {/* Description */}
       <p className="text-[15px] max-md:text-[13px] text-text-dim leading-[1.5] mb-5 max-md:mb-4">
@@ -334,7 +340,7 @@ export default function PackagesPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(1); // Accelerator default
+  const [activeIndex, setActiveIndex] = useState(2); // Accelerator default (index 2 after reorder)
 
   const CARD_WIDTH = 320;
   const GAP = 28; // gap-7
@@ -366,15 +372,15 @@ export default function PackagesPage() {
     scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
   };
 
-  // Desktop: center on Foundation (index 0)
-  // Mobile: start at Foundation (index 0) with rubberband hint
+  // Desktop: center on Accelerator (index 2 after reorder)
+  // Mobile: start at Dominator (index 0) with rubberband hint
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
       el.scrollTo({ left: 0, behavior: "instant" });
-      // Rubberband hint — peek right then snap back
+      // Rubberband hint - peek right then snap back
       const timer = setTimeout(() => {
         el.scrollTo({ left: 60, behavior: "smooth" });
         setTimeout(() => {
@@ -384,7 +390,7 @@ export default function PackagesPage() {
       requestAnimationFrame(updateScrollState);
       return () => clearTimeout(timer);
     } else {
-      const centerIndex = 0; // Foundation
+      const centerIndex = 2; // Accelerator
       const cardCenter = centerIndex * SCROLL_AMOUNT + CARD_WIDTH / 2;
       const scrollTarget = cardCenter - el.clientWidth / 2;
       el.scrollTo({ left: Math.max(0, scrollTarget), behavior: "instant" });
@@ -408,7 +414,7 @@ export default function PackagesPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[560px] mx-auto mb-8">
-              Every tier delivers results that make the next one a no-brainer. No contracts. No hidden fees. The system is yours to keep.
+              Custom packages built around your business. No contracts. No hidden fees. Start with a free marketing audit and we&apos;ll recommend what fits.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -427,7 +433,19 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* PRICING CARDS — Horizontal Scroll Gallery */}
+      {/* FOUNDING CLIENT BANNER */}
+      <RevealOnScroll>
+        <div className="max-w-[700px] mx-auto px-8 max-md:px-5 mb-4">
+          <div className="bg-accent-dim border border-accent-border/30 rounded-2xl px-6 py-5 text-center">
+            <p className="text-[14px] text-text leading-[1.6]">
+              <span className="font-bold text-accent">Founding Client Offer:</span>{" "}
+              We&apos;re accepting 5 founding clients at reduced rates in exchange for a case study partnership. Founding clients get priority support and locked-in pricing for life.
+            </p>
+          </div>
+        </div>
+      </RevealOnScroll>
+
+      {/* PRICING CARDS - Horizontal Scroll Gallery */}
       <section className="pt-10 max-md:pt-4 pb-20 max-md:pb-12">
         <RevealOnScroll>
           {/* Full-width relative wrapper for arrows */}
@@ -438,7 +456,7 @@ export default function PackagesPage() {
             {/* Left arrow */}
             <ScrollArrow direction="left" onClick={scrollToLeft} visible={canScrollLeft} />
 
-            {/* Scroll container — edge fade via CSS mask */}
+            {/* Scroll container - edge fade via CSS mask */}
             <div
               ref={scrollRef}
               onScroll={updateScrollState}
@@ -471,6 +489,25 @@ export default function PackagesPage() {
             All packages are month-to-month. No long-term contracts. Cancel anytime.
           </p>
         </RevealOnScroll>
+      </section>
+
+      {/* ROI SECTION */}
+      <section className="py-20 max-md:py-12">
+        <div className="max-w-[700px] mx-auto px-8 max-md:px-5 text-center">
+          <RevealOnScroll>
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">The math is simple</p>
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <h2 className="text-[clamp(24px,3.5vw,36px)] font-extrabold leading-[1.2] tracking-[-1px] mb-4">
+              &ldquo;If we book you just 2 extra jobs per month at your average ticket, Klema pays for itself.&rdquo;
+            </h2>
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <p className="text-[17px] text-text-dim leading-[1.7]">
+              Most clients see 5-10x ROI by month 3.
+            </p>
+          </RevealOnScroll>
+        </div>
       </section>
 
       {/* COMPARISON TABLE */}
@@ -508,24 +545,24 @@ export default function PackagesPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto mb-8">
-              Book a free discovery call and we&apos;ll give you an honest recommendation based on your business, goals, and budget — even if it&apos;s not us.
+              We&apos;ll review your Google presence, website, and competitors, then send you a personalized Loom video with exactly what to fix. No strings attached.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
             <div className="flex items-center justify-center gap-4 flex-wrap">
-              <Link
-                href="/contact"
-                className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
-              >
-                Book a Free Discovery Call
-                <ArrowIcon />
-              </Link>
               <button
                 onClick={() => setQuizOpen(true)}
-                className="inline-flex items-center gap-2 text-[14px] font-semibold text-text-dim border border-border rounded-full px-7 py-3.5 transition-all duration-300 hover:border-accent-border hover:text-accent hover:-translate-y-px"
+                className="btn-primary-hover inline-flex items-center gap-2.5 bg-accent text-black px-9 py-4 rounded-full text-[15px] font-bold no-underline transition-all duration-300 tracking-[-0.01em]"
               >
                 Take the Quiz Instead
+                <ArrowIcon />
               </button>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-[14px] font-semibold text-text-dim border border-border rounded-full px-7 py-3.5 transition-all duration-300 hover:border-accent-border hover:text-accent hover:-translate-y-px"
+              >
+                Get Your Free Marketing Audit
+              </Link>
             </div>
           </RevealOnScroll>
         </div>

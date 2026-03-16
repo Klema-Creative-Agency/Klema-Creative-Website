@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 const problems = [
   {
     value: 0,
-    suffix: "%",
-    title: "Invisible to AI",
-    text: "40% of consumers now ask AI for business recommendations instead of Google. If you\u2019re not in the answers, your AI visibility is zero \u2014 and every lead goes to a competitor.",
+    suffix: "",
+    title: "Invisible online",
+    text: "When someone searches \u201cyour service + San Antonio,\u201d are you in the top 3? If not, those leads are calling someone else. Every day you\u2019re not ranking is money you\u2019ll never get back.",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -15,21 +15,10 @@ const problems = [
     ),
   },
   {
-    value: 78,
+    value: 80,
     suffix: "%",
-    title: "Not enough leads",
-    text: "78% of leads go to the first business that responds. If your website doesn\u2019t rank and your ads underperform, your competitors are eating your market share.",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
-  },
-  {
-    value: 5,
-    suffix: "min",
-    title: "No follow-up system",
-    text: "After 5 minutes, your odds of contacting a lead drop by 80%. Leads come in but nobody responds fast enough \u2014 by the time you do, they\u2019ve hired someone else.",
+    title: "Slow to respond",
+    text: "You\u2019re on a job site. A lead comes in at 2pm. You call back at 5pm. They already booked your competitor at 2:15. This happens every single day to businesses without an automated response system.",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
         <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
@@ -38,12 +27,23 @@ const problems = [
   },
   {
     value: 5,
-    suffix: "+",
-    title: "Fragmented tools",
-    text: "You\u2019re paying for 5+ marketing tools that don\u2019t talk to each other. No unified view, no real strategy \u2014 just wasted budget and missed opportunities.",
+    suffix: "K",
+    title: "No follow-up system",
+    text: "A customer fills out your contact form. You call once. They don\u2019t answer. You forget. That\u2019s a $500\u2013$5,000 job you\u2019ll never see again. Multiply that by every lead you\u2019ve lost this year.",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      </svg>
+    ),
+  },
+  {
+    value: 0,
+    suffix: "",
+    title: "Paying for vanity metrics",
+    text: "Your agency sends you clicks and impressions. You need booked jobs. If your marketing report doesn\u2019t show exactly how many leads came in, how many were contacted, and how many became paying customers \u2014 you\u2019re flying blind.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2">
+        <path d="M12 20V10M18 20V4M6 20v-4" />
       </svg>
     ),
   },
@@ -90,20 +90,23 @@ function TickerNumber({
   );
 }
 
-// Heading words with timing - "money" is flagged for emphasis
+// Heading words with timing - "competitors" is flagged for emphasis
 const LINE_1 = [
-  { word: "Are", delay: 200 },
-  { word: "you", delay: 300 },
-  { word: "leaving", delay: 400 },
-  { word: "money", delay: 520, emphasis: true },
+  { word: "Right", delay: 200 },
+  { word: "now,", delay: 300 },
+  { word: "4", delay: 400 },
+  { word: "things", delay: 480 },
+  { word: "are", delay: 560 },
 ];
 const LINE_2 = [
-  { word: "on", delay: 650 },
-  { word: "the", delay: 730 },
-  { word: "table?", delay: 830 },
+  { word: "sending", delay: 650 },
+  { word: "your", delay: 730 },
+  { word: "leads", delay: 810 },
+  { word: "to", delay: 880 },
+  { word: "competitors.", delay: 960, emphasis: true },
 ];
-// "money" emphasis kicks in after all words have landed
-const EMPHASIS_DELAY = 1300;
+// "competitors" emphasis kicks in after all words have landed
+const EMPHASIS_DELAY = 1500;
 
 // Stagger delays for each card (ms)
 const CARD_DELAYS = [0, 600, 1200, 1800];
@@ -197,9 +200,8 @@ export default function ProblemSection() {
               transition: "all 0.8s ease-out 1100ms",
             }}
           >
-            Most businesses are invisible where it matters. To AI, to
-            Google, and to the leads slipping through the cracks. We solve all
-            three.
+            These are the gaps sending your leads straight to competitors.
+            Here&apos;s what&apos;s broken.
           </p>
         </div>
 
