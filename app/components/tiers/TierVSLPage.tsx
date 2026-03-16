@@ -4,7 +4,7 @@ import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import type { TierData } from "@/app/data/tiers";
 
-/** VSL landing page for a tier — minimal nav, urgency bar, video placeholder, proof points, application form */
+/** VSL landing page for a tier - minimal nav, urgency bar, video placeholder, proof points, application form */
 export default function TierVSLPage({ tier }: { tier: TierData }) {
   // Hide the global Navbar and Footer on VSL pages
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function TierVSLPage({ tier }: { tier: TierData }) {
       <section className="pt-20 pb-16 max-md:pt-14 max-md:pb-10">
         <div className="max-w-[800px] mx-auto px-8 max-md:px-5 text-center">
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
-            {tier.name} — Tier {tier.tierNumber}
+            {tier.name} - Tier {tier.tierNumber}
           </p>
           <h1 className="text-[clamp(28px,4.5vw,48px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-5">
             {tier.vslHeadline}
@@ -45,7 +45,7 @@ export default function TierVSLPage({ tier }: { tier: TierData }) {
             {tier.vslSub}
           </p>
 
-          {/* VIDEO CONTAINER — Replace with Loom/YouTube embed */}
+          {/* VIDEO CONTAINER - Replace with Loom/YouTube embed */}
           <div className="relative w-full aspect-video rounded-[20px] overflow-hidden border border-border bg-surface mb-6">
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
               <div className="w-20 h-20 rounded-full bg-accent/20 border border-accent-border flex items-center justify-center">

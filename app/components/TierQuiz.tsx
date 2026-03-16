@@ -15,7 +15,7 @@ const QUESTIONS: QuizQuestion[] = [
       { label: "I need to show up higher on Google", scores: [3, 1, 0, 0] },
       { label: "My website doesn't reflect the quality of my work", scores: [1, 3, 1, 0] },
       { label: "I don't have time for marketing at all", scores: [0, 1, 3, 1] },
-      { label: "I want someone handling everything — leads to close", scores: [0, 0, 1, 3] },
+      { label: "I want someone handling everything, from leads to close", scores: [0, 0, 1, 3] },
     ],
   },
   {
@@ -39,7 +39,7 @@ const QUESTIONS: QuizQuestion[] = [
   {
     question: "How much time do you spend on marketing each week?",
     options: [
-      { label: "Zero — I don't have time", scores: [0, 1, 3, 3] },
+      { label: "Zero. I don't have time", scores: [0, 1, 3, 3] },
       { label: "A few hours here and there", scores: [2, 2, 1, 0] },
       { label: "I actively manage it but want help", scores: [3, 1, 0, 0] },
       { label: "I have someone on my team doing it", scores: [1, 1, 0, 0] },
@@ -57,9 +57,9 @@ const QUESTIONS: QuizQuestion[] = [
 ];
 
 const TIERS = [
-  { name: "Foundation", price: "$1,997/mo", description: "SEO, reputation management, lead conversion funnel, and local visibility — the full foundation for growth." },
-  { name: "Accelerator", price: "$3,997/mo", description: "Custom website, paid ads, and a branded reporting dashboard — the full online presence." },
-  { name: "Authority", price: "$7,500/mo", description: "Full marketing management — content, social, email, ads, and strategy. We run it all." },
+  { name: "Foundation", price: "$1,997/mo", description: "SEO, reputation management, lead conversion funnel, and local visibility. The full foundation for growth." },
+  { name: "Accelerator", price: "$3,997/mo", description: "Custom website, paid ads, and a branded reporting dashboard. The full online presence." },
+  { name: "Authority", price: "$7,500/mo", description: "Full marketing management: content, social, email, ads, and strategy. We run it all." },
   { name: "Dominator", price: "$12,000/mo", description: "Dedicated lead team, live hot transfers, appointment setting. Your phone only rings when someone is ready to book." },
 ];
 

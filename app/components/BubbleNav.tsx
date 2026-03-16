@@ -71,7 +71,7 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
 
   const handleMouseLeave = () => {
     // The CSS rule `.nav-wrap:hover .bubble.hover { opacity: 1 }` handles
-    // fade-in / fade-out automatically — nothing extra needed here.
+    // fade-in / fade-out automatically - nothing extra needed here.
   };
 
   return (
@@ -82,7 +82,7 @@ export default function BubbleNav({ collapsed = false }: { collapsed?: boolean }
 
       {/* The actual links */}
       <nav ref={navRef} className="bubble-nav">
-        {/* Inner logo — visible when collapsed */}
+        {/* Inner logo - visible when collapsed */}
         <Link href="/" className="bubble-nav-inner-logo">
           <span className="logo-dot" />
           klema creative

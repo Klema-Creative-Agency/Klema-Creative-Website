@@ -27,7 +27,7 @@ interface Section {
 }
 
 // ============================================================
-// QUESTION DATA — Audited & Rebalanced
+// QUESTION DATA - Audited & Rebalanced
 // ============================================================
 const SECTIONS: Section[] = [
   {
@@ -773,18 +773,18 @@ function calculateResults(answers: Record<string, number>) {
   else if (secondaryRole === "Sales & Sales Support") altRoleWhy = "Has the persuasive instincts that could be channeled into pipeline and outreach work.";
   else if (secondaryRole === "Design") altRoleWhy = "Visual awareness and attention to detail suggest design could be a growth path.";
   else if (secondaryRole === "Development / Vibe Coding") altRoleWhy = "Problem-solving orientation could translate into building tools and automations.";
-  else if (secondaryRole === "Marketing") altRoleWhy = "Understands audience and messaging — could run campaigns with the right training.";
+  else if (secondaryRole === "Marketing") altRoleWhy = "Understands audience and messaging. Could run campaigns with the right training.";
 
   // ── FIT VERDICT (Weed-Out Logic) ──
   const traitAvg = (traits.ss + traits.ps + traits.sm + traits.lead + traits.del) / 5;
   let redFlags: string[] = [];
 
-  if (traits.sm < 25) redFlags.push("Very low self-motivation — may require constant external pressure to produce work.");
-  if (traits.ss < 25 && traits.ps < 30) redFlags.push("Low self-sufficiency and problem solving — will need heavy hand-holding.");
-  if (traits.sm < 30 && traits.ss < 30) redFlags.push("Low motivation combined with low independence — high risk of underperformance.");
-  if (sdFlagged) redFlags.push("Social desirability flagged — answers may not reflect real behavior. Needs validation interview.");
-  if (traitAvg < 30) redFlags.push("Below-average scores across all core traits — poor overall fit.");
-  if (traits.lead < 20 && traits.del < 20 && traits.sm < 35) redFlags.push("Low leadership, low delegation, low drive — unlikely to grow into larger responsibilities.");
+  if (traits.sm < 25) redFlags.push("Very low self-motivation. May require constant external pressure to produce work.");
+  if (traits.ss < 25 && traits.ps < 30) redFlags.push("Low self-sufficiency and problem solving. Will need heavy hand-holding.");
+  if (traits.sm < 30 && traits.ss < 30) redFlags.push("Low motivation combined with low independence. High risk of underperformance.");
+  if (sdFlagged) redFlags.push("Social desirability flagged. Answers may not reflect real behavior. Needs validation interview.");
+  if (traitAvg < 30) redFlags.push("Below-average scores across all core traits. Poor overall fit.");
+  if (traits.lead < 20 && traits.del < 20 && traits.sm < 35) redFlags.push("Low leadership, low delegation, low drive. Unlikely to grow into larger responsibilities.");
 
   type FitVerdict = "strong" | "potential" | "conditional" | "not-recommended";
   let verdict: FitVerdict;
@@ -795,7 +795,7 @@ function calculateResults(answers: Record<string, number>) {
   if (redFlags.length >= 2 || traitAvg < 28) {
     verdict = "not-recommended";
     verdictLabel = "Not Recommended";
-    verdictText = "Based on your responses, we don\u2019t have a strong match right now. That doesn\u2019t mean you can\u2019t grow into a fit — but our current roles demand a high baseline of self-direction and drive.";
+    verdictText = "Based on your responses, we don\u2019t have a strong match right now. That doesn\u2019t mean you can\u2019t grow into a fit, but our current roles demand a high baseline of self-direction and drive.";
     verdictAdminNote = "Multiple red flags detected. Do not proceed without a thorough screening interview. Consider passing.";
   } else if (redFlags.length === 1 || traitAvg < 40) {
     verdict = "conditional";
@@ -1008,7 +1008,7 @@ export default function ApplyPage() {
             <span className="inline-block text-[0.7rem] font-semibold uppercase tracking-[3px] text-accent mb-4">Talent Assessment</span>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Find Your <span className="text-accent">Fit</span></h1>
             <p className="text-text-mid max-w-lg mx-auto leading-relaxed">
-              This assessment maps how you think, solve problems, and work &mdash; then places you where you&apos;ll thrive across the Klema ecosystem.
+              This assessment maps how you think, solve problems, and work, then places you where you&apos;ll thrive across the Klema ecosystem.
             </p>
           </div>
           <div className="flex gap-3 justify-center flex-wrap mb-8">
@@ -1017,7 +1017,7 @@ export default function ApplyPage() {
             ))}
           </div>
           <p className="text-sm text-text-dim mb-8 max-w-md mx-auto">
-            Answer based on how you actually operate &mdash; not how you think you should.
+            Answer based on how you actually operate, not how you think you should.
           </p>
           <div className="max-w-sm mx-auto mb-8 text-left space-y-4">
             <div>
@@ -1193,7 +1193,7 @@ export default function ApplyPage() {
               <p className="text-text-mid text-sm leading-relaxed mb-2">{altCompanyWhy}</p>
               <p className="text-text-mid text-sm leading-relaxed">{altRoleWhy}</p>
             </div>
-            <p className="text-text-dim text-xs">This secondary path can also serve as a growth trajectory — start in your primary role and expand into this area over time.</p>
+            <p className="text-text-dim text-xs">This secondary path can also serve as a growth trajectory. Start in your primary role and expand into this area over time.</p>
           </ResultCard>
 
           {/* CORE TRAITS */}
@@ -1236,9 +1236,9 @@ export default function ApplyPage() {
               <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-text-dim mb-2">Growth Direction</p>
               <p className="text-text-mid text-sm leading-relaxed">
                 Secondary strength in <strong className="text-text">{secondaryRole}</strong> could serve as a cross-functional asset.
-                {mgmtScore >= 70 && " Leadership readiness is high — consider a team lead path within 6-12 months."}
+                {mgmtScore >= 70 && " Leadership readiness is high. Consider a team lead path within 6-12 months."}
                 {mgmtScore >= 45 && mgmtScore < 70 && " With mentorship, could develop into a leadership role over time."}
-                {mgmtScore < 45 && " Strongest as a hands-on contributor — let them own their craft and deliver results."}
+                {mgmtScore < 45 && " Strongest as a hands-on contributor. Let them own their craft and deliver results."}
               </p>
             </div>
           </ResultCard>

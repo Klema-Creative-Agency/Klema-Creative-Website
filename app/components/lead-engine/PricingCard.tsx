@@ -10,10 +10,10 @@ const FEATURES = [
   "Automation monitoring & maintenance",
   "Monthly optimization & reporting",
   "Dedicated account manager",
-  "Full system ownership — you keep everything",
+  "Full system ownership. You keep everything",
 ];
 
-/** Pricing card — $2,500 setup + $997/mo — shared across all niches */
+/** Pricing card - $2,500 setup + $997/mo - shared across all niches */
 export default function PricingCard({
   serviceName,
 }: {

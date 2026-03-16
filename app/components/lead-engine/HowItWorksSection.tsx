@@ -14,16 +14,16 @@ const STEPS = [
   {
     num: 3,
     title: "We Build It",
-    body: "We build your GoHighLevel account with all automations pre-configured — funnel, call trigger, SMS/email sequences, and CRM pipeline. Ready in 10 business days.",
+    body: "We build your GoHighLevel account with all automations pre-configured: funnel, call trigger, SMS/email sequences, and CRM pipeline. Ready in 10 business days.",
   },
   {
     num: 4,
     title: "Your Phone Rings",
-    body: "System goes live on your existing traffic sources. Leads from Google, referrals, ads, and anywhere else hit your funnel — and get followed up instantly. We optimize every month.",
+    body: "System goes live on your existing traffic sources. Leads from Google, referrals, ads, and anywhere else hit your funnel and get followed up instantly. We optimize every month.",
   },
 ];
 
-/** 4-step How It Works section — shared across all niches */
+/** 4-step How It Works section - shared across all niches */
 export default function HowItWorksSection() {
   return (
     <section className="py-30 max-md:py-20 relative overflow-hidden">

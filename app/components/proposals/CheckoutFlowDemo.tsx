@@ -324,7 +324,7 @@ export default function CheckoutFlowDemo({
   );
 
   /* =============================================================
-   *  OWNER PHONE (260×540 — same size as customer for clean transition)
+   *  OWNER PHONE (260×540 - same size as customer for clean transition)
    * ============================================================= */
   const ownerPhone = (
     <div
@@ -486,7 +486,7 @@ export default function CheckoutFlowDemo({
   );
 
   /* =============================================================
-   *  RENDER — Single panel with transitions
+   *  RENDER - Single panel with transitions
    * ============================================================= */
   return (
     <section className="py-20 max-md:py-14 border-t border-border">
@@ -501,7 +501,7 @@ export default function CheckoutFlowDemo({
           </h2>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mb-4">
             A seamless payment flow built into your website. No redirects, no
-            friction — and you see everything in real time.
+            friction, and you see everything in real time.
           </p>
           <p className="text-[14px] text-text-mid font-semibold flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse" />
@@ -516,7 +516,7 @@ export default function CheckoutFlowDemo({
           </p>
         </div>
 
-        {/* Single panel area — panels swap in place */}
+        {/* Single panel area - panels swap in place */}
         <div className="relative flex justify-center" style={{ minHeight: 560 }}>
           {/* Customer Phone */}
           <div

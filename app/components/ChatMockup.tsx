@@ -9,10 +9,10 @@ const THINKING_DURATION = 1400; // ms thinking dots show
 const RESPONSE_STAGGER = 300; // ms between response lines
 
 const COMPETITORS = [
-  "1. Martinez & Associates — highly rated, 200+ reviews",
-  "2. Lone Star Legal Group — free consultations available",
-  "3. Alamo City Law Firm — specializing in personal injury",
-  "4. Heritage Legal Partners — trusted since 1998",
+  "1. Martinez & Associates - highly rated, 200+ reviews",
+  "2. Lone Star Legal Group - free consultations available",
+  "3. Alamo City Law Firm - specializing in personal injury",
+  "4. Heritage Legal Partners - trusted since 1998",
 ];
 
 export default function ChatMockup({ play }: { play: boolean }) {

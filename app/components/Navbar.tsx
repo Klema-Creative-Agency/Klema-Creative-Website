@@ -52,7 +52,7 @@ export default function Navbar() {
         style={{ padding: "20px 0" }}
       >
         <div className="max-w-350 mx-auto px-12 max-md:px-6 flex items-center relative">
-          {/* Logo — left (fades out + slides toward center on scroll, stays visible on mobile) */}
+          {/* Logo - left (fades out + slides toward center on scroll, stays visible on mobile) */}
           <div
             className="shrink-0"
             style={{
@@ -71,12 +71,12 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Bubble Nav — absolutely centered on the bar */}
+          {/* Bubble Nav - absolutely centered on the bar */}
           <div className="absolute left-1/2 -translate-x-1/2 max-md:hidden">
             <BubbleNav collapsed={scrolled} />
           </div>
 
-          {/* Book a Call CTA — right (fades out + slides toward center on scroll) */}
+          {/* Book a Call CTA - right (fades out + slides toward center on scroll) */}
           <div
             className="ml-auto max-md:hidden shrink-0"
             style={{

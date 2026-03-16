@@ -185,7 +185,7 @@ function buildAdminEmailHtml(data: AssessmentPayload): string {
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:20px 0 8px;">
-      <p style="color:#9ca3af;font-size:11px;margin:0;">Klema Talent Assessment &mdash; ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
+      <p style="color:#9ca3af;font-size:11px;margin:0;">Klema Talent Assessment - ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
     </div>
   </div>
 </body>
@@ -286,7 +286,7 @@ export async function POST(request: NextRequest) {
         console.error("[assessment-results] GHL webhook request failed:", ghlErr);
       }
     } else {
-      console.log("[assessment-results] GHL_ASSESSMENT_WEBHOOK_URL not configured — skipping GHL");
+      console.log("[assessment-results] GHL_ASSESSMENT_WEBHOOK_URL not configured - skipping GHL");
     }
 
     // ── 2. SEND EMAIL REPORT ──
@@ -308,7 +308,7 @@ export async function POST(request: NextRequest) {
         console.error("[assessment-results] Email send failed:", emailErr);
       }
     } else {
-      console.log("[assessment-results] RESEND_API_KEY not configured — skipping email");
+      console.log("[assessment-results] RESEND_API_KEY not configured - skipping email");
       console.log("[assessment-results] Report data:", JSON.stringify({
         name: body.name,
         email: body.email,

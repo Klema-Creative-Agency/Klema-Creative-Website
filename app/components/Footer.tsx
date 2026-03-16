@@ -87,10 +87,18 @@ export default function Footer() {
             <ul className="list-none">
               <li className="mb-2.5">
                 <Link
-                  href="/"
+                  href="/about"
                   className="text-[13px] text-text-dim no-underline transition-colors duration-300 hover:text-text"
                 >
-                  Home
+                  About
+                </Link>
+              </li>
+              <li className="mb-2.5">
+                <Link
+                  href="/work"
+                  className="text-[13px] text-text-dim no-underline transition-colors duration-300 hover:text-text"
+                >
+                  Our Work
                 </Link>
               </li>
               <li className="mb-2.5">
@@ -99,14 +107,6 @@ export default function Footer() {
                   className="text-[13px] text-text-dim no-underline transition-colors duration-300 hover:text-text"
                 >
                   Packages
-                </Link>
-              </li>
-              <li className="mb-2.5">
-                <Link
-                  href="/services"
-                  className="text-[13px] text-text-dim no-underline transition-colors duration-300 hover:text-text"
-                >
-                  Pricing
                 </Link>
               </li>
               <li className="mb-2.5">

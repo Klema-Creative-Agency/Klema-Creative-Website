@@ -233,7 +233,7 @@ function scoreVisibility(
   // Domain mentioned (+10)
   if (fullLower.includes(domainLower)) score += 10;
 
-  // Factual claims — each +10, max 40
+  // Factual claims - each +10, max 40
   const factualPatterns = [
     /(?:offers?|provides?|specializ\w+|known for)\s+\w/i,
     /(?:founded|established|started|since)\s+\w/i,
@@ -249,7 +249,7 @@ function scoreVisibility(
     }
   }
 
-  // Specific details — numbers, platforms, city names (+8 each, max 24)
+  // Specific details - numbers, platforms, city names (+8 each, max 24)
   const detailPatterns = [
     /\b\d{4}\b/, // years
     /\b\d+\+?\s*(?:years?|employees?|locations?|clients?|projects?)\b/i,

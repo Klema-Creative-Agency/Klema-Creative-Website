@@ -22,7 +22,7 @@ function ArrowIcon() {
   );
 }
 
-/** Full niche service page — accepts niche data as props and renders all sections */
+/** Full niche service page - accepts niche data as props and renders all sections */
 export default function NicheServicePage({ niche }: { niche: NicheData }) {
   return (
     <>
@@ -140,7 +140,7 @@ export default function NicheServicePage({ niche }: { niche: NicheData }) {
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
-              {niche.seasonal_note.split(" — ")[0]}
+              {niche.seasonal_note.split(". ")[0]}
             </p>
           </RevealOnScroll>
           <RevealOnScroll>

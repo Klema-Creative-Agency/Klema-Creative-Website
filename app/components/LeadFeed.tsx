@@ -101,7 +101,7 @@ export default function LeadFeed() {
     return () => observer.disconnect();
   }, []);
 
-  // Toggle observer for header text — animates in and out
+  // Toggle observer for header text - animates in and out
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
@@ -169,7 +169,7 @@ export default function LeadFeed() {
       className="relative pt-32 pb-24 max-md:pt-20 max-md:pb-14 overflow-hidden"
     >
       <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-[1]">
-        {/* Header — viewport-triggered stagger (reverses on scroll out) */}
+        {/* Header - viewport-triggered stagger (reverses on scroll out) */}
         <div ref={headerRef} className="text-center mb-14 max-md:mb-8">
           <p
             className={`text-sm font-bold tracking-[0.15em] uppercase text-accent mb-4 ${staggerClass(headerInView, 0).className}`}
@@ -199,7 +199,7 @@ export default function LeadFeed() {
             className={`text-[17px] max-md:text-[15px] text-text-dim leading-[1.7] max-w-[600px] mx-auto ${staggerClass(headerInView, 600).className}`}
             style={staggerClass(headerInView, 600).style}
           >
-            Real-time leads, booked appointments, and revenue flowing &mdash;
+            Real-time leads, booked appointments, and revenue flowing,
             all on autopilot.
           </p>
         </div>

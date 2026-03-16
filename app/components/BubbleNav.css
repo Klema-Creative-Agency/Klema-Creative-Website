@@ -1,5 +1,5 @@
 /* ============================================================
-   Wes Bos Bubble Nav — full CSS (no external resets needed)
+   Wes Bos Bubble Nav - full CSS (no external resets needed)
    Source: codepen.io/wesbos/pen/OPXpJvK
    ============================================================ */
 
@@ -45,14 +45,14 @@
     opacity 0.25s ease;
 }
 
-/* Active bubble — the solid pill behind the current-page link */
+/* Active bubble - the solid pill behind the current-page link */
 .bubble.active {
   background: linear-gradient(180deg, #333333, #222222);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   z-index: 1;
 }
 
-/* Hover bubble — the subtle highlight that follows the cursor */
+/* Hover bubble - the subtle highlight that follows the cursor */
 .bubble.hover {
   background: rgba(255, 255, 255, 0.05);
   z-index: 0;

@@ -77,7 +77,7 @@ const columnHeaders = [
 function CellIcon({ icon }: { icon: "check" | "x" | "dash" }) {
   if (icon === "check") return <span className="text-accent font-bold">&#10003;</span>;
   if (icon === "x") return <span className="text-red font-bold">&#10007;</span>;
-  return <span className="text-amber font-bold">&mdash;</span>;
+  return <span className="text-amber font-bold">-</span>;
 }
 
 function CellValue({ cell }: { cell: CompetitorCell }) {

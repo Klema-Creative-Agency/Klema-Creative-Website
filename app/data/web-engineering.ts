@@ -1,4 +1,4 @@
-/** Web Engineering service data — standalone one-off website tiers */
+/** Web Engineering service data - standalone one-off website tiers */
 
 import type { ComparisonTier } from "@/app/components/ComparisonTable";
 
@@ -61,7 +61,7 @@ export const webTiers: WebTier[] = [
     pages: "Up to 5 pages",
     crm: "Yes",
     featured: true,
-    tagline: "A full website with CRM — built to grow with you.",
+    tagline: "A full website with CRM, built to grow with you.",
     bestFor: "Established businesses ready for a professional online presence with lead management.",
     features: [
       "Up to 5 custom pages",
@@ -122,19 +122,19 @@ export const webFeatures: WebFeatureCategory[] = [
     name: "Lead Capture & CRM",
     features: [
       { name: "Lead capture form", values: ["\u2713", "\u2713", "\u2713"] },
-      { name: "CRM integration", values: ["\u2014", "\u2713", "\u2713"] },
-      { name: "CRM automations & rules", values: ["\u2014", "\u2014", "\u2713"] },
-      { name: "Multi-step forms", values: ["\u2014", "\u2014", "\u2713"] },
+      { name: "CRM integration", values: ["-", "\u2713", "\u2713"] },
+      { name: "CRM automations & rules", values: ["-", "-", "\u2713"] },
+      { name: "Multi-step forms", values: ["-", "-", "\u2713"] },
     ],
   },
   {
     name: "SEO & Performance",
     features: [
       { name: "Meta tags setup", values: ["\u2713", "\u2713", "\u2713"] },
-      { name: "Basic on-page SEO (1 page)", values: ["\u2014", "\u2713", "\u2713"] },
-      { name: "On-page SEO (all pages)", values: ["\u2014", "\u2014", "\u2713"] },
-      { name: "Technical SEO audit", values: ["\u2014", "\u2014", "\u2713"] },
-      { name: "Schema markup", values: ["\u2014", "\u2014", "\u2713"] },
+      { name: "Basic on-page SEO (1 page)", values: ["-", "\u2713", "\u2713"] },
+      { name: "On-page SEO (all pages)", values: ["-", "-", "\u2713"] },
+      { name: "Technical SEO audit", values: ["-", "-", "\u2713"] },
+      { name: "Schema markup", values: ["-", "-", "\u2713"] },
     ],
   },
   {
@@ -142,8 +142,8 @@ export const webFeatures: WebFeatureCategory[] = [
     features: [
       { name: "SSL & hosting", values: ["\u2713", "\u2713", "\u2713"] },
       { name: "Monthly maintenance", values: ["\u2713", "\u2713", "\u2713"] },
-      { name: "Analytics dashboard", values: ["\u2014", "\u2713", "\u2713"] },
-      { name: "Priority support", values: ["\u2014", "\u2014", "\u2713"] },
+      { name: "Analytics dashboard", values: ["-", "\u2713", "\u2713"] },
+      { name: "Priority support", values: ["-", "-", "\u2713"] },
     ],
   },
 ];
@@ -155,7 +155,7 @@ export const webComparisonTiers: ComparisonTier[] = webTiers.map((t) => ({
 }));
 
 export const webMeta = {
-  title: "Web Engineering — Custom Websites for Local Businesses | Klema Creative",
+  title: "Web Engineering - Custom Websites for Local Businesses | Klema Creative",
   description:
     "High-performance, custom-designed websites built to convert. 3 tiers from single-page funnels to full web platforms with CRM and automations.",
 };

@@ -567,7 +567,7 @@ body {
   }
 }
 
-/* === VSL PAGE — hide global nav/footer === */
+/* === VSL PAGE - hide global nav/footer === */
 body.vsl-page > nav,
 body.vsl-page > footer {
   display: none !important;

@@ -2,7 +2,7 @@
 
 import RevealOnScroll from "@/app/components/RevealOnScroll";
 
-/** Dynamic ROI math section — shows conversion improvement, not CPL comparison */
+/** Dynamic ROI math section - shows conversion improvement, not CPL comparison */
 export default function ROISection({
   serviceName,
   avgJobValue,

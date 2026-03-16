@@ -18,7 +18,7 @@ const DELIVERABLES = [
       </svg>
     ),
     title: "Instant Call Trigger",
-    body: "Phone rings within 60 seconds of submission. First to call wins the job — this makes sure that's you.",
+    body: "Phone rings within 60 seconds of submission. First to call wins the job. This makes sure that's you.",
   },
   {
     icon: (
@@ -48,7 +48,7 @@ const DELIVERABLES = [
       </svg>
     ),
     title: "Done-for-You GoHighLevel Account",
-    body: "Your own GoHighLevel CRM — fully configured. Every lead tracked, every follow-up automated, full visibility from day one.",
+    body: "Your own GoHighLevel CRM, fully configured. Every lead tracked, every follow-up automated, full visibility from day one.",
   },
   {
     icon: (
@@ -59,11 +59,11 @@ const DELIVERABLES = [
       </svg>
     ),
     title: "Monthly Optimization",
-    body: "We monitor automation performance, review funnel metrics, and optimize your sequences every month. You close jobs — we tune the system.",
+    body: "We monitor automation performance, review funnel metrics, and optimize your sequences every month. You close jobs. We tune the system.",
   },
 ];
 
-/** 6-item deliverables grid — shared across all niches */
+/** 6-item deliverables grid - shared across all niches */
 export default function DeliverablesSection() {
   return (
     <section className="py-30 max-md:py-20">
@@ -76,7 +76,7 @@ export default function DeliverablesSection() {
             A complete lead system,<br />not just a funnel.
           </h2>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px]">
-            Six integrated pieces working together. From first click to booked appointment — fully automated.
+            Six integrated pieces working together. From first click to booked appointment, fully automated.
           </p>
         </RevealOnScroll>
 

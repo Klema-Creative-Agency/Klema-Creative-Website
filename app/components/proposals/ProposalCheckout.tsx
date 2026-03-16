@@ -14,7 +14,7 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-/** Outer wrapper — fetches clientSecret then renders Elements */
+/** Outer wrapper - fetches clientSecret then renders Elements */
 export default function ProposalCheckout({
   proposal,
   onSuccess,
@@ -99,7 +99,7 @@ export default function ProposalCheckout({
   );
 }
 
-/** Inner form — uses Stripe hooks (must be inside Elements) */
+/** Inner form - uses Stripe hooks (must be inside Elements) */
 function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
   const stripe = useStripe();
   const elements = useElements();

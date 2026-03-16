@@ -201,7 +201,7 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
               <div className="flex flex-col px-4 pt-3" style={{ width: `${100 / totalSteps}%` }}>
                 <p className="text-[9px] text-accent font-bold tracking-widest uppercase mb-1.5">Almost done</p>
                 <h3 className="text-[14px] font-bold text-text leading-tight mb-1">Where should we send your estimate?</h3>
-                <p className="text-[9px] text-text-dim mb-3">No spam — just your free quote.</p>
+                <p className="text-[9px] text-text-dim mb-3">No spam, just your free quote.</p>
                 <div className="flex flex-col gap-2">
                   <div className="px-3 py-2.5 rounded-xl border border-white-10 bg-white-6 text-[12px] text-text-mid">John Smith</div>
                   <div className="px-3 py-2.5 rounded-xl border border-white-10 bg-white-6 text-[12px] text-text-mid">(214) 555-0193</div>
@@ -266,7 +266,7 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
   );
 
   /* ============================================================
-   *  DESKTOP BROWSER MOCKUP — mirrors currentStep
+   *  DESKTOP BROWSER MOCKUP - mirrors currentStep
    * ============================================================ */
   const desktop = (
     <div className="relative w-full" style={{ maxWidth: 520 }}>
@@ -409,7 +409,7 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
             <div className="w-full max-w-[340px]">
               <p className="text-[10px] text-accent font-bold tracking-widest uppercase mb-2 text-center">Almost done</p>
               <h3 className="text-[18px] font-bold text-text leading-tight mb-1 text-center">Where should we send your estimate?</h3>
-              <p className="text-[10px] text-text-dim mb-5 text-center">No spam — just your free quote.</p>
+              <p className="text-[10px] text-text-dim mb-5 text-center">No spam, just your free quote.</p>
               <div className="grid grid-cols-2 gap-2.5 mb-2.5">
                 <div className="px-3 py-2.5 rounded-xl border border-white-10 bg-white-6 text-[12px] text-text-mid">John Smith</div>
                 <div className="px-3 py-2.5 rounded-xl border border-white-10 bg-white-6 text-[12px] text-text-mid">(214) 555-0193</div>
@@ -531,7 +531,7 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
               This is what your<br />customers experience.
             </h2>
             <p className="text-[17px] text-text-dim leading-[1.7] max-w-[540px] mx-auto">
-              A complete lead funnel — from first click to your phone ringing. Landing page, qualifier, instant call trigger, and automated follow-up.
+              A complete lead funnel, from first click to your phone ringing. Landing page, qualifier, instant call trigger, and automated follow-up.
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -547,7 +547,7 @@ export default function QuizFunnelDemo({ niche, compact = false }: Props) {
             <div className="hidden md:block flex-1 max-w-[520px]">{desktop}</div>
           </div>
           <p className="text-center text-[13px] text-text-dim mt-8 italic max-w-[540px] mx-auto">
-            This is a generic demo. Your funnel will be fully custom — designed around your brand, your services, and your market. No templates.
+            This is a generic demo. Your funnel will be fully custom, designed around your brand, your services, and your market. No templates.
           </p>
         </RevealOnScroll>
       </div>

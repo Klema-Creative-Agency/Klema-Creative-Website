@@ -12,7 +12,7 @@ function BeforeAfterPanel() {
         {/* Before */}
         <div className="rounded-xl border border-red/20 bg-red/[0.04] p-4">
           <p className="text-[11px] font-bold text-red/70 uppercase tracking-widest mb-3">Before</p>
-          {/* Mini wireframe — cluttered contractor site */}
+          {/* Mini wireframe - cluttered contractor site */}
           <div className="space-y-2">
             <div className="h-3 w-full rounded bg-white-6" />
             <div className="h-16 w-full rounded bg-white-6" />
@@ -30,7 +30,7 @@ function BeforeAfterPanel() {
         {/* After */}
         <div className="rounded-xl border border-accent-border-light bg-accent-dim p-4">
           <p className="text-[11px] font-bold text-accent/70 uppercase tracking-widest mb-3">After</p>
-          {/* Mini wireframe — clean quiz funnel */}
+          {/* Mini wireframe - clean quiz funnel */}
           <div className="space-y-2">
             <div className="flex justify-center gap-1.5 mb-3">
               <div className="w-2 h-2 rounded-full bg-accent" />

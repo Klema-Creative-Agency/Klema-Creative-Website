@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Klema Creative — Marketing Engines for Local Businesses",
+        alt: "Klema Creative - Marketing Engines for Local Businesses",
       },
     ],
   },
@@ -56,6 +56,58 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Klema Creative",
+              description:
+                "We build complete marketing systems that generate and convert leads for local service businesses in San Antonio.",
+              url: "https://klemacreative.com",
+              logo: "https://klemacreative.com/logo.png",
+              image: "https://klemacreative.com/og-image.png",
+              areaServed: {
+                "@type": "City",
+                name: "San Antonio",
+                "@id": "https://www.wikidata.org/wiki/Q975",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 29.4241,
+                longitude: -98.4936,
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "San Antonio",
+                addressRegion: "TX",
+                addressCountry: "US",
+              },
+              serviceType: [
+                "Web Design",
+                "SEO",
+                "Digital Marketing",
+                "Lead Generation",
+                "CRM Automation",
+              ],
+              priceRange: "$$",
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "17:00",
+              },
+              sameAs: [],
+            }),
+          }}
+        />
         <script
           // @ts-expect-error -- custom attrs for SearchAtlas loader
           nowprocket=""

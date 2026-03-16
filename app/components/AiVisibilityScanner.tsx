@@ -178,7 +178,7 @@ export default function AiVisibilityScanner({ initialUrl }: { initialUrl?: strin
     } catch (err) {
       if (err instanceof Error && err.name !== "AbortError") {
         setError(
-          "Scan failed — please check your connection and try again."
+          "Scan failed. Please check your connection and try again."
         );
         setPhase("idle");
       }
@@ -261,7 +261,7 @@ export default function AiVisibilityScanner({ initialUrl }: { initialUrl?: strin
             </div>
           )}
 
-          {/* Email gate — above cards when gated */}
+          {/* Email gate - above cards when gated */}
           {phase === "results-gated" && (
             <div className="mb-8">
               <EmailGateForm

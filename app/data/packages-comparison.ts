@@ -30,30 +30,30 @@ export const packagesCategories: ComparisonCategory[] = [
   {
     name: "Website & Ads",
     features: [
-      { name: "Custom Website", values: ["\u2014", "\u2713", "\u2713", "\u2713"] },
-      { name: "Paid Ad Management", values: ["\u2014", "\u2713", "\u2713", "\u2713"] },
-      { name: "Branded Dashboard", values: ["\u2014", "\u2713", "\u2713", "\u2713"] },
+      { name: "Custom Website", values: ["-", "\u2713", "\u2713", "\u2713"] },
+      { name: "Paid Ad Management", values: ["-", "\u2713", "\u2713", "\u2713"] },
+      { name: "Branded Dashboard", values: ["-", "\u2713", "\u2713", "\u2713"] },
     ],
   },
   {
     name: "Marketing",
     features: [
-      { name: "Blog Articles/Month", values: ["\u2014", "\u2014", "4\u20136", "6\u20138"] },
-      { name: "Social Media", values: ["\u2014", "\u2014", "2 Platforms", "3 Platforms"] },
-      { name: "Email Campaigns", values: ["\u2014", "\u2014", "\u2713", "\u2713"] },
-      { name: "Competitor Monitoring", values: ["\u2014", "\u2014", "\u2713", "\u2713"] },
-      { name: "A/B Testing", values: ["\u2014", "\u2014", "\u2713", "\u2713"] },
+      { name: "Blog Articles/Month", values: ["-", "-", "4-6", "6-8"] },
+      { name: "Social Media", values: ["-", "-", "2 Platforms", "3 Platforms"] },
+      { name: "Email Campaigns", values: ["-", "-", "\u2713", "\u2713"] },
+      { name: "Competitor Monitoring", values: ["-", "-", "\u2713", "\u2713"] },
+      { name: "A/B Testing", values: ["-", "-", "\u2713", "\u2713"] },
     ],
   },
   {
     name: "Lead Team & Support",
     features: [
-      { name: "Dedicated Lead Team", values: ["\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Lead Qualification Calls", values: ["\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Live Hot Transfers", values: ["\u2014", "\u2014", "\u2014", "\u2713"] },
-      { name: "Appointment Setting", values: ["\u2014", "\u2014", "\u2014", "\u2713"] },
+      { name: "Dedicated Lead Team", values: ["-", "-", "-", "\u2713"] },
+      { name: "Lead Qualification Calls", values: ["-", "-", "-", "\u2713"] },
+      { name: "Live Hot Transfers", values: ["-", "-", "-", "\u2713"] },
+      { name: "Appointment Setting", values: ["-", "-", "-", "\u2713"] },
       { name: "Strategy Calls", values: ["Monthly", "Monthly", "Bi-weekly", "Weekly"] },
-      { name: "Business Reviews", values: ["\u2014", "\u2014", "Quarterly", "Quarterly"] },
+      { name: "Business Reviews", values: ["-", "-", "Quarterly", "Quarterly"] },
     ],
   },
 ];

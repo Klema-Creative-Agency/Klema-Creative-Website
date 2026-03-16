@@ -45,7 +45,7 @@ function ChevronDown({ open }: { open: boolean }) {
 function renderValue(val: string) {
   if (val === "\u2713")
     return <span className="text-accent font-bold">{val}</span>;
-  if (val === "\u2014")
+  if (val === "-")
     return <span className="text-white-15">{val}</span>;
   return <span className="text-text-mid text-[12px] max-lg:text-[10px]">{val}</span>;
 }
@@ -55,7 +55,7 @@ function renderValue(val: string) {
 function renderMobileValue(val: string) {
   if (val === "\u2713")
     return <span className="text-accent font-bold text-[14px]">{val}</span>;
-  if (val === "\u2014")
+  if (val === "-")
     return <span className="text-white-15 text-[14px]">{val}</span>;
   return <span className="text-text-mid text-[13px]">{val}</span>;
 }
@@ -172,7 +172,7 @@ export default function ComparisonTable({
               className="sticky top-0 z-30"
               style={{ background: "#050505" }}
             >
-              {/* Opaque spacer — fills the space behind the navbar */}
+              {/* Opaque spacer - fills the space behind the navbar */}
               <div style={{ height: 110 }} />
               {/* Actual header content */}
               <div
@@ -231,7 +231,7 @@ export default function ComparisonTable({
                       </span>
                     </button>
 
-                    {/* Category body — collapsible accordion */}
+                    {/* Category body - collapsible accordion */}
                     <div className={`category-answer ${isOpen ? "open" : ""}`}>
                       <div>
                         {category.features.map((feature, fIdx) => (

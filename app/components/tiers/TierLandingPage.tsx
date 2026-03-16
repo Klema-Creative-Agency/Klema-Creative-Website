@@ -20,7 +20,7 @@ function CheckIcon() {
   );
 }
 
-/** Full landing page for a tier — renders all sections from TierData */
+/** Full landing page for a tier - renders all sections from TierData */
 export default function TierLandingPage({ tier, children }: { tier: TierData; children?: React.ReactNode }) {
   return (
     <>
@@ -30,7 +30,7 @@ export default function TierLandingPage({ tier, children }: { tier: TierData; ch
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
-              {tier.name} — Tier {tier.tierNumber}
+              {tier.name} - Tier {tier.tierNumber}
             </p>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -297,7 +297,7 @@ export default function TierLandingPage({ tier, children }: { tier: TierData; ch
 }
 
 /* ---------- Tier Application Form ---------- */
-/* Inline form component — same structure as the Lead Engine ApplicationForm
+/* Inline form component - same structure as the Lead Engine ApplicationForm
    but with tier-specific copy and field values */
 
 import { useState, FormEvent } from "react";

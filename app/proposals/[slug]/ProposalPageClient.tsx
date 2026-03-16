@@ -24,7 +24,7 @@ export default function ProposalPageClient({
     return () => document.body.classList.remove("vsl-page");
   }, []);
 
-  // Detect return from Klarna/Afterpay redirect — verify with Stripe
+  // Detect return from Klarna/Afterpay redirect - verify with Stripe
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const redirectStatus = params.get("redirect_status");
@@ -49,12 +49,12 @@ export default function ProposalPageClient({
             <span className="logo-dot" />
             klema creative
           </Link>
-{/* Clean nav — no extra text */}
+{/* Clean nav - no extra text */}
         </div>
       </nav>
 
       {/* ============================================================
-       *  HERO — Lead with the outcome, not the feature
+       *  HERO - Lead with the outcome, not the feature
        * ============================================================ */}
       <section className="relative pt-24 pb-16 max-md:pt-16 max-md:pb-12 overflow-hidden">
         {/* Subtle radial glow behind hero */}
@@ -80,7 +80,7 @@ export default function ProposalPageClient({
           <RevealOnScroll>
             <p className="text-[18px] text-text-dim leading-[1.75] max-w-[540px] mx-auto mb-10">
               We build a professional checkout directly into your website so
-              customers can pick a package, pay, and get onboarded &mdash; all
+              customers can pick a package, pay, and get onboarded, all
               without you lifting a finger.
             </p>
           </RevealOnScroll>
@@ -106,7 +106,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  THE PROBLEM — Compact, emotional, scannable
+       *  THE PROBLEM - Compact, emotional, scannable
        * ============================================================ */}
       <section className="py-16 max-md:py-10">
         <div className="max-w-[700px] mx-auto px-8 max-md:px-5">
@@ -139,7 +139,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  THE SOLUTION — Three clean steps
+       *  THE SOLUTION - Three clean steps
        * ============================================================ */}
       <section className="py-16 max-md:py-10">
         <div className="max-w-[800px] mx-auto px-8 max-md:px-5">
@@ -152,7 +152,7 @@ export default function ProposalPageClient({
               built into your website.
             </h2>
             <p className="text-[16px] text-text-dim leading-[1.7] max-w-[580px] mb-10">
-              Your customers pick a package, enter their card, and pay &mdash;
+              Your customers pick a package, enter their card, and pay,
               all without leaving your site. You get notified, they get a
               receipt, and your CRM handles the rest.
             </p>
@@ -203,7 +203,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  INTERACTIVE DEMO — The star of the page
+       *  INTERACTIVE DEMO - The star of the page
        * ============================================================ */}
       <div id="demo">
         <CheckoutFlowDemo
@@ -213,7 +213,7 @@ export default function ProposalPageClient({
       </div>
 
       {/* ============================================================
-       *  THE MATH / ROI — Moved up before pricing to build conviction
+       *  THE MATH / ROI - Moved up before pricing to build conviction
        * ============================================================ */}
       <section className="py-20 max-md:py-14">
         <div className="max-w-[800px] mx-auto px-8 max-md:px-5 text-center">
@@ -225,7 +225,7 @@ export default function ProposalPageClient({
               This pays for itself with 3 clients.
             </h2>
             <p className="text-[15px] text-text-dim leading-[1.7] max-w-[480px] mx-auto mb-10">
-              Here&apos;s how quickly the checkout recoups your investment &mdash;
+              Here&apos;s how quickly the checkout recoups your investment
               and starts putting money in your pocket.
             </p>
           </RevealOnScroll>
@@ -258,7 +258,7 @@ export default function ProposalPageClient({
               <p className="text-[15px] text-text-mid leading-[1.8]">
                 If the checkout converts just <span className="text-accent font-bold">3 extra
                 clients per month</span> at your average package price, that&apos;s{" "}
-                <span className="text-accent font-bold">$447/mo in new revenue</span> &mdash;
+                <span className="text-accent font-bold">$447/mo in new revenue</span>,
                 more than covering your $350/mo investment.{" "}
                 <span className="text-text font-semibold">Everything above that is profit.</span>
               </p>
@@ -268,7 +268,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  PRICING + CHECKOUT — Unified section (the decision point)
+       *  PRICING + CHECKOUT - Unified section (the decision point)
        * ============================================================ */}
       <section id="checkout" className="py-20 max-md:py-14">
         <div className="max-w-[640px] mx-auto px-8 max-md:px-5">
@@ -298,7 +298,7 @@ export default function ProposalPageClient({
                   <div className="flex items-center justify-center mb-6">
                     <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.1em] uppercase text-accent bg-accent-dim border border-accent-border rounded-full px-4 py-1.5">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
-                      Pilot Program &mdash; Reduced Rate
+                      Pilot Program - Reduced Rate
                     </span>
                   </div>
 
@@ -359,7 +359,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  WHAT'S INCLUDED — Lighter, scannable, expandable
+       *  WHAT'S INCLUDED - Lighter, scannable, expandable
        * ============================================================ */}
       <section className="py-16 max-md:py-10 border-t border-border">
         <div className="max-w-[700px] mx-auto px-8 max-md:px-5">
@@ -449,7 +449,7 @@ export default function ProposalPageClient({
       </section>
 
       {/* ============================================================
-       *  NEXT STEPS — What happens after payment
+       *  NEXT STEPS - What happens after payment
        * ============================================================ */}
       <section className="py-20 max-md:py-14 border-t border-border">
         <div className="max-w-[800px] mx-auto px-8 max-md:px-5">

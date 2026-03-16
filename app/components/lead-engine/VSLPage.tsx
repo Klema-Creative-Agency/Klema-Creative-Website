@@ -6,13 +6,13 @@ import type { NicheData } from "@/app/data/niches";
 import ApplicationForm from "./ApplicationForm";
 
 const PROOF_POINTS = [
-  "60-second call trigger — your phone rings the moment a lead submits",
-  "Exclusive leads — no shared leads, no bidding wars",
-  "Full system ownership — you keep everything, even if you cancel",
-  "Month-to-month — no contracts, no lock-in, cancel anytime",
+  "60-second call trigger. Your phone rings the moment a lead submits",
+  "Exclusive leads. No shared leads, no bidding wars",
+  "Full system ownership. You keep everything, even if you cancel",
+  "Month-to-month. No contracts, no lock-in, cancel anytime",
 ];
 
-/** VSL landing page — minimal nav, urgency bar, video embed, application form */
+/** VSL landing page - minimal nav, urgency bar, video embed, application form */
 export default function VSLPage({ niche }: { niche: NicheData }) {
   // Hide the global Navbar and Footer on VSL pages
   useEffect(() => {
@@ -50,10 +50,10 @@ export default function VSLPage({ niche }: { niche: NicheData }) {
             {niche.headline}
           </h1>
           <p className="text-[17px] text-text-dim leading-[1.7] max-w-[560px] mx-auto mb-10">
-            Watch the 6-minute demo to see exactly how the system works — from first click to booked appointment.
+            Watch the 6-minute demo to see exactly how the system works, from first click to booked appointment.
           </p>
 
-          {/* VIDEO CONTAINER — Replace src with Loom/YouTube embed URL */}
+          {/* VIDEO CONTAINER - Replace src with Loom/YouTube embed URL */}
           <div className="relative w-full aspect-video rounded-[20px] overflow-hidden border border-border bg-surface mb-6">
             {/* TODO: Replace this placeholder with your Loom or YouTube embed */}
             {/* Example: <iframe src="https://www.loom.com/embed/YOUR_VIDEO_ID" ... /> */}
