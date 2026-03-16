@@ -5,7 +5,7 @@ import RevealOnScroll from "../components/RevealOnScroll";
 export const metadata: Metadata = {
   title: "About Klema Creative | San Antonio Marketing Agency",
   description:
-    "I started Klema Creative because I was tired of watching San Antonio businesses get ripped off by agencies that charge for vanity metrics. I build marketing engines measured by one thing: did your phone ring?",
+    "I saw too many San Antonio businesses paying for marketing that never produced a single lead. I build marketing engines measured by one thing: did your phone ring?",
   openGraph: {
     title: "About Klema Creative | San Antonio Marketing Agency",
     description:
@@ -41,8 +41,8 @@ export default function AboutPage() {
           </RevealOnScroll>
           <RevealOnScroll>
             <h1 className="text-[clamp(32px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-1.5px] mb-6">
-              I started Klema Creative because I was tired of watching San Antonio businesses{" "}
-              <span className="text-accent">get ripped off.</span>
+              I started Klema Creative because local businesses deserve{" "}
+              <span className="text-accent">better than this.</span>
             </h1>
           </RevealOnScroll>
         </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                   local business owners (plumbers, roofers, HVAC techs,
                   dentists) hand over $3,000 a month to marketing agencies and get
                   nothing but a PDF full of &ldquo;impressions&rdquo; and &ldquo;clicks&rdquo;
-                  that don&apos;t mean a damn thing.
+                  that never turned into a single phone call.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll>
@@ -94,7 +94,7 @@ export default function AboutPage() {
               </RevealOnScroll>
               <RevealOnScroll>
                 <p className="text-[15px] text-text-dim leading-[1.8] mb-5 italic">
-                  That&apos;s not marketing. That&apos;s a subscription to disappointment.
+                  That&apos;s not marketing. That&apos;s just wasted money.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll>
@@ -210,7 +210,6 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="py-32 text-center relative overflow-hidden border-t border-border">
-        <div className="cta-glow" />
         <div className="max-w-[1200px] mx-auto px-8 max-md:px-5 relative z-2">
           <RevealOnScroll>
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mb-4">
