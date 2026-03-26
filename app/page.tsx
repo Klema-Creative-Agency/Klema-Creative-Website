@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeBackground from "./components/HomeBackground";
 import LeadFeed from "./components/LeadFeed";
 import RevealOnScroll from "./components/RevealOnScroll";
 import HeroSection from "./components/HeroSection";
@@ -24,7 +25,10 @@ function ArrowIcon() {
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
+      {/* Site-wide background — fades in as you scroll */}
+      <HomeBackground />
+
       {/* HERO */}
       <HeroSection />
 
@@ -295,6 +299,6 @@ export default function Home() {
           </RevealOnScroll>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -14,10 +14,10 @@ const stages = [
     step: 1,
     metric: "< 60s",
     metricLabel: "Response Time",
-    title: "Leads actually get answered",
-    cardTitle: "Every inquiry gets a response in under 60 seconds",
+    title: "You stop chasing missed calls.",
+    cardTitle: "A lead calls at 9 PM on a Tuesday. Right now, you miss it.",
     cardDetail:
-      "Calls, texts, and emails fire automatically. Nights, weekends, holidays. No more leads slipping through the cracks.",
+      "With Klema, they get a text back in under 60 seconds, every time. Even at 3 AM. You wake up to a booked appointment, not a missed opportunity.",
     side: "left" as const,
     illustration: "phone",
   },
@@ -25,10 +25,10 @@ const stages = [
     step: 2,
     metric: "Top 3",
     metricLabel: "Google Ranking",
-    title: "You show up first on Google",
-    cardTitle: "Local SEO, Google Business Profile, and review generation",
+    title: "You stop wondering why the phone isn\u2019t ringing.",
+    cardTitle: "When someone in your area searches for what you do, you\u2019re in the top 3.",
     cardDetail:
-      "I get you into the map pack where 46% of all clicks go. More visibility means more calls from people ready to buy.",
+      "Not page two. Not buried. Right where 46% of people click first. The leads come to you. You stop hunting for them.",
     side: "right" as const,
     illustration: "traffic",
   },
@@ -36,10 +36,10 @@ const stages = [
     step: 3,
     metric: "-40%",
     metricLabel: "No-Shows",
-    title: "No-shows drop dramatically",
-    cardTitle: "Automated reminders via call, text, and email",
+    title: "You stop getting stood up.",
+    cardTitle: "Every booked appointment gets an automatic reminder sequence.",
     cardDetail:
-      "Before every appointment, the system sends reminders so they actually show up. Industry data shows this cuts no-shows by up to 40%.",
+      "Text the day before, morning of, and an hour before. They confirm or reschedule without you lifting a finger. Your calendar stays full of people who actually show.",
     side: "left" as const,
     illustration: "reminders",
   },
@@ -47,10 +47,10 @@ const stages = [
     step: 4,
     metric: "+5x",
     metricLabel: "More Reviews",
-    title: "Your reviews grow on autopilot",
-    cardTitle: "Automatic review requests after every job",
+    title: "You stop begging for reviews.",
+    cardTitle: "After every job, your client gets a friendly text asking how it went.",
     cardDetail:
-      "After every job, the system asks for a Google review. More reviews = higher rankings = more leads. It compounds.",
+      "Happy? One tap to leave a Google review. No awkward ask. No forgetting. Your reviews grow while you\u2019re already on the next job.",
     side: "right" as const,
     illustration: "reviews",
   },
@@ -58,10 +58,10 @@ const stages = [
     step: 5,
     metric: "100%",
     metricLabel: "Tracked",
-    title: "You see exactly what's working",
-    cardTitle: "No vanity metrics. Real revenue tracking",
+    title: "You stop guessing what\u2019s working.",
+    cardTitle: "Every lead, every call, every dollar. Tracked back to exactly where it came from.",
     cardDetail:
-      "Your dashboard shows leads in, leads contacted, appointments booked, and revenue generated. Every dollar tracked.",
+      "No more paying for marketing you can\u2019t measure. You see real revenue, not vanity metrics.",
     side: "left" as const,
     illustration: "invoice",
   },
@@ -69,10 +69,10 @@ const stages = [
     step: 6,
     metric: "0",
     metricLabel: "Missed Messages",
-    title: "One inbox for everything",
-    cardTitle: "Calls, texts, emails, Facebook, all in one place",
+    title: "You stop juggling five apps.",
+    cardTitle: "Texts, emails, calls, Facebook messages, Google messages. All in one place.",
     cardDetail:
-      "Nothing gets missed. No more checking 5 apps. Every customer message lands in one unified inbox.",
+      "You open one screen and see every conversation. Nothing falls through the cracks. Nothing gets forgotten.",
     side: "right" as const,
     illustration: "inbox",
   },
@@ -135,22 +135,17 @@ function PhoneIllustration() {
   return (
     <div className="w-[210px] mx-auto bg-[#111] rounded-[22px] border-2 border-white-10 p-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.4)] md:rotate-[3deg]">
       <div className="w-10 h-1 rounded-full bg-white-10 mx-auto mb-3" />
-      <div className="bg-accent/15 border border-accent/25 rounded-lg p-2.5 mb-2">
-        <div className="flex items-center gap-1.5 mb-1">
-          <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3" /></svg>
-          </div>
-          <p className="text-[9px] font-bold text-accent">Incoming Call</p>
-        </div>
-        <p className="text-[8px] text-accent/70">Response time: 34s</p>
-      </div>
       <div className="bg-white-6 rounded-lg p-2 mb-1.5">
-        <p className="text-[7px] text-text-dim">SMS Sent</p>
-        <p className="text-[8px] text-text-mid">&quot;Hi Sarah! Thanks for...&quot;</p>
+        <p className="text-[7px] text-text-dim mb-0.5">Incoming</p>
+        <p className="text-[8px] text-text-mid">&quot;Hi, I need a quote. Can someone come out this week?&quot;</p>
       </div>
-      <div className="bg-white-6 rounded-lg p-2">
-        <p className="text-[7px] text-text-dim">Email Sent</p>
-        <p className="text-[8px] text-text-mid">&quot;Your free quote is ready&quot;</p>
+      <div className="bg-accent/15 border border-accent/25 rounded-lg p-2 mb-1.5">
+        <p className="text-[7px] text-accent/70 mb-0.5">Auto-reply</p>
+        <p className="text-[8px] text-accent">&quot;Hey! Thanks for reaching out. We&apos;ve got availability this afternoon between 2-4 PM. Want me to lock that in for you?&quot;</p>
+      </div>
+      <div className="flex items-center gap-1.5 px-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+        <p className="text-[8px] text-accent font-medium">Responded in 34s</p>
       </div>
       <div className="w-16 h-0.5 rounded-full bg-white-10 mx-auto mt-3" />
     </div>
@@ -160,12 +155,16 @@ function PhoneIllustration() {
 function RemindersIllustration() {
   return (
     <div className="w-full max-w-[305px] flex flex-col gap-2 md:-rotate-[1deg]">
-      <div className="bg-[#111] border border-white-10 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[220px]">
-        <p className="text-[8px] text-text-dim mb-1">Hey! Just checking in...</p>
-        <p className="text-[9px] text-text-mid">Your appointment is tomorrow at 2 PM. Still good?</p>
+      <div className="bg-[#111] border border-white-10 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[250px]">
+        <p className="text-[8px] text-text-dim mb-1">System</p>
+        <p className="text-[9px] text-text-mid">Hey Mike, just a reminder. You&apos;ve got service tomorrow at 10 AM. Reply YES to confirm or RESCHEDULE to pick a new time.</p>
       </div>
-      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[180px] self-end">
-        <p className="text-[9px] text-accent font-medium">Yes! See you then.</p>
+      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[120px] self-end">
+        <p className="text-[9px] text-accent font-medium">YES 👍</p>
+      </div>
+      <div className="bg-[#111] border border-white-10 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[240px]">
+        <p className="text-[8px] text-text-dim mb-1">System</p>
+        <p className="text-[9px] text-text-mid">You&apos;re confirmed! See you at 10.</p>
       </div>
     </div>
   );
@@ -175,18 +174,23 @@ function InvoiceIllustration() {
   return (
     <div className="w-full max-w-[330px] bg-[#111] rounded-xl border border-white-10 p-4 shadow-[0_8px_30px_rgba(0,0,0,0.4)] md:rotate-[1deg]">
       <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded bg-accent/20 flex items-center justify-center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /></svg></div>
-          <span className="text-[9px] text-text-dim">Invoice #1042</span>
+        <span className="text-[10px] font-bold text-text">Revenue This Month</span>
+        <span className="text-[8px] text-accent font-bold bg-accent/10 px-2 py-0.5 rounded-full">Live</span>
+      </div>
+      <div className="text-[20px] font-black text-text mb-3">$24,800</div>
+      {[
+        { source: "Google Organic", leads: "34 leads", revenue: "$12,400", pct: 50 },
+        { source: "Google Maps", leads: "22 leads", revenue: "$8,200", pct: 33 },
+        { source: "Referrals", leads: "11 leads", revenue: "$4,200", pct: 17 },
+      ].map((row, i) => (
+        <div key={i} className={`flex items-center gap-2 py-1.5 ${i > 0 ? "border-t border-white-6" : ""}`}>
+          <div className="flex-1 min-w-0">
+            <p className="text-[9px] text-text-mid">{row.source}</p>
+            <p className="text-[7px] text-text-dim">{row.leads}</p>
+          </div>
+          <span className="text-[9px] font-bold text-accent">{row.revenue}</span>
         </div>
-        <span className="text-[8px] text-accent font-bold bg-accent/10 px-2 py-0.5 rounded-full">Paid</span>
-      </div>
-      <div className="text-[18px] font-black text-text mb-1">$4,200.00</div>
-      <div className="text-[9px] text-text-dim mb-3">Johnson Plumbing Co.</div>
-      <div className="flex gap-2">
-        <div className="h-1.5 flex-[3] rounded-full bg-accent/30" />
-        <div className="h-1.5 flex-1 rounded-full bg-white-6" />
-      </div>
+      ))}
     </div>
   );
 }
@@ -195,17 +199,17 @@ function InboxIllustration() {
   return (
     <div className="w-full max-w-[330px] bg-[#111] rounded-xl border border-white-10 p-3 shadow-[0_8px_30px_rgba(0,0,0,0.4)] md:-rotate-[2deg]">
       {[
-        { ch: "SMS", msg: "Thanks for the quick response!", time: "2m", unread: true },
-        { ch: "Email", msg: "Re: Project update - looks great", time: "15m", unread: true },
-        { ch: "Call", msg: "Missed call from (512) 555-0123", time: "1hr", unread: false },
+        { ch: "SMS", name: "Mike R. · Service Call", msg: "YES 👍", time: "2m", unread: true },
+        { ch: "Email", name: "Sarah T. · Install Quote", msg: "Thanks for the estimate...", time: "15m", unread: true },
+        { ch: "Call", name: "David L. · Missed Call", msg: "Auto-text sent", time: "34m", unread: false },
       ].map((m, i) => (
         <div key={i} className={`flex items-center gap-2.5 py-2.5 ${i > 0 ? "border-t border-white-6" : ""}`}>
           <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[8px] font-bold flex-shrink-0 ${m.unread ? "bg-accent/15 text-accent" : "bg-white-6 text-text-dim"}`}>
             {m.ch[0]}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[9px] text-text truncate">{m.msg}</p>
-            <p className="text-[7px] text-text-dim">{m.ch} · {m.time}</p>
+            <p className="text-[9px] text-text truncate">{m.name}</p>
+            <p className="text-[7px] text-text-dim">{m.msg} · {m.time} ago</p>
           </div>
           {m.unread && <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />}
         </div>
@@ -241,11 +245,18 @@ function ReviewsIllustration() {
   return (
     <div className="w-full max-w-[280px] flex flex-col gap-2 md:-rotate-[2deg]">
       <div className="bg-[#111] border border-white-10 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-        <p className="text-[9px] text-text-mid mb-1">Hey Mark, just wanted to say thanks for the amazing work. Everything looks great!</p>
-        <p className="text-[7px] text-text-dim">- Sarah M.</p>
+        <p className="text-[8px] text-text-dim mb-1">System</p>
+        <p className="text-[9px] text-text-mid">Hey Sarah, thanks for choosing us today! How&apos;d everything go?</p>
       </div>
-      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[200px] self-end">
-        <p className="text-[9px] text-accent">Thanks! A quick Google review would really help us out!</p>
+      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[220px] self-end">
+        <p className="text-[9px] text-accent">Great! Tech was super professional.</p>
+      </div>
+      <div className="bg-[#111] border border-white-10 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <p className="text-[8px] text-text-dim mb-1">System</p>
+        <p className="text-[9px] text-text-mid">Awesome to hear! Would you mind leaving us a quick Google review? It really helps.</p>
+      </div>
+      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[140px] self-end">
+        <p className="text-[9px] text-accent">Done! ⭐⭐⭐⭐⭐</p>
       </div>
     </div>
   );
@@ -638,19 +649,18 @@ export default function CustomerJourney() {
         <div className="mb-16 max-md:mb-10 max-w-[500px]">
           <RevealOnScroll>
             <h2 className="text-[clamp(30px,4.5vw,48px)] font-extrabold leading-[1.15] tracking-[-1.5px] mb-4">
-              Here&apos;s what your business looks like with{" "}
+              Here&apos;s what{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(86deg, #4ade80, #6ee7b7, #a78bfa)" }}
               >
-                Klema running your marketing
+                comes off your plate.
               </span>
             </h2>
           </RevealOnScroll>
           <RevealOnScroll>
             <p className="text-[15px] text-text-dim leading-[1.7]">
-              From the first Google search to the repeat customer, every step is built and
-              managed so you can focus on your craft.
+              Every one of these used to be your job. Now they run themselves.
             </p>
           </RevealOnScroll>
         </div>
@@ -883,17 +893,15 @@ export default function CustomerJourney() {
           </div>
           <RevealOnScroll>
             <h3 className="text-[clamp(24px,3.5vw,36px)] font-extrabold leading-[1.2] tracking-[-1px] mb-2">
-              Ready to <span className="text-accent">stop chasing leads</span>
-              <br />
-              and <span className="text-accent">start closing them?</span>
+              Ready to <span className="text-accent">take a few hats off?</span>
             </h3>
           </RevealOnScroll>
           <RevealOnScroll>
             <a
-              href="/contact"
+              href="/book"
               className="btn-primary-hover inline-flex items-center gap-2 bg-accent text-black px-7 py-3.5 rounded-full text-[14px] font-bold no-underline transition-all duration-300 mt-6"
             >
-              Get Your Free Marketing Audit
+              Get My Time Back
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
