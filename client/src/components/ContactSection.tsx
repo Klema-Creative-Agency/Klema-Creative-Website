@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ArrowRight, Phone, Mail, MapPin, Shield, Clock, Users, Star } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ArrowRight, Phone, Mail, MapPin, Shield, Clock, Users, Star, ChevronDown, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -19,6 +19,65 @@ const foundingBenefits = [
   { icon: Users, text: "Only 5 spots per month" },
   { icon: Star, text: "Shape the service with us" },
 ];
+
+function TradeDropdown({ value, onChange }: { value: string; onChange: (val: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const selected = trades.find((t) => t.value === value);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <label className="text-white/60 text-[0.8125rem] mb-2 block font-body font-medium">
+        Your Trade *
+      </label>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className={`w-full bg-white/[0.08] border rounded-md px-4 py-3.5 text-left font-body text-base leading-normal min-h-[48px] flex items-center justify-between transition-colors ${
+          open
+            ? "border-[var(--brand-lime)] ring-1 ring-[var(--brand-lime)]/30"
+            : "border-white/15"
+        }`}
+      >
+        <span className={selected ? "text-white" : "text-white/35"}>
+          {selected ? selected.label : "Select your trade"}
+        </span>
+        <ChevronDown className={`w-4 h-4 text-white/40 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      {open && (
+        <div
+          className="absolute z-20 left-0 right-0 mt-1.5 rounded-md border border-white/15 overflow-hidden shadow-xl"
+          style={{ background: "oklch(0.22 0.07 145)" }}
+        >
+          {trades.map((t) => (
+            <button
+              key={t.value}
+              type="button"
+              onClick={() => { onChange(t.value); setOpen(false); }}
+              className={`w-full px-4 py-3 text-left text-[0.875rem] font-body font-medium flex items-center justify-between transition-colors min-h-[44px] ${
+                value === t.value
+                  ? "text-[var(--brand-lime)] bg-white/[0.06]"
+                  : "text-white/70 hover:bg-white/[0.06] active:bg-white/[0.1]"
+              }`}
+            >
+              {t.label}
+              {value === t.value && <Check className="w-4 h-4 text-[var(--brand-lime)]" strokeWidth={2.5} />}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ContactSection() {
   const [step, setStep] = useState(1);
@@ -77,9 +136,7 @@ export default function ContactSection() {
           <div className="grid grid-cols-2 sm:flex sm:justify-center gap-3 sm:gap-6 max-w-2xl mx-auto">
             {foundingBenefits.map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 sm:gap-2.5">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[oklch(0.74_0.21_130_/_0.15)] flex items-center justify-center shrink-0">
-                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--brand-lime)]" strokeWidth={2} />
-                </div>
+                <Icon className="w-4 h-4 sm:w-[1.125rem] sm:h-[1.125rem] text-[var(--brand-lime)] shrink-0" strokeWidth={2} />
                 <span className="text-white/60 text-[0.75rem] sm:text-[0.8125rem] font-body font-medium text-left leading-tight">
                   {text}
                 </span>
@@ -126,7 +183,7 @@ export default function ContactSection() {
             <div className="flex flex-col gap-3.5 border-t border-white/10 pt-8">
               {[
                 { icon: Phone, text: "(210) 974-9386", href: "tel:+1-210-974-9386" },
-                { icon: Mail, text: "hello@tradeflowagency.com", href: "mailto:hello@tradeflowagency.com" },
+                { icon: Mail, text: "tamaya@klemacreative.com", href: "mailto:tamaya@klemacreative.com" },
                 { icon: MapPin, text: "Based in San Antonio, TX", href: undefined },
               ].map(({ icon: Icon, text, href }) => (
                 <div key={text} className="flex items-center gap-3">
@@ -206,27 +263,10 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  <div>
-                    <label className="text-white/60 text-[0.8125rem] mb-3 block font-body font-medium">
-                      Your Trade *
-                    </label>
-                    <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2">
-                      {trades.map((t) => (
-                        <button
-                          key={t.value}
-                          type="button"
-                          onClick={() => setForm((prev) => ({ ...prev, trade: t.value }))}
-                          className={`px-3 sm:px-4 py-2.5 rounded-md text-[0.75rem] sm:text-[0.8125rem] font-body font-medium transition-all duration-200 min-h-[44px] ${
-                            form.trade === t.value
-                              ? "bg-[var(--brand-lime)] text-[var(--brand-charcoal)]"
-                              : "bg-white/[0.08] text-white/60 border border-white/15 active:bg-white/15"
-                          }`}
-                        >
-                          {t.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  <TradeDropdown
+                    value={form.trade}
+                    onChange={(val) => setForm((prev) => ({ ...prev, trade: val }))}
+                  />
 
                   <button
                     type="submit"
@@ -299,7 +339,7 @@ export default function ContactSection() {
                 <Phone className="w-3.5 h-3.5 text-[var(--brand-lime)]" strokeWidth={2} />
                 (210) 974-9386
               </a>
-              <a href="mailto:hello@tradeflowagency.com" className="flex items-center gap-2 text-white/50 text-[0.8125rem] font-body">
+              <a href="mailto:tamaya@klemacreative.com" className="flex items-center gap-2 text-white/50 text-[0.8125rem] font-body">
                 <Mail className="w-3.5 h-3.5 text-[var(--brand-lime)]" strokeWidth={2} />
                 Email Us
               </a>

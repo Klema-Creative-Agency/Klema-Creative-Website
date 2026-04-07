@@ -24,7 +24,8 @@ const steps = [
 ];
 
 export default function ProcessSection() {
-  const { ref, visible } = useReveal();
+  const { ref: desktopRef, visible: desktopVisible } = useReveal();
+  const { ref: mobileRef, visible: mobileVisible } = useReveal();
 
   return (
     <section id="process" className="cream-section py-16 sm:py-24">
@@ -47,13 +48,13 @@ export default function ProcessSection() {
         </div>
 
         {/* Desktop: horizontal 4-column with connecting line */}
-        <div ref={ref} className="hidden md:grid md:grid-cols-4 gap-8 relative">
+        <div ref={desktopRef} className="hidden md:grid md:grid-cols-4 gap-8 relative">
           <div className="absolute top-10 left-[12.5%] right-[12.5%] h-px bg-border" />
 
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`relative flex flex-col items-center text-center reveal-up stagger-${i + 1} ${visible ? "revealed" : ""}`}
+              className={`relative flex flex-col items-center text-center reveal-up stagger-${i + 1} ${desktopVisible ? "revealed" : ""}`}
             >
               <div className="relative z-10 w-20 h-20 rounded-md bg-primary flex items-center justify-center mb-6 shrink-0">
                 <span className="font-display font-extrabold text-[1.5rem] text-[var(--brand-lime)]">
@@ -72,7 +73,7 @@ export default function ProcessSection() {
         </div>
 
         {/* Mobile: vertical timeline */}
-        <div className="md:hidden flex flex-col relative">
+        <div ref={mobileRef} className="md:hidden flex flex-col relative">
           {/* Vertical connecting line */}
           <div
             className="absolute left-[1.4375rem] top-6 bottom-6 w-px bg-border"
@@ -81,7 +82,7 @@ export default function ProcessSection() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`relative flex gap-5 pb-8 last:pb-0 reveal-up stagger-${i + 1} ${visible ? "revealed" : ""}`}
+              className={`relative flex gap-5 pb-8 last:pb-0 reveal-up stagger-${i + 1} ${mobileVisible ? "revealed" : ""}`}
             >
               {/* Number circle */}
               <div className="relative z-10 w-[2.875rem] h-[2.875rem] rounded-md bg-primary flex items-center justify-center shrink-0">

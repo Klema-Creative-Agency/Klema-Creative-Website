@@ -38,9 +38,7 @@ export default function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="#" className="flex items-center gap-2 sm:gap-2.5 group">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-[var(--brand-lime)] flex items-center justify-center">
-              <Zap className="w-4 h-4 text-[var(--brand-charcoal)]" strokeWidth={2.5} />
-            </div>
+            <Zap className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-lime)] shrink-0" strokeWidth={2.5} fill="var(--brand-lime)" />
             <span className="font-display text-[1.125rem] sm:text-[1.25rem] font-extrabold text-white tracking-tight">
               Klema Creative
             </span>

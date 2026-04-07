@@ -107,7 +107,7 @@ export default function HeroSection() {
           <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-8 hero-animate hero-animate-d5">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col gap-0.5 text-center sm:text-left">
-                <span className="font-display font-extrabold text-[1.25rem] sm:text-[1.75rem] text-[var(--brand-lime)] leading-none">
+                <span className="font-display font-extrabold text-[var(--brand-lime)] leading-none" style={{ fontSize: "clamp(0.9375rem, 3.5vw, 1.75rem)" }}>
                   {stat.value}
                 </span>
                 <span className="text-white/50 text-[0.6875rem] sm:text-[0.8125rem] font-body leading-tight">

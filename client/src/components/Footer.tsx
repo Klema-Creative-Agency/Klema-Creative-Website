@@ -12,9 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-[var(--brand-lime)] flex items-center justify-center">
-                <Zap className="w-4 h-4 text-[var(--brand-charcoal)]" strokeWidth={2.5} />
-              </div>
+              <Zap className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-lime)] shrink-0" strokeWidth={2.5} fill="var(--brand-lime)" />
               <span className="text-white font-display font-extrabold text-[1.125rem] sm:text-[1.25rem]">
                 Klema Creative
               </span>
