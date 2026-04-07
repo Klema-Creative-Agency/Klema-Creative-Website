@@ -1,0 +1,335 @@
+/* ============================================================
+   TRADEFLOW AGENCY -- GLOBAL DESIGN SYSTEM
+   Design Philosophy: Bold Contractor-First
+   Movement: Blue Collar Boldness -- Rugged Confidence
+   Primary: Deep Forest Green (#14532D) + Off-White (#FAF7F2)
+   Accent: Lime Green (#84CC16) CTAs
+   Headlines: Plus Jakarta Sans (bold, wide, trustworthy)
+   Body: Inter (clean, readable, professional)
+   Layout: Asymmetric, left-rail dominant, high contrast
+   ============================================================ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.375rem;
+
+  /* Brand Colors */
+  --brand-green-dark: oklch(0.28 0.09 145);
+  --brand-green-mid: oklch(0.38 0.12 145);
+  --brand-green-light: oklch(0.55 0.18 145);
+  --brand-lime: oklch(0.74 0.21 130);
+  --brand-off-white: oklch(0.98 0.008 80);
+  --brand-cream: oklch(0.96 0.012 80);
+  --brand-charcoal: oklch(0.18 0.01 260);
+  --brand-text-dark: oklch(0.22 0.015 145);
+
+  /* Typography tokens */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Semantic Tokens */
+  --background: oklch(0.98 0.008 80);
+  --foreground: oklch(0.22 0.015 145);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.015 145);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.015 145);
+  --primary: oklch(0.28 0.09 145);
+  --primary-foreground: oklch(0.98 0.008 80);
+  --secondary: oklch(0.96 0.012 80);
+  --secondary-foreground: oklch(0.28 0.09 145);
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.45 0.04 145);
+  --accent: oklch(0.74 0.21 130);
+  --accent-foreground: oklch(0.18 0.05 145);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0.012 145);
+  --input: oklch(0.88 0.012 145);
+  --ring: oklch(0.28 0.09 145);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Brand utility classes */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  /* Section eyebrow label */
+  .section-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Primary CTA button -- 48px+ touch target on mobile */
+  .btn-primary {
+    background-color: oklch(0.74 0.21 130);
+    color: oklch(0.18 0.05 145);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    padding: 0.875rem 1.75rem;
+    min-height: 48px;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary:hover {
+    background-color: oklch(0.68 0.22 130);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px oklch(0.74 0.21 130 / 0.35);
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
+  @media (min-width: 640px) {
+    .btn-primary {
+      padding: 0.875rem 2rem;
+    }
+  }
+
+  /* Outline button (white, for dark backgrounds) */
+  .btn-outline-white {
+    background-color: transparent;
+    color: white;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    padding: 0.875rem 1.75rem;
+    min-height: 48px;
+    border-radius: 0.375rem;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-outline-white:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: white;
+  }
+  .btn-outline-white:active {
+    transform: scale(0.98);
+  }
+  @media (min-width: 640px) {
+    .btn-outline-white {
+      padding: 0.875rem 2rem;
+    }
+  }
+
+  .left-accent-border {
+    border-left: 4px solid oklch(0.74 0.21 130);
+    padding-left: 1.25rem;
+  }
+
+  /* Section background presets */
+  .dark-section {
+    background-color: oklch(0.28 0.09 145);
+    color: oklch(0.98 0.008 80);
+  }
+  .darker-section {
+    background-color: oklch(0.20 0.07 145);
+    color: oklch(0.98 0.008 80);
+  }
+  .light-section {
+    background-color: oklch(0.98 0.008 80);
+    color: oklch(0.22 0.015 145);
+  }
+  .cream-section {
+    background-color: oklch(0.96 0.012 80);
+    color: oklch(0.22 0.015 145);
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes countUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+.animate-fade-left {
+  animation: fadeInLeft 0.6s ease forwards;
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Scroll-reveal: elements start hidden, animate in when .revealed is added */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Stagger delays for grid children */
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.2s; }
+.stagger-5 { transition-delay: 0.25s; }
+.stagger-6 { transition-delay: 0.3s; }
+
+/* Hero entrance */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-animate {
+  animation: heroFadeUp 0.7s ease both;
+}
+.hero-animate-d1 { animation-delay: 0.1s; }
+.hero-animate-d2 { animation-delay: 0.25s; }
+.hero-animate-d3 { animation-delay: 0.4s; }
+.hero-animate-d4 { animation-delay: 0.55s; }
+.hero-animate-d5 { animation-delay: 0.7s; }
+
+/* FAQ accordion transition */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.faq-answer[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
