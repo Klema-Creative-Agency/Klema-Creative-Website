@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const GHL_WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/MFEIp7HVoKxeA83V9Bmg/webhook-trigger/c8721bf0-e648-46f5-9a56-3513c7759a29";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -15,25 +15,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await resend.emails.send({
-      from: "Klema Creative Website <noreply@klemacreative.com>",
-      to: "tamaya@klemacreative.com",
-      subject: `New Lead: ${name} — ${trade}`,
-      html: `
-        <h2>New Lead from klemacreative.com</h2>
-        <table style="border-collapse:collapse;width:100%;max-width:500px;font-family:sans-serif;">
-          <tr><td style="padding:8px 12px;font-weight:bold;border-bottom:1px solid #eee;">Name</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${name}</td></tr>
-          <tr><td style="padding:8px 12px;font-weight:bold;border-bottom:1px solid #eee;">Phone</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="tel:${phone}">${phone}</a></td></tr>
-          <tr><td style="padding:8px 12px;font-weight:bold;border-bottom:1px solid #eee;">Trade</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${trade}</td></tr>
-          <tr><td style="padding:8px 12px;font-weight:bold;border-bottom:1px solid #eee;">Email</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:8px 12px;font-weight:bold;">Message</td><td style="padding:8px 12px;">${message || "No message provided"}</td></tr>
-        </table>
-      `,
+    const response = await fetch(GHL_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        trade,
+        email,
+        message: message || "",
+        source: "klemacreative.com",
+      }),
     });
+
+    if (!response.ok) throw new Error(`GHL responded ${response.status}`);
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Resend error:", error);
-    return res.status(500).json({ error: "Failed to send email" });
+    console.error("GHL webhook error:", error);
+    return res.status(500).json({ error: "Failed to submit lead" });
   }
 }
