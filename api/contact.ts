@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const GHL_WEBHOOK_URL =
-  "https://services.leadconnectorhq.com/hooks/MFEIp7HVoKxeA83V9Bmg/webhook-trigger/c8721bf0-e648-46f5-9a56-3513c7759a29";
+  "https://services.leadconnectorhq.com/hooks/MFEIp7HVoKxeA83V9Bmg/webhook-trigger/3c9c59be-b8de-434e-9d57-7989637e380d";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
