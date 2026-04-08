@@ -90,11 +90,26 @@ export default function ContactSection() {
   });
   const { ref, visible } = useReveal();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("We'll email your custom audit within 24 hours and give you a call to walk through it.");
-    setForm({ name: "", phone: "", trade: "", email: "", message: "" });
-    setStep(1);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
+      toast.success("We'll email your custom audit within 24 hours and give you a call to walk through it.");
+      setForm({ name: "", phone: "", trade: "", email: "", message: "" });
+      setStep(1);
+    } catch {
+      toast.error("Something went wrong. Please call us at (210) 974-9386.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleStep1 = (e: React.FormEvent) => {
@@ -316,9 +331,9 @@ export default function ContactSection() {
                     >
                       Back
                     </button>
-                    <button type="submit" className="btn-primary justify-center py-3 flex-[2] text-sm">
-                      Get My Free Audit
-                      <ArrowRight className="w-4 h-4" />
+                    <button type="submit" disabled={submitting} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
+                      {submitting ? "Sending..." : "Get My Free Audit"}
+                      {!submitting && <ArrowRight className="w-4 h-4" />}
                     </button>
                   </div>
                 </form>
