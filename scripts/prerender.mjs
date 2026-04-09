@@ -1,10 +1,38 @@
 import express from "express";
 import { readFileSync, writeFileSync } from "fs";
 import { resolve, join } from "path";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 const DIST_DIR = resolve("dist/public");
 const PORT = 4174;
+
+async function getExecutablePath() {
+  // CI (Vercel/Linux): use @sparticuz/chromium
+  if (process.env.VERCEL || process.platform === "linux") {
+    const chromium = await import("@sparticuz/chromium");
+    return {
+      executablePath: await chromium.default.executablePath(),
+      args: chromium.default.args,
+    };
+  }
+  // macOS local: find Chrome
+  const paths = [
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  ];
+  // Also check Puppeteer cache
+  const { execSync } = await import("child_process");
+  try {
+    const cached = execSync("find ~/.cache/puppeteer -name 'Google Chrome for Testing' -type f 2>/dev/null", { encoding: "utf-8" }).trim().split("\n")[0];
+    if (cached) paths.unshift(cached);
+  } catch {}
+
+  const { existsSync } = await import("fs");
+  for (const p of paths) {
+    if (existsSync(p)) return { executablePath: p, args: [] };
+  }
+  throw new Error("Chrome not found. Install Chrome or run: npx puppeteer browsers install chrome");
+}
 
 async function prerender() {
   // 1. Serve the built output locally
@@ -16,8 +44,14 @@ async function prerender() {
   });
   console.log(`[prerender] Static server on http://localhost:${PORT}`);
 
-  // 2. Launch browser and render
-  const browser = await puppeteer.launch({ headless: true });
+  // 2. Launch browser
+  const { executablePath, args } = await getExecutablePath();
+  console.log(`[prerender] Using Chrome: ${executablePath}`);
+  const browser = await puppeteer.launch({
+    args,
+    executablePath,
+    headless: true,
+  });
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT}`, {
     waitUntil: "networkidle0",
@@ -33,7 +67,6 @@ async function prerender() {
   );
 
   // 5. Strip "revealed" classes so hydration starts from the same state (visible=false)
-  //    The client's useReveal hook will re-add them via IntersectionObserver
   renderedContent = renderedContent.replace(/ revealed/g, "");
 
   await browser.close();
