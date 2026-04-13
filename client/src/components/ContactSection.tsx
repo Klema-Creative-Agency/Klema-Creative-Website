@@ -301,9 +301,54 @@ export default function ContactSection() {
                     onChange={(val) => setForm((prev) => ({ ...prev, trade: val }))}
                   />
 
+                  <label
+                    htmlFor="contact-sms-consent"
+                    className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
+                    style={{
+                      backgroundColor: "#f8fafc",
+                      border: `1.5px solid ${smsConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
+                    }}
+                  >
+                    <input
+                      id="contact-sms-consent"
+                      type="checkbox"
+                      required
+                      checked={smsConsent}
+                      onChange={(e) => setSmsConsent(e.target.checked)}
+                      className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
+                    />
+                    <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
+                      <strong style={{ color: "#0f172a" }}>
+                        By submitting this form, you consent to receive SMS
+                        messages from Klema Creative
+                      </strong>{" "}
+                      including appointment reminders, promotional offers, and
+                      service updates. Message frequency varies. Message and
+                      data rates may apply. Reply <strong>STOP</strong> to
+                      unsubscribe, <strong>HELP</strong> for assistance. View
+                      our{" "}
+                      <Link
+                        href="/privacy-policy"
+                        className="font-semibold hover:underline"
+                        style={{ color: "#0f172a" }}
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="/terms"
+                        className="font-semibold hover:underline"
+                        style={{ color: "#0f172a" }}
+                      >
+                        Terms of Service
+                      </Link>
+                      . SMS consent is not shared with third parties.
+                    </span>
+                  </label>
+
                   <button
                     type="submit"
-                    disabled={!form.name || !form.phone || !form.trade}
+                    disabled={!form.name || !form.phone || !form.trade || !smsConsent}
                     className="btn-primary w-full justify-center mt-1 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
                   >
                     Continue
@@ -342,58 +387,6 @@ export default function ContactSection() {
                       onChange={handleChange("message")}
                     />
                   </div>
-
-                  <label
-                    htmlFor="contact-sms-consent"
-                    className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
-                    style={{
-                      backgroundColor: "#f8fafc",
-                      border: `1.5px solid ${smsConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
-                    }}
-                  >
-                    <input
-                      id="contact-sms-consent"
-                      type="checkbox"
-                      required
-                      checked={smsConsent}
-                      onChange={(e) => setSmsConsent(e.target.checked)}
-                      className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
-                    />
-                    <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
-                      <strong style={{ color: "#0f172a" }}>
-                        I agree to receive SMS messages from Klema Creative
-                      </strong>{" "}
-                      at the phone number provided, including customer care,
-                      appointment, and marketing messages. Messaging frequency
-                      may vary. Message and data rates may apply. You can opt
-                      out at any time by texting <strong>STOP</strong>. For
-                      assistance, text <strong>HELP</strong> or visit{" "}
-                      <a
-                        href="https://klemacreative.com"
-                        className="font-semibold hover:underline"
-                        style={{ color: "#0f172a" }}
-                      >
-                        klemacreative.com
-                      </a>
-                      . See our{" "}
-                      <Link
-                        href="/privacy-policy"
-                        className="font-semibold hover:underline"
-                        style={{ color: "#0f172a" }}
-                      >
-                        Privacy Policy
-                      </Link>{" "}
-                      and{" "}
-                      <Link
-                        href="/terms"
-                        className="font-semibold hover:underline"
-                        style={{ color: "#0f172a" }}
-                      >
-                        Terms of Service
-                      </Link>
-                      . SMS consent is not shared with third parties.
-                    </span>
-                  </label>
 
                   <div className="flex gap-3">
                     <button
