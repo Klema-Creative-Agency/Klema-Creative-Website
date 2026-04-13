@@ -1,4 +1,5 @@
 import { Zap } from "lucide-react";
+import { Link } from "wouter";
 
 const currentYear = new Date().getFullYear();
 
@@ -61,15 +62,18 @@ export default function Footer() {
             &copy; {currentYear} Klema Creative Agency. San Antonio, TX.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-white/30 hover:text-white/55 text-[0.75rem] sm:text-[0.8125rem] transition-colors font-body py-1"
-              >
-                {item}
-              </a>
-            ))}
+            <Link
+              href="/privacy-policy"
+              className="text-white/30 hover:text-white/55 text-[0.75rem] sm:text-[0.8125rem] transition-colors font-body py-1"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-white/30 hover:text-white/55 text-[0.75rem] sm:text-[0.8125rem] transition-colors font-body py-1"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
