@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const plans = [
@@ -92,11 +92,11 @@ function PricingCard({ plan, index, visible }: { plan: typeof plans[0]; index: n
       style={
         plan.highlight
           ? {
-              background: "oklch(0.28 0.09 145)",
-              boxShadow: "0 0 0 2px oklch(0.74 0.21 130), 0 25px 50px oklch(0.10 0.05 145 / 0.5)",
+              background: "oklch(0.28 0.09 240)",
+              boxShadow: "0 0 0 2px oklch(0.74 0.21  50), 0 25px 50px oklch(0.10 0.05 240 / 0.5)",
             }
           : {
-              background: "oklch(0.24 0.08 145)",
+              background: "oklch(0.24 0.08 240)",
               border: "1px solid oklch(1 0 0 / 0.08)",
             }
       }
@@ -134,7 +134,7 @@ function PricingCard({ plan, index, visible }: { plan: typeof plans[0]; index: n
         <div className="flex flex-col gap-3 mb-8 flex-1">
           {plan.features.map((feature) => (
             <div key={feature} className="flex items-start gap-2.5">
-              <div className="w-4.5 h-4.5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_130_/_0.15)]">
+              <div className="w-4.5 h-4.5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_50_/_0.15)]">
                 <Check className="w-3 h-3 text-[var(--brand-lime)]" strokeWidth={2.5} />
               </div>
               <span className="text-white/70 text-[0.8125rem] font-body leading-snug">
@@ -171,11 +171,11 @@ export default function PricingSection() {
       <div className="container">
         <div className="text-center mb-8 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-lime)]">
               Transparent Pricing
             </span>
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-white max-w-2xl mx-auto mb-4 sm:mb-5 font-extrabold"
@@ -196,7 +196,7 @@ export default function PricingSection() {
               <div className="flex flex-col items-center px-6">
                 <span
                   className="text-[0.8125rem] uppercase tracking-[0.06em] mb-1 font-body font-semibold"
-                  style={{ color: plan.highlight ? "oklch(0.74 0.21 130)" : "oklch(1 0 0 / 0.35)" }}
+                  style={{ color: plan.highlight ? "oklch(0.74 0.21  50)" : "oklch(1 0 0 / 0.35)" }}
                 >
                   Tier {i + 1}
                 </span>

@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import MobileStickyBar from "@/components/MobileStickyBar";
 import HeroSection from "@/components/HeroSection";
 import NicheBar from "@/components/NicheBar";
 import PainPointsSection from "@/components/PainPointsSection";
@@ -24,6 +25,7 @@ export default function Home() {
       <PricingSection />
       <FAQSection />
       <Footer />
+      <MobileStickyBar />
     </div>
   );
 }

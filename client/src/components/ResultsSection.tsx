@@ -1,4 +1,4 @@
-import { TrendingUp, Target, Clock, BarChart3 } from "lucide-react";
+import { TrendingUp, Target, Clock, BarChart3, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const RESULTS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663297447526/mEEGQWAhe3sZbFRjQQCeee/results_section-USwBUEWRxAeKtmtbzgdMmv.webp";
@@ -18,7 +18,7 @@ export default function ResultsSection() {
       <div className="container">
         <div className="mb-10 sm:mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-green-mid)]">
               What to Expect
             </span>

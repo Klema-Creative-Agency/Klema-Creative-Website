@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       className="py-10 sm:py-14 border-t"
-      style={{ background: "oklch(0.16 0.06 145)", borderColor: "oklch(1 0 0 / 0.08)" }}
+      style={{ background: "oklch(0.16 0.06 240)", borderColor: "oklch(1 0 0 / 0.08)" }}
     >
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const faqs = [
@@ -40,7 +40,7 @@ export default function FAQSection() {
           {/* Left column */}
           <div className="lg:sticky lg:top-24">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
               <span className="section-label text-[var(--brand-green-mid)]">
                 FAQ
               </span>

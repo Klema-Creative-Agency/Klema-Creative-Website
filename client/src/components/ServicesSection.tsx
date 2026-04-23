@@ -60,7 +60,7 @@ export default function ServicesSection() {
       <div className="container">
         <div className="mb-10 sm:mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-green-mid)]">
               What We Do
             </span>

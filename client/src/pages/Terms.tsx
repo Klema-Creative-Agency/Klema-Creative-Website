@@ -10,7 +10,7 @@ export default function Terms() {
   const lastUpdated = "April 13, 2026";
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 145)" }}>
+    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
       <header
         className="border-b"
         style={{ borderColor: "oklch(1 0 0 / 0.08)" }}
@@ -94,8 +94,8 @@ export default function Terms() {
             id="sms-terms"
             className="p-6 sm:p-7 rounded-xl"
             style={{
-              background: "oklch(0.74 0.21 130 / 0.08)",
-              border: "1px solid oklch(0.74 0.21 130 / 0.3)",
+              background: "oklch(0.74 0.21  50 / 0.08)",
+              border: "1px solid oklch(0.74 0.21  50 / 0.3)",
             }}
           >
             <h2 className="text-white font-display font-bold text-[1.375rem] sm:text-[1.5rem] mb-4">

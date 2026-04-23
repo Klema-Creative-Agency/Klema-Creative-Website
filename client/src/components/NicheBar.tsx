@@ -5,7 +5,7 @@ const trades = [
 
 export default function NicheBar() {
   return (
-    <div className="py-3.5 overflow-hidden" style={{ background: "oklch(0.22 0.07 145)" }}>
+    <div className="py-3.5 overflow-hidden" style={{ background: "oklch(0.22 0.07 240)" }}>
       <div className="flex items-center w-max animate-marquee">
         {[...trades, ...trades, ...trades].map((trade, i) => (
           <div key={i} className="flex items-center gap-4 px-7">

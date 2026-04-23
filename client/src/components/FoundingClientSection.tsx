@@ -1,4 +1,4 @@
-import { ArrowRight, Shield, Clock, Users, Star } from "lucide-react";
+import { ArrowRight, Shield, Clock, Users, Star, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const benefits = [
@@ -33,11 +33,11 @@ export default function FoundingClientSection() {
         <div ref={ref} className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
           <div className={`reveal-up ${visible ? "revealed" : ""}`}>
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
               <span className="section-label text-[var(--brand-lime)]">
                 Limited Availability
               </span>
-              <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             </div>
             <h2
               className="text-white font-extrabold mb-4 sm:mb-5"
@@ -59,9 +59,9 @@ export default function FoundingClientSection() {
               <div
                 key={benefit.title}
                 className={`rounded-md p-4 sm:p-6 text-center reveal-up stagger-${i + 1} ${visible ? "revealed" : ""}`}
-                style={{ background: "oklch(0.24 0.08 145)", border: "1px solid oklch(1 0 0 / 0.08)" }}
+                style={{ background: "oklch(0.24 0.08 240)", border: "1px solid oklch(1 0 0 / 0.08)" }}
               >
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-md bg-[oklch(0.74_0.21_130_/_0.15)] flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-md bg-[oklch(0.74_0.21_50_/_0.15)] flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--brand-lime)]" strokeWidth={2} />
                 </div>
                 <h3 className="text-white font-bold text-[0.875rem] sm:text-[1.0625rem] mb-1.5 sm:mb-2 leading-tight">

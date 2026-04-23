@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
   const lastUpdated = "April 13, 2026";
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 145)" }}>
+    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
       <header
         className="border-b"
         style={{ borderColor: "oklch(1 0 0 / 0.08)" }}
@@ -147,8 +147,8 @@ export default function PrivacyPolicy() {
             <p
               className="mt-5 p-4 rounded-md font-semibold"
               style={{
-                background: "oklch(0.74 0.21 130 / 0.12)",
-                border: "1px solid oklch(0.74 0.21 130 / 0.35)",
+                background: "oklch(0.74 0.21  50 / 0.12)",
+                border: "1px solid oklch(0.74 0.21  50 / 0.35)",
                 color: "#ffffff",
               }}
             >

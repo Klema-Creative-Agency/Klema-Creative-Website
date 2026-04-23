@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, Mail, MapPin, Shield, Clock, Users, Star } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin, Shield, Clock, Users, Star, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import ContactForm from "./ContactForm";
 
@@ -18,11 +18,11 @@ export default function ContactSection() {
         {/* Founding Client intro -- visible on all screens */}
         <div className="text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-lime)]">
               Limited Availability
             </span>
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-white font-extrabold mb-4 sm:mb-5"
@@ -75,7 +75,7 @@ export default function ContactSection() {
                 "A custom growth roadmap with clear next steps",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_130_/_0.2)]">
+                  <div className="w-5 h-5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_50_/_0.2)]">
                     <ArrowRight className="w-3 h-3 text-[var(--brand-lime)]" strokeWidth={2.5} />
                   </div>
                   <span className="text-white/70 text-[0.9375rem] font-body leading-snug">{item}</span>

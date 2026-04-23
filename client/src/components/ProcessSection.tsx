@@ -1,3 +1,4 @@
+import { Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const steps = [
@@ -32,11 +33,11 @@ export default function ProcessSection() {
       <div className="container">
         <div className="text-center mb-10 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-green-mid)]">
               How It Works
             </span>
-            <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-foreground max-w-2xl mx-auto font-extrabold"

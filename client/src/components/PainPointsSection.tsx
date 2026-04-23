@@ -1,6 +1,7 @@
+import { Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
-const AUTOMATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663297447526/mEEGQWAhe3sZbFRjQQCeee/automation_visual-XBrFBcErABKX9ZXrxpdfFi.webp";
+const PROBLEM_IMG = "/missed_call_diptych.jpg";
 
 const painPoints = [
   {
@@ -30,7 +31,7 @@ export default function PainPointsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div ref={leftRef} className={`reveal-left ${leftVisible ? "revealed" : ""}`}>
             <div className="flex items-center gap-3 mb-5 sm:mb-6">
-              <div className="w-6 sm:w-8 h-px bg-[var(--brand-lime)]" />
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
               <span className="section-label text-[var(--brand-lime)]">
                 The Problem
               </span>
@@ -76,17 +77,25 @@ export default function PainPointsSection() {
             <div
               className="absolute -inset-4 rounded-lg opacity-20"
               style={{
-                background: "radial-gradient(circle at center, oklch(0.74 0.21 130), transparent 70%)",
+                background: "radial-gradient(circle at center, oklch(0.74 0.21  50), transparent 70%)",
               }}
             />
             <img
-              src={AUTOMATION_IMG}
-              alt="CRM automation dashboard showing missed call recovery and lead pipeline"
-              className="relative rounded-lg w-full object-cover shadow-2xl"
+              src={PROBLEM_IMG}
+              alt="A homeowner trying to call a contractor while the contractor's phone rings unanswered on his tool belt during an HVAC service call"
+              className="relative w-full object-cover"
               loading="lazy"
-              width={600}
-              height={450}
-              style={{ boxShadow: "0 25px 60px oklch(0.10 0.05 145 / 0.6)" }}
+              width={1920}
+              height={1288}
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)",
+                maskComposite: "intersect",
+                WebkitMaskComposite: "source-in",
+                filter: "drop-shadow(0 20px 40px oklch(0.10 0.05 240 / 0.55))",
+              }}
             />
             <div
               className="absolute -bottom-3 -left-3 lg:-bottom-4 lg:-left-4 bg-white rounded-md px-4 py-3 shadow-xl flex items-center gap-3"
