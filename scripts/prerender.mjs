@@ -59,7 +59,7 @@ async function prerender() {
   });
 
   // 3. Wait for deepest section to confirm full render
-  await page.waitForSelector("#faq", { timeout: 10000 });
+  await page.waitForSelector("#contact", { timeout: 10000 });
 
   // 4. Extract rendered content from #root
   let renderedContent = await page.evaluate(
