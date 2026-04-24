@@ -3,11 +3,10 @@ import { Zap, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", subtitle: "Lead engines, SEO, ads", href: "#services" },
-  { label: "How It Works", subtitle: "Our process, end to end", href: "#process" },
-  { label: "Results", subtitle: "Case studies + numbers", href: "#results" },
-  { label: "Pricing", subtitle: "Simple monthly plans", href: "#pricing" },
-  { label: "FAQ", subtitle: "Common questions", href: "#faq" },
+  { label: "Services", subtitle: "Pricing + packages", href: "/services" },
+  { label: "Solution", subtitle: "How we solve it", href: "/#solution" },
+  { label: "How It Works", subtitle: "Our 4-step process", href: "/#process" },
+  { label: "What to Expect", subtitle: "The Klema Promise", href: "/#promise" },
 ];
 
 export default function Navbar() {

@@ -14,24 +14,24 @@ export default function ResultsSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="results" className="light-section py-16 sm:py-24">
+    <section id="results" className="dark-section py-16 sm:py-24">
       <div className="container">
         <div className="mb-10 sm:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-            <span className="section-label text-[var(--brand-green-mid)]">
+            <span className="section-label text-[var(--brand-lime)]">
               What to Expect
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
             <h2
-              className="text-foreground max-w-xl font-extrabold"
+              className="text-white max-w-xl font-extrabold"
               style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
             >
               The Numbers Behind
-              <span className="text-primary"> Contractor Marketing Done Right</span>
+              <span className="text-[var(--brand-lime)]"> Contractor Marketing Done Right</span>
             </h2>
-            <p className="text-muted-foreground max-w-sm font-body text-[0.875rem] sm:text-[0.9375rem] leading-relaxed">
+            <p className="text-white/70 max-w-sm font-body text-[0.875rem] sm:text-[0.9375rem] leading-relaxed">
               Real industry benchmarks from contractors using exclusive lead systems like the ones we build.
             </p>
           </div>
