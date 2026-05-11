@@ -961,7 +961,7 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out. Message and data rates may apply.
+                    By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Message and data rates may apply.
                   </span>
                 </label>
 
@@ -990,7 +990,7 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out. Message frequency varies. Message and data rates may apply.
+                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Message frequency varies. Message and data rates may apply.
                   </span>
                 </label>
 
