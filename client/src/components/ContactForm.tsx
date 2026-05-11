@@ -84,13 +84,19 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
     email: "",
     message: "",
   });
-  const [smsConsent, setSmsConsent] = useState(false);
+  // A2P 10DLC / TCPA compliance:
+  //  - Transactional SMS consent: REQUIRED (we need it to confirm the audit/appointment).
+  //  - Marketing SMS consent: OPTIONAL (TCPA prohibits making marketing a condition of service).
+  // Both unchecked by default. Both captured on Step 1 alongside the phone field.
+  // Both values are sent to the backend so the opt-in record is provable in a TCPA dispute.
+  const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
+  const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!smsConsent) {
-      toast.error("Please review and accept the SMS terms to continue.");
+    if (!smsTransactionalConsent) {
+      toast.error("Please confirm the transactional SMS consent to continue.");
       return;
     }
     setSubmitting(true);
@@ -98,12 +104,19 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, smsConsent }),
+        body: JSON.stringify({
+          ...form,
+          smsTransactionalConsent,
+          smsMarketingConsent,
+          consentTimestamp: new Date().toISOString(),
+          consentSource: typeof window !== "undefined" ? window.location.href : "",
+        }),
       });
       if (!res.ok) throw new Error("Failed");
       toast.success("We'll email your custom audit within 24 hours and give you a call to walk through it.");
       setForm({ name: "", phone: "", trade: "", email: "", message: "" });
-      setSmsConsent(false);
+      setSmsTransactionalConsent(false);
+      setSmsMarketingConsent(false);
       setStep(1);
     } catch {
       toast.error("Something went wrong. Please call us at (210) 974-9386.");
@@ -114,6 +127,10 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
 
   const handleStep1 = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!smsTransactionalConsent) {
+      toast.error("Please confirm the transactional SMS consent to continue.");
+      return;
+    }
     setStep(2);
   };
 
@@ -200,52 +217,79 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             idPrefix={idPrefix}
           />
 
+          {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked by default, REQUIRED). */}
           <label
-            htmlFor={`${idPrefix}-sms-consent`}
+            htmlFor={`${idPrefix}-sms-transactional-consent`}
             className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
             style={{
               backgroundColor: "#f8fafc",
-              border: `1.5px solid ${smsConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
+              border: `1.5px solid ${smsTransactionalConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
             }}
           >
             <input
-              id={`${idPrefix}-sms-consent`}
+              id={`${idPrefix}-sms-transactional-consent`}
               type="checkbox"
               required
-              checked={smsConsent}
-              onChange={(e) => setSmsConsent(e.target.checked)}
+              checked={smsTransactionalConsent}
+              onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
               className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
+              aria-required="true"
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
-              <strong style={{ color: "#0f172a" }}>
-                I consent to receive customer care, marketing text
-                messages from Klema Creative.
-              </strong>{" "}
-              Reply <strong>STOP</strong> to opt-out; Reply{" "}
-              <strong>HELP</strong> for support; Message and data rates
-              apply; Messaging frequency may vary. Visit{" "}
-              <Link
-                href="/privacy-policy"
-                className="font-semibold hover:underline"
-                style={{ color: "#0f172a" }}
-              >
-                klemacreative.com/privacy-policy
-              </Link>{" "}
-              for privacy policy and{" "}
-              <Link
-                href="/terms"
-                className="font-semibold hover:underline"
-                style={{ color: "#0f172a" }}
-              >
-                klemacreative.com/terms
-              </Link>{" "}
-              for Terms of Service. SMS consent is not shared with third parties.
+              By checking this box, I expressly consent to receive text messages from Klema Creative related to appointment reminders, audit confirmations, customer service, account updates, and other transactional or service-related communications at the phone number provided. Message and data rates may apply. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out at any time. Reply <strong style={{ color: "#0f172a" }}>HELP</strong> for assistance.
             </span>
           </label>
 
+          {/* A2P 10DLC / TCPA compliance: MARKETING SMS consent (unchecked by default, OPTIONAL).
+              Marketing opt-in CANNOT be made a condition of submitting the form. */}
+          <label
+            htmlFor={`${idPrefix}-sms-marketing-consent`}
+            className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
+            style={{
+              backgroundColor: "#f8fafc",
+              border: `1.5px solid ${smsMarketingConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
+            }}
+          >
+            <input
+              id={`${idPrefix}-sms-marketing-consent`}
+              type="checkbox"
+              checked={smsMarketingConsent}
+              onChange={(e) => setSmsMarketingConsent(e.target.checked)}
+              className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
+            />
+            <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
+              <span style={{ color: "#64748b", fontWeight: 600 }}>(Optional) </span>By checking this box, I expressly consent to receive recurring marketing and promotional text messages from Klema Creative at the phone number provided, including messages sent via automated technology. Message frequency varies. Message and data rates may apply. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out at any time. Reply <strong style={{ color: "#0f172a" }}>HELP</strong> for assistance. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Consent is not a condition of purchase.
+            </span>
+          </label>
+
+          {/* Privacy Policy and Terms hyperlinks shown as plain text (not a checkbox). */}
+          <p className="text-[0.6875rem] sm:text-[0.75rem] font-body leading-snug -mt-1" style={{ color: "#64748b" }}>
+            For more information, view our{" "}
+            <Link
+              href="/privacy-policy"
+              className="hover:underline"
+              style={{ color: "#0f172a", fontWeight: 600 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/terms"
+              className="hover:underline"
+              style={{ color: "#0f172a", fontWeight: 600 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms of Service
+            </Link>
+            .
+          </p>
+
           <button
             type="submit"
-            disabled={!form.name || !form.phone || !form.trade || !smsConsent}
+            disabled={!form.name || !form.phone || !form.trade || !smsTransactionalConsent}
             className="btn-primary w-full justify-center mt-1 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
           >
             Continue
@@ -294,7 +338,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             >
               Back
             </button>
-            <button type="submit" disabled={submitting || !smsConsent} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
+            <button type="submit" disabled={submitting || !smsTransactionalConsent} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
               {submitting ? "Sending..." : "Get My Free Audit"}
               {!submitting && <ArrowRight className="w-4 h-4" />}
             </button>

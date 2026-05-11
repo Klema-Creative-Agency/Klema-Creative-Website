@@ -138,13 +138,31 @@ export default function Marketing() {
           HERO
          ============================================================ */}
       <section className="relative min-h-[88dvh] lg:min-h-[85dvh] flex flex-col overflow-hidden bg-[var(--brand-charcoal)]">
-        {/* Background ambient gradient */}
+        {/* Background hero image — cinematic San Antonio aerial */}
         <div
           aria-hidden
-          className="absolute inset-0"
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: "url('/hero_marketing_san_antonio.jpg')",
+            backgroundPosition: "center 35%",
+          }}
+        />
+        {/* Desktop scrim — darken left for text legibility, leave right photo visible */}
+        <div
+          aria-hidden
+          className="absolute inset-0 hidden md:block"
           style={{
             background:
-              "radial-gradient(ellipse 1100px 700px at 80% 30%, oklch(0.74 0.21 50 / 0.18) 0%, oklch(0.18 0.02 240 / 0) 65%), radial-gradient(ellipse 900px 600px at 10% 80%, oklch(0.32 0.10 240 / 0.55) 0%, oklch(0.18 0.02 240 / 0) 60%)",
+              "linear-gradient(to right, oklch(0.15 0.02 240 / 0.85) 0%, oklch(0.15 0.02 240 / 0.65) 30%, oklch(0.15 0.02 240 / 0.30) 60%, oklch(0.15 0.02 240 / 0.05) 100%), linear-gradient(to bottom, oklch(0.18 0.02 240 / 0.10) 0%, oklch(0.18 0.02 240 / 0.0) 35%, oklch(0.18 0.02 240 / 0.55) 100%)",
+          }}
+        />
+        {/* Mobile scrim — heavier, fades to charcoal at the bottom for next-section blend */}
+        <div
+          aria-hidden
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, oklch(0.20 0.07 240 / 0.55) 0%, oklch(0.20 0.07 240 / 0.70) 40%, oklch(0.20 0.07 240 / 0.92) 70%, oklch(0.18 0.02 240) 100%)",
           }}
         />
 

@@ -158,6 +158,78 @@ export default function Terms() {
             </p>
           </section>
 
+          <section id="sms-messaging-terms">
+            <h2 className="text-white font-display font-bold text-[1.25rem] sm:text-[1.375rem] mb-3">
+              SMS Messaging Terms
+            </h2>
+            <p className="mb-4">
+              When you opt in to receive text messages from Klema Creative, you
+              agree to the following terms:
+            </p>
+            <div className="flex flex-col gap-3">
+              <p>
+                <strong className="text-white">Program description.</strong>{" "}
+                Klema Creative sends recurring text messages for customer
+                service, appointment reminders, audit follow-ups, marketing,
+                and promotional purposes related to our digital marketing
+                services for home service contractors.
+              </p>
+              <p>
+                <strong className="text-white">Message frequency.</strong>{" "}
+                Message frequency varies based on your interactions with us.
+                You may receive multiple messages per week.
+              </p>
+              <p>
+                <strong className="text-white">Cost.</strong> Message and data
+                rates may apply. Klema Creative does not charge for SMS
+                messages, but standard rates from your mobile carrier apply.
+              </p>
+              <p>
+                <strong className="text-white">Opt-out.</strong> You can opt
+                out at any time by replying <strong>STOP</strong> to any
+                message. You will receive a confirmation that you've been
+                unsubscribed.
+              </p>
+              <p>
+                <strong className="text-white">Help.</strong> Reply{" "}
+                <strong>HELP</strong> to any message or contact{" "}
+                <a
+                  href="mailto:tamaya@klemacreative.com"
+                  className="text-[var(--brand-lime)] hover:underline"
+                >
+                  tamaya@klemacreative.com
+                </a>{" "}
+                or{" "}
+                <a
+                  href="tel:+1-210-974-9386"
+                  className="text-[var(--brand-lime)] hover:underline"
+                >
+                  (210) 974-9386
+                </a>{" "}
+                for support.
+              </p>
+              <p>
+                <strong className="text-white">Carriers.</strong> Supported
+                carriers include AT&T, Verizon, T-Mobile, Sprint, U.S.
+                Cellular, and others. Carriers are not liable for delayed or
+                undelivered messages.
+              </p>
+              <p>
+                <strong className="text-white">Privacy.</strong> Your phone
+                number and SMS engagement data are handled in accordance with
+                our{" "}
+                <Link
+                  href="/privacy-policy"
+                  className="text-[var(--brand-lime)] hover:underline"
+                >
+                  Privacy Policy
+                </Link>
+                . No mobile information is shared with third parties or
+                affiliates for marketing or promotional purposes.
+              </p>
+            </div>
+          </section>
+
           <section>
             <h2 className="text-white font-display font-bold text-[1.25rem] sm:text-[1.375rem] mb-3">
               Disclaimers

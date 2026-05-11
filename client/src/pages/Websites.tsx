@@ -844,6 +844,11 @@ function CTA() {
   const [phone, setPhone] = useState("");
   const [trade, setTrade] = useState("Lead Generation Engine");
   const [message, setMessage] = useState("");
+  // A2P 10DLC / TCPA compliance:
+  //  - Transactional SMS consent: REQUIRED.
+  //  - Marketing SMS consent: OPTIONAL (TCPA prohibits making marketing a condition of service).
+  const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
+  const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -851,12 +856,26 @@ function CTA() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (!smsTransactionalConsent) {
+      setError("Please confirm the transactional SMS consent to send your brief.");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, trade, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          trade,
+          message,
+          smsTransactionalConsent,
+          smsMarketingConsent,
+          consentTimestamp: new Date().toISOString(),
+          consentSource: typeof window !== "undefined" ? window.location.href : "",
+        }),
       });
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
@@ -915,8 +934,86 @@ function CTA() {
                     ))}
                   </div>
                 </div>
+
+                {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked, REQUIRED). */}
+                <label
+                  htmlFor="kc-sms-transactional-consent"
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    padding: "14px",
+                    borderRadius: "8px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: `1.5px solid ${smsTransactionalConsent ? "var(--kc-accent, #c4ff3d)" : "rgba(255,255,255,0.15)"}`,
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  <input
+                    id="kc-sms-transactional-consent"
+                    type="checkbox"
+                    required
+                    aria-required="true"
+                    checked={smsTransactionalConsent}
+                    onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
+                    style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
+                  />
+                  <span>
+                    By checking this box, I expressly consent to receive text messages from Klema Creative related to appointment reminders, audit confirmations, customer service, account updates, and other transactional or service-related communications at the phone number provided. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for assistance.
+                  </span>
+                </label>
+
+                {/* A2P 10DLC / TCPA compliance: MARKETING SMS consent (unchecked, OPTIONAL).
+                    Marketing opt-in CANNOT be required to submit the form. */}
+                <label
+                  htmlFor="kc-sms-marketing-consent"
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    padding: "14px",
+                    borderRadius: "8px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: `1.5px solid ${smsMarketingConsent ? "var(--kc-accent, #c4ff3d)" : "rgba(255,255,255,0.15)"}`,
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  <input
+                    id="kc-sms-marketing-consent"
+                    type="checkbox"
+                    checked={smsMarketingConsent}
+                    onChange={(e) => setSmsMarketingConsent(e.target.checked)}
+                    style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
+                  />
+                  <span>
+                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I expressly consent to receive recurring marketing and promotional text messages from Klema Creative at the phone number provided, including messages sent via automated technology. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for assistance. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Consent is not a condition of purchase.
+                  </span>
+                </label>
+
+                {/* Privacy and Terms hyperlinks (plain text, not a checkbox). */}
+                <p style={{ fontSize: "11px", lineHeight: 1.5, opacity: 0.7, margin: "4px 0 0" }}>
+                  For more information, view our{" "}
+                  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>
+                    Privacy Policy
+                  </a>{" "}
+                  and{" "}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>
+                    Terms of Service
+                  </a>
+                  .
+                </p>
+
                 {error && <p className="kc-form-error">{error}</p>}
-                <button className="kc-btn kc-btn-accent" style={{ width: "100%", justifyContent: "center", padding: "14px" }} type="submit" disabled={submitting}>
+                <button
+                  className="kc-btn kc-btn-accent"
+                  style={{ width: "100%", justifyContent: "center", padding: "14px" }}
+                  type="submit"
+                  disabled={submitting || !smsTransactionalConsent}
+                >
                   {submitting ? "Sending..." : <>Send brief <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg></>}
                 </button>
                 <p className="kc-form-fine">We keep your brief private. We'll only use it to prepare for our call.</p>

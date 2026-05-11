@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "What tools do you use for automation?",
-    a: "We use an industry-leading CRM and automation platform that we fully customize for your business. We handle the entire setup and management. You get a simple dashboard to see your leads and pipeline.",
+    a: "We build on GoHighLevel, the leading CRM and automation platform for service businesses. We fully customize it for your trade: Missed Call Text-Back, lead routing, review automation, pipelines, the whole stack. You get a simple dashboard, and we handle the complexity. You own the account.",
   },
   {
     q: "Is there a long-term contract?",

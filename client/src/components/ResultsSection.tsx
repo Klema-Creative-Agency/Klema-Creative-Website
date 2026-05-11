@@ -39,26 +39,31 @@ export default function ResultsSection() {
 
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Stats -- 2x2 grid, stacks to 1-col on very small */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-5">
-            {stats.map((stat, i) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={stat.label}
-                  className={`bg-white border border-border rounded-md p-4 sm:p-6 reveal-up stagger-${i + 1} ${visible ? "revealed" : ""}`}
-                >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-primary/[0.08] flex items-center justify-center mb-3 sm:mb-4">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" strokeWidth={2} />
+          <div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
+              {stats.map((stat, i) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={stat.label}
+                    className={`bg-white border border-border rounded-md p-4 sm:p-6 reveal-up stagger-${i + 1} ${visible ? "revealed" : ""}`}
+                  >
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-primary/[0.08] flex items-center justify-center mb-3 sm:mb-4">
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" strokeWidth={2} />
+                    </div>
+                    <span className="font-display font-extrabold text-[1.5rem] sm:text-[2rem] text-primary block leading-none mb-1.5 sm:mb-2">
+                      {stat.value}
+                    </span>
+                    <span className="text-muted-foreground text-[0.75rem] sm:text-[0.8125rem] font-body leading-snug">
+                      {stat.label}
+                    </span>
                   </div>
-                  <span className="font-display font-extrabold text-[1.5rem] sm:text-[2rem] text-primary block leading-none mb-1.5 sm:mb-2">
-                    {stat.value}
-                  </span>
-                  <span className="text-muted-foreground text-[0.75rem] sm:text-[0.8125rem] font-body leading-snug">
-                    {stat.label}
-                  </span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <p className="mt-4 sm:mt-5 text-white/45 text-[0.75rem] sm:text-[0.8125rem] font-body leading-relaxed italic">
+              Industry benchmarks for contractors using exclusive-lead systems. These are the targets we're built to hit for our founding clients.
+            </p>
           </div>
 
           {/* Image -- hidden on mobile */}

@@ -199,6 +199,63 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
+          <section id="sms-communications">
+            <h2 className="text-white font-display font-bold text-[1.25rem] sm:text-[1.375rem] mb-3">
+              SMS Communications & Mobile Information Sharing
+            </h2>
+            <p className="mb-3">
+              By providing your phone number and opting in via our forms, you
+              consent to receive recurring text messages from Klema Creative
+              for customer service, appointment reminders, audit follow-ups,
+              marketing, and promotional purposes. Message frequency varies.
+              Message and data rates may apply.
+            </p>
+            <p className="mb-3">
+              You may opt out of receiving SMS messages at any time by replying{" "}
+              <strong>STOP</strong> to any message you receive from us. Reply{" "}
+              <strong>HELP</strong> for assistance, or contact us at{" "}
+              <a
+                href="mailto:tamaya@klemacreative.com"
+                className="text-[var(--brand-lime)] hover:underline"
+              >
+                tamaya@klemacreative.com
+              </a>{" "}
+              or{" "}
+              <a
+                href="tel:+1-210-974-9386"
+                className="text-[var(--brand-lime)] hover:underline"
+              >
+                (210) 974-9386
+              </a>
+              .
+            </p>
+            <p className="mb-3">
+              No Mobile Information will be shared with third parties or
+              affiliates for marketing or promotional purposes. All other
+              categories of personal information exclude mobile opt-in data and
+              consent. This information will not be shared with any third
+              parties.
+            </p>
+            <p className="mb-3">
+              Categories of SMS information collected may include phone number,
+              opt-in status, and message engagement data (delivery, replies,
+              opt-outs). This information is used solely to deliver the SMS
+              service you opted into and to maintain compliance with applicable
+              telecommunications regulations.
+            </p>
+            <p>
+              If you have questions about our SMS practices or want to request
+              deletion of your mobile information, contact us at{" "}
+              <a
+                href="mailto:tamaya@klemacreative.com"
+                className="text-[var(--brand-lime)] hover:underline"
+              >
+                tamaya@klemacreative.com
+              </a>
+              .
+            </p>
+          </section>
+
           <section>
             <h2 className="text-white font-display font-bold text-[1.25rem] sm:text-[1.375rem] mb-3">
               Cookies and Analytics

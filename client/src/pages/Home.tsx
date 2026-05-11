@@ -5,6 +5,7 @@ import NicheBar from "@/components/NicheBar";
 import PainPointsSection from "@/components/PainPointsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ResultsSection from "@/components/ResultsSection";
+import FounderSection from "@/components/FounderSection";
 import ProcessSection from "@/components/ProcessSection";
 import ContactSection from "@/components/ContactSection";
 import PricingSection from "@/components/PricingSection";
@@ -20,6 +21,7 @@ export default function Home() {
       <PainPointsSection />
       <ServicesSection />
       <ResultsSection />
+      <FounderSection />
       <ProcessSection />
       <ContactSection />
       <PricingSection />

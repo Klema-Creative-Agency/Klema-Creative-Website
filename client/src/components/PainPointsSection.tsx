@@ -70,6 +70,9 @@ export default function PainPointsSection() {
                 </div>
               ))}
             </div>
+            <p className="mt-5 sm:mt-7 text-white/40 text-[0.75rem] sm:text-[0.8125rem] font-body leading-relaxed italic">
+              Industry benchmarks for contractors using exclusive-lead systems. These are the targets we're built to hit for our founding clients.
+            </p>
           </div>
 
           {/* Image -- hidden on very small screens, shown on sm+ */}

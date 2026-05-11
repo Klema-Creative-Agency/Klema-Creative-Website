@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Services", subtitle: "Pricing + packages", href: "/services" },
-  { label: "Solution", subtitle: "How we solve it", href: "/#solution" },
+  { label: "What We Do", subtitle: "Marketing services for contractors", href: "/#services" },
   { label: "How It Works", subtitle: "Our 4-step process", href: "/#process" },
-  { label: "What to Expect", subtitle: "The Klema Promise", href: "/#promise" },
+  { label: "What to Expect", subtitle: "Industry benchmarks", href: "/#results" },
 ];
 
 export default function Navbar() {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Check, ChevronDown, ChevronUp, Zap } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
-const plans = [
+export const plans = [
   {
     name: "Speed to Lead",
     tagline: "Stop the Leaky Bucket",
@@ -85,10 +85,20 @@ const plans = [
   },
 ];
 
-function PricingCard({ plan, index, visible }: { plan: typeof plans[0]; index: number; visible: boolean }) {
+function PricingCard({
+  plan,
+  index,
+  visible,
+  className = "",
+}: {
+  plan: typeof plans[0];
+  index: number;
+  visible: boolean;
+  className?: string;
+}) {
   return (
     <div
-      className={`rounded-md flex flex-col reveal-up stagger-${index + 1} ${visible ? "revealed" : ""}`}
+      className={`rounded-md flex flex-col reveal-up stagger-${index + 1} ${visible ? "revealed" : ""} ${className}`}
       style={
         plan.highlight
           ? {
@@ -159,12 +169,13 @@ function PricingCard({ plan, index, visible }: { plan: typeof plans[0]; index: n
   );
 }
 
-export default function PricingSection() {
-  const { ref: desktopRef, visible: desktopVisible } = useReveal();
-  const { ref: mobileRef, visible: mobileVisible } = useReveal();
+type PricingSectionProps = {
+  eyebrow?: string;
+};
+
+export default function PricingSection({ eyebrow = "Transparent Pricing" }: PricingSectionProps) {
+  const { ref, visible } = useReveal();
   const [showAllMobile, setShowAllMobile] = useState(false);
-  const popularPlan = plans.find((p) => p.highlight)!;
-  const popularIndex = plans.indexOf(popularPlan);
 
   return (
     <section id="pricing" className="darker-section py-16 sm:py-24">
@@ -173,7 +184,7 @@ export default function PricingSection() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
             <span className="section-label text-[var(--brand-lime)]">
-              Transparent Pricing
+              {eyebrow}
             </span>
             <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
@@ -185,11 +196,11 @@ export default function PricingSection() {
             <span className="text-[var(--brand-lime)]"> Just Results.</span>
           </h2>
           <p className="text-white/60 max-w-lg mx-auto font-body text-[0.9375rem] sm:text-base leading-relaxed">
-            Each tier builds on the last. Start where you are and scale as you grow. Month-to-month, cancel anytime.
+            Each plan builds on the last. Start where you are and scale as you grow. Month-to-month, cancel anytime.
           </p>
         </div>
 
-        {/* Desktop only: tier progression bar */}
+        {/* Desktop only: plan progression bar with named tiers + price, no "Tier N" prefix */}
         <div className="hidden lg:flex items-center justify-center gap-0 mb-10">
           {plans.map((plan, i) => (
             <div key={plan.name} className="flex items-center">
@@ -198,7 +209,7 @@ export default function PricingSection() {
                   className="text-[0.8125rem] uppercase tracking-[0.06em] mb-1 font-body font-semibold"
                   style={{ color: plan.highlight ? "oklch(0.74 0.21  50)" : "oklch(1 0 0 / 0.35)" }}
                 >
-                  Tier {i + 1}
+                  {plan.name}
                 </span>
                 <span
                   className="text-[0.875rem] font-display font-bold"
@@ -214,45 +225,48 @@ export default function PricingSection() {
           ))}
         </div>
 
-        {/* Desktop: all 4 cards */}
-        <div ref={desktopRef} className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-          {plans.map((plan, i) => (
-            <PricingCard key={plan.name} plan={plan} index={i} visible={desktopVisible} />
-          ))}
+        {/* Single responsive grid: renders each plan exactly once.
+            Popular card displays first on mobile via order, natural position on desktop.
+            Non-popular cards hide on mobile until expanded. */}
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+          {plans.map((plan, i) => {
+            const isPopular = plan.highlight;
+            const mobileHidden = !isPopular && !showAllMobile;
+            return (
+              <PricingCard
+                key={plan.name}
+                plan={plan}
+                index={i}
+                visible={visible}
+                className={`${isPopular ? "order-first md:order-none" : ""} ${mobileHidden ? "hidden md:flex" : ""}`}
+              />
+            );
+          })}
         </div>
 
-        {/* Mobile: show popular card first, toggle for rest */}
-        <div ref={mobileRef} className="md:hidden">
-          <PricingCard plan={popularPlan} index={0} visible={mobileVisible} />
-
-          {!showAllMobile && (
+        {/* Mobile-only expand/collapse: controls visibility of non-popular cards above */}
+        <div className="md:hidden mt-5">
+          {!showAllMobile ? (
             <button
               onClick={() => setShowAllMobile(true)}
-              className="w-full mt-5 py-3.5 rounded-md border border-white/15 text-white/60 hover:text-white hover:border-white/30 text-[0.875rem] font-body font-medium transition-colors flex items-center justify-center gap-2 min-h-[48px] active:bg-white/5"
+              className="w-full py-3.5 rounded-md border border-white/15 text-white/60 hover:text-white hover:border-white/30 text-[0.875rem] font-body font-medium transition-colors flex items-center justify-center gap-2 min-h-[48px] active:bg-white/5"
             >
               See All Plans
               <ChevronDown className="w-4 h-4" />
             </button>
-          )}
-
-          {showAllMobile && (
-            <div className="flex flex-col gap-5 mt-5">
-              {plans.filter((p) => !p.highlight).map((plan, i) => (
-                <PricingCard key={plan.name} plan={plan} index={i} visible={true} />
-              ))}
-              <button
-                onClick={() => setShowAllMobile(false)}
-                className="w-full py-3 text-white/40 hover:text-white/60 text-[0.8125rem] font-body transition-colors flex items-center justify-center gap-1 min-h-[44px]"
-              >
-                Show Less
-                <ChevronUp className="w-3.5 h-3.5" />
-              </button>
-            </div>
+          ) : (
+            <button
+              onClick={() => setShowAllMobile(false)}
+              className="w-full py-3 text-white/40 hover:text-white/60 text-[0.8125rem] font-body transition-colors flex items-center justify-center gap-1 min-h-[44px]"
+            >
+              Show Less
+              <ChevronUp className="w-3.5 h-3.5" />
+            </button>
           )}
         </div>
 
         <p className="text-center text-white/35 text-[0.75rem] sm:text-[0.8125rem] mt-8 sm:mt-10 font-body leading-relaxed">
-          All plans are month-to-month. Each tier includes everything from the tier below it.
+          All plans are month-to-month. Each plan includes everything from the plan below it.
           Ad spend is billed separately and goes directly to the ad platforms.
         </p>
       </div>
