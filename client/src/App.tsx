@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -13,6 +12,15 @@ import Terms from "./pages/Terms";
 
 // Client-side fallback for /marketing -> /. Production 301 lives in vercel.json.
 function MarketingRedirect() {
+  useEffect(() => {
+    window.location.replace("/");
+  }, []);
+  return null;
+}
+
+// Any URL that doesn't match a known route redirects to the homepage.
+// No 404 page is ever shown.
+function CatchAllRedirect() {
   useEffect(() => {
     window.location.replace("/");
   }, []);
@@ -35,8 +43,8 @@ function Router() {
       <Route path={"/marketing"} component={MarketingRedirect} />
       <Route path={"/privacy-policy"} component={PrivacyPolicy} />
       <Route path={"/terms"} component={Terms} />
-      <Route path={"/404"} component={NotFound} />
-      <Route component={NotFound} />
+      {/* Any unknown URL (including /404) redirects to /. */}
+      <Route component={CatchAllRedirect} />
     </Switch>
   );
 }
