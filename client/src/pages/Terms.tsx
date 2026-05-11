@@ -1,6 +1,7 @@
 import { ArrowLeft, Zap } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect } from "react";
+import GHLChatWidget from "@/components/GHLChatWidget";
 
 export default function Terms() {
   useEffect(() => {
@@ -11,6 +12,7 @@ export default function Terms() {
 
   return (
     <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
+      <GHLChatWidget />
       <header
         className="border-b"
         style={{ borderColor: "oklch(1 0 0 / 0.08)" }}

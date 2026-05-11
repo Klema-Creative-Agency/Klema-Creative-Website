@@ -1,11 +1,13 @@
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
+import GHLChatWidget from "@/components/GHLChatWidget";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--brand-green-dark)]">
+      <GHLChatWidget />
       <div className="text-center px-6 max-w-lg">
         <div className="flex justify-center mb-6">
           <AlertCircle className="h-16 w-16 text-[var(--brand-lime)]" />
