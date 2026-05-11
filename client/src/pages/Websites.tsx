@@ -961,7 +961,7 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    By checking this box, I expressly consent to receive text messages from Klema Creative related to appointment reminders, audit confirmations, customer service, account updates, and other transactional or service-related communications at the phone number provided. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for assistance.
+                    By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out. Message and data rates may apply.
                   </span>
                 </label>
 
@@ -990,7 +990,7 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I expressly consent to receive recurring marketing and promotional text messages from Klema Creative at the phone number provided, including messages sent via automated technology. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for assistance. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Consent is not a condition of purchase.
+                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out. Message frequency varies. Message and data rates may apply.
                   </span>
                 </label>
 

@@ -236,7 +236,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
               aria-required="true"
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
-              By checking this box, I expressly consent to receive text messages from Klema Creative related to appointment reminders, audit confirmations, customer service, account updates, and other transactional or service-related communications at the phone number provided. Message and data rates may apply. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out at any time. Reply <strong style={{ color: "#0f172a" }}>HELP</strong> for assistance.
+              By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out. Message and data rates may apply.
             </span>
           </label>
 
@@ -258,7 +258,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
               className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
-              <span style={{ color: "#64748b", fontWeight: 600 }}>(Optional) </span>By checking this box, I expressly consent to receive recurring marketing and promotional text messages from Klema Creative at the phone number provided, including messages sent via automated technology. Message frequency varies. Message and data rates may apply. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out at any time. Reply <strong style={{ color: "#0f172a" }}>HELP</strong> for assistance. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Consent is not a condition of purchase.
+              <span style={{ color: "#64748b", fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Reply <strong style={{ color: "#0f172a" }}>STOP</strong> to opt out. Message frequency varies. Message and data rates may apply.
             </span>
           </label>
 
