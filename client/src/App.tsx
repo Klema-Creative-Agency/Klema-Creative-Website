@@ -22,7 +22,14 @@ function MarketingRedirect() {
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"}>
+        <Home />
+      </Route>
+      {/* /contact renders the homepage but auto-scrolls to the audit form on load.
+          Keeps the URL clean (no hash) while landing the visitor directly on the form. */}
+      <Route path={"/contact"}>
+        <Home scrollToOnLoad="contact" />
+      </Route>
       <Route path={"/services"} component={Services} />
       <Route path={"/websites"} component={Websites} />
       <Route path={"/marketing"} component={MarketingRedirect} />
