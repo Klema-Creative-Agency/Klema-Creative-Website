@@ -43,6 +43,8 @@ function Router() {
       <Route path={"/marketing"} component={MarketingRedirect} />
       <Route path={"/privacy-policy"} component={PrivacyPolicy} />
       <Route path={"/terms"} component={Terms} />
+      {/* /terms-and-conditions alias for RingCentral's required URL string. */}
+      <Route path={"/terms-and-conditions"} component={Terms} />
       {/* Any unknown URL (including /404) redirects to /. */}
       <Route component={CatchAllRedirect} />
     </Switch>

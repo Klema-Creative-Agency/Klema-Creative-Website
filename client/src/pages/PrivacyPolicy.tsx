@@ -230,11 +230,13 @@ export default function PrivacyPolicy() {
               .
             </p>
             <p className="mb-3">
-              No Mobile Information will be shared with third parties or
-              affiliates for marketing or promotional purposes. All other
-              categories of personal information exclude mobile opt-in data and
-              consent. This information will not be shared with any third
-              parties.
+              Klema Creative does not share or sell SMS opt-in information,
+              mobile phone numbers, or any data collected through SMS for the
+              purpose of SMS to any third parties or affiliates. No Mobile
+              Information will be shared with third parties or affiliates for
+              marketing or promotional purposes. All other categories of
+              personal information exclude mobile opt-in data and consent.
+              This information will not be shared with any third parties.
             </p>
             <p className="mb-3">
               Categories of SMS information collected may include phone number,

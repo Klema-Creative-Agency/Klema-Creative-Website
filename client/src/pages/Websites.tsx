@@ -961,7 +961,11 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Message and data rates may apply.
+                    By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong>STOP</strong>. For assistance, text <strong>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
+                    {" "}for privacy policy and{" "}
+                    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>
+                    {" "}for Terms of Service.
                   </span>
                 </label>
 
@@ -990,7 +994,11 @@ function CTA() {
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <span>
-                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Message frequency varies. Message and data rates may apply.
+                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong>STOP</strong>. For assistance, text <strong>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
+                    {" "}for privacy policy and{" "}
+                    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>
+                    {" "}for Terms of Service.
                   </span>
                 </label>
 
