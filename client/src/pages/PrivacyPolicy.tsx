@@ -175,7 +175,7 @@ export default function PrivacyPolicy() {
               any text message from us. Reply <strong>HELP</strong> for help.
               See our full{" "}
               <Link
-                href="/terms"
+                href="/terms-and-conditions"
                 className="text-[var(--brand-lime)] hover:underline"
               >
                 SMS Terms of Service

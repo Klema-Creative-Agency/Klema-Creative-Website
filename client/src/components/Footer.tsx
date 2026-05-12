@@ -69,7 +69,7 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <Link
-              href="/terms"
+              href="/terms-and-conditions"
               className="text-white/30 hover:text-white/55 text-[0.75rem] sm:text-[0.8125rem] transition-colors font-body py-1"
             >
               Terms of Service

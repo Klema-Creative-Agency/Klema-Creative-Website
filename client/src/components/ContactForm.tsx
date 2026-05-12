@@ -284,7 +284,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             </Link>{" "}
             and{" "}
             <Link
-              href="/terms"
+              href="/terms-and-conditions"
               className="hover:underline"
               style={{ color: "#0f172a", fontWeight: 600 }}
               target="_blank"

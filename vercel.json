@@ -32,7 +32,8 @@
     }
   ],
   "redirects": [
-    { "source": "/marketing", "destination": "/", "permanent": true }
+    { "source": "/marketing", "destination": "/", "permanent": true },
+    { "source": "/terms", "destination": "/terms-and-conditions", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },

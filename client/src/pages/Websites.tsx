@@ -1009,7 +1009,7 @@ function CTA() {
                     Privacy Policy
                   </a>{" "}
                   and{" "}
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>
+                  <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>
                     Terms of Service
                   </a>
                   .

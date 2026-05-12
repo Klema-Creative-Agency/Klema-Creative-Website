@@ -27,6 +27,15 @@ function CatchAllRedirect() {
   return null;
 }
 
+// Client-side fallback for /terms -> /terms-and-conditions.
+// Production 301/308 lives in vercel.json.
+function TermsRedirect() {
+  useEffect(() => {
+    window.location.replace("/terms-and-conditions");
+  }, []);
+  return null;
+}
+
 function Router() {
   return (
     <Switch>
@@ -42,9 +51,9 @@ function Router() {
       <Route path={"/websites"} component={Websites} />
       <Route path={"/marketing"} component={MarketingRedirect} />
       <Route path={"/privacy-policy"} component={PrivacyPolicy} />
-      <Route path={"/terms"} component={Terms} />
-      {/* /terms-and-conditions alias for RingCentral's required URL string. */}
       <Route path={"/terms-and-conditions"} component={Terms} />
+      {/* /terms is the legacy URL; redirect to the canonical /terms-and-conditions. */}
+      <Route path={"/terms"} component={TermsRedirect} />
       {/* Any unknown URL (including /404) redirects to /. */}
       <Route component={CatchAllRedirect} />
     </Switch>
