@@ -845,8 +845,10 @@ function CTA() {
   const [trade, setTrade] = useState("Lead Generation Engine");
   const [message, setMessage] = useState("");
   // A2P 10DLC / TCPA compliance:
-  //  - Transactional SMS consent: REQUIRED.
-  //  - Marketing SMS consent: OPTIONAL (TCPA prohibits making marketing a condition of service).
+  // Both SMS consent checkboxes are OPTIONAL. The form submits regardless.
+  // Whichever boxes the visitor checked (or didn't) are sent to the backend
+  // so the opt-in record is provable; GHL workflows must check the tags
+  // before sending any SMS.
   const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
   const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -856,10 +858,6 @@ function CTA() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!smsTransactionalConsent) {
-      setError("Please confirm the transactional SMS consent to send your brief.");
-      return;
-    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/contact", {
@@ -935,7 +933,7 @@ function CTA() {
                   </div>
                 </div>
 
-                {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked, REQUIRED). */}
+                {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked, OPTIONAL). */}
                 <label
                   htmlFor="kc-sms-transactional-consent"
                   style={{
@@ -954,8 +952,6 @@ function CTA() {
                   <input
                     id="kc-sms-transactional-consent"
                     type="checkbox"
-                    required
-                    aria-required="true"
                     checked={smsTransactionalConsent}
                     onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
                     style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
@@ -1020,7 +1016,7 @@ function CTA() {
                   className="kc-btn kc-btn-accent"
                   style={{ width: "100%", justifyContent: "center", padding: "14px" }}
                   type="submit"
-                  disabled={submitting || !smsTransactionalConsent}
+                  disabled={submitting}
                 >
                   {submitting ? "Sending..." : <>Send brief <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg></>}
                 </button>

@@ -85,20 +85,17 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
     message: "",
   });
   // A2P 10DLC / TCPA compliance:
-  //  - Transactional SMS consent: REQUIRED (we need it to confirm the audit/appointment).
-  //  - Marketing SMS consent: OPTIONAL (TCPA prohibits making marketing a condition of service).
-  // Both unchecked by default. Both captured on Step 1 alongside the phone field.
-  // Both values are sent to the backend so the opt-in record is provable in a TCPA dispute.
+  // Both SMS consent checkboxes are OPTIONAL. The form submits whether or not
+  // either box is checked. Whichever boxes the visitor did check (or did not)
+  // are still sent to the backend so the opt-in record is provable later.
+  // Sending marketing SMS without sms_marketing_optin=true on a contact is a
+  // TCPA violation, so the GHL automation side must check tags before sending.
   const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
   const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!smsTransactionalConsent) {
-      toast.error("Please confirm the transactional SMS consent to continue.");
-      return;
-    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/contact", {
@@ -127,10 +124,6 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
 
   const handleStep1 = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!smsTransactionalConsent) {
-      toast.error("Please confirm the transactional SMS consent to continue.");
-      return;
-    }
     setStep(2);
   };
 
@@ -217,7 +210,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             idPrefix={idPrefix}
           />
 
-          {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked by default, REQUIRED). */}
+          {/* A2P 10DLC / TCPA compliance: TRANSACTIONAL SMS consent (unchecked by default, OPTIONAL). */}
           <label
             htmlFor={`${idPrefix}-sms-transactional-consent`}
             className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
@@ -229,11 +222,9 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             <input
               id={`${idPrefix}-sms-transactional-consent`}
               type="checkbox"
-              required
               checked={smsTransactionalConsent}
               onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
               className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
-              aria-required="true"
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
               By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong style={{ color: "#0f172a" }}>STOP</strong>. For assistance, text <strong style={{ color: "#0f172a" }}>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
@@ -297,7 +288,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
 
           <button
             type="submit"
-            disabled={!form.name || !form.phone || !form.trade || !smsTransactionalConsent}
+            disabled={!form.name || !form.phone || !form.trade}
             className="btn-primary w-full justify-center mt-1 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
           >
             Continue
@@ -346,7 +337,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             >
               Back
             </button>
-            <button type="submit" disabled={submitting || !smsTransactionalConsent} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
+            <button type="submit" disabled={submitting} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
               {submitting ? "Sending..." : "Get My Free Audit"}
               {!submitting && <ArrowRight className="w-4 h-4" />}
             </button>
