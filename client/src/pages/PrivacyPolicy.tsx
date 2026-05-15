@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
     window.scrollTo(0, 0);
   }, []);
 
-  const lastUpdated = "April 13, 2026";
+  const lastUpdated = "May 15, 2026";
 
   return (
     <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
@@ -105,14 +105,6 @@ export default function PrivacyPolicy() {
                 Send you account, appointment, and service-related messages by
                 phone, SMS, or email
               </li>
-              <li>
-                Send marketing communications about our services, when you have
-                opted in
-              </li>
-              <li>Improve our website, offerings, and customer experience</li>
-              <li>
-                Meet legal, regulatory, tax, and carrier compliance obligations
-              </li>
             </ul>
           </section>
 
@@ -121,42 +113,20 @@ export default function PrivacyPolicy() {
               Who We Share Your Information With
             </h2>
             <p className="mb-3">
-              We do not sell your personal information. We share limited
-              information only with trusted service providers that help us run
-              our business, and only to the extent they need it to perform
-              their work for us. These include:
+              We do not sell your personal information. We share your data only
+              with service providers strictly necessary to run our business,
+              such as:
             </p>
             <ul className="list-disc pl-5 flex flex-col gap-2">
               <li>
-                Communication and telephony providers (for example, RingCentral)
-                that deliver our calls and text messages
+                Cloud hosting, analytics, and CRM tools used to manage your
+                inquiries and project files.
               </li>
               <li>
-                Email and marketing platforms used to send transactional and
-                opt-in marketing messages
-              </li>
-              <li>
-                Cloud hosting, analytics, and customer relationship management
-                tools used to operate the website and manage inquiries
-              </li>
-              <li>
-                Professional advisors and authorities when required by law,
-                subpoena, or to protect our legal rights
+                Professional advisors or authorities when required by law or
+                to protect our legal rights.
               </li>
             </ul>
-            <p
-              className="mt-5 p-4 rounded-md font-semibold"
-              style={{
-                background: "oklch(0.74 0.21  50 / 0.12)",
-                border: "1px solid oklch(0.74 0.21  50 / 0.35)",
-                color: "#ffffff",
-              }}
-            >
-              SMS consent and mobile phone numbers are not shared with third
-              parties or affiliates for marketing purposes. Your SMS opt-in
-              information stays with Klema Creative and is only passed to the
-              messaging carrier required to deliver the messages you requested.
-            </p>
           </section>
 
           <section>
