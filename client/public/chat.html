@@ -4,18 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
     <meta name="theme-color" content="#1A1F26" />
-    <title>Chat with Klema Creative</title>
-    <meta name="description" content="Chat with the Klema Creative team. Questions about contractor marketing in San Antonio? Send us a message and we'll respond." />
+    <title>Chat with Klema Creative LLC | San Antonio Marketing for Home Service Contractors</title>
+    <meta name="description" content="Chat with the Klema Creative LLC team about marketing services for San Antonio home service contractors. Local SEO, Google Ads, web development, and workflow automation." />
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://klemacreative.com/chat.html" />
     <style>
       :root {
         --bg: oklch(0.16 0.06 240);
+        --bg-elevated: oklch(0.19 0.05 240);
         --lime: oklch(0.74 0.21 50);
         --text: #ffffff;
-        --text-muted: rgba(255, 255, 255, 0.65);
-        --border: rgba(255, 255, 255, 0.08);
+        --text-muted: rgba(255, 255, 255, 0.7);
+        --text-faint: rgba(255, 255, 255, 0.5);
+        --border: rgba(255, 255, 255, 0.1);
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html, body {
@@ -24,8 +26,17 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         min-height: 100vh;
+        line-height: 1.6;
       }
       body { display: flex; flex-direction: column; }
+      a { color: var(--lime); text-decoration: none; font-weight: 600; }
+      a:hover { text-decoration: underline; }
+      strong { color: var(--text); font-weight: 700; }
+      .container {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
       header {
         border-bottom: 1px solid var(--border);
       }
@@ -41,7 +52,6 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        text-decoration: none;
         color: var(--text);
         font-weight: 800;
         font-size: 1.25rem;
@@ -54,76 +64,139 @@
         background: var(--lime);
         border-radius: 3px;
       }
-      .back-link {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-      .back-link:hover { color: var(--text); }
-      main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 24px 120px;
-      }
-      .card {
-        max-width: 640px;
-        text-align: center;
-      }
+      main { flex: 1; padding: 56px 0 96px; }
+      section { margin-bottom: 56px; }
       .eyebrow {
         color: var(--lime);
         font-size: 0.8125rem;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
       }
       h1 {
-        font-size: clamp(1.875rem, 4vw, 2.875rem);
+        font-size: clamp(2rem, 4.5vw, 3rem);
         font-weight: 800;
         letter-spacing: -0.025em;
         line-height: 1.15;
         margin-bottom: 20px;
+      }
+      h2 {
+        font-size: clamp(1.375rem, 2.5vw, 1.625rem);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        color: var(--text);
       }
       .accent { color: var(--lime); }
       p {
         color: var(--text-muted);
         font-size: 1.0625rem;
         line-height: 1.7;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
-      .contact-row {
-        margin-top: 28px;
-        padding-top: 24px;
-        border-top: 1px solid var(--border);
+      ul {
+        color: var(--text-muted);
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        padding-left: 22px;
+        margin-bottom: 14px;
+      }
+      ul li { margin-bottom: 6px; }
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 24px;
+      }
+      @media (min-width: 640px) {
+        .services-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .service-card {
+        padding: 22px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      .service-card h3 {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .service-card p {
         font-size: 0.9375rem;
+        margin-bottom: 0;
       }
-      .contact-row a {
-        color: var(--lime);
-        text-decoration: none;
-        font-weight: 600;
-        white-space: nowrap;
+      .sms-disclosure {
+        padding: 28px;
+        background: oklch(0.74 0.21 50 / 0.07);
+        border: 1px solid oklch(0.74 0.21 50 / 0.3);
+        border-radius: 12px;
       }
-      .contact-row a:hover { text-decoration: underline; }
-      .sep { color: rgba(255, 255, 255, 0.3); margin: 0 10px; }
-      footer {
-        padding: 28px 24px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.45);
+      .sms-disclosure h2 { color: var(--text); }
+      .sms-disclosure p:last-child { margin-bottom: 0; }
+      .contact-row {
+        margin-top: 24px;
+        padding: 20px 24px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .contact-row .label {
+        color: var(--text-faint);
         font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .contact-row .value { color: var(--text); }
+      footer {
+        padding: 32px 0 28px;
         border-top: 1px solid var(--border);
+        color: var(--text-faint);
+        font-size: 0.875rem;
+        line-height: 1.7;
+      }
+      .footer-legal {
+        color: var(--text-muted);
+      }
+      .footer-legal strong { color: var(--text); }
+      .footer-links {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+      .footer-links a {
+        color: var(--text-faint);
+        font-weight: 500;
+        font-size: 0.875rem;
+      }
+      .footer-links a:hover { color: var(--text); }
+      .copyright {
+        margin-top: 14px;
+        color: var(--text-faint);
+        font-size: 0.8125rem;
       }
     </style>
   </head>
   <body>
     <!--
-      No links back to klemacreative.com from this page. GHL's compliance
-      scanner follows links from the widget page; if any link leads to a
-      page with a phone-collecting form, the campaign is rejected as
-      "Multiple Opt-ins". Keep this page as a sealed dead end.
+      A2P 10DLC compliance notes for this page:
+      - This page is the registered opt-in URL for the GHL chat widget A2P campaign.
+      - It hosts the LeadConnector chat widget. The chat widget itself collects the
+        phone number and presents the two-checkbox SMS consent (transactional +
+        marketing). This page provides the visible on-page SMS disclosure that TCR
+        reviewers look for during campaign review.
+      - Do NOT link from this page to the homepage "/" or any page that contains a
+        phone-collecting form. The audit form on the homepage is a separate consent
+        surface; mixing them triggers a "Multiple Opt-ins" rejection.
+      - Links to /privacy-policy and /terms-and-conditions are safe because those
+        pages do not collect phone numbers.
     -->
     <header>
       <div class="header-inner">
@@ -135,32 +208,189 @@
     </header>
 
     <main>
-      <div class="card">
-        <p class="eyebrow">Live Chat</p>
-        <h1>
-          Chat with the
-          <span class="accent">Klema Creative team.</span>
-        </h1>
-        <p>
-          Use the chat window in the corner to ask us anything about our
-          marketing services for San Antonio contractors. We answer questions,
-          help you figure out which package fits, and never push a sales call.
-        </p>
-        <p>
-          We respond during business hours (Mon to Fri, 9am to 5pm CT). For
-          anything urgent, give us a call or send an email.
-        </p>
-        <div class="contact-row">
-          tamaya@klemacreative.com
-          <span class="sep">·</span>
-          (210) 974-9386
-        </div>
+      <div class="container">
+        <section>
+          <p class="eyebrow">Live Chat</p>
+          <h1>
+            Talk to the
+            <span class="accent">Klema Creative team.</span>
+          </h1>
+          <p>
+            Use the chat window in the corner of this page to ask us anything about
+            marketing your home service business in San Antonio. We answer
+            questions, help you figure out which package fits, and walk you
+            through what working with us looks like. There is no pressure to book
+            a call.
+          </p>
+          <p>
+            We respond during business hours, Monday through Friday, 9am to 5pm
+            Central. For anything urgent, give us a call or send an email using
+            the details below.
+          </p>
+        </section>
+
+        <section>
+          <h2>About Klema Creative LLC</h2>
+          <p>
+            Klema Creative LLC is a San Antonio-based marketing agency built
+            exclusively for home service contractors. We work with HVAC,
+            plumbing, roofing, electrical, landscaping, and pest control
+            businesses across the greater San Antonio area. Our focus is on
+            getting our contractor clients more of the right kind of phone calls,
+            booked jobs, and repeat customers.
+          </p>
+          <p>
+            We are a Christian-owned business, and we believe in plain talk,
+            honest pricing, and doing the work the way we would want it done for
+            our own family business.
+          </p>
+        </section>
+
+        <section>
+          <h2>What we do</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Local SEO</h3>
+              <p>
+                Show up first when San Antonio neighbors search for the work you
+                do. We handle Google Business Profile, local citations, and
+                neighborhood-level ranking.
+              </p>
+            </div>
+            <div class="service-card">
+              <h3>Google Ads &amp; PPC</h3>
+              <p>
+                Paid search campaigns built for emergency calls, service area
+                targeting, and the kind of jobs that actually pay your bills.
+              </p>
+            </div>
+            <div class="service-card">
+              <h3>Web Development</h3>
+              <p>
+                Fast, mobile-first contractor websites that load in under two
+                seconds, look professional, and turn visitors into booked jobs.
+              </p>
+            </div>
+            <div class="service-card">
+              <h3>Workflow Automation</h3>
+              <p>
+                Automated lead follow-up, missed-call text-back, review requests,
+                and scheduling so leads never fall through the cracks.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>What you can ask us in chat</h2>
+          <ul>
+            <li>Questions about pricing or which package fits your business</li>
+            <li>Whether we work with your specific trade or service area</li>
+            <li>How long it takes to see results on Local SEO or Google Ads</li>
+            <li>What our process looks like from kickoff to first lead</li>
+            <li>Anything else about working together</li>
+          </ul>
+          <p>
+            We try to answer within an hour during business hours. After hours,
+            we will respond the next business morning.
+          </p>
+        </section>
+
+        <section class="sms-disclosure" id="sms-disclosure">
+          <p class="eyebrow">SMS Communications</p>
+          <h2>About text messages from Klema Creative LLC</h2>
+          <p>
+            If you choose to share your phone number through the chat widget on
+            this page and you opt in to text messages, you may receive SMS
+            communications from Klema Creative LLC. By providing your number and
+            checking the SMS consent box in the chat widget, you agree to the
+            following:
+          </p>
+          <ul>
+            <li>
+              <strong>Types of messages:</strong> appointment reminders, audit
+              and consultation confirmations, replies to questions you asked us,
+              account or service updates, and, only if you separately opt in,
+              occasional marketing and promotional messages about our services.
+            </li>
+            <li>
+              <strong>Message frequency:</strong> varies based on your
+              conversation with us. You may receive multiple messages per week
+              during an active conversation.
+            </li>
+            <li>
+              <strong>Cost:</strong> Klema Creative LLC does not charge for SMS
+              messages. Standard message and data rates from your mobile carrier
+              may apply.
+            </li>
+            <li>
+              <strong>Opt out:</strong> reply <strong>STOP</strong> to any
+              message at any time to unsubscribe. You will receive a single
+              confirmation message.
+            </li>
+            <li>
+              <strong>Help:</strong> reply <strong>HELP</strong> to any message,
+              or contact us at the email or phone number listed below.
+            </li>
+            <li>
+              <strong>Supported carriers:</strong> AT&amp;T, Verizon, T-Mobile,
+              Sprint, U.S. Cellular, and other major U.S. carriers. Carriers are
+              not liable for delayed or undelivered messages.
+            </li>
+          </ul>
+          <p>
+            <strong>
+              No mobile information will be shared with third parties or
+              affiliates for marketing or promotional purposes.
+            </strong>
+            Phone numbers and SMS opt-in data collected through this chat widget
+            are used only by Klema Creative LLC to deliver the messages you
+            requested. For full details on how we handle your information, see
+            our
+            <a href="/privacy-policy">Privacy Policy</a>
+            and our
+            <a href="/terms-and-conditions">Terms of Service</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Other ways to reach us</h2>
+          <div class="contact-row">
+            <p class="label">Email</p>
+            <p class="value">
+              <a href="mailto:tamaya@klemacreative.com">tamaya@klemacreative.com</a>
+            </p>
+          </div>
+          <div class="contact-row">
+            <p class="label">Phone</p>
+            <p class="value">
+              <a href="tel:+12109749386">(210) 974-9386</a>
+            </p>
+          </div>
+        </section>
       </div>
     </main>
 
     <footer>
-      &copy; Klema Creative Agency. San Antonio, TX.
+      <div class="container">
+        <p class="footer-legal">
+          <strong>Klema Creative LLC</strong><br />
+          1253 Crystal<br />
+          San Antonio, TX 78211
+        </p>
+        <div class="footer-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-and-conditions">Terms of Service</a>
+        </div>
+        <p class="copyright">
+          &copy; <span id="year"></span> Klema Creative LLC. All rights reserved.
+        </p>
+      </div>
     </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
     <script
       src="https://widgets.leadconnectorhq.com/loader.js"
