@@ -11,9 +11,8 @@ export default function FounderSection() {
           {/* Photo column */}
           <div className={`lg:col-span-2 reveal-scale ${visible ? "revealed" : ""}`}>
             <div className="relative">
-              {/* TODO: Swap placeholder with final founder photo (square, ~600x600, well-lit headshot). Replace src with /founder_tomas.jpg or similar. */}
               <img
-                src="/founder_tomas_placeholder.svg"
+                src="/founder_tomas.jpg"
                 alt="Tomas Amaya, founder of Klema Creative"
                 className="w-full aspect-square object-cover rounded-md shadow-2xl"
                 loading="lazy"
