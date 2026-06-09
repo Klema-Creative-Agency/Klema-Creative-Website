@@ -845,12 +845,11 @@ function CTA() {
   const [trade, setTrade] = useState("Lead Generation Engine");
   const [message, setMessage] = useState("");
   // A2P 10DLC / TCPA compliance:
-  // Both SMS consent checkboxes are OPTIONAL. The form submits regardless.
-  // Whichever boxes the visitor checked (or didn't) are sent to the backend
-  // so the opt-in record is provable; GHL workflows must check the tags
-  // before sending any SMS.
+  // The SMS consent checkbox is OPTIONAL. The form submits regardless.
+  // Whether the visitor checked it (or didn't) is sent to the backend so the
+  // opt-in record is provable; GHL workflows must check the tags before
+  // sending any SMS.
   const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
-  const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -870,7 +869,6 @@ function CTA() {
           trade,
           message,
           smsTransactionalConsent,
-          smsMarketingConsent,
           consentTimestamp: new Date().toISOString(),
           consentSource: typeof window !== "undefined" ? window.location.href : "",
         }),
@@ -958,39 +956,6 @@ function CTA() {
                   />
                   <span>
                     By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong>STOP</strong>. For assistance, text <strong>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
-                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
-                    {" "}for privacy policy and{" "}
-                    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>
-                    {" "}for Terms of Service.
-                  </span>
-                </label>
-
-                {/* A2P 10DLC / TCPA compliance: MARKETING SMS consent (unchecked, OPTIONAL).
-                    Marketing opt-in CANNOT be required to submit the form. */}
-                <label
-                  htmlFor="kc-sms-marketing-consent"
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "10px",
-                    padding: "14px",
-                    borderRadius: "8px",
-                    background: "rgba(255,255,255,0.04)",
-                    border: `1.5px solid ${smsMarketingConsent ? "var(--kc-accent, #c4ff3d)" : "rgba(255,255,255,0.15)"}`,
-                    cursor: "pointer",
-                    fontSize: "12px",
-                    lineHeight: 1.55,
-                  }}
-                >
-                  <input
-                    id="kc-sms-marketing-consent"
-                    type="checkbox"
-                    checked={smsMarketingConsent}
-                    onChange={(e) => setSmsMarketingConsent(e.target.checked)}
-                    style={{ marginTop: "3px", flexShrink: 0, width: "16px", height: "16px", cursor: "pointer" }}
-                  />
-                  <span>
-                    <span style={{ opacity: 0.7, fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong>STOP</strong>. For assistance, text <strong>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
                     <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
                     {" "}for privacy policy and{" "}
                     <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>

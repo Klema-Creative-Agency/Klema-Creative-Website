@@ -85,13 +85,10 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
     message: "",
   });
   // A2P 10DLC / TCPA compliance:
-  // Both SMS consent checkboxes are OPTIONAL. The form submits whether or not
-  // either box is checked. Whichever boxes the visitor did check (or did not)
-  // are still sent to the backend so the opt-in record is provable later.
-  // Sending marketing SMS without sms_marketing_optin=true on a contact is a
-  // TCPA violation, so the GHL automation side must check tags before sending.
+  // The SMS consent checkbox is OPTIONAL. The form submits whether or not the
+  // box is checked. Whether the visitor checked it (or not) is still sent to
+  // the backend so the opt-in record is provable later.
   const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
-  const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -104,7 +101,6 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
         body: JSON.stringify({
           ...form,
           smsTransactionalConsent,
-          smsMarketingConsent,
           consentTimestamp: new Date().toISOString(),
           consentSource: typeof window !== "undefined" ? window.location.href : "",
         }),
@@ -113,7 +109,6 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
       toast.success("We'll email your custom audit within 24 hours and give you a call to walk through it.");
       setForm({ name: "", phone: "", trade: "", email: "", message: "" });
       setSmsTransactionalConsent(false);
-      setSmsMarketingConsent(false);
       setStep(1);
     } catch {
       toast.error("Something went wrong. Please call us at (210) 974-9386.");
@@ -228,32 +223,6 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
               By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong style={{ color: "#0f172a" }}>STOP</strong>. For assistance, text <strong style={{ color: "#0f172a" }}>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
-              <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: "#0f172a", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
-              {" "}for privacy policy and{" "}
-              <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: "#0f172a", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>
-              {" "}for Terms of Service.
-            </span>
-          </label>
-
-          {/* A2P 10DLC / TCPA compliance: MARKETING SMS consent (unchecked by default, OPTIONAL).
-              Marketing opt-in CANNOT be made a condition of submitting the form. */}
-          <label
-            htmlFor={`${idPrefix}-sms-marketing-consent`}
-            className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
-            style={{
-              backgroundColor: "#f8fafc",
-              border: `1.5px solid ${smsMarketingConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
-            }}
-          >
-            <input
-              id={`${idPrefix}-sms-marketing-consent`}
-              type="checkbox"
-              checked={smsMarketingConsent}
-              onChange={(e) => setSmsMarketingConsent(e.target.checked)}
-              className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
-            />
-            <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
-              <span style={{ color: "#64748b", fontWeight: 600 }}>(Optional) </span>By checking this box, I consent to receive promotional offers, service updates, and marketing SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong style={{ color: "#0f172a" }}>STOP</strong>. For assistance, text <strong style={{ color: "#0f172a" }}>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
               <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: "#0f172a", fontWeight: 600 }}>https://klemacreative.com/privacy-policy</a>
               {" "}for privacy policy and{" "}
               <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: "#0f172a", fontWeight: 600 }}>https://klemacreative.com/terms-and-conditions</a>
