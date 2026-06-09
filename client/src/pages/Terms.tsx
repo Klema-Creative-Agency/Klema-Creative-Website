@@ -101,6 +101,10 @@ export default function Terms() {
             <h2 className="text-white font-display font-bold text-[1.375rem] sm:text-[1.5rem] mb-4">
               SMS Terms of Service
             </h2>
+            <p className="mb-4 text-white font-semibold">
+              The information obtained as part of the SMS consent will not be
+              shared with third parties for marketing purposes.
+            </p>
             <p className="mb-4">
               By opting into SMS from a web form or other medium, you are
               agreeing to receive SMS messages from Klema Creative. This
