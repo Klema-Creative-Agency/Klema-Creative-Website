@@ -4,10 +4,6 @@ import { useReveal } from "@/hooks/useReveal";
 
 const faqs = [
   {
-    q: "How quickly will I start seeing leads?",
-    a: "Most clients see their first leads within 14 days of onboarding. The automation (Missed Call Text-Back, review requests) goes live within 48 hours. Google Ads campaigns typically generate leads within the first week once approved.",
-  },
-  {
     q: "Do I own my website and CRM account?",
     a: "Yes, 100%. Unlike some agencies that hold your assets hostage, everything we build belongs to you. Your website, your CRM account, your ad accounts. You take them with you if you ever leave.",
   },
