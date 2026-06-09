@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     q: "How is this different from Angi or HomeAdvisor?",
-    a: "Angi and HomeAdvisor sell the same lead to 5-10 contractors simultaneously. We build a system that generates exclusive leads directly for your business. You're the only one who gets that lead.",
+    a: "Angi and HomeAdvisor sell the same customer to 5-10 contractors simultaneously. We build a system that brings exclusive customers directly to your business. You're the only one who gets that customer.",
   },
   {
     q: "What tools do you use for automation?",
-    a: "We build on GoHighLevel, the leading CRM and automation platform for service businesses. We fully customize it for your trade: Missed Call Text-Back, lead routing, review automation, pipelines, the whole stack. You get a simple dashboard, and we handle the complexity. You own the account.",
+    a: "We build on GoHighLevel, the leading CRM and automation platform for service businesses. We fully customize it for your trade: Missed Call Text-Back, customer routing, review automation, pipelines, the whole stack. You get a simple dashboard, and we handle the complexity. You own the account.",
   },
   {
     q: "Is there a long-term contract?",

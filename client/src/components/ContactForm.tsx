@@ -289,7 +289,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             <textarea
               id={`${idPrefix}-message`}
               rows={3}
-              placeholder="e.g., low quality leads, not showing up on Google..."
+              placeholder="e.g., not enough customers, not showing up on Google..."
               className={`${inputClass} resize-none`}
               style={inputStyle}
               value={form.message}

@@ -18,7 +18,7 @@ const FADE_MS = 2000;
 
 const stats = [
   { value: "3-5x", label: "Typical ROI" },
-  { value: "< 14 Days", label: "To First Lead" },
+  { value: "< 14 Days", label: "To First Customer" },
   { value: "Month-to-Month", label: "No Contracts" },
 ];
 
@@ -140,8 +140,8 @@ export default function HeroSection() {
 
           {/* Sub-headline */}
           <p className="text-white/80 font-body mb-6 sm:mb-8 lg:mb-10 max-w-xl text-[0.9375rem] sm:text-base lg:text-[1.125rem] leading-[1.6] sm:leading-[1.65] lg:leading-[1.7] hero-animate hero-animate-d3">
-            We build lead systems that respond to every call, rank you on Google,
-            and keep your calendar full. No shared leads. No long-term contracts.
+            We build customer systems that respond to every call, rank you on Google,
+            and keep your calendar full. No shared customers. No long-term contracts.
           </p>
 
           {/* CTA → Form (animated swap) */}

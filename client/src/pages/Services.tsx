@@ -17,17 +17,17 @@ import ContactSection from "@/components/ContactSection";
 
 const websiteBuilds = [
   {
-    name: "Lead Capture Site",
+    name: "Customer Capture Site",
     price: "$697",
     priceSuffix: "flat fee",
     description:
-      "The starting point for contractors who need a fast, conversion-focused site to capture leads from day one.",
+      "The starting point for contractors who need a fast, conversion-focused site to win new customers from day one.",
     icon: Building2,
     featured: true,
     features: [
       "Up to 5 pages (Home, Services, About, Contact, Reviews)",
       "Mobile-first design, fast load times",
-      "Built-in lead capture forms",
+      "Built-in customer capture forms",
       "Conversion-optimized for contractor trades",
       "1-month GHL CRM trial included",
     ],
@@ -43,7 +43,7 @@ const websiteBuilds = [
       "Complete visual overhaul of existing site (up to 5 pages)",
       "Mobile-responsive redesign",
       "Speed and SEO optimization",
-      "New high-converting lead forms",
+      "New high-converting customer capture forms",
       "1-month GHL CRM trial included",
     ],
   },
@@ -106,7 +106,7 @@ export default function Services() {
       .querySelector('meta[name="description"]')
       ?.setAttribute(
         "content",
-        "Transparent pricing for San Antonio home service contractors. Lead-capture websites, exclusive lead generation, and CRM automation. Month-to-month, cancel anytime."
+        "Transparent pricing for San Antonio home service contractors. Customer-capture websites, exclusive customer growth, and CRM automation. Month-to-month, cancel anytime."
       );
     return () => {
       document.title = prevTitle;
@@ -152,7 +152,7 @@ export default function Services() {
               <span className="text-[var(--brand-lime)]">San Antonio Contractors.</span>
             </h1>
             <p className="text-white/80 font-body text-base sm:text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] lg:leading-[1.7] max-w-2xl">
-              Everything you need to capture, convert, and book more local jobs. No long-term contracts. No shared leads. Month-to-month, cancel anytime.
+              Everything you need to capture, convert, and book more local jobs. No long-term contracts. No shared customers. Month-to-month, cancel anytime.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-7">
@@ -203,7 +203,7 @@ export default function Services() {
               <span className="text-[var(--brand-lime)]"> Pick the One That Fits You.</span>
             </h2>
             <p className="text-white/70 font-body text-base sm:text-[1.0625rem] leading-[1.65] sm:leading-[1.7]">
-              Marketing plans assume you already have a high-converting website. If you don't, start with a Lead Capture Site first. If you already have one that works, skip straight to a marketing plan.
+              Marketing plans assume you already have a high-converting website. If you don't, start with a Customer Capture Site first. If you already have one that works, skip straight to a marketing plan.
             </p>
           </div>
 
@@ -220,7 +220,7 @@ export default function Services() {
                 You don't have a website yet
               </p>
               <p className="text-white/70 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
-                Start with a Lead Capture Site. Once it's live, add a marketing retainer when you're ready.
+                Start with a Customer Capture Site. Once it's live, add a marketing retainer when you're ready.
               </p>
               <a
                 href="#pricing-builds"
@@ -246,7 +246,7 @@ export default function Services() {
                 Your site already converts visitors
               </p>
               <p className="text-foreground/75 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
-                Skip the build. Start with Speed to Lead and start capturing every call.
+                Skip the build. Start with Speed to Reply and start capturing every call.
               </p>
               <a
                 href="#pricing"
@@ -316,7 +316,7 @@ export default function Services() {
               <span className="text-primary"> Digital Foundation</span>
             </h2>
             <p className="text-muted-foreground font-body text-base sm:text-[1.0625rem] leading-[1.65] sm:leading-[1.7]">
-              High-converting websites designed to turn local visitors into booked jobs. Every build includes a 1-month trial of our GoHighLevel CRM to start capturing leads from day one.
+              High-converting websites designed to turn local visitors into booked jobs. Every build includes a 1-month trial of our GoHighLevel CRM to start capturing customers from day one.
             </p>
           </div>
 
@@ -379,10 +379,10 @@ export default function Services() {
 
       {/* ============================================================
           STEP 2: MARKETING PLANS (PricingSection embedded)
-          Eyebrow overridden to "Step 2: Turn on the Lead Engine".
+          Eyebrow overridden to "Step 2: Turn on the Growth Engine".
           Tier names, prices, and features are byte-identical to homepage.
          ============================================================ */}
-      <PricingSection eyebrow="Step 2: Turn on the Lead Engine" />
+      <PricingSection eyebrow="Step 2: Turn on the Growth Engine" />
 
       {/* ============================================================
           ADD-ONS (5 only)

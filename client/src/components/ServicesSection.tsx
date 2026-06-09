@@ -5,10 +5,10 @@ const services = [
   {
     icon: Zap,
     title: "Custom Automation & CRM",
-    tagline: "Never Miss a Lead Again",
+    tagline: "Never Miss a Customer Again",
     description:
-      "We set up a custom CRM with Missed Call Text-Back, automated review requests, lead nurturing sequences, and a unified inbox so every prospect gets an instant response.",
-    outcomes: ["Missed call recovery", "Automated review requests", "Lead nurture sequences"],
+      "We set up a custom CRM with Missed Call Text-Back, automated review requests, customer nurture sequences, and a unified inbox so every prospect gets an instant response.",
+    outcomes: ["Missed call recovery", "Automated review requests", "Customer nurture sequences"],
   },
   {
     icon: Search,
@@ -21,9 +21,9 @@ const services = [
   {
     icon: MousePointer,
     title: "Paid Ads & Google LSAs",
-    tagline: "Exclusive Leads, Not Shared Ones",
+    tagline: "Exclusive Customers, Not Shared Ones",
     description:
-      "We manage Google Ads and Local Services Ads to generate high-intent, exclusive leads. No more bidding against 5 other contractors on Angi. Your leads, your jobs.",
+      "We manage Google Ads and Local Services Ads to bring in high-intent, exclusive customers. No more bidding against 5 other contractors on Angi. Your customers, your jobs.",
     outcomes: ["Google Ads management", "Local Services Ads", "A/B tested creatives"],
   },
   {

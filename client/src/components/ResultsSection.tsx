@@ -5,7 +5,7 @@ const RESULTS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663297447526/mE
 
 const stats = [
   { icon: TrendingUp, value: "3-5x", label: "Typical ROI on ad spend for contractors" },
-  { icon: Clock, value: "< 14 days", label: "Average time to first lead after launch" },
+  { icon: Clock, value: "< 14 days", label: "Average time to first customer after launch" },
   { icon: Target, value: "62%", label: "Of homeowners choose the first to respond" },
   { icon: BarChart3, value: "18%+", label: "Landing page conversion (industry avg: 3%)" },
 ];
@@ -32,7 +32,7 @@ export default function ResultsSection() {
               <span className="text-[var(--brand-lime)]"> Contractor Marketing Done Right</span>
             </h2>
             <p className="text-white/70 max-w-sm font-body text-[0.875rem] sm:text-[0.9375rem] leading-relaxed">
-              Real industry benchmarks from contractors using exclusive lead systems like the ones we build.
+              Real industry benchmarks from contractors using exclusive customer systems like the ones we build.
             </p>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function ResultsSection() {
               })}
             </div>
             <p className="mt-4 sm:mt-5 text-white/45 text-[0.75rem] sm:text-[0.8125rem] font-body leading-relaxed italic">
-              Industry benchmarks for contractors using exclusive-lead systems. These are the targets we're built to hit for our founding clients.
+              Industry benchmarks for contractors using exclusive-customer systems. These are the targets we're built to hit for our founding clients.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ export default function ResultsSection() {
           <div className={`relative hidden lg:block reveal-scale ${visible ? "revealed" : ""}`} style={{ transitionDelay: "0.2s" }}>
             <img
               src={RESULTS_IMG}
-              alt="Marketing analytics dashboard showing lead generation performance"
+              alt="Marketing analytics dashboard showing customer growth performance"
               className="rounded-md w-full object-cover shadow-xl aspect-[4/3]"
               loading="lazy"
               width={600}
@@ -78,7 +78,7 @@ export default function ResultsSection() {
             />
             <div className="absolute top-4 right-4 rounded-md px-4 py-3 bg-primary">
               <span className="text-white text-[0.8125rem] font-display font-bold block leading-tight">
-                Exclusive Leads
+                Exclusive Customers
               </span>
               <span className="text-[var(--brand-lime)] text-[1.125rem] font-display font-extrabold">
                 Not Shared

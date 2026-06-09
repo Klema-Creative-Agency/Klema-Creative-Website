@@ -54,7 +54,7 @@ export default function FounderSection() {
             </div>
 
             <p className="text-white/75 font-body text-[0.9375rem] sm:text-[1rem] leading-[1.7] mb-7">
-              I started Klema Creative because I watched too many San Antonio contractors get burned by agencies that promised leads and delivered nothing, and by shared-lead platforms like Angi that pit you against four other contractors for the same homeowner. You shouldn't have to fight for every job. I build the systems that get the phone ringing with leads that are exclusively yours, and respond to them faster than your competitors can. When you work with Klema, you get me on the phone directly. No account managers. No handoffs. Just results.
+              I started Klema Creative because I watched too many San Antonio contractors get burned by agencies that promised customers and delivered nothing, and by shared-contact platforms like Angi that pit you against four other contractors for the same homeowner. You shouldn't have to fight for every job. I build the systems that get the phone ringing with customers that are exclusively yours, and respond to them faster than your competitors can. When you work with Klema, you get me on the phone directly. No account managers. No handoffs. Just results.
             </p>
 
             <a href="#contact" className="btn-primary inline-flex">

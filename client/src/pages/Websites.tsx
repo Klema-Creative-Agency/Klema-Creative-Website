@@ -40,7 +40,7 @@ const HOW_STEPS = [
 
 const FEATURES = [
   { k: "Mobile-first", t: "Designed for the device most of your customers actually use", tags: ["Responsive", "Touch-friendly"], tone: "ochre" },
-  { k: "Lead capture", t: "Forms wired into a CRM so every inquiry hits your inbox in seconds", tags: ["GHL", "Email alerts"], tone: "sea" },
+  { k: "Customer capture", t: "Forms wired into a CRM so every inquiry hits your inbox in seconds", tags: ["GHL", "Email alerts"], tone: "sea" },
   { k: "Local SEO ready", t: "Schema markup, meta tags, sitemap, and Google Business Profile integration", tags: ["Schema", "GBP"], tone: "copper" },
   { k: "Speed first", t: "Built on a fast modern stack, optimized images, minimal JavaScript bloat", tags: ["Vite", "Edge CDN"], tone: "forest" },
   { k: "Hosting handoff", t: "Domain registration, DNS, hosting, SSL — we set it all up, you control it", tags: ["Vercel", "Cloudflare"], tone: "plum" },
@@ -48,7 +48,7 @@ const FEATURES = [
 ];
 
 const TERM_LINES = [
-  { type: "prompt", text: "klema ~ $ site init lead-gen-engine" },
+  { type: "prompt", text: "klema ~ $ site init growth-engine" },
   { type: "out", text: "✓ React 18 + TypeScript + Vite" },
   { type: "out", text: "✓ Tailwind v4 design tokens" },
   { type: "out", text: "✓ GoHighLevel CRM webhook wired" },
@@ -88,14 +88,14 @@ const TIERS = [
     cta: "Request a quote",
   },
   {
-    k: "Lead Generation Engine",
+    k: "Growth Engine",
     price: "$447",
     sub: "Flat fee · one-time",
     best: true,
-    desc: "The recommended starting point for local service businesses ready to capture leads.",
+    desc: "The recommended starting point for local service businesses ready to win new customers.",
     features: [
       "Three pages (Home, Services, Contact)",
-      "Integrated lead capture form",
+      "Integrated customer capture form",
       "Inquiries routed to your email",
       "Mobile-optimized design",
       "Free 1-month GHL CRM trial",
@@ -112,7 +112,7 @@ const TIERS = [
       "Visual overhaul (up to 5 pages)",
       "Mobile-responsive redesign",
       "Speed optimization",
-      "High-converting lead forms",
+      "High-converting customer capture forms",
       "SEO basics included",
     ],
     cta: "Request a quote",
@@ -149,7 +149,7 @@ const FAQS = [
   },
   {
     q: "How long does a typical build take?",
-    a: "Digital Business Card ships in about a week. Lead Generation Engine takes around two weeks. Refresh & Optimize and Custom Build are scoped on a per-project basis but typically run 2-4 weeks. We give you a fixed launch date before we start.",
+    a: "Digital Business Card ships in about a week. Growth Engine takes around two weeks. Refresh & Optimize and Custom Build are scoped on a per-project basis but typically run 2-4 weeks. We give you a fixed launch date before we start.",
   },
   {
     q: "Do I need a marketing package too?",
@@ -505,7 +505,7 @@ function WhatYouGet() {
           <div className="kc-eyebrow">§ 02 · What you get</div>
           <div>
             <h2>Every site ships <em>with all of this baked in.</em></h2>
-            <p>No upcharge for the basics. Mobile-first design, lead capture, local SEO, fast hosting, and full ownership are included in every package.</p>
+            <p>No upcharge for the basics. Mobile-first design, customer capture, local SEO, fast hosting, and full ownership are included in every package.</p>
           </div>
         </div>
 
@@ -606,7 +606,7 @@ function ProcessTimeline() {
           <div className="kc-eyebrow">§ 03 · Process timeline</div>
           <div>
             <h2>A <em>two-week</em> sprint — not a two-quarter project.</h2>
-            <p>Here's what a typical Lead Generation Engine build looks like, day by day. Dates update to your next available sprint.</p>
+            <p>Here's what a typical Growth Engine build looks like, day by day. Dates update to your next available sprint.</p>
           </div>
         </div>
 
@@ -842,7 +842,7 @@ function CTA() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [trade, setTrade] = useState("Lead Generation Engine");
+  const [trade, setTrade] = useState("Growth Engine");
   const [message, setMessage] = useState("");
   // A2P 10DLC / TCPA compliance:
   // The SMS consent checkbox is OPTIONAL. The form submits regardless.

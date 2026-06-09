@@ -5,7 +5,7 @@ const steps = [
   {
     number: "01",
     title: "Free Audit",
-    description: "We analyze your online presence and show you exactly where you're losing leads in San Antonio.",
+    description: "We analyze your online presence and show you exactly where you're losing customers in San Antonio.",
   },
   {
     number: "02",

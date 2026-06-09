@@ -7,12 +7,12 @@ const painPoints = [
   {
     stat: "78%",
     label: "of homeowners hire the first contractor who responds",
-    detail: "Speed to lead is everything. Our Missed Call Text-Back ensures you're always first.",
+    detail: "Speed to reply is everything. Our Missed Call Text-Back ensures you're always first.",
   },
   {
     stat: "$228",
-    label: "average cost per roofing lead on shared platforms",
-    detail: "Stop paying for leads you share with 5 competitors. Our system generates exclusive leads for your business only.",
+    label: "average cost per roofing customer on shared platforms",
+    detail: "Stop paying for customers you share with 5 competitors. Our system brings exclusive customers to your business only.",
   },
   {
     stat: "97%",
@@ -71,7 +71,7 @@ export default function PainPointsSection() {
               ))}
             </div>
             <p className="mt-5 sm:mt-7 text-white/40 text-[0.75rem] sm:text-[0.8125rem] font-body leading-relaxed italic">
-              Industry benchmarks for contractors using exclusive-lead systems. These are the targets we're built to hit for our founding clients.
+              Industry benchmarks for contractors using exclusive-customer systems. These are the targets we're built to hit for our founding clients.
             </p>
           </div>
 

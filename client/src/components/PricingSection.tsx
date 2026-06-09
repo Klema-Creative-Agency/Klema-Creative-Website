@@ -4,14 +4,14 @@ import { useReveal } from "@/hooks/useReveal";
 
 export const plans = [
   {
-    name: "Speed to Lead",
+    name: "Speed to Reply",
     tagline: "Stop the Leaky Bucket",
     price: "$297",
     priceNote: "/mo + $497 setup",
     highlight: false,
     badge: null,
     description:
-      "Stop bleeding leads. Get the automation foundation that responds before your competitors can.",
+      "Stop losing customers. Get the automation foundation that responds before your competitors can.",
     features: [
       "Custom CRM setup & configuration",
       "Missed Call Text-Back automation",
@@ -33,7 +33,7 @@ export const plans = [
     description:
       "You have the automation. Now get found. We put you at the top of Google in San Antonio.",
     features: [
-      "Everything in Speed to Lead",
+      "Everything in Speed to Reply",
       "Full local SEO management",
       "Google Business Profile management",
       "2 local landing pages built",
@@ -44,7 +44,7 @@ export const plans = [
     cta: "Get My Free Audit",
   },
   {
-    name: "Exclusive Lead Machine",
+    name: "Exclusive Growth Machine",
     tagline: "The Growth Engine",
     price: "$1,497",
     priceNote: "/mo + ad spend",
@@ -57,7 +57,7 @@ export const plans = [
       "Google Ads & LSA management",
       "Custom ad creatives (graphic design)",
       "High-converting landing page (paid traffic)",
-      "Lead attribution & ROI tracking",
+      "Customer attribution & ROI tracking",
       "Weekly campaign optimization",
       "Weekly strategy calls",
     ],
@@ -73,7 +73,7 @@ export const plans = [
     description:
       "For contractors who want to be the undisputed first choice in San Antonio across every channel.",
     features: [
-      "Everything in Exclusive Lead Machine",
+      "Everything in Exclusive Growth Machine",
       "Aggressive SEO & content strategy",
       "Omnichannel retargeting (Meta + Google)",
       "Full website rebuild (if needed)",
@@ -192,7 +192,7 @@ export default function PricingSection({ eyebrow = "Transparent Pricing" }: Pric
             className="text-white max-w-2xl mx-auto mb-4 sm:mb-5 font-extrabold"
             style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
           >
-            No Contracts. No Shared Leads.
+            No Contracts. No Shared Customers.
             <span className="text-[var(--brand-lime)]"> Just Results.</span>
           </h2>
           <p className="text-white/60 max-w-lg mx-auto font-body text-[0.9375rem] sm:text-base leading-relaxed">

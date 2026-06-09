@@ -241,7 +241,7 @@ export default function Terms() {
             <p>
               This website and its content are provided "as is" without
               warranties of any kind, either express or implied. We do not
-              guarantee any specific marketing, lead, or revenue result.
+              guarantee any specific marketing, customer, or revenue result.
               Results depend on many factors including your market, budget,
               offer, and execution.
             </p>
