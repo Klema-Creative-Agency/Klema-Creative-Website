@@ -58,7 +58,7 @@ export default function ContactSection() {
             >
               Get Your Free
               <br />
-              <span className="text-[var(--brand-lime)]">Lead Audit Today</span>
+              <span className="text-[var(--brand-lime)]">Audit Today</span>
             </h3>
 
             <p className="text-white/70 mb-8 font-body text-[1.0625rem] leading-[1.7]">

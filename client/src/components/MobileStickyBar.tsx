@@ -44,7 +44,7 @@ export default function MobileStickyBar() {
               href="#contact"
               className="btn-primary flex-1 justify-center text-[0.9375rem] py-3"
             >
-              Free Lead Audit
+              Free Audit
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

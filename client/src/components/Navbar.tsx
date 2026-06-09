@@ -78,7 +78,7 @@ export default function Navbar() {
                 (210) 974-9386
               </a>
               <a href="#contact" className="btn-primary text-sm py-2.5 px-5">
-                Free Lead Audit
+                Free Audit
               </a>
             </div>
 
@@ -183,7 +183,7 @@ export default function Navbar() {
                     className="btn-primary w-full justify-center text-base"
                     onClick={closeMenu}
                   >
-                    Free Lead Audit
+                    Free Audit
                   </a>
                   <a
                     href="tel:+1-210-974-9386"

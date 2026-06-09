@@ -4,7 +4,7 @@ import { useReveal } from "@/hooks/useReveal";
 const steps = [
   {
     number: "01",
-    title: "Free Lead Audit",
+    title: "Free Audit",
     description: "We analyze your online presence and show you exactly where you're losing leads in San Antonio.",
   },
   {

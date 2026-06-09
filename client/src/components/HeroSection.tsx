@@ -182,7 +182,7 @@ export default function HeroSection() {
                     onClick={() => setFormOpen(true)}
                     className="btn-primary w-full sm:w-auto text-base"
                   >
-                    Get My Free Lead Audit
+                    Get My Free Audit
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <p className="text-white/40 text-[0.8125rem] font-body mt-3">
