@@ -36,7 +36,7 @@ function TradeDropdown({ value, onChange, idPrefix }: { value: string; onChange:
         onClick={() => setOpen(!open)}
         className={`w-full rounded-md px-4 py-3.5 text-left font-body text-base leading-normal min-h-[48px] flex items-center justify-between transition-colors ${
           open
-            ? "border-[var(--brand-lime)] ring-1 ring-[var(--brand-lime)]/30"
+            ? "border-[var(--brand-gold)] ring-1 ring-[var(--brand-gold)]/30"
             : "border-[#cbd5e1]"
         }`}
         style={{ backgroundColor: "#f1f5f9", borderWidth: "1.5px", borderStyle: "solid" }}
@@ -59,14 +59,14 @@ function TradeDropdown({ value, onChange, idPrefix }: { value: string; onChange:
               onClick={() => { onChange(t.value); setOpen(false); }}
               className="w-full px-4 py-3 text-left text-[0.875rem] font-body font-medium flex items-center justify-between transition-colors min-h-[44px]"
               style={{
-                color: value === t.value ? "var(--brand-lime)" : "#334155",
+                color: value === t.value ? "var(--brand-gold)" : "#334155",
                 backgroundColor: value === t.value ? "#f1f5f9" : undefined,
               }}
               onMouseEnter={(e) => { if (value !== t.value) e.currentTarget.style.backgroundColor = "#f1f5f9"; }}
               onMouseLeave={(e) => { if (value !== t.value) e.currentTarget.style.backgroundColor = ""; }}
             >
               {t.label}
-              {value === t.value && <Check className="w-4 h-4 text-[var(--brand-lime)]" strokeWidth={2.5} />}
+              {value === t.value && <Check className="w-4 h-4 text-[var(--brand-gold)]" strokeWidth={2.5} />}
             </button>
           ))}
         </div>
@@ -106,7 +106,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
         }),
       });
       if (!res.ok) throw new Error("Failed");
-      toast.success("We'll email your custom audit within 24 hours and give you a call to walk through it.");
+      toast.success("We'll email your brand audit within 24 hours and give you a call to walk through it.");
       setForm({ name: "", phone: "", trade: "", email: "", message: "" });
       setSmsTransactionalConsent(false);
       setStep(1);
@@ -127,7 +127,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
   };
 
   const inputClass =
-    "w-full rounded-md px-4 py-3.5 focus:outline-none focus:border-[var(--brand-lime)] focus:ring-1 focus:ring-[var(--brand-lime)]/30 transition-colors text-base font-body leading-normal min-h-[48px]";
+    "w-full rounded-md px-4 py-3.5 focus:outline-none focus:border-[var(--brand-gold)] focus:ring-1 focus:ring-[var(--brand-gold)]/30 transition-colors text-base font-body leading-normal min-h-[48px]";
 
   const inputStyle = {
     backgroundColor: "#f1f5f9",
@@ -136,20 +136,20 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
   };
 
   return (
-    <div className="rounded-2xl p-7 sm:p-9" style={{ backgroundColor: "#ffffff", boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}>
+    <div className="rounded-none p-7 sm:p-9" style={{ backgroundColor: "#ffffff", boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}>
       {/* Progress indicator */}
       <div className="flex items-center gap-3 mb-6 sm:mb-7">
         <div className="flex items-center gap-2 flex-1">
           <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[0.75rem] sm:text-[0.8125rem] font-display font-bold shrink-0 ${
-            step >= 1 ? "bg-[var(--brand-lime)] text-[var(--brand-charcoal)]" : ""
+            step >= 1 ? "bg-[var(--brand-gold)] text-[var(--brand-charcoal)]" : ""
           }`} style={step < 1 ? { backgroundColor: "#e2e8f0", color: "#94a3b8" } : undefined}>
             1
           </div>
-          <div className="h-px flex-1 transition-colors duration-300" style={{ backgroundColor: step >= 2 ? "var(--brand-lime)" : "#e2e8f0" }} />
+          <div className="h-px flex-1 transition-colors duration-300" style={{ backgroundColor: step >= 2 ? "var(--brand-gold)" : "#e2e8f0" }} />
         </div>
         <div className="flex items-center gap-2 flex-1">
           <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[0.75rem] sm:text-[0.8125rem] font-display font-bold shrink-0 transition-colors duration-300 ${
-            step >= 2 ? "bg-[var(--brand-lime)] text-[var(--brand-charcoal)]" : ""
+            step >= 2 ? "bg-[var(--brand-gold)] text-[var(--brand-charcoal)]" : ""
           }`} style={step < 2 ? { backgroundColor: "#e2e8f0", color: "#94a3b8" } : undefined}>
             2
           </div>
@@ -158,7 +158,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
       </div>
 
       <h3 className="mb-1.5 font-bold text-[1.125rem] sm:text-[1.3125rem] leading-tight" style={{ color: "#0f172a" }}>
-        {step === 1 ? "Apply for Your Free Audit" : "Almost Done"}
+        {step === 1 ? "Apply for Your Free Brand Audit" : "Almost Done"}
       </h3>
       <p className="text-[0.75rem] sm:text-[0.8125rem] font-body mb-5 sm:mb-6" style={{ color: "#64748b" }}>
         {step === 1 ? "Step 1 of 2: Tell us who you are" : "Step 2 of 2: How can we reach you?"}
@@ -211,7 +211,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
             className="flex items-start gap-3 p-4 rounded-md cursor-pointer transition-colors"
             style={{
               backgroundColor: "#f8fafc",
-              border: `1.5px solid ${smsTransactionalConsent ? "var(--brand-lime)" : "#cbd5e1"}`,
+              border: `1.5px solid ${smsTransactionalConsent ? "var(--brand-gold)" : "#cbd5e1"}`,
             }}
           >
             <input
@@ -219,7 +219,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
               type="checkbox"
               checked={smsTransactionalConsent}
               onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
-              className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-lime)]"
+              className="mt-0.5 w-[18px] h-[18px] shrink-0 cursor-pointer accent-[var(--brand-gold)]"
             />
             <span className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-[1.55]" style={{ color: "#475569" }}>
               By checking this box, I consent to receive appointment reminders, scheduled call confirmations, and account-related SMS messages from Klema Creative at the phone number provided. Messaging frequency may vary. Message and data rates may apply. You can opt out any time by texting <strong style={{ color: "#0f172a" }}>STOP</strong>. For assistance, text <strong style={{ color: "#0f172a" }}>HELP</strong> or visit our website at klemacreative.com. Visit{" "}
@@ -284,12 +284,12 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
 
           <div>
             <label htmlFor={`${idPrefix}-message`} className="text-[0.8125rem] mb-2 block font-body font-medium" style={{ color: "#334155" }}>
-              Biggest marketing challenge? (optional)
+              Biggest brand challenge? (optional)
             </label>
             <textarea
               id={`${idPrefix}-message`}
               rows={3}
-              placeholder="e.g., not enough customers, not showing up on Google..."
+              placeholder="e.g., plain white trucks, a logo that looks dated, a website I built myself..."
               className={`${inputClass} resize-none`}
               style={inputStyle}
               value={form.message}
@@ -307,7 +307,7 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
               Back
             </button>
             <button type="submit" disabled={submitting} className="btn-primary justify-center py-3 flex-[2] text-sm disabled:opacity-60 disabled:cursor-not-allowed">
-              {submitting ? "Sending..." : "Get My Free Audit"}
+              {submitting ? "Sending..." : "Get My Free Brand Audit"}
               {!submitting && <ArrowRight className="w-4 h-4" />}
             </button>
           </div>
@@ -316,9 +316,9 @@ export default function ContactForm({ idPrefix = "contact" }: { idPrefix?: strin
 
       {/* Trust element */}
       <div className="flex items-start sm:items-center gap-2.5 mt-5 sm:mt-6 pt-4 sm:pt-5" style={{ borderTop: "1px solid #e2e8f0" }}>
-        <Shield className="w-4 h-4 text-[var(--brand-lime)] shrink-0 mt-0.5 sm:mt-0" strokeWidth={2} />
+        <Shield className="w-4 h-4 text-[var(--brand-gold)] shrink-0 mt-0.5 sm:mt-0" strokeWidth={2} />
         <p className="text-[0.75rem] sm:text-[0.8125rem] font-body leading-snug" style={{ color: "#64748b" }}>
-          We'll email your custom audit within 24 hours and follow up with a quick call.
+          We'll email your brand audit within 24 hours and follow up with a quick call.
         </p>
       </div>
     </div>

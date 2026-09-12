@@ -2,12 +2,11 @@ import { useEffect } from "react";
 import {
   Zap,
   ArrowRight,
-  Building2,
-  RefreshCw,
-  Cog,
   Check,
   Hammer,
   Sparkles,
+  Truck,
+  Globe,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,84 +14,36 @@ import MobileStickyBar from "@/components/MobileStickyBar";
 import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 
-const websiteBuilds = [
-  {
-    name: "Customer Capture Site",
-    price: "$697",
-    priceSuffix: "flat fee",
-    description:
-      "The starting point for contractors who need a fast, conversion-focused site to win new customers from day one.",
-    icon: Building2,
-    featured: true,
-    features: [
-      "Up to 5 pages (Home, Services, About, Contact, Reviews)",
-      "Mobile-first design, fast load times",
-      "Built-in customer capture forms",
-      "Conversion-optimized for contractor trades",
-      "1-month GHL CRM trial included",
-    ],
-  },
-  {
-    name: "Refresh & Optimize",
-    price: "$997",
-    priceSuffix: "starting at",
-    description:
-      "For contractors with an existing site that's outdated, slow, or not converting visitors into booked jobs.",
-    icon: RefreshCw,
-    features: [
-      "Complete visual overhaul of existing site (up to 5 pages)",
-      "Mobile-responsive redesign",
-      "Speed and SEO optimization",
-      "New high-converting customer capture forms",
-      "1-month GHL CRM trial included",
-    ],
-  },
-  {
-    name: "Custom Build",
-    price: "$1,997+",
-    priceSuffix: "starting at",
-    description:
-      "For contractors needing 6+ pages, advanced integrations, or multi-location support.",
-    icon: Cog,
-    features: [
-      "For contractors needing 6+ pages, advanced integrations, or multi-location",
-      "Discovery and scoping meeting included",
-      "Custom-tailored to your business",
-      "1-month GHL CRM trial included",
-    ],
-  },
-];
-
 const addOns = [
   {
-    name: "Paid Ads Management",
-    price: "$497",
-    note: "/mo",
-    detail: "Google Ads or Meta. Ad spend billed separately, paid directly to platform.",
-  },
-  {
-    name: "Custom Landing Page (for ads)",
-    price: "$250",
-    note: "per page",
-    detail: "High-converting landing pages tailored to a specific paid traffic campaign.",
-  },
-  {
-    name: "Full GHL Funnel Build",
-    price: "$497",
-    note: "one-time",
-    detail: "Complete multi-step funnel built inside GoHighLevel, mapped to your sales process.",
-  },
-  {
-    name: "Extra Blog Posts",
-    price: "$97 / $197",
-    note: "/mo",
-    detail: "$97/mo for 2 additional posts, $197/mo for 4 additional posts.",
-  },
-  {
-    name: "Advanced Tracking Setup",
+    name: "Additional Vehicle Design",
     price: "$350",
+    note: "per vehicle",
+    detail: "Adapt your wrap design to another truck, van, or trailer so the whole fleet matches.",
+  },
+  {
+    name: "Yard Signs + Job Site Signage",
+    price: "$250+",
+    note: "per run",
+    detail: "Branded yard signs and site signage that keep selling after the crew leaves.",
+  },
+  {
+    name: "Print Collateral Pack",
+    price: "$300",
     note: "one-time",
-    detail: "GA4 + Google Tag Manager configured and tested across the site and funnels.",
+    detail: "Business cards, door hangers, and leave-behinds designed in your brand and print-ready.",
+  },
+  {
+    name: "Social Media Brand Kit",
+    price: "$250",
+    note: "one-time",
+    detail: "Profile graphics, post templates, and cover images so your pages match your trucks.",
+  },
+  {
+    name: "Extra Website Pages",
+    price: "$150",
+    note: "per page",
+    detail: "Service or city pages added to your site, written and built to match the original design.",
   },
 ];
 
@@ -101,12 +52,12 @@ export default function Services() {
     const prevTitle = document.title;
     const prevDesc = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";
     document.title =
-      "Pricing & Plans | San Antonio Contractor Marketing | Klema Creative";
+      "Services & Pricing | Branding, Vehicle Wraps & Websites | Klema Creative";
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(
         "content",
-        "Transparent pricing for San Antonio home service contractors. Customer-capture websites, exclusive customer growth, and CRM automation. Month-to-month, cancel anytime."
+        "Straightforward pricing for San Antonio contractors. Brand identity, vehicle wraps printed under one roof, and brand-matched websites. Get your free brand audit."
       );
     return () => {
       document.title = prevTitle;
@@ -129,13 +80,13 @@ export default function Services() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 1100px 700px at 80% 30%, oklch(0.74 0.21 50 / 0.18) 0%, oklch(0.18 0.02 240 / 0) 65%), radial-gradient(ellipse 900px 600px at 10% 80%, oklch(0.32 0.10 240 / 0.55) 0%, oklch(0.18 0.02 240 / 0) 60%)",
+              "radial-gradient(ellipse 1100px 700px at 80% 30%, oklch(0.79 0.17 70 / 0.18) 0%, oklch(0.18 0.004 260 / 0) 65%), radial-gradient(ellipse 900px 600px at 10% 80%, oklch(0.32 0.03 260 / 0.55) 0%, oklch(0.18 0.004 260 / 0) 60%)",
           }}
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
               <span
                 className="section-label text-white lg:text-[0.9375rem] lg:tracking-[0.12em]"
                 style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
@@ -145,14 +96,16 @@ export default function Services() {
             </div>
             <h1
               className="text-white mb-5 sm:mb-7 font-extrabold"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.025em" }}
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "0" }}
             >
-              Plans Built for
+              Branding, Wraps + Websites.
               <br />
-              <span className="text-[var(--brand-lime)]">San Antonio Contractors.</span>
+              <span className="text-[var(--brand-gold)]">Priced Straight.</span>
             </h1>
             <p className="text-white/80 font-body text-base sm:text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] lg:leading-[1.7] max-w-2xl">
-              Everything you need to capture, convert, and book more local jobs. No long-term contracts. No shared customers. Month-to-month, cancel anytime.
+              Three core services, designed and printed under one roof in San Antonio.
+              Start with the piece you need most, or launch the whole brand at once.
+              Every project gets a written quote before work begins.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-7">
@@ -163,16 +116,10 @@ export default function Services() {
                 Where Do I Start?
               </a>
               <a
-                href="#pricing-builds"
-                className="px-4 py-2 rounded-md border border-white/20 text-white/80 hover:text-white hover:border-white/40 text-[0.8125rem] font-display font-semibold transition-colors"
-              >
-                Website Builds
-              </a>
-              <a
                 href="#pricing"
                 className="px-4 py-2 rounded-md border border-white/20 text-white/80 hover:text-white hover:border-white/40 text-[0.8125rem] font-display font-semibold transition-colors"
               >
-                Marketing Plans
+                Packages
               </a>
               <a
                 href="#add-ons"
@@ -192,90 +139,95 @@ export default function Services() {
         <div className="container">
           <div className="max-w-3xl mb-10 sm:mb-12">
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-              <span className="section-label text-[var(--brand-lime)]">Where Should You Start?</span>
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+              <span className="section-label text-[var(--brand-gold)]">Where Should You Start?</span>
             </div>
             <h2
               className="text-white mb-5 sm:mb-6 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
             >
               Three Paths.
-              <span className="text-[var(--brand-lime)]"> Pick the One That Fits You.</span>
+              <span className="text-[var(--brand-gold)]"> Pick the One That Fits You.</span>
             </h2>
             <p className="text-white/70 font-body text-base sm:text-[1.0625rem] leading-[1.65] sm:leading-[1.7]">
-              Marketing plans assume you already have a high-converting website. If you don't, start with a Customer Capture Site first. If you already have one that works, skip straight to a marketing plan.
+              The brand comes first, because the wrap and the website are only as good
+              as the logo printed on them. Here's the honest starting point for where
+              you are today.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {/* Path 1: Building from scratch */}
-            <div className="bg-white/[0.04] border border-white/10 rounded-md p-6 sm:p-7 flex flex-col hover:bg-white/[0.06] transition-colors">
-              <div className="w-11 h-11 rounded-md bg-[var(--brand-lime)]/15 flex items-center justify-center mb-5">
-                <Hammer className="w-5 h-5 text-[var(--brand-lime)]" strokeWidth={2} />
+            {/* Path 1: Starting fresh or rebranding */}
+            <div className="bg-white text-foreground rounded-md p-6 sm:p-7 flex flex-col shadow-2xl shadow-[var(--brand-gold)]/10 border-2 border-[var(--brand-gold)] relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--brand-gold)] text-[var(--brand-charcoal)] text-[0.6875rem] font-display font-bold tracking-wider uppercase px-3 py-1 rounded-sm whitespace-nowrap">
+                Best Value
               </div>
-              <h3 className="text-white text-[1.125rem] font-display font-extrabold mb-2 leading-tight">
-                Building from scratch?
-              </h3>
-              <p className="text-white/55 text-[0.8125rem] font-body italic mb-3">
-                You don't have a website yet
-              </p>
-              <p className="text-white/70 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
-                Start with a Customer Capture Site. Once it's live, add a marketing retainer when you're ready.
-              </p>
-              <a
-                href="#pricing-builds"
-                className="text-[var(--brand-lime)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
-              >
-                Start with a website
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-            {/* Path 2: Already have a website */}
-            <div className="bg-white text-foreground rounded-md p-6 sm:p-7 flex flex-col shadow-2xl shadow-[var(--brand-lime)]/10 border-2 border-[var(--brand-lime)] relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--brand-lime)] text-white text-[0.6875rem] font-display font-bold tracking-wider uppercase px-3 py-1 rounded-sm whitespace-nowrap">
-                Most Common
-              </div>
-              <div className="w-11 h-11 rounded-md bg-[var(--brand-lime)]/15 flex items-center justify-center mb-5">
-                <Sparkles className="w-5 h-5 text-[var(--brand-lime)]" strokeWidth={2} />
+              <div className="w-11 h-11 rounded-md bg-[var(--brand-gold)]/15 flex items-center justify-center mb-5">
+                <Hammer className="w-5 h-5 text-[var(--brand-gold)]" strokeWidth={2} />
               </div>
               <h3 className="text-foreground text-[1.125rem] font-display font-extrabold mb-2 leading-tight">
-                Have a great website?
+                Starting fresh or rebranding?
               </h3>
               <p className="text-muted-foreground text-[0.8125rem] font-body italic mb-3">
-                Your site already converts visitors
+                New business, or a brand that's holding you back
               </p>
               <p className="text-foreground/75 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
-                Skip the build. Start with Speed to Reply and start capturing every call.
+                The Full Rebrand launches your logo, wrap, and website together, so
+                everything a homeowner sees tells the same story.
               </p>
               <a
                 href="#pricing"
-                className="text-[var(--brand-lime)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+                className="text-[var(--brand-gold)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
               >
-                Skip to marketing plans
+                See the Full Rebrand
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
-            {/* Path 3: Website needs help */}
+            {/* Path 2: Brand is fine, trucks are plain */}
             <div className="bg-white/[0.04] border border-white/10 rounded-md p-6 sm:p-7 flex flex-col hover:bg-white/[0.06] transition-colors">
-              <div className="w-11 h-11 rounded-md bg-[var(--brand-lime)]/15 flex items-center justify-center mb-5">
-                <RefreshCw className="w-5 h-5 text-[var(--brand-lime)]" strokeWidth={2} />
+              <div className="w-11 h-11 rounded-md bg-[var(--brand-gold)]/15 flex items-center justify-center mb-5">
+                <Truck className="w-5 h-5 text-[var(--brand-gold)]" strokeWidth={2} />
               </div>
               <h3 className="text-white text-[1.125rem] font-display font-extrabold mb-2 leading-tight">
-                Website needs a refresh?
+                Happy with your logo?
               </h3>
               <p className="text-white/55 text-[0.8125rem] font-body italic mb-3">
-                You have one but it's not converting
+                But your trucks are still plain
               </p>
               <p className="text-white/70 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
-                Start with Refresh & Optimize, then layer in a marketing retainer.
+                Start with a vehicle wrap. We design it around your existing brand and
+                print it in-house, and your truck starts selling everywhere it drives.
               </p>
               <a
-                href="#pricing-builds"
-                className="text-[var(--brand-lime)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+                href="#pricing"
+                className="text-[var(--brand-gold)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
               >
-                Start with a redesign
+                Start with a wrap
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Path 3: Website is the weak link */}
+            <div className="bg-white/[0.04] border border-white/10 rounded-md p-6 sm:p-7 flex flex-col hover:bg-white/[0.06] transition-colors">
+              <div className="w-11 h-11 rounded-md bg-[var(--brand-gold)]/15 flex items-center justify-center mb-5">
+                <Globe className="w-5 h-5 text-[var(--brand-gold)]" strokeWidth={2} />
+              </div>
+              <h3 className="text-white text-[1.125rem] font-display font-extrabold mb-2 leading-tight">
+                Website letting you down?
+              </h3>
+              <p className="text-white/55 text-[0.8125rem] font-body italic mb-3">
+                The trucks look good but the site doesn't match
+              </p>
+              <p className="text-white/70 text-[0.875rem] font-body leading-relaxed mb-6 flex-1">
+                Start with a brand-matched website. Fast, mobile-first, and built so the
+                people who saw your truck actually book the job.
+              </p>
+              <a
+                href="#pricing"
+                className="text-[var(--brand-gold)] text-[0.875rem] font-display font-semibold inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+              >
+                Start with a website
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -291,7 +243,7 @@ export default function Services() {
           <div className="flex items-center justify-center gap-3 text-center">
             <span className="text-[1.125rem] leading-none" aria-hidden>🟠</span>
             <p className="text-white/85 font-body text-[0.875rem] sm:text-[0.9375rem] leading-snug">
-              <span className="font-display font-bold text-white">Now accepting 5 founding clients this month.</span>{" "}
+              <span className="font-display font-bold text-white">Now accepting 5 founding brand clients this month.</span>{" "}
               <span className="text-white/65">Founding client pricing is locked in for as long as you're a customer.</span>
             </p>
           </div>
@@ -299,110 +251,30 @@ export default function Services() {
       </section>
 
       {/* ============================================================
-          STEP 1: WEBSITE BUILDS
+          PACKAGES (PricingSection embedded, same data as homepage)
          ============================================================ */}
-      <section id="pricing-builds" className="cream-section py-16 sm:py-24">
-        <div className="container">
-          <div className="max-w-3xl mb-10 sm:mb-14">
-            <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-              <span className="section-label text-[var(--brand-green-mid)]">Step 1: Build Your Foundation</span>
-            </div>
-            <h2
-              className="text-foreground mb-5 sm:mb-6 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
-            >
-              Build Your
-              <span className="text-primary"> Digital Foundation</span>
-            </h2>
-            <p className="text-muted-foreground font-body text-base sm:text-[1.0625rem] leading-[1.65] sm:leading-[1.7]">
-              High-converting websites designed to turn local visitors into booked jobs. Every build includes a 1-month trial of our GoHighLevel CRM to start capturing customers from day one.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-            {websiteBuilds.map((pkg) => {
-              const Icon = pkg.icon;
-              return (
-                <div
-                  key={pkg.name}
-                  className={`relative bg-white border rounded-md p-6 sm:p-7 flex flex-col ${
-                    pkg.featured
-                      ? "border-[var(--brand-lime)]/60 shadow-lg shadow-[var(--brand-lime)]/10"
-                      : "border-border"
-                  }`}
-                >
-                  {pkg.featured && (
-                    <div className="absolute -top-3 left-6 bg-[var(--brand-lime)] text-white text-[0.6875rem] font-display font-bold tracking-wider uppercase px-2.5 py-1 rounded-sm">
-                      Recommended
-                    </div>
-                  )}
-                  <div className="w-10 h-10 rounded-md bg-primary/[0.08] flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-primary" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-foreground text-[1.0625rem] font-display font-extrabold mb-2 leading-tight">
-                    {pkg.name}
-                  </h3>
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="font-display font-extrabold text-[1.75rem] text-[var(--brand-lime)] leading-none">
-                      {pkg.price}
-                    </span>
-                    <span className="text-muted-foreground text-[0.75rem] font-body">{pkg.priceSuffix}</span>
-                  </div>
-                  <p className="text-muted-foreground text-[0.8125rem] font-body leading-relaxed mb-5">
-                    {pkg.description}
-                  </p>
-                  <ul className="flex flex-col gap-2 mb-6">
-                    {pkg.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-foreground/80 text-[0.8125rem] font-body">
-                        <Check className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0 mt-1" strokeWidth={3} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="#contact"
-                    className="mt-auto w-full text-center py-2.5 rounded-md border border-border text-foreground text-[0.8125rem] font-display font-semibold hover:bg-foreground hover:text-white transition-colors"
-                  >
-                    Get My Free Audit
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-
-          <p className="mt-8 text-muted-foreground text-[0.8125rem] font-body italic text-center">
-            Domain registration and monthly hosting are paid directly by the client.
-          </p>
-        </div>
-      </section>
+      <PricingSection eyebrow="Packages" />
 
       {/* ============================================================
-          STEP 2: MARKETING PLANS (PricingSection embedded)
-          Eyebrow overridden to "Step 2: Turn on the Growth Engine".
-          Tier names, prices, and features are byte-identical to homepage.
-         ============================================================ */}
-      <PricingSection eyebrow="Step 2: Turn on the Growth Engine" />
-
-      {/* ============================================================
-          ADD-ONS (5 only)
+          ADD-ONS
          ============================================================ */}
       <section id="add-ons" className="light-section py-16 sm:py-24">
         <div className="container">
           <div className="max-w-3xl mb-10 sm:mb-14">
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-              <span className="section-label text-[var(--brand-green-mid)]">Add-Ons</span>
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+              <span className="section-label text-[var(--brand-mid)]">Add-Ons</span>
             </div>
             <h2
               className="text-foreground mb-5 sm:mb-6 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
             >
               Stack On What
               <span className="text-primary"> You Need</span>
             </h2>
             <p className="text-muted-foreground font-body text-base sm:text-[1.0625rem] leading-[1.65] sm:leading-[1.7]">
-              Optional add-ons that pair cleanly with any marketing plan. Layer them in as you grow.
+              Everything below is designed in your brand and printed under the same roof,
+              so it all matches the trucks.
             </p>
           </div>
 
@@ -410,14 +282,14 @@ export default function Services() {
             {addOns.map((item) => (
               <div
                 key={item.name}
-                className="bg-white border border-border rounded-md p-5 sm:p-6 hover:border-[var(--brand-lime)]/40 transition-colors flex flex-col"
+                className="bg-white border border-border rounded-md p-5 sm:p-6 hover:border-[var(--brand-gold)]/40 transition-colors flex flex-col"
               >
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <h3 className="text-foreground text-[0.9375rem] sm:text-[1rem] font-display font-bold leading-tight">
                     {item.name}
                   </h3>
                   <div className="text-right shrink-0">
-                    <span className="font-display font-extrabold text-[1.125rem] text-[var(--brand-lime)] leading-none block">
+                    <span className="font-display font-extrabold text-[1.125rem] text-[var(--brand-gold)] leading-none block">
                       {item.price}
                     </span>
                     <span className="text-muted-foreground text-[0.6875rem] font-body">{item.note}</span>
@@ -433,7 +305,7 @@ export default function Services() {
       </section>
 
       {/* ============================================================
-          AUDIT FORM (identical to homepage ContactSection)
+          BRAND AUDIT FORM (identical to homepage ContactSection)
          ============================================================ */}
       <ContactSection />
 

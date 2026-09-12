@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
   const lastUpdated = "May 15, 2026";
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
+    <div className="min-h-screen" style={{ background: "oklch(0.16 0.006 260)" }}>
       <header
         className="border-b"
         style={{ borderColor: "oklch(1 0 0 / 0.08)" }}
@@ -21,9 +21,9 @@ export default function PrivacyPolicy() {
             className="flex items-center gap-2.5 group"
           >
             <Zap
-              className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-lime)] shrink-0"
+              className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-gold)] shrink-0"
               strokeWidth={2.5}
-              fill="var(--brand-lime)"
+              fill="var(--brand-gold)"
             />
             <span className="text-white font-display font-extrabold text-[1.125rem] sm:text-[1.25rem]">
               Klema Creative
@@ -41,12 +41,12 @@ export default function PrivacyPolicy() {
 
       <main className="container py-14 sm:py-20 max-w-3xl">
         <div className="mb-10">
-          <span className="section-label text-[var(--brand-lime)]">Legal</span>
+          <span className="section-label text-[var(--brand-gold)]">Legal</span>
           <h1
             className="text-white font-extrabold mt-4 mb-4"
             style={{
               fontSize: "clamp(1.875rem, 4vw, 2.875rem)",
-              letterSpacing: "-0.025em",
+              letterSpacing: "0",
               lineHeight: 1.15,
             }}
           >
@@ -146,7 +146,7 @@ export default function PrivacyPolicy() {
               See our full{" "}
               <Link
                 href="/terms-and-conditions"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 SMS Terms of Service
               </Link>{" "}
@@ -154,14 +154,14 @@ export default function PrivacyPolicy() {
               details. Questions? Reach us at{" "}
               <a
                 href="mailto:tamaya@klemacreative.com"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 tamaya@klemacreative.com
               </a>{" "}
               or{" "}
               <a
                 href="tel:+1-210-974-9386"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 (210) 974-9386
               </a>
@@ -186,14 +186,14 @@ export default function PrivacyPolicy() {
               <strong>HELP</strong> for assistance, or contact us at{" "}
               <a
                 href="mailto:tamaya@klemacreative.com"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 tamaya@klemacreative.com
               </a>{" "}
               or{" "}
               <a
                 href="tel:+1-210-974-9386"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 (210) 974-9386
               </a>
@@ -220,7 +220,7 @@ export default function PrivacyPolicy() {
               deletion of your mobile information, contact us at{" "}
               <a
                 href="mailto:tamaya@klemacreative.com"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 tamaya@klemacreative.com
               </a>
@@ -263,7 +263,7 @@ export default function PrivacyPolicy() {
               communications at any time. To make a request, email us at{" "}
               <a
                 href="mailto:tamaya@klemacreative.com"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 tamaya@klemacreative.com
               </a>
@@ -308,7 +308,7 @@ export default function PrivacyPolicy() {
               <p>
                 <a
                   href="mailto:tamaya@klemacreative.com"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   tamaya@klemacreative.com
                 </a>
@@ -316,7 +316,7 @@ export default function PrivacyPolicy() {
               <p>
                 <a
                   href="tel:+1-210-974-9386"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   (210) 974-9386
                 </a>

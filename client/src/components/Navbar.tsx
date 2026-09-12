@@ -3,8 +3,8 @@ import { Zap, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", subtitle: "Pricing + packages", href: "/services" },
-  { label: "What We Do", subtitle: "Marketing services for contractors", href: "/#services" },
+  { label: "Services", subtitle: "Branding, wraps + websites", href: "/services" },
+  { label: "What We Do", subtitle: "Our three core services", href: "/#services" },
   { label: "How It Works", subtitle: "Our 4-step process", href: "/#process" },
   { label: "What to Expect", subtitle: "Industry benchmarks", href: "/#results" },
 ];
@@ -32,7 +32,7 @@ export default function Navbar() {
       {/* Item 1: Permanent dark gradient — keeps logo legible over bright cycling photos */}
       <div
         aria-hidden
-        className="fixed top-0 left-0 right-0 h-24 z-40 pointer-events-none md:hidden"
+        className="fixed top-0 left-0 right-0 h-24 z-40 pointer-events-none lg:hidden"
         style={{
           background:
             "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 100%)",
@@ -42,22 +42,22 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isOpen
-            ? "bg-[oklch(0.18_0.06_240)]"
+            ? "bg-[oklch(0.18_0.006_260)]"
             : scrolled
-            ? "bg-[oklch(0.20_0.07_240)] shadow-lg shadow-black/20"
+            ? "bg-[oklch(0.20_0.006_260)] shadow-lg shadow-black/20"
             : "bg-transparent"
         }`}
       >
         <div className="container">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 lg:h-20">
             <a href="#" className="flex items-center gap-2 sm:gap-2.5 group">
-              <Zap className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-lime)] shrink-0" strokeWidth={2.5} fill="var(--brand-lime)" />
+              <Zap className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-gold)] shrink-0" strokeWidth={2.5} fill="var(--brand-gold)" />
               <span className="font-display text-[1.125rem] sm:text-[1.25rem] font-extrabold text-white tracking-tight">
                 Klema Creative
               </span>
             </a>
 
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -69,7 +69,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4">
               <a
                 href="tel:+1-210-974-9386"
                 className="text-white/60 hover:text-white font-body text-[0.8125rem] font-medium transition-colors duration-200 flex items-center gap-1.5"
@@ -78,12 +78,12 @@ export default function Navbar() {
                 (210) 974-9386
               </a>
               <a href="#contact" className="btn-primary text-sm py-2.5 px-5">
-                Free Audit
+                Free Brand Audit
               </a>
             </div>
 
             {/* Mobile: phone + morphing hamburger */}
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2">
               <a
                 href="tel:+1-210-974-9386"
                 className="text-white/85 p-2.5 rounded-md hover:bg-white/10 transition-colors"
@@ -125,7 +125,7 @@ export default function Navbar() {
           {isOpen && (
             <motion.div
               key="mobile-menu"
-              className="md:hidden fixed inset-x-0 top-16 bottom-0"
+              className="lg:hidden fixed inset-x-0 top-16 bottom-0"
               style={{
                 backgroundColor: "rgba(15, 22, 40, 0.92)",
                 backdropFilter: "blur(20px)",
@@ -142,18 +142,18 @@ export default function Navbar() {
                   <span className="relative flex shrink-0 w-2 h-2">
                     <motion.span
                       aria-hidden
-                      className="absolute inset-0 rounded-full bg-[var(--brand-lime)]"
+                      className="absolute inset-0 rounded-full bg-[var(--brand-gold)]"
                       animate={{ opacity: [0.6, 0, 0.6], scale: [1, 2.5, 1] }}
                       transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
                     />
                     <motion.span
-                      className="relative w-2 h-2 rounded-full bg-[var(--brand-lime)]"
+                      className="relative w-2 h-2 rounded-full bg-[var(--brand-gold)]"
                       animate={{ opacity: [1, 0.4, 1] }}
                       transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                     />
                   </span>
                   <span className="text-white/85 text-[0.8125rem] font-body font-medium">
-                    Now booking 5 founding clients this month
+                    Now booking 5 founding brand clients this month
                   </span>
                 </div>
 
@@ -183,11 +183,11 @@ export default function Navbar() {
                     className="btn-primary w-full justify-center text-base"
                     onClick={closeMenu}
                   >
-                    Free Audit
+                    Free Brand Audit
                   </a>
                   <a
                     href="tel:+1-210-974-9386"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-md font-display font-semibold text-[0.9375rem] text-white border-2 border-[var(--brand-lime)]/50 active:bg-[var(--brand-lime)]/10 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-md font-display font-semibold text-[0.9375rem] text-white border-2 border-[var(--brand-gold)]/50 active:bg-[var(--brand-gold)]/10 transition-colors"
                     onClick={closeMenu}
                   >
                     <Phone className="w-4 h-4" strokeWidth={2.5} />

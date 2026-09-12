@@ -1,6 +1,6 @@
 import express from "express";
-import { readFileSync, writeFileSync } from "fs";
-import { resolve, join } from "path";
+import { readFileSync, writeFileSync, mkdirSync } from "fs";
+import { resolve, join, dirname } from "path";
 import puppeteer from "puppeteer-core";
 
 const DIST_DIR = resolve("dist/public");
@@ -52,37 +52,69 @@ async function prerender() {
     executablePath,
     headless: true,
   });
-  const page = await browser.newPage();
-  await page.goto(`http://localhost:${PORT}`, {
-    waitUntil: "networkidle0",
-    timeout: 30000,
-  });
+  // Routes to prerender. Each one gets its own HTML file so the client hydrates
+  // against matching markup (no homepage flash on /services, no React #418).
+  const ROUTES = [
+    { path: "/", file: "index.html", waitFor: "#contact" },
+    { path: "/services", file: "services/index.html", waitFor: "#pricing" },
+    { path: "/websites", file: "websites/index.html", waitFor: "#contact" },
+    { path: "/privacy-policy", file: "privacy-policy/index.html", waitFor: "main, footer" },
+    { path: "/terms-and-conditions", file: "terms-and-conditions/index.html", waitFor: "main, footer" },
+  ];
 
-  // 3. Wait for deepest section to confirm full render
-  await page.waitForSelector("#contact", { timeout: 10000 });
+  const indexPath = join(DIST_DIR, "index.html");
+  const shellHtml = readFileSync(indexPath, "utf-8");
 
-  // 4. Extract rendered content from #root
-  let renderedContent = await page.evaluate(
-    () => document.getElementById("root").innerHTML
-  );
+  for (const route of ROUTES) {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1280, height: 900 });
+    await page.goto(`http://localhost:${PORT}${route.path}`, {
+      waitUntil: "networkidle0",
+      timeout: 30000,
+    });
+    await page.waitForSelector(route.waitFor, { timeout: 10000 });
 
-  // 5. Strip "revealed" classes so hydration starts from the same state (visible=false)
-  renderedContent = renderedContent.replace(/ revealed/g, "");
+    // Serialize the root. innerHTML merges adjacent text nodes, but React renders
+    // `text{" "}<a>` as separate nodes and expects a `<!-- -->` separator between
+    // them (exactly what renderToString emits). Without it hydration throws #418.
+    let renderedContent = await page.evaluate(() => {
+      const root = document.getElementById("root");
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+      const els = [root];
+      let n;
+      while ((n = walker.nextNode())) els.push(n);
+      for (const el of els) {
+        const kids = Array.from(el.childNodes);
+        for (let i = 1; i < kids.length; i++) {
+          if (kids[i - 1].nodeType === 3 && kids[i].nodeType === 3) {
+            el.insertBefore(document.createComment(""), kids[i]);
+          }
+        }
+      }
+      return root.innerHTML;
+    });
+    // Strip reveal state so hydration starts from the same (hidden) state.
+    renderedContent = renderedContent.replace(/ revealed/g, "").replace(/ kc-reveal in\b/g, " kc-reveal");
+    const title = await page.title();
+    await page.close();
+
+    let html = shellHtml.replace(
+      '<div id="root"></div>',
+      `<div id="root">${renderedContent}</div>`
+    );
+    if (route.path !== "/" && title) {
+      html = html.replace(/<title>[^<]*<\/title>/, `<title>${title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</title>`);
+      html = html.replace('<link rel="canonical" href="https://klemacreative.com/" />', `<link rel="canonical" href="https://klemacreative.com${route.path}" />`);
+    }
+    const outPath = join(DIST_DIR, route.file);
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, html, "utf-8");
+    const sizeKB = (Buffer.byteLength(html, "utf-8") / 1024).toFixed(1);
+    console.log(`[prerender] ${route.path} -> ${route.file} (${sizeKB}KB)`);
+  }
 
   await browser.close();
   server.close();
-
-  // 6. Inject into built index.html
-  const indexPath = join(DIST_DIR, "index.html");
-  let html = readFileSync(indexPath, "utf-8");
-  html = html.replace(
-    '<div id="root"></div>',
-    `<div id="root">${renderedContent}</div>`
-  );
-  writeFileSync(indexPath, html, "utf-8");
-
-  const sizeKB = (Buffer.byteLength(html, "utf-8") / 1024).toFixed(1);
-  console.log(`[prerender] Injected ${sizeKB}KB of pre-rendered HTML`);
 }
 
 prerender().catch((err) => {

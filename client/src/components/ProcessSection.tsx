@@ -4,23 +4,23 @@ import { useReveal } from "@/hooks/useReveal";
 const steps = [
   {
     number: "01",
-    title: "Free Audit",
-    description: "We analyze your online presence and show you exactly where you're losing customers in San Antonio.",
+    title: "Free Brand Audit",
+    description: "We review your name, logo, trucks, and website, and show you exactly where you're blending in around San Antonio.",
   },
   {
     number: "02",
-    title: "Custom Strategy Call",
-    description: "We walk you through a tailored growth plan built for your trade, your area, and your goals.",
+    title: "Brand Design",
+    description: "Logo, colors, and a simple brand guide built for your trade. You approve every concept before anything gets printed.",
   },
   {
     number: "03",
-    title: "System Build & Launch",
-    description: "We build your automation, landing pages, and ad campaigns. Most clients are live within 2 weeks.",
+    title: "Wrap + Print",
+    description: "We design your wrap and print it under one roof, so your trucks start selling for you everywhere they drive.",
   },
   {
     number: "04",
-    title: "Optimize & Scale",
-    description: "Every month, we review results, optimize campaigns, and report on every booked job.",
+    title: "Launch + Grow",
+    description: "A fast website that matches the brand, plus ongoing design and marketing support whenever you need it.",
   },
 ];
 
@@ -33,18 +33,18 @@ export default function ProcessSection() {
       <div className="container">
         <div className="text-center mb-10 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-            <span className="section-label text-[var(--brand-green-mid)]">
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <span className="section-label text-[var(--brand-mid)]">
               How It Works
             </span>
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-foreground max-w-2xl mx-auto font-extrabold"
-            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
           >
-            From Zero to Booked Jobs in
-            <span className="text-primary"> 2 Weeks</span>
+            From Blending In to
+            <span className="text-primary"> Unmistakable</span>
           </h2>
         </div>
 
@@ -57,8 +57,8 @@ export default function ProcessSection() {
               key={step.number}
               className={`relative flex flex-col items-center text-center reveal-up stagger-${i + 1} ${desktopVisible ? "revealed" : ""}`}
             >
-              <div className="relative z-10 w-20 h-20 rounded-md bg-primary flex items-center justify-center mb-6 shrink-0">
-                <span className="font-display font-extrabold text-[1.5rem] text-[var(--brand-lime)]">
+              <div className="relative z-10 w-20 h-20 bg-primary flex items-center justify-center mb-6 shrink-0 skew-slab border-b-4 border-[var(--brand-gold)]">
+                <span className="font-shout text-[1.5rem] text-[var(--brand-gold)] unskew">
                   {step.number}
                 </span>
               </div>
@@ -86,8 +86,8 @@ export default function ProcessSection() {
               className={`relative flex gap-5 pb-8 last:pb-0 reveal-up stagger-${i + 1} ${mobileVisible ? "revealed" : ""}`}
             >
               {/* Number circle */}
-              <div className="relative z-10 w-[2.875rem] h-[2.875rem] rounded-md bg-primary flex items-center justify-center shrink-0">
-                <span className="font-display font-extrabold text-[1rem] text-[var(--brand-lime)]">
+              <div className="relative z-10 w-[2.875rem] h-[2.875rem] bg-primary flex items-center justify-center shrink-0 skew-slab border-b-[3px] border-[var(--brand-gold)]">
+                <span className="font-shout text-[1rem] text-[var(--brand-gold)] unskew">
                   {step.number}
                 </span>
               </div>
@@ -107,7 +107,7 @@ export default function ProcessSection() {
 
         <div className="text-center mt-10 sm:mt-14">
           <a href="#contact" className="btn-primary w-full sm:w-auto">
-            Start My Free Audit Today
+            Start My Free Brand Audit
           </a>
         </div>
       </div>

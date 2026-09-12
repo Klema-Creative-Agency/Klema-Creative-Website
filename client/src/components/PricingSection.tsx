@@ -4,84 +4,80 @@ import { useReveal } from "@/hooks/useReveal";
 
 export const plans = [
   {
-    name: "Speed to Reply",
-    tagline: "Stop the Leaky Bucket",
-    price: "$297",
-    priceNote: "/mo + $497 setup",
+    name: "Brand Identity",
+    tagline: "Step 1: The Foundation",
+    price: "$1,500",
+    priceNote: "one-time, starting at",
     highlight: false,
     badge: null,
     description:
-      "Stop losing customers. Get the automation foundation that responds before your competitors can.",
+      "The foundation everything else is built on. A brand that makes homeowners remember you and trust you.",
     features: [
-      "Custom CRM setup & configuration",
-      "Missed Call Text-Back automation",
-      "Web Chat Widget",
-      "Automated review request campaign",
-      "Google Business Profile optimization",
-      "Unified inbox (calls, texts, emails)",
-      "Monthly performance report",
+      "Logo design (multiple concepts)",
+      "Naming + tagline help if you need it",
+      "Colors, typography + brand guide",
+      "Business card + social graphics",
+      "Every source file is 100% yours",
+      "Print-ready from day one",
     ],
-    cta: "Get My Free Audit",
+    cta: "Get My Free Brand Audit",
   },
   {
-    name: "Local Visibility",
-    tagline: "Get Found on Google",
-    price: "$797",
-    priceNote: "/mo",
+    name: "Vehicle Wrap",
+    tagline: "Step 2: The Rolling Billboard",
+    price: "$3,500",
+    priceNote: "per vehicle, starting at",
     highlight: false,
     badge: null,
     description:
-      "You have the automation. Now get found. We put you at the top of Google in San Antonio.",
+      "Designed and printed under one roof in San Antonio. Pay once, and your truck advertises for years.",
     features: [
-      "Everything in Speed to Reply",
-      "Full local SEO management",
-      "Google Business Profile management",
-      "2 local landing pages built",
-      "Monthly content & citation building",
-      "Competitor gap analysis",
-      "Bi-monthly strategy calls",
+      "Custom wrap design in your brand",
+      "Printed in-house, no middleman",
+      "Full wraps, partials + decals",
+      "To-scale proof before we print",
+      "Installation coordinated for you",
+      "Fleet-matched design for every truck",
     ],
-    cta: "Get My Free Audit",
+    cta: "Get My Free Brand Audit",
   },
   {
-    name: "Exclusive Growth Machine",
-    tagline: "The Growth Engine",
-    price: "$1,497",
-    priceNote: "/mo + ad spend",
+    name: "Website",
+    tagline: "Step 3: Close the Loop",
+    price: "$2,500",
+    priceNote: "+ $99/mo care plan",
+    highlight: false,
+    badge: null,
+    description:
+      "A fast, brand-matched website that turns the people who saw your truck into booked jobs.",
+    features: [
+      "5-page site matched to your brand",
+      "Mobile-first, built for speed",
+      "Local SEO foundation included",
+      "Lead forms straight to your phone",
+      "Hosting, updates + care handled",
+      "You own the site and the domain",
+    ],
+    cta: "Get My Free Brand Audit",
+  },
+  {
+    name: "The Full Rebrand",
+    tagline: "Everything, One Team",
+    price: "$6,500",
+    priceNote: "bundle, starting at",
     highlight: true,
-    badge: "MOST POPULAR",
+    badge: "BEST VALUE",
     description:
-      "The full system. SEO + paid ads + automation working together to fill your calendar every week.",
+      "Brand, wrap, and website launched together, so the truck, the logo, and the site all tell the same story.",
     features: [
-      "Everything in Local Visibility",
-      "Google Ads & LSA management",
-      "Custom ad creatives (graphic design)",
-      "High-converting landing page (paid traffic)",
-      "Customer attribution & ROI tracking",
-      "Weekly campaign optimization",
-      "Weekly strategy calls",
+      "Everything in all three packages",
+      "One team, one timeline, zero handoffs",
+      "Priority scheduling",
+      "Savings vs. buying separately",
+      "Brand launch kit for social media",
+      "30 days of post-launch support",
     ],
-    cta: "Get My Free Audit",
-  },
-  {
-    name: "Market Dominator",
-    tagline: "Own San Antonio",
-    price: "$2,997+",
-    priceNote: "/mo + ad spend",
-    highlight: false,
-    badge: null,
-    description:
-      "For contractors who want to be the undisputed first choice in San Antonio across every channel.",
-    features: [
-      "Everything in Exclusive Growth Machine",
-      "Aggressive SEO & content strategy",
-      "Omnichannel retargeting (Meta + Google)",
-      "Full website rebuild (if needed)",
-      "Advanced automation pipelines",
-      "Sales team training & scripting",
-      "Dedicated account manager",
-    ],
-    cta: "Get My Free Audit",
+    cta: "Get My Free Brand Audit",
   },
 ];
 
@@ -102,17 +98,17 @@ function PricingCard({
       style={
         plan.highlight
           ? {
-              background: "oklch(0.28 0.09 240)",
-              boxShadow: "0 0 0 2px oklch(0.74 0.21  50), 0 25px 50px oklch(0.10 0.05 240 / 0.5)",
+              background: "oklch(0.28 0.006 260)",
+              boxShadow: "0 0 0 2px oklch(0.79 0.17 70), 0 25px 50px oklch(0.10 0.004 260 / 0.5)",
             }
           : {
-              background: "oklch(0.24 0.08 240)",
+              background: "oklch(0.24 0.006 260)",
               border: "1px solid oklch(1 0 0 / 0.08)",
             }
       }
     >
       {plan.badge ? (
-        <div className="text-center py-2.5 rounded-t-md bg-[var(--brand-lime)] font-display font-bold text-[0.75rem] tracking-[0.08em] text-[var(--brand-charcoal)]">
+        <div className="text-center py-2.5 rounded-t-md bg-[var(--brand-gold)] font-display font-bold text-[0.75rem] tracking-[0.08em] text-[var(--brand-charcoal)]">
           {plan.badge}
         </div>
       ) : (
@@ -120,7 +116,7 @@ function PricingCard({
       )}
 
       <div className="p-5 sm:p-7 flex flex-col flex-1">
-        <span className="text-[0.8125rem] font-semibold uppercase tracking-[0.06em] mb-1.5 block font-body text-[var(--brand-lime)]">
+        <span className="text-[0.8125rem] font-semibold uppercase tracking-[0.06em] mb-1.5 block font-body text-[var(--brand-gold)]">
           {plan.tagline}
         </span>
 
@@ -144,8 +140,8 @@ function PricingCard({
         <div className="flex flex-col gap-3 mb-8 flex-1">
           {plan.features.map((feature) => (
             <div key={feature} className="flex items-start gap-2.5">
-              <div className="w-4.5 h-4.5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_50_/_0.15)]">
-                <Check className="w-3 h-3 text-[var(--brand-lime)]" strokeWidth={2.5} />
+              <div className="w-4.5 h-4.5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.79_0.17_70_/_0.15)]">
+                <Check className="w-3 h-3 text-[var(--brand-gold)]" strokeWidth={2.5} />
               </div>
               <span className="text-white/70 text-[0.8125rem] font-body leading-snug">
                 {feature}
@@ -182,32 +178,32 @@ export default function PricingSection({ eyebrow = "Transparent Pricing" }: Pric
       <div className="container">
         <div className="text-center mb-8 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-            <span className="section-label text-[var(--brand-lime)]">
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <span className="section-label text-[var(--brand-gold)]">
               {eyebrow}
             </span>
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-white max-w-2xl mx-auto mb-4 sm:mb-5 font-extrabold"
-            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
           >
-            No Contracts. No Shared Customers.
-            <span className="text-[var(--brand-lime)]"> Just Results.</span>
+            One Team. One Roof.
+            <span className="text-[var(--brand-gold)]"> No Surprises.</span>
           </h2>
           <p className="text-white/60 max-w-lg mx-auto font-body text-[0.9375rem] sm:text-base leading-relaxed">
-            Each plan builds on the last. Start where you are and scale as you grow. Month-to-month, cancel anytime.
+            Start with the piece you need most, or bundle the full rebrand and launch everything at once.
           </p>
         </div>
 
         {/* Desktop only: plan progression bar with named tiers + price, no "Tier N" prefix */}
-        <div className="hidden lg:flex items-center justify-center gap-0 mb-10">
+        <div className="hidden xl:flex items-center justify-center gap-0 mb-10">
           {plans.map((plan, i) => (
             <div key={plan.name} className="flex items-center">
               <div className="flex flex-col items-center px-6">
                 <span
                   className="text-[0.8125rem] uppercase tracking-[0.06em] mb-1 font-body font-semibold"
-                  style={{ color: plan.highlight ? "oklch(0.74 0.21  50)" : "oklch(1 0 0 / 0.35)" }}
+                  style={{ color: plan.highlight ? "oklch(0.79 0.17 70)" : "oklch(1 0 0 / 0.35)" }}
                 >
                   {plan.name}
                 </span>
@@ -228,7 +224,7 @@ export default function PricingSection({ eyebrow = "Transparent Pricing" }: Pric
         {/* Single responsive grid: renders each plan exactly once.
             Popular card displays first on mobile via order, natural position on desktop.
             Non-popular cards hide on mobile until expanded. */}
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
           {plans.map((plan, i) => {
             const isPopular = plan.highlight;
             const mobileHidden = !isPopular && !showAllMobile;
@@ -266,8 +262,9 @@ export default function PricingSection({ eyebrow = "Transparent Pricing" }: Pric
         </div>
 
         <p className="text-center text-white/35 text-[0.75rem] sm:text-[0.8125rem] mt-8 sm:mt-10 font-body leading-relaxed">
-          All plans are month-to-month. Each plan includes everything from the plan below it.
-          Ad spend is billed separately and goes directly to the ad platforms.
+          Starting prices shown. Wrap pricing varies by vehicle size and coverage, and every
+          project gets a written quote before any work begins. The website care plan is
+          month-to-month, cancel anytime.
         </p>
       </div>
     </section>

@@ -4,24 +4,28 @@ import { useReveal } from "@/hooks/useReveal";
 
 const faqs = [
   {
-    q: "Do I own my website and CRM account?",
-    a: "Yes, 100%. Unlike some agencies that hold your assets hostage, everything we build belongs to you. Your website, your CRM account, your ad accounts. You take them with you if you ever leave.",
+    q: "Do I own my logo, brand files, and website?",
+    a: "Yes, 100%. Every logo file, wrap design, and website we create belongs to you, including the source files. Unlike agencies that hold your assets hostage, you take everything with you if you ever leave.",
   },
   {
-    q: "What trades do you specialize in?",
-    a: "We focus exclusively on local home services in San Antonio and surrounding areas: HVAC, plumbing, roofing, electrical, landscaping, pest control, and general contracting.",
+    q: "Do you design AND print the wraps?",
+    a: "Yes, and that's the difference. Most branding agencies design your wrap and mail the files to a print shop that has never seen your brand. We design and print under one roof in San Antonio, so what rolls out matches what you approved, and there's one team accountable for the whole thing.",
   },
   {
-    q: "How is this different from Angi or HomeAdvisor?",
-    a: "Angi and HomeAdvisor sell the same customer to 5-10 contractors simultaneously. We build a system that brings exclusive customers directly to your business. You're the only one who gets that customer.",
+    q: "Can you help me name my company or write a tagline?",
+    a: "Yes. The right name and tagline come before the logo, and it's some of the most valuable work we do. If your current name works, we keep it. If it's holding you back, we'll tell you honestly and help you find one worth painting on a truck.",
   },
   {
-    q: "What tools do you use for automation?",
-    a: "We build on GoHighLevel, the leading CRM and automation platform for service businesses. We fully customize it for your trade: Missed Call Text-Back, customer routing, review automation, pipelines, the whole stack. You get a simple dashboard, and we handle the complexity. You own the account.",
+    q: "What trades do you work with?",
+    a: "We focus on local home services in San Antonio and surrounding areas: HVAC, plumbing, roofing, electrical, landscaping, pest control, remodeling, and general contracting.",
+  },
+  {
+    q: "How long does a full rebrand take?",
+    a: "A typical timeline: brand identity in 2 to 3 weeks, wrap design and printing in 1 to 2 weeks after you approve the proof, and the website in about 2 weeks. Most full rebrands are on the road in 6 to 8 weeks.",
   },
   {
     q: "Is there a long-term contract?",
-    a: "No. All plans are month-to-month. We recommend 90 days to see full results, but you can cancel anytime. No lock-in.",
+    a: "No. Brand, wrap, and website projects are one-time purchases that you own outright. The website care plan is month-to-month and you can cancel anytime.",
   },
 ];
 
@@ -36,14 +40,14 @@ export default function FAQSection() {
           {/* Left column */}
           <div className="lg:sticky lg:top-24">
             <div className="flex items-center gap-3 mb-4">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-              <span className="section-label text-[var(--brand-green-mid)]">
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+              <span className="section-label text-[var(--brand-mid)]">
                 FAQ
               </span>
             </div>
             <h2
               className="text-foreground mb-4 sm:mb-6 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
             >
               Got Questions?
               <br className="hidden sm:block" />
@@ -53,7 +57,7 @@ export default function FAQSection() {
               Here are the most common questions we get from San Antonio contractors before they sign on.
             </p>
             <a href="#contact" className="btn-primary hidden lg:inline-flex">
-              Get My Free Audit
+              Get My Free Brand Audit
             </a>
           </div>
 
@@ -80,7 +84,7 @@ export default function FAQSection() {
                       }`}
                     >
                       {isOpen ? (
-                        <Minus className="w-3.5 h-3.5 text-[var(--brand-lime)]" strokeWidth={2.5} />
+                        <Minus className="w-3.5 h-3.5 text-[var(--brand-gold)]" strokeWidth={2.5} />
                       ) : (
                         <Plus className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2.5} />
                       )}
@@ -103,7 +107,7 @@ export default function FAQSection() {
             <p className="text-center text-muted-foreground text-[0.875rem] font-body mt-4 lg:hidden">
               Ready to get started?{" "}
               <a href="#contact" className="text-primary font-semibold hover:underline">
-                Get your free audit
+                Get your free brand audit
               </a>
             </p>
           </div>

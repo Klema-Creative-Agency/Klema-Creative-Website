@@ -18,15 +18,15 @@ export default function ContactSection() {
         {/* Founding Client intro -- visible on all screens */}
         <div className="text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-            <span className="section-label text-[var(--brand-lime)]">
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <span className="section-label text-[var(--brand-gold)]">
               Limited Availability
             </span>
-            <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+            <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
           </div>
           <h2
             className="text-white font-extrabold mb-4 sm:mb-5"
-            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+            style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
           >
             Founding Client Program
           </h2>
@@ -39,7 +39,7 @@ export default function ContactSection() {
           <div className="grid grid-cols-2 sm:flex sm:justify-center gap-3 sm:gap-6 max-w-2xl mx-auto">
             {foundingBenefits.map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 sm:gap-2.5">
-                <Icon className="w-4 h-4 sm:w-[1.125rem] sm:h-[1.125rem] text-[var(--brand-lime)] shrink-0" strokeWidth={2} />
+                <Icon className="w-4 h-4 sm:w-[1.125rem] sm:h-[1.125rem] text-[var(--brand-gold)] shrink-0" strokeWidth={2} />
                 <span className="text-white/60 text-[0.75rem] sm:text-[0.8125rem] font-body font-medium text-left leading-tight">
                   {text}
                 </span>
@@ -54,29 +54,30 @@ export default function ContactSection() {
           <div className={`hidden lg:block reveal-left ${visible ? "revealed" : ""}`}>
             <h3
               className="text-white mb-5 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", letterSpacing: "0", lineHeight: 1.15 }}
             >
               Get Your Free
               <br />
-              <span className="text-[var(--brand-lime)]">Audit Today</span>
+              <span className="text-[var(--brand-gold)]">Brand Audit Today</span>
             </h3>
 
             <p className="text-white/70 mb-8 font-body text-[1.0625rem] leading-[1.7]">
-              Fill out the form and we'll run a complete analysis of your online
-              presence: your Google rankings, ad performance, website speed,
-              and where your competitors are beating you. No cost, no obligation.
+              Fill out the form and we'll take an honest look at your brand:
+              your name, logo, trucks, and website, and how they stack up
+              against the competitors winning jobs in your area. No cost,
+              no obligation.
             </p>
 
             <div className="flex flex-col gap-4 mb-8">
               {[
-                "A full SEO audit of your website and local rankings",
-                "Analysis of your Google Business Profile",
-                "Competitor gap analysis for the San Antonio market",
-                "A custom growth roadmap with clear next steps",
+                "An honest review of your logo, trucks, and website",
+                "Side-by-side comparison with your top San Antonio competitors",
+                "Quick wins you can use even if you never hire us",
+                "A clear quote and timeline for anything you want done",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.74_0.21_50_/_0.2)]">
-                    <ArrowRight className="w-3 h-3 text-[var(--brand-lime)]" strokeWidth={2.5} />
+                  <div className="w-5 h-5 rounded-sm flex items-center justify-center shrink-0 mt-0.5 bg-[oklch(0.79_0.17_70_/_0.2)]">
+                    <ArrowRight className="w-3 h-3 text-[var(--brand-gold)]" strokeWidth={2.5} />
                   </div>
                   <span className="text-white/70 text-[0.9375rem] font-body leading-snug">{item}</span>
                 </div>
@@ -90,7 +91,7 @@ export default function ContactSection() {
                 { icon: MapPin, text: "Based in San Antonio, TX", href: undefined },
               ].map(({ icon: Icon, text, href }) => (
                 <div key={text} className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 text-[var(--brand-lime)]" strokeWidth={2} />
+                  <Icon className="w-4 h-4 text-[var(--brand-gold)]" strokeWidth={2} />
                   {href ? (
                     <a href={href} className="text-white/55 hover:text-white/80 text-[0.875rem] font-body transition-colors">
                       {text}
@@ -110,11 +111,11 @@ export default function ContactSection() {
             {/* Mobile-only contact info below form */}
             <div className="lg:hidden flex items-center justify-center gap-6 mt-6 pt-6 border-t border-white/10">
               <a href="tel:+1-210-974-9386" className="flex items-center gap-2 text-white/50 text-[0.8125rem] font-body">
-                <Phone className="w-3.5 h-3.5 text-[var(--brand-lime)]" strokeWidth={2} />
+                <Phone className="w-3.5 h-3.5 text-[var(--brand-gold)]" strokeWidth={2} />
                 (210) 974-9386
               </a>
               <a href="mailto:tamaya@klemacreative.com" className="flex items-center gap-2 text-white/50 text-[0.8125rem] font-body">
-                <Mail className="w-3.5 h-3.5 text-[var(--brand-lime)]" strokeWidth={2} />
+                <Mail className="w-3.5 h-3.5 text-[var(--brand-gold)]" strokeWidth={2} />
                 Email Us
               </a>
             </div>

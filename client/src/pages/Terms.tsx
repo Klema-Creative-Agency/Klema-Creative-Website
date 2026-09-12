@@ -10,7 +10,7 @@ export default function Terms() {
   const lastUpdated = "April 13, 2026";
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.16 0.06 240)" }}>
+    <div className="min-h-screen" style={{ background: "oklch(0.16 0.006 260)" }}>
       <header
         className="border-b"
         style={{ borderColor: "oklch(1 0 0 / 0.08)" }}
@@ -18,9 +18,9 @@ export default function Terms() {
         <div className="container py-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
             <Zap
-              className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-lime)] shrink-0"
+              className="w-[1.125rem] h-[1.125rem] sm:w-[1.25rem] sm:h-[1.25rem] text-[var(--brand-gold)] shrink-0"
               strokeWidth={2.5}
-              fill="var(--brand-lime)"
+              fill="var(--brand-gold)"
             />
             <span className="text-white font-display font-extrabold text-[1.125rem] sm:text-[1.25rem]">
               Klema Creative
@@ -38,12 +38,12 @@ export default function Terms() {
 
       <main className="container py-14 sm:py-20 max-w-3xl">
         <div className="mb-10">
-          <span className="section-label text-[var(--brand-lime)]">Legal</span>
+          <span className="section-label text-[var(--brand-gold)]">Legal</span>
           <h1
             className="text-white font-extrabold mt-4 mb-4"
             style={{
               fontSize: "clamp(1.875rem, 4vw, 2.875rem)",
-              letterSpacing: "-0.025em",
+              letterSpacing: "0",
               lineHeight: 1.15,
             }}
           >
@@ -94,8 +94,8 @@ export default function Terms() {
             id="sms-terms"
             className="p-6 sm:p-7 rounded-xl"
             style={{
-              background: "oklch(0.74 0.21  50 / 0.08)",
-              border: "1px solid oklch(0.74 0.21  50 / 0.3)",
+              background: "oklch(0.79 0.17 70 / 0.08)",
+              border: "1px solid oklch(0.79 0.17 70 / 0.3)",
             }}
           >
             <h2 className="text-white font-display font-bold text-[1.375rem] sm:text-[1.5rem] mb-4">
@@ -140,7 +140,7 @@ export default function Terms() {
                 at{" "}
                 <a
                   href="https://klemacreative.com"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   klemacreative.com
                 </a>
@@ -153,7 +153,7 @@ export default function Terms() {
               parties or affiliates for marketing purposes. See our{" "}
               <Link
                 href="/privacy-policy"
-                className="text-[var(--brand-lime)] hover:underline"
+                className="text-[var(--brand-gold)] hover:underline"
               >
                 Privacy Policy
               </Link>{" "}
@@ -199,14 +199,14 @@ export default function Terms() {
                 <strong>HELP</strong> to any message or contact{" "}
                 <a
                   href="mailto:tamaya@klemacreative.com"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   tamaya@klemacreative.com
                 </a>{" "}
                 or{" "}
                 <a
                   href="tel:+1-210-974-9386"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   (210) 974-9386
                 </a>{" "}
@@ -224,7 +224,7 @@ export default function Terms() {
                 our{" "}
                 <Link
                   href="/privacy-policy"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   Privacy Policy
                 </Link>
@@ -281,7 +281,7 @@ export default function Terms() {
               <p>
                 <a
                   href="mailto:tamaya@klemacreative.com"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   tamaya@klemacreative.com
                 </a>
@@ -289,7 +289,7 @@ export default function Terms() {
               <p>
                 <a
                   href="tel:+1-210-974-9386"
-                  className="text-[var(--brand-lime)] hover:underline"
+                  className="text-[var(--brand-gold)] hover:underline"
                 >
                   (210) 974-9386
                 </a>

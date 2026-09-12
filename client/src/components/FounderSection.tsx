@@ -14,12 +14,12 @@ export default function FounderSection() {
               <img
                 src="/founder_tomas.jpg"
                 alt="Tomas Amaya, founder of Klema Creative"
-                className="w-full aspect-square object-cover rounded-md shadow-2xl"
+                className="w-full aspect-square object-cover shadow-2xl clip-slant"
                 loading="lazy"
                 width={600}
                 height={600}
               />
-              <div className="absolute -bottom-3 -left-3 bg-[var(--brand-lime)] text-[var(--brand-charcoal)] rounded-md px-4 py-2.5 shadow-xl">
+              <div className="absolute -bottom-3 -left-3 bg-[var(--brand-gold)] text-[var(--brand-charcoal)] rounded-md px-4 py-2.5 shadow-xl">
                 <p className="text-[0.75rem] font-display font-bold uppercase tracking-wider leading-none">
                   San Antonio, TX
                 </p>
@@ -30,31 +30,31 @@ export default function FounderSection() {
           {/* Copy column */}
           <div className={`lg:col-span-3 reveal-up ${visible ? "revealed" : ""}`} style={{ transitionDelay: "0.15s" }}>
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <Zap className="w-3.5 h-3.5 text-[var(--brand-lime)] shrink-0" fill="currentColor" strokeWidth={2.5} />
-              <span className="section-label text-[var(--brand-lime)]">
+              <Zap className="w-3.5 h-3.5 text-[var(--brand-gold)] shrink-0" fill="currentColor" strokeWidth={2.5} />
+              <span className="section-label text-[var(--brand-gold)]">
                 Why Contractors Trust Klema
               </span>
             </div>
 
             <h2
               className="text-white mb-5 sm:mb-6 font-extrabold"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.625rem)", letterSpacing: "0", lineHeight: 1.15 }}
             >
               Built by Someone
-              <span className="text-[var(--brand-lime)]"> Who Gets It</span>
+              <span className="text-[var(--brand-gold)]"> Who Gets It</span>
             </h2>
 
             <div className="mb-6">
               <p className="text-white font-display font-bold text-[1.0625rem] sm:text-[1.125rem] leading-tight">
                 Tomas Amaya
               </p>
-              <p className="text-[var(--brand-lime)] text-[0.8125rem] sm:text-[0.875rem] font-body font-semibold uppercase tracking-wider mt-1">
+              <p className="text-[var(--brand-gold)] text-[0.8125rem] sm:text-[0.875rem] font-body font-semibold uppercase tracking-wider mt-1">
                 Founder
               </p>
             </div>
 
             <p className="text-white/75 font-body text-[0.9375rem] sm:text-[1rem] leading-[1.7] mb-7">
-              I started Klema Creative because I watched too many San Antonio contractors get burned by agencies that promised customers and delivered nothing, and by shared-contact platforms like Angi that pit you against four other contractors for the same homeowner. You shouldn't have to fight for every job. I build the systems that get the phone ringing with customers that are exclusively yours, and respond to them faster than your competitors can. When you work with Klema, you get me on the phone directly. No account managers. No handoffs. Just results.
+              I started Klema Creative because I watched too many great San Antonio contractors lose jobs to companies that simply looked more established. Your work deserves better than a clip-art logo and a plain white truck. I design brands for the trades and print them under one roof here in San Antonio: logos, wraps, signage, and the website to match. When you work with Klema, you get me directly. No account managers. No handoffs. Just a brand you're proud to park in a customer's driveway.
             </p>
 
             <a href="#contact" className="btn-primary inline-flex">

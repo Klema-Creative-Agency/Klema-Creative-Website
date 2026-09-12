@@ -12,7 +12,7 @@ export default function MidPageCTA() {
       >
         <h2
           className="text-white font-extrabold mb-3 sm:mb-4"
-          style={{ fontSize: "clamp(1.25rem, 3vw, 2.25rem)", letterSpacing: "-0.025em", lineHeight: 1.15 }}
+          style={{ fontSize: "clamp(1.25rem, 3vw, 2.25rem)", letterSpacing: "0", lineHeight: 1.15 }}
         >
           Ready to See Where You're Losing Customers?
         </h2>

@@ -1,12 +1,14 @@
 /* ============================================================
    KLEMA CREATIVE -- GLOBAL DESIGN SYSTEM
-   Design Philosophy: Bold Contractor-First
-   Movement: Blue Collar Boldness -- Rugged Confidence
-   Primary: Deep Forest Green (#14532D) + Off-White (#FAF7F2)
-   Accent: Lime Green (#84CC16) CTAs
-   Headlines: Plus Jakarta Sans (bold, wide, trustworthy)
+   Design Philosophy: Bold Contractor-First, KickCharge-inspired
+   Movement: Loud Industrial Energy -- angular, high contrast
+   Primary: Near-Black Charcoal (#1a1a1c family) + Off-White
+   Accent: Gold-Orange (#fca311 / oklch 0.79 0.17 70) CTAs,
+   dark text on accent for contrast
+   Shout headlines (h1/h2): Archivo Black, ALL CAPS
+   Card headings: Plus Jakarta Sans (bold, trustworthy)
    Body: Inter (clean, readable, professional)
-   Layout: Asymmetric, left-rail dominant, high contrast
+   Shape language: sharp corners, notched CTAs, skewed slabs
    ============================================================ */
 
 @import "tailwindcss";
@@ -15,10 +17,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* Sharp angular language: zero radius everywhere */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,41 +43,42 @@
 }
 
 :root {
-  --radius: 0.375rem;
+  --radius: 0rem;
 
-  /* Brand Colors — Construction Orange palette */
-  --brand-green-dark: oklch(0.22 0.02 240);
-  --brand-green-mid: oklch(0.32 0.02 240);
-  --brand-green-light: oklch(0.55 0.05 240);
-  --brand-lime: oklch(0.72 0.18 50);
-  --brand-off-white: oklch(0.98 0.005 80);
-  --brand-cream: oklch(0.96 0.008 80);
-  --brand-charcoal: oklch(0.18 0.02 240);
-  --brand-text-dark: oklch(0.22 0.015 240);
+  /* Brand Colors: KickCharge-style charcoal + gold-orange */
+  --brand-dark: oklch(0.22 0.004 260);
+  --brand-mid: oklch(0.32 0.004 260);
+  --brand-light: oklch(0.55 0.01 260);
+  --brand-gold: oklch(0.79 0.17 70);
+  --brand-off-white: oklch(0.98 0.001 90);
+  --brand-cream: oklch(0.955 0.001 90);
+  --brand-charcoal: oklch(0.18 0.004 260);
+  --brand-text-dark: oklch(0.22 0.003 260);
 
   /* Typography tokens */
+  --font-shout: 'Archivo Black', 'Arial Black', system-ui, sans-serif;
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Semantic Tokens */
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.22 0.015 240);
+  --background: oklch(0.98 0.001 90);
+  --foreground: oklch(0.22 0.003 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.015 240);
+  --card-foreground: oklch(0.22 0.003 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.015 240);
-  --primary: oklch(0.22 0.02 240);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.96 0.008 80);
-  --secondary-foreground: oklch(0.22 0.02 240);
-  --muted: oklch(0.94 0.005 80);
-  --muted-foreground: oklch(0.45 0.02 240);
-  --accent: oklch(0.72 0.18 50);
-  --accent-foreground: oklch(0.18 0.02 240);
+  --popover-foreground: oklch(0.22 0.003 260);
+  --primary: oklch(0.22 0.004 260);
+  --primary-foreground: oklch(0.98 0.001 90);
+  --secondary: oklch(0.955 0.001 90);
+  --secondary-foreground: oklch(0.22 0.004 260);
+  --muted: oklch(0.94 0.001 90);
+  --muted-foreground: oklch(0.45 0.005 260);
+  --accent: oklch(0.79 0.17 70);
+  --accent-foreground: oklch(0.18 0.004 260);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.012 240);
-  --input: oklch(0.88 0.012 240);
-  --ring: oklch(0.72 0.18 50);
+  --border: oklch(0.89 0.002 260);
+  --input: oklch(0.89 0.002 260);
+  --ring: oklch(0.79 0.17 70);
 }
 
 @layer base {
@@ -95,7 +99,16 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, h5, h6 {
+  /* Shout headlines: Archivo Black only ships one weight, so lock
+     font-weight to 400 or the browser fakes a bolder stroke */
+  h1, h2 {
+    font-family: var(--font-shout);
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 1.05;
+  }
+  h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.025em;
@@ -154,17 +167,20 @@
     text-transform: uppercase;
   }
 
-  /* Primary CTA button -- 48px+ touch target on mobile */
+  /* Primary CTA button -- 48px+ touch target on mobile.
+     Notched top-right corner is the angular brand signature. */
   .btn-primary {
-    background-color: oklch(0.72 0.18 50);
-    color: oklch(1 0 0);
+    background-color: oklch(0.79 0.17 70);
+    color: oklch(0.20 0.004 260);
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.9375rem;
-    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     padding: 0.875rem 1.75rem;
     min-height: 48px;
-    border-radius: 0.375rem;
+    border-radius: 0;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
@@ -175,9 +191,9 @@
     -webkit-tap-highlight-color: transparent;
   }
   .btn-primary:hover {
-    background-color: oklch(0.66 0.19 50);
+    background-color: oklch(0.72 0.17 68);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px oklch(0.72 0.18 50 / 0.4);
+    box-shadow: 0 8px 24px oklch(0.79 0.17 70 / 0.4);
   }
   .btn-primary:active {
     transform: scale(0.98);
@@ -194,12 +210,13 @@
     background-color: transparent;
     color: white;
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.9375rem;
-    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     padding: 0.875rem 1.75rem;
     min-height: 48px;
-    border-radius: 0.375rem;
+    border-radius: 0;
     border: 2px solid rgba(255,255,255,0.5);
     transition: all 0.2s ease;
     display: inline-flex;
@@ -223,30 +240,59 @@
   }
 
   .left-accent-border {
-    border-left: 4px solid oklch(0.72 0.18 50);
+    border-left: 4px solid oklch(0.79 0.17 70);
     padding-left: 1.25rem;
+  }
+
+  /* Angular brand utilities */
+  .font-shout {
+    font-family: var(--font-shout);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+  /* Skewed slab: apply to a block, put .unskew on its inner content */
+  .skew-slab {
+    transform: skewX(-8deg);
+  }
+  .unskew {
+    transform: skewX(8deg);
+  }
+  /* Hard diagonal clip for imagery: leaning parallelogram edges */
+  .clip-slant {
+    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+  }
+  /* Faint diagonal hatch texture for dark graphic surfaces */
+  .diag-texture {
+    background-image: repeating-linear-gradient(
+      135deg,
+      oklch(1 0 0 / 0.03) 0,
+      oklch(1 0 0 / 0.03) 1px,
+      transparent 1px,
+      transparent 90px
+    );
   }
 
   /* Section background presets */
   .dark-section {
-    background-color: oklch(0.22 0.02 240);
-    color: oklch(0.98 0.005 80);
+    background-color: oklch(0.22 0.004 260);
+    color: oklch(0.98 0.001 90);
   }
   .darker-section {
-    background-color: oklch(0.18 0.02 240);
-    color: oklch(0.98 0.005 80);
+    background-color: oklch(0.18 0.004 260);
+    color: oklch(0.98 0.001 90);
   }
   .light-section {
-    background-color: oklch(0.98 0.005 80);
-    color: oklch(0.22 0.015 240);
+    background-color: oklch(0.98 0.001 90);
+    color: oklch(0.22 0.003 260);
   }
   .cream-section {
-    background-color: oklch(0.96 0.008 80);
-    color: oklch(0.22 0.015 240);
+    background-color: oklch(0.955 0.001 90);
+    color: oklch(0.22 0.003 260);
   }
 }
 
-/* Custom scrollbar — desktop only, orange thumb (matches CTA), no track */
+/* Custom scrollbar: desktop only, gold-orange thumb (matches CTA), no track */
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
     width: 10px;
@@ -256,18 +302,18 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: oklch(0.72 0.18 50);
+    background-color: oklch(0.79 0.17 70);
     border-radius: 10px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: oklch(0.66 0.19 50);
+    background-color: oklch(0.72 0.17 68);
     background-clip: padding-box;
   }
   html {
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.72 0.18 50) transparent;
+    scrollbar-color: oklch(0.79 0.17 70) transparent;
   }
 }
 
@@ -302,30 +348,32 @@
 }
 
 /* Scroll-reveal: elements start hidden, animate in when .revealed is added */
-.reveal-up {
+/* The hidden start state only applies once main.tsx has tagged <html class="js">,
+   so prerendered HTML is fully visible for crawlers and before hydration. */
+html.js .reveal-up {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal-up.revealed {
+html.js .reveal-up.revealed {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal-left {
+html.js .reveal-left {
   opacity: 0;
   transform: translateX(-24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal-left.revealed {
+html.js .reveal-left.revealed {
   opacity: 1;
   transform: translateX(0);
 }
-.reveal-scale {
+html.js .reveal-scale {
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.reveal-scale.revealed {
+html.js .reveal-scale.revealed {
   opacity: 1;
   transform: scale(1);
 }
@@ -351,7 +399,7 @@
 .hero-animate-d4 { animation-delay: 0.55s; }
 .hero-animate-d5 { animation-delay: 0.7s; }
 
-/* Hero background — per-image mobile art direction via CSS vars */
+/* Hero background: per-image mobile art direction via CSS vars */
 .hero-bg-image {
   background-position: var(--hero-pos-mobile, center center);
 }

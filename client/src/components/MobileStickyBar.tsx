@@ -34,7 +34,7 @@ export default function MobileStickyBar() {
           <div className="flex items-center gap-2.5 px-3 py-2.5">
             <a
               href="tel:+1-210-974-9386"
-              className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-md border-2 border-[var(--brand-lime)]/50 text-white font-display font-semibold text-[0.875rem] active:bg-[var(--brand-lime)]/10 transition-colors shrink-0"
+              className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-md border-2 border-[var(--brand-gold)]/50 text-white font-display font-semibold text-[0.875rem] active:bg-[var(--brand-gold)]/10 transition-colors shrink-0"
               aria-label="Call (210) 974-9386"
             >
               <Phone className="w-4 h-4" strokeWidth={2.5} />
@@ -44,7 +44,7 @@ export default function MobileStickyBar() {
               href="#contact"
               className="btn-primary flex-1 justify-center text-[0.9375rem] py-3"
             >
-              Free Audit
+              Brand Audit
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

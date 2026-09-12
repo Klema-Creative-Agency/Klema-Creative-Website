@@ -5,12 +5,15 @@ const trades = [
 
 export default function NicheBar() {
   return (
-    <div className="py-3.5 overflow-hidden" style={{ background: "oklch(0.22 0.07 240)" }}>
+    <div className="py-3.5 overflow-hidden bg-[var(--brand-gold)]">
       <div className="flex items-center w-max animate-marquee">
         {[...trades, ...trades, ...trades].map((trade, i) => (
           <div key={i} className="flex items-center gap-4 px-7">
-            <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-lime)]" />
-            <span className="text-white/50 text-[0.8125rem] uppercase tracking-[0.08em] whitespace-nowrap font-body font-semibold">
+            <div
+              className="w-2 h-3 bg-[var(--brand-charcoal)]"
+              style={{ transform: "skewX(-24deg)" }}
+            />
+            <span className="text-[var(--brand-charcoal)] text-[0.8125rem] uppercase tracking-[0.08em] whitespace-nowrap font-display font-extrabold">
               {trade}
             </span>
           </div>

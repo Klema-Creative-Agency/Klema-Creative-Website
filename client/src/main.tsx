@@ -6,6 +6,9 @@ import "./index.css";
 window.history.scrollRestoration = "manual";
 window.scrollTo(0, 0);
 
+// Reveal animations only hide content once JS is confirmed running (see index.css).
+document.documentElement.classList.add("js");
+
 const rootEl = document.getElementById("root")!;
 
 if (rootEl.children.length > 0) {

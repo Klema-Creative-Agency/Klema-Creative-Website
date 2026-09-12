@@ -26,7 +26,7 @@ const STACK_RIBBON = [
   "React 18", "TypeScript", "Tailwind v4", "Vite",
   "Framer Motion", "Wouter", "shadcn/ui",
   "Vercel", "Cloudflare", "Resend",
-  "GoHighLevel", "Search Atlas",
+  "Search Atlas",
   "Plausible", "GA4", "Stripe",
   "Claude Code",
 ];
@@ -35,15 +35,15 @@ const HOW_STEPS = [
   { n: "01", t: "Intake call", s: "30 minutes. We map the site against your goals, your audience, and your launch date.", d: "Day 1" },
   { n: "02", t: "Design sprint", s: "Wireframes and hi-fi mockups in real components. You watch it happen, give feedback, lock direction.", d: "Day 2-5" },
   { n: "03", t: "Build & polish", s: "Production code on a stack you can hand off. CMS wired, analytics in place, performance green.", d: "Day 6-10" },
-  { n: "04", t: "Launch & hand-off", s: "You get the live site, the repo, the CMS, the docs. Free GoHighLevel CRM trial included.", d: "Day 11-14" },
+  { n: "04", t: "Launch & hand-off", s: "You get the live site, the repo, the CMS, the docs. You own all of it from day one.", d: "Day 11-14" },
 ];
 
 const FEATURES = [
   { k: "Mobile-first", t: "Designed for the device most of your customers actually use", tags: ["Responsive", "Touch-friendly"], tone: "ochre" },
-  { k: "Customer capture", t: "Forms wired into a CRM so every inquiry hits your inbox in seconds", tags: ["GHL", "Email alerts"], tone: "sea" },
+  { k: "Customer capture", t: "Lead forms that land in your inbox and on your phone in seconds", tags: ["Forms", "Email alerts"], tone: "sea" },
   { k: "Local SEO ready", t: "Schema markup, meta tags, sitemap, and Google Business Profile integration", tags: ["Schema", "GBP"], tone: "copper" },
   { k: "Speed first", t: "Built on a fast modern stack, optimized images, minimal JavaScript bloat", tags: ["Vite", "Edge CDN"], tone: "forest" },
-  { k: "Hosting handoff", t: "Domain registration, DNS, hosting, SSL — we set it all up, you control it", tags: ["Vercel", "Cloudflare"], tone: "plum" },
+  { k: "Hosting handoff", t: "Domain registration, DNS, hosting, SSL: we set it all up, you control it", tags: ["Vercel", "Cloudflare"], tone: "plum" },
   { k: "Yours forever", t: "You own the code, the CMS, the assets. No vendor lock-in, no leash", tags: ["Repo", "Full handoff"], tone: "cobalt" },
 ];
 
@@ -51,7 +51,7 @@ const TERM_LINES = [
   { type: "prompt", text: "klema ~ $ site init growth-engine" },
   { type: "out", text: "✓ React 18 + TypeScript + Vite" },
   { type: "out", text: "✓ Tailwind v4 design tokens" },
-  { type: "out", text: "✓ GoHighLevel CRM webhook wired" },
+  { type: "out", text: "✓ Lead form notifications wired" },
   { type: "out", text: "✓ Resend transactional email" },
   { type: "out", text: "✓ Vercel edge deploy + preview branches" },
   { type: "out", text: "✓ Plausible analytics, no cookie banner" },
@@ -65,7 +65,7 @@ const TERM_LINES = [
 const STACK_CATS = [
   { h: "Core", items: ["React 18", "TypeScript", "Tailwind v4", "Vite"] },
   { h: "Hosting", items: ["Vercel", "Cloudflare"] },
-  { h: "Forms + CRM", items: ["GoHighLevel", "Resend"] },
+  { h: "Forms + Email", items: ["Resend"] },
   { h: "SEO + Analytics", items: ["Search Atlas", "Plausible", "GA4"] },
   { h: "Motion", items: ["Framer Motion", "CSS transitions"] },
   { h: "Ops", items: ["Claude Code", "Linear"] },
@@ -98,7 +98,7 @@ const TIERS = [
       "Integrated customer capture form",
       "Inquiries routed to your email",
       "Mobile-optimized design",
-      "Free 1-month GHL CRM trial",
+      "Every inquiry lands in your inbox",
     ],
     cta: "Start with this",
   },
@@ -375,7 +375,7 @@ function DraggableList({ blocks, setBlocks, accent }: { blocks: Block[]; setBloc
 
 function Hero() {
   const [blocks, setBlocks] = useState<Block[]>(HERO_BLOCKS_DEFAULT);
-  const [accent, setAccent] = useState("oklch(0.72 0.18 50)");
+  const [accent, setAccent] = useState("oklch(0.79 0.17 70)");
   const previewRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -569,7 +569,7 @@ function ProcessTimeline() {
     { dow: "Thu", e: "Hi-fi v1", s: "Home + 2 sub-pages", phase: "Design" },
     { dow: "Fri", e: "Review", s: "Revisions locked", phase: "Design" },
     { dow: "Mon", e: "Scaffold", s: "Vite + Tailwind + Vercel", phase: "Build" },
-    { dow: "Tue", e: "CMS + content", s: "GHL forms, copy migration", phase: "Build" },
+    { dow: "Tue", e: "CMS + content", s: "Lead forms, copy migration", phase: "Build" },
     { dow: "Wed", e: "Motion + a11y", s: "Interactions, AA pass", phase: "Build" },
     { dow: "Thu", e: "QA", s: "Performance, cross-browser", phase: "Ship", important: true },
     { dow: "Fri", e: "Launch", s: "Live + handoff docs", phase: "Ship", important: true, milestone: true },
@@ -1054,16 +1054,16 @@ function WebsitesStyles() {
   return (
     <style>{`
 .kc-websites {
-  --paper: oklch(0.15 0.02 240);
-  --paper-2: oklch(0.20 0.02 240);
-  --ink: oklch(0.98 0.005 80);
-  --ink-2: oklch(0.85 0.01 240);
-  --muted: oklch(0.55 0.02 240);
-  --line: oklch(0.28 0.02 240);
-  --line-2: oklch(0.34 0.02 240);
-  --accent: oklch(0.72 0.18 50);
+  --paper: oklch(0.15 0.004 260);
+  --paper-2: oklch(0.20 0.004 260);
+  --ink: oklch(0.98 0.001 90);
+  --ink-2: oklch(0.85 0.002 260);
+  --muted: oklch(0.55 0.005 260);
+  --line: oklch(0.28 0.004 260);
+  --line-2: oklch(0.34 0.004 260);
+  --accent: oklch(0.79 0.17 70);
   --accent-ink: oklch(1 0 0);
-  --surface: oklch(0.22 0.02 240);
+  --surface: oklch(0.22 0.004 260);
   --kc-font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
   --kc-font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --kc-font-mono: "Geist Mono", ui-monospace, monospace;
@@ -1096,8 +1096,8 @@ function WebsitesStyles() {
 .kc-section-head p { color: var(--ink-2); font-size: 16px; line-height: 1.55; max-width: 48ch; }
 @media (max-width: 860px) { .kc-section-head { grid-template-columns: 1fr; gap: 20px; } }
 
-.kc-reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
-.kc-reveal.in { opacity: 1; transform: none; }
+html.js .kc-reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+html.js .kc-reveal.in { opacity: 1; transform: none; }
 
 .kc-websites .kc-btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; border: 1px solid var(--line-2); background: transparent; color: var(--ink); transition: all .15s ease; font-family: var(--kc-font-sans); }
 .kc-websites .kc-btn:hover { border-color: var(--ink-2); background: var(--paper-2); }
